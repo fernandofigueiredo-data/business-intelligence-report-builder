@@ -29,9 +29,10 @@ planilha. Com o arquivo em `dados/`, volte ao Passo 1.
 
 **analise** — Há duas situações, e o resultado diz qual é:
 - `contrato` vazio: a análise não começou. Indique o `/analise` do plugin
-  analise-dados, que conduz o notebook com o usuário. Se esse plugin não
-  estiver instalado, diga isso e explique que o atalho sem análise prévia
-  chega na fase F1.
+  analise-dados, que conduz o notebook com o usuário (caminho recomendado).
+  Mencione o atalho `/bi-html:ingerir`, que leva a planilha direto ao BI com
+  o aviso "sem análise prévia". Se o analise-dados não estiver instalado,
+  diga isso e ofereça o atalho.
 - `contrato` com `faltando`: a análise começou, mas não entregou tudo.
   Mostre cada item de `faltando` como veio (arquivo, o que falta e a
   correção), sem reformular nem acrescentar itens. Itens com estado
@@ -48,6 +49,12 @@ Os números que aparecem nesses textos vêm da análise, que já foi revisada;
 repita-os como estão, sem recalcular nem arredondar. Depois diga com clareza
 que a camada de métricas (F2) e o dashboard (F4) ainda estão em construção, e
 não tente gerar dashboard, spec ou números por outro caminho.
+
+**perfil** — Há tabelas ingeridas pelo atalho, mas todas bloqueadas pelo
+perfil. Mostre o `proximo_passo` como veio.
+
+**metricas** — Atalho sem análise prévia: as tabelas foram ingeridas e
+perfiladas. Diga que a camada de métricas (F2) ainda está em construção.
 
 **bi** e **pbix** — Diga que essas etapas estão em construção (fases F5 a F7
 do `PLANO_DE_CONSTRUCAO.md`).

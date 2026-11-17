@@ -14,7 +14,7 @@ aceite e decisões).
 - Caminhos do plugin em comandos e skills: `${CLAUDE_PLUGIN_ROOT}`.
 - Textos para o usuário, nomes e comentários em português do Brasil.
 - Antes de concluir uma mudança:
-  `uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb -m unittest discover -s tests -v`
+  `uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb --with openpyxl -m unittest discover -s tests -v`
   e `claude plugin validate --strict plugins/bi-html`.
 - Os dados de `fixtures/` são gerados por `fixtures/gerar.py`; não edite os
   arquivos à mão.

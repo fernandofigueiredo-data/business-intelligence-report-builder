@@ -8,6 +8,7 @@ checagem do contrato (contrato.py, descrita em CONTRATO.md).
 from pathlib import Path
 
 from . import contrato
+from .ingestao import ler_manifesto
 
 EXTENSOES_DADOS = {".csv", ".xlsx", ".xls", ".parquet", ".json", ".txt", ".tsv"}
 
@@ -25,13 +26,25 @@ def estado(projeto: Path) -> dict:
     da_analise = [a for a in (contrato.CONTEXTO, contrato.NOTEBOOK, contrato.PARQUET) if (projeto / a).is_file()]
     spec = (projeto / "dashboard" / "spec.json").is_file()
     checagem = contrato.checar(projeto) if da_analise else None
+    ingeridas = {n: t.get("situacao", "sem_perfil") for n, t in ler_manifesto(projeto)["tabelas"].items()}
+    utilizaveis = [n for n, s in ingeridas.items() if s in ("ok", "com_alertas")]
 
     if not dados and not pbix and not da_analise:
         etapa, proximo = "planilha", "Coloque a planilha em dados/ (ou envie um .pbix) para começar."
     elif pbix and not dados and not da_analise:
         etapa, proximo = "pbix", "Fluxo do Power BI: a leitura do .pbix chega nas fases F6 e F7."
+    elif not da_analise and utilizaveis:
+        etapa = "metricas"
+        proximo = (f"Atalho sem análise prévia: {', '.join(utilizaveis)} ingerida(s) e perfilada(s). "
+                   "A camada de métricas chega na fase F2; o dashboard sairá com o aviso 'sem análise prévia'.")
+    elif not da_analise and ingeridas:
+        etapa = "perfil"
+        proximo = ("Há tabelas ingeridas, mas nenhuma utilizável ainda: "
+                   + ", ".join(f"{n} ({s})" for n, s in ingeridas.items())
+                   + ". Rode /bi-html:ingerir de novo depois de corrigir os bloqueios do perfil.")
     elif not da_analise:
-        etapa, proximo = "analise", "Rode /analise do plugin analise-dados (ou siga pelo atalho sem análise prévia)."
+        etapa, proximo = "analise", ("Rode /analise do plugin analise-dados (caminho padrão) ou "
+                                     "/bi-html:ingerir para o atalho sem análise prévia.")
     elif not checagem["pronto_para_bi"]:
         etapa = "analise"
         proximo = "A análise ainda não entregou o que o BI precisa: " + " | ".join(checagem["faltando"])
@@ -47,6 +60,7 @@ def estado(projeto: Path) -> dict:
         "arquivos_de_dados": dados,
         "pbix": pbix,
         "spec_dashboard": spec,
+        "tabelas_ingeridas": ingeridas,
         "contrato": {k: checagem[k] for k in ("versao_contrato", "pronto_para_bi", "itens", "faltando")}
         if checagem else None,
     }

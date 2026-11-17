@@ -4,7 +4,7 @@ Testes da fase F0b: contrato entre o analise-dados e o bi-html.
 Usa a cópia do projeto de exemplo do analise-dados em tests/dados/projeto_exemplo/
 (5.000 vendas, análise com conclusão, dados tratados gravados pelo próprio notebook).
 
-    uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb -m unittest discover -s tests -v
+    uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb --with openpyxl -m unittest discover -s tests -v
 """
 import json, os, shutil, subprocess, sys, tempfile, unittest
 from pathlib import Path

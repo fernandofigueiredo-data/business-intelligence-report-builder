@@ -6,7 +6,8 @@
 1. **Nenhum número sai do modelo de linguagem.** Todo valor que aparece num
    dashboard, num documento de decisão ou numa resposta sobre os dados vem de
    uma ferramenta do servidor `bi-dados` (hoje: `validar_spec`,
-   `estado_do_ciclo` e `checar_contrato`; nas próximas fases: perfil, métricas e achados).
+   `estado_do_ciclo`, `checar_contrato`, `ingerir`, `ingerir_texto` e `perfilar`;
+   nas próximas fases: métricas e achados).
    Números já escritos na conclusão revisada da análise podem ser repetidos como
    estão, nunca recalculados de cabeça. Se a
    ferramenta não existe ainda, diga isso ao usuário em vez de calcular.

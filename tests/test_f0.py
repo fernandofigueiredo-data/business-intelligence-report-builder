@@ -1,7 +1,7 @@
 """
 Testes da fase F0: schema da spec, detecção do ciclo, dados fictícios e o servidor MCP.
 
-    uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb -m unittest discover -s tests -v
+    uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb --with openpyxl -m unittest discover -s tests -v
 """
 import csv, json, os, subprocess, sys, tempfile, unittest
 from pathlib import Path
@@ -137,7 +137,7 @@ class TestServidorMCP(unittest.TestCase):
                 proc.stdin.close()
                 proc.stdout.close()
             nomes = {t["name"] for t in respostas[2]["result"]["tools"]}
-            self.assertEqual(nomes, {"saude", "validar_spec", "estado_do_ciclo", "checar_contrato"})
+            self.assertEqual(nomes, {"saude", "validar_spec", "estado_do_ciclo", "checar_contrato", "ingerir", "ingerir_texto", "perfilar"})
             texto = respostas[3]["result"]["content"][0]["text"]
             self.assertEqual(json.loads(texto)["etapa"], "planilha")
 

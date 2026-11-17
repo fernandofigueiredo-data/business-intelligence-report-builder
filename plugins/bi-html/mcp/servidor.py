@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["mcp>=2.3,<3", "jsonschema>=4.21", "duckdb>=1.1"]
+# dependencies = ["mcp>=2.3,<3", "jsonschema>=4.21", "duckdb>=1.1", "openpyxl>=3.1"]
 # ///
 """
 servidor.py — servidor MCP `bi-dados` do plugin bi-html.
@@ -13,7 +13,10 @@ perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõ
 - `estado_do_ciclo`: diz em que etapa do ciclo Planilha → Análise → Dashboard → BI
   a pasta do projeto está;
 - `checar_contrato`: confere o que a análise (plugin analise-dados) entregou e devolve
-  o que o BI reaproveita sem perguntar de novo (objetivo, dicionário, conclusão, esquema).
+  o que o BI reaproveita sem perguntar de novo (objetivo, dicionário, conclusão, esquema);
+- `ingerir` e `ingerir_texto`: leem CSV, Excel ou texto colado e gravam a tabela tipada
+  (atalho sem análise prévia);
+- `perfilar`: perfil e validação da tabela ingerida, com dados pessoais e alertas.
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -27,6 +30,8 @@ sys.path.insert(0, str(PLUGIN / "lib"))
 import bi_html  # noqa: E402
 from bi_html.ciclo import estado  # noqa: E402
 from bi_html.contrato import checar  # noqa: E402
+from bi_html.ingestao import ErroDeLeitura, ingerir as _ingerir, ingerir_texto as _ingerir_texto  # noqa: E402
+from bi_html.perfil import perfilar as _perfilar, resumo  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
 
 mcp = MCPServer("bi-dados")
@@ -63,6 +68,49 @@ def checar_contrato() -> dict:
     analise.ipynb com conclusão, contexto.md). Devolve o veredito, o que falta com a correção, e o
     objetivo, o dicionário de colunas, as decisões de tratamento, os itens da conclusão e o esquema."""
     return checar(projeto())
+
+
+def _erro(e: ErroDeLeitura) -> dict:
+    return {"ok": False, "erro": e.mensagem, "detalhes": e.detalhes}
+
+
+def _resumo_ingestao(r: dict) -> dict:
+    return {"ok": True, "tabela": r["tabela"], "origem": r["origem"], "linhas": r["linhas"],
+            "leitura": r["leitura"], "parquet": r["parquet"],
+            "colunas": [{"nome": c["nome"], "original": c["original"], "tipo": c["tipo"]} for c in r["colunas"]]}
+
+
+@mcp.tool()
+def ingerir(caminho: str, nome: str | None = None, aba: str | None = None) -> dict:
+    """Lê um CSV, TXT, TSV ou XLSX e grava a tabela tipada em saidas/bi/tabelas/<nome>.parquet.
+    `caminho` é relativo à pasta do projeto ou absoluto; arquivo de fora é copiado para dados/
+    (nada em dados/ é sobrescrito). `aba` escolhe a aba do Excel (padrão: a primeira).
+    Em caso de erro, devolve ok=false com a explicação e as linhas afetadas."""
+    try:
+        return _resumo_ingestao(_ingerir(projeto(), caminho, nome, aba))
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def ingerir_texto(texto: str, nome: str) -> dict:
+    """Ingere uma tabela colada como texto (por exemplo, copiada do Excel): grava dados/<nome>.csv
+    com o texto exatamente como veio e segue a ingestão normal."""
+    try:
+        return _resumo_ingestao(_ingerir_texto(projeto(), texto, nome))
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def perfilar(tabela: str) -> dict:
+    """Perfil e validação de uma tabela já ingerida: tipos, vazios, período, chaves, dados pessoais,
+    bloqueios e alertas. Grava o relatório completo em saidas/bi/perfil/<tabela>.qualidade.json
+    e devolve a versão curta."""
+    try:
+        return {"ok": True, **resumo(_perfilar(projeto(), tabela))}
+    except ErroDeLeitura as e:
+        return _erro(e)
 
 
 if __name__ == "__main__":
