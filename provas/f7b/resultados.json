@@ -1,0 +1,44 @@
+{
+  "executado_em": "2026-11-17T17:01:36-03:00",
+  "casos": [
+    {
+      "via": "publicar_na_web",
+      "url": "https://app.powerbi.com/view?r=teste-de-incorporacao",
+      "descricao": "link de Publicar na Web (licença Free serve)",
+      "status_http": 200,
+      "x_frame_options": null,
+      "frame_ancestors": null,
+      "incorporavel": true,
+      "bloqueio": null
+    },
+    {
+      "via": "incorporacao_segura",
+      "url": "https://app.powerbi.com/reportEmbed?reportId=00000000-0000-0000-0000-000000000000&autoAuth=true",
+      "descricao": "link de incorporação segura (leitor com login e licença Pro ou PPU)",
+      "status_http": 200,
+      "x_frame_options": null,
+      "frame_ancestors": null,
+      "incorporavel": true,
+      "bloqueio": null
+    },
+    {
+      "via": "servico",
+      "url": "https://app.powerbi.com/home",
+      "descricao": "página comum do serviço (controle)",
+      "status_http": 200,
+      "x_frame_options": "deny",
+      "frame_ancestors": "frame-ancestors https://teams.powerbi.com 'self' https://res-sdf.cdn.office.net https://res.cdn.office.net https://mesh.public.onecdn.static.microsoft https://m365.cloud.microsoft https://copilot.cloud.microsoft https://outlook.cloud.microsoft https://teams.cloud.microsoft https://teams.microsoft.com https://gov.teams.microsoft.us https://dod.teams.microsoft.us https://teams.microsoftonline.cn https://teams.sovcloud.fr https://outlook.office.com https://outlook-sdf.office.com https://outlook.office365.com https://outlook-sdf.office365.com https://www.office.com https://scuprodprv.www.office.com https://www.microsoft365.com https://local.loop.microsoft.com https://dev.loop.microsoft.com https://df.loop.microsoft.com https://loop.microsoft.com https://pages.cloud.microsoft https://pages.cloud.dev.microsoft",
+      "incorporavel": false,
+      "bloqueio": "X-Frame-Options: deny"
+    }
+  ],
+  "artifact": {
+    "incorporavel": false,
+    "fonte": "contrato de página da ferramenta Artifact",
+    "texto": "O contrato de página dos Artifacts do claude.ai diz que outros sites não podem ser incorporados (sem iframes de YouTube, mapas ou formulários, e sem `<object>` ou `<embed>`) e que a recusa vale para qualquer leitor; o caminho é linkar para fora."
+  },
+  "navegador": {
+    "verificado": "A página comparativo/index.html servida em localhost, com o link de Publicar na Web (token fictício): o leitor do Power BI carregou no quadro, com o rodapé e os controles, e o console não registrou erro de incorporação",
+    "data": "2026-11-17"
+  }
+}

@@ -4,7 +4,7 @@
 
 **Legenda epistêmica.** **[F]** fato verificado nesta sessão em documentação, página ou ambiente consultado (número da fonte no fim). **[I]** inferência minha a partir de fatos. **[H]** hipótese a validar. **[NV]** afirmação técnica não verificada nesta sessão.
 
-**Estado das provas de conceito.** A F6 rodou em 17/11/2026 com três .pbix seus, todos em modo de importação; a coluna de importação da matriz 5.1 está **testada** [F21], e as colunas DirectQuery e conexão dinâmica continuam com base documental, à espera de um arquivo em cada modo. O servidor MCP `pbix-mcp` já está instalado neste ambiente [F].
+**Estado das provas de conceito.** A F6 rodou em 17/11/2026 com três .pbix seus, todos em modo de importação; a coluna de importação da matriz 5.1 está **testada** [F21], e as colunas DirectQuery e conexão dinâmica continuam com base documental, à espera de um arquivo em cada modo. A F7 converteu os três arquivos [F22]; a F7b montou a comparação com o original e registrou o teste do iframe, e falta só a publicação do relatório fictício no Power BI [F23]. O servidor MCP `pbix-mcp` já está instalado neste ambiente [F].
 
 ---
 
@@ -88,7 +88,7 @@ A Microsoft afirma que o .pbix é binário e que **não há métodos suportados*
 
 **Argumento mais forte de cada lado.** A favor da (b): fidelidade total, RLS nativa, DirectQuery e conexão dinâmica. Contra: custo de licença ou capacidade, dependência do tenant, e o HTML vira só moldura. A favor da (a): independe de licença, usa o design system e a mesma camada de métricas do Fluxo 1, e é o que demonstra a premissa. Contra: só serve para importação, depende de formato sem suporte oficial, tem fidelidade parcial e exige reimplementar a RLS.
 
-**Recomendação.** A (a) é o núcleo do Fluxo 2, restrita à importação, com relatório de fidelidade por elemento e com o PBIP como entrada preferencial. Para o portfólio, a demonstração mais forte põe lado a lado o HTML convertido e o original incorporado. Com conta Free, esse original vem do *Publicar na Web* (dados fictícios); com Pro, vem da incorporação segura. Uma hipótese a testar: o Artifact do claude.ai talvez não permita o iframe do Power BI por causa da política de conteúdo [H]. Se não permitir, o par fica em uma página da interface externa (F9). No envio, o sistema detecta o modo do arquivo: importação vai para a (a); DirectQuery e conexão dinâmica recebem a explicação e a opção (b).
+**Recomendação.** A (a) é o núcleo do Fluxo 2, restrita à importação, com relatório de fidelidade por elemento e com o PBIP como entrada preferencial. Para o portfólio, a demonstração mais forte põe lado a lado o HTML convertido e o original incorporado. Com conta Free, esse original vem do *Publicar na Web* (dados fictícios); com Pro, vem da incorporação segura. O teste da F7b confirmou que o Artifact do claude.ai não permite o iframe do Power BI: o contrato de página dos Artifacts recusa incorporar outros sites, para qualquer leitor [F18]. Do lado do Power BI, os links de Publicar na Web (`/view?r=`) e de incorporação segura (`/reportEmbed`) não bloqueiam a incorporação, e a página comum do serviço bloqueia (`X-Frame-Options: deny`) [F23]. Por isso o par fica numa página estática (`saidas/bi/comparativo/`, comando `/bi-html:comparar`), que pode morar na interface externa (F9) ou em qualquer hospedagem; o dashboard convertido continua publicável como Artifact. No envio, o sistema detecta o modo do arquivo: importação vai para a (a); DirectQuery e conexão dinâmica recebem a explicação e a opção (b).
 
 ## 6. Compartilhamento e segurança
 
@@ -178,21 +178,21 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 | Conflito de dependências: o pbix-mcp exige `mcp<2`, o `bi-dados` usa `mcp>=2.3` [F21] | Certa / baixo | Leitura de .pbix em processo próprio, como na prova da F6 |
 | Tradução DAX infiel gera número errado com aparência confiável | Alta / alto | Teste de equivalência contra o pbix-mcp em cada conversão e selo "não validada"; na F7, pegou o caso do filtro de `CALCULATE` [F22] |
 | O Claude contorna as ferramentas e escreve números na spec ou no texto | Média / alto | Schema sem campos numéricos livres; verificador; skills com regra explícita |
-| O Artifact bloqueia o iframe do Power BI ou bibliotecas fora da lista permitida [H] | Média / médio | Testar na F7b; plano B na interface externa |
+| O Artifact bloqueia o iframe do Power BI (confirmado na F7b [F23]) ou bibliotecas fora da lista permitida | Certa / médio | Comparação numa página estática (`saidas/bi/comparativo/`), hospedada fora do claude.ai; vitrine na F9 |
 | Limite de 16 MB por página [F18] | Baixa / médio | Embutir só o cubo agregado |
 | Dados reais publicados por engano | Baixa / alto | Bloqueio de publicação com dados pessoais; casos reais ficam privados |
 | Mudanças no formato de plugins do Claude Code | Média / médio | Lógica de dados no MCP, independente das skills |
 | Acoplamento entre os dois plugins: mudança no `analise-dados` quebra o contrato | Média / médio | `CONTRATO.md` versionado; teste de contrato no CI dos dois repositórios; o `bi-html` declara a versão mínima do `analise-dados` |
 | Sobreposição entre o `/painel` do `analise-dados` e o dashboard de BI confunde o uso | Média / baixo | Papéis distintos e documentados (painel de conclusões vs. BI exploratório); na F9, avaliar se o `/painel` passa a usar o renderizador novo |
 | Divergência entre um número do notebook e o da camada de métricas | Média / alto | Achado não reproduzido não entra no documento de decisão e aparece listado como pendência |
-| **Dependências** | — | Os seus .pbix; o tipo de licença da conta Microsoft; o projeto em andamento para a F8 |
+| **Dependências** | — | Para fechar a F7b: uma conta Power BI de trabalho ou estudante, Publicar na Web habilitado pelo administrador do tenant e o `fixtures/vendas.pbix` publicado por você; o projeto em andamento para a F8 |
 
 ## 12. Perguntas em aberto que dependem de você
 
 | # | Pergunta | O que muda no plano |
 |---|---|---|
-| 1 | A sua conta Power BI é Free, Pro ou PPU? O tenant é pessoal ou de uma empresa? Você consegue habilitar Publicar na Web (ou já está habilitado)? | Qual caminho da via (b) a F7b usa |
-| 2 | Os .pbix que você vai enviar podem aparecer no portfólio público, ou só servem para teste? | Se a F7 publica a conversão desses arquivos ou de um .pbix fictício |
+| 1 | A sua conta Power BI é Free, Pro ou PPU? O tenant é pessoal ou de uma empresa? Você consegue habilitar Publicar na Web (ou já está habilitado)? | Qual caminho da via (b) a F7b usa. **Respondida em 17/11:** Free; Publicar na Web não habilitado (ou desconhecido). A F7b usa Publicar na Web e fica à espera da publicação. |
+| 2 | Os .pbix que você vai enviar podem aparecer no portfólio público, ou só servem para teste? | Se a F7 publica a conversão desses arquivos ou de um .pbix fictício. **Respondida em 17/11:** só o fictício (`fixtures/vendas.pbix`) aparece em público; os três reais servem para teste. |
 | 3 | Qual é o projeto em andamento para a F8, e ele tem dados pessoais? | Escopo e cuidados do caso real |
 | 4 | Basta rodar no Claude Code (app desktop), ou você também quer usar pelo chat do claude.ai na web? | O claude.ai web não executa MCP local [NV]; a alternativa seria uma versão só com skills |
 | 5 | Que nome o plugin terá (sugestão: `bi-html`) e qual será o prefixo dos comandos? | F0 |
@@ -227,3 +227,4 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 20. Plugin `analise-dados` v1.1.0 (MIT), cópia local do repositório https://github.com/fernandofigueiredo-data/analise-dados-plugin, commit `10bbdaf` de 18/10/2026: README, `REGRAS.md`, `.mcp.json`, `hooks/hooks.json`, comandos `/analise`, `/painel` e `/relatorio`, `scripts/projeto.py`, `lib/analise_dados/painel.py`, `modelo/estilos/design-system.md`, skill `analista-senior`.
 21. Prova de conceito da F6 neste repositório, executada em 17/11/2026 com três .pbix do autor em modo de importação: `provas/f6/MATRIZ.md`, `provas/f6/resultados.json` e as saídas das ferramentas em `provas/f6/saidas/`.
 22. Prova da F7 neste repositório, executada em 17/11/2026 com cópias dos três .pbix do autor (o de eleições e o Lab1 em versões posteriores às da F6) e com os .pbix fictícios de `fixtures/`: `provas/f7/RESULTADO.md`, `provas/f7/resultados.json` e os relatórios de fidelidade em `provas/f7/saidas/`.
+23. Teste do iframe da F7b neste repositório, em 17/11/2026: cabeçalhos HTTP do serviço do Power BI com identificadores fictícios e a página de comparação aberta num navegador local (`provas/f7b/RESULTADO.md` e `resultados.json`).

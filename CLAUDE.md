@@ -25,3 +25,5 @@ aceite e decisões).
   chamado em processo à parte por `conversao.py` (via `uv`). `provas/f7/` é
   gerado por `provas/f7/executar.py`. Os .pbix fictícios (`fixtures/vendas.pbix`
   e `vendas_directquery.pbix`) são gerados por `fixtures/gerar_pbix.py`.
+- `provas/f7b/` (teste do iframe do Power BI) é gerado por
+  `provas/f7b/executar.py`, que consulta o serviço com identificadores fictícios.

@@ -31,6 +31,8 @@ perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõ
   métricas, specs por página e páginas renderizadas, com o teste de equivalência das medidas
   traduzidas contra o Power BI e o relatório de fidelidade por visual. A leitura do .pbix roda
   num processo à parte (o pbix-mcp exige mcp<2).
+- `montar_comparativo`: Fluxo 2, via (b): o relatório original publicado no Power BI ao lado da
+  página convertida, numa pasta estática (o Artifact do claude.ai não incorpora outros sites).
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -56,6 +58,7 @@ from bi_html.documento import renderizar_documento as _renderizar_documento  # n
 from bi_html.verificador import verificar as _verificar_documento  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
 from bi_html.conversao import converter as _converter_pbix  # noqa: E402
+from bi_html.incorporacao import montar_comparativo as _montar_comparativo  # noqa: E402
 
 mcp = MCPServer("bi-dados")
 
@@ -288,6 +291,20 @@ def converter_pbix(caminho: str, testar_equivalencia: bool = True, sobrescrever:
     alguns minutos, conforme o tamanho do modelo."""
     try:
         return {"ok": True, **_converter_pbix(projeto(), caminho, testar_equivalencia, sobrescrever)}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def montar_comparativo(link_power_bi: str | None = None, licenca: str = "free", pagina: str | None = None) -> dict:
+    """Via (b): grava saidas/bi/comparativo/ com o relatório original do Power BI (num iframe) ao lado da
+    página convertida pela via (a), o resumo da conversão e o status de cada visual. `link_power_bi`:
+    link de Publicar na Web (app.powerbi.com/view?r=...) ou de incorporação segura
+    (app.powerbi.com/reportEmbed?reportId=...); sem link, o lado do original mostra o passo a passo.
+    `licenca`: free, pro ou ppu. `pagina`: nome da página convertida (padrão: a primeira). A pasta é
+    estática (abre do disco ou em qualquer hospedagem); o Artifact do claude.ai não incorpora outros sites."""
+    try:
+        return {"ok": True, **_montar_comparativo(projeto(), link_power_bi, licenca, pagina)}
     except ErroDeLeitura as e:
         return _erro(e)
 

@@ -44,6 +44,8 @@ Não arredonde nem reescreva números: cite as contagens como vieram.
 
 - As páginas ficam em `saidas/bi/paginas/<pagina>.html` e a primeira também em
   `saidas/bi/dashboard.html`. Ofereça abrir.
+- Para pôr o relatório original do Power BI ao lado do convertido, indique
+  `/bi-html:comparar` (via (b)).
 - Se `publicacao_bloqueada` não estiver vazio, **não publique** (regra 5).
 - Senão, com o ok do usuário, publique a página como Artifact
   (`saidas/bi/paginas/<pagina>.artifact.html`, `icon` "chart"). Medidas não
