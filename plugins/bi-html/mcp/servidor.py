@@ -23,7 +23,10 @@ perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõ
 - `exportar_cubo`: dados agregados que o dashboard embute;
 - `propor_estilos`, `aplicar_estilo` e `importar_design`: domínio inferido, estilos base e
   design system enviado, gravados em design/tokens.json e tokens.css com contraste AA;
-- `renderizar_dashboard`: calcula os blocos da spec e grava o HTML do dashboard.
+- `renderizar_dashboard`: calcula os blocos da spec e grava o HTML do dashboard;
+- `gerar_achados`, `reproduzir_conclusao`, `verificar_documento` e `renderizar_documento`:
+  fatos calculados para o documento de decisão, reprodução da conclusão da análise,
+  conferência de cada número do texto e o HTML do documento.
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -43,6 +46,10 @@ from bi_html.consulta import consultar as _consultar, exportar_cubo as _exportar
 from bi_html.modelo import carregar, propor, registrar_linhagem  # noqa: E402
 from bi_html import design as _design  # noqa: E402
 from bi_html.render import renderizar  # noqa: E402
+from bi_html.achados import gerar as _gerar_achados  # noqa: E402
+from bi_html.conclusao import reproduzir  # noqa: E402
+from bi_html.documento import renderizar_documento as _renderizar_documento  # noqa: E402
+from bi_html.verificador import verificar as _verificar_documento  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
 
 mcp = MCPServer("bi-dados")
@@ -218,6 +225,48 @@ def renderizar_dashboard() -> dict:
     `publicacao_bloqueada`, os motivos para não publicar (dados pessoais)."""
     try:
         return {"ok": True, **renderizar(projeto())}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def gerar_achados() -> dict:
+    """Calcula os achados que o documento de decisão pode citar (total, líderes, concentração,
+    amplitude das razões, composição de valores com sinal, série mensal, cobertura dos dados) e grava
+    saidas/bi/achados.json. Cada achado tem id (A1, A2…), valores e textos formatados."""
+    try:
+        return {"ok": True, **_gerar_achados(projeto())}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def reproduzir_conclusao() -> dict:
+    """Confere cada número da conclusão do analise.ipynb com a camada de métricas, seguindo
+    decisao/verificacoes.yaml. Grava saidas/bi/reproducao.json com o estado de cada item:
+    reproduzido, nao_reproduzido ou sem_numero."""
+    try:
+        return {"ok": True, **reproduzir(projeto())}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def verificar_documento() -> dict:
+    """Confere decisao/documento.md: seções obrigatórias, de três a cinco achados citando [A…] ou [C…]
+    reproduzido, e se cada número do texto vem de um valor calculado. Lista cada número com a origem."""
+    try:
+        return {"ok": True, **_verificar_documento(projeto())}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def renderizar_documento() -> dict:
+    """Renderiza o documento de decisão (saidas/bi/decisao.html e decisao.artifact.html) com o apêndice
+    de método gerado sem o modelo de linguagem. Recusa se a verificação dos números não passar."""
+    try:
+        return {"ok": True, **_renderizar_documento(projeto())}
     except ErroDeLeitura as e:
         return _erro(e)
 

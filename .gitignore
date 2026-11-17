@@ -6,3 +6,6 @@ __pycache__/
 exemplos/*/dados/
 exemplos/*/saidas/
 exemplos/*/design/
+exemplos/ciclo/contexto.md
+exemplos/ciclo/analise.ipynb
+exemplos/ciclo/estilos/

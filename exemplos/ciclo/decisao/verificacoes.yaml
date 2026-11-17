@@ -1,0 +1,19 @@
+# Como a camada de métricas reproduz cada número da conclusão do notebook.
+- item: 1
+  numero: "39%"
+  metrica: participacao_faturamento
+  dimensoes: [regiao]
+  onde: {regiao: Sudeste}
+  afirmacao: aproximado
+- item: 2
+  numero: "60%"
+  metrica: faturamento_por_dia
+  dimensoes: [mes]
+  variacao: {de: {mes: "2025-10"}, para: [{mes: "2025-11"}, {mes: "2025-12"}]}
+  afirmacao: mais_de
+- item: 3
+  numero: "36%"
+  metrica: margem
+  dimensoes: [canal_venda]
+  todas_as_linhas: true
+  afirmacao: aproximado

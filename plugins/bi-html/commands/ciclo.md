@@ -60,8 +60,10 @@ repita-os como estão, sem recalcular nem arredondar. Depois indique
 **perfil** — Há tabelas ingeridas pelo atalho, mas todas bloqueadas pelo
 perfil. Mostre o `proximo_passo` como veio.
 
-**bi** — Dashboard especificado. Indique `/bi-html:dashboard` para renderizar
-e publicar, e diga que o documento de decisão é a fase F5, em construção.
+**bi** — Dashboard especificado. Indique `/bi-html:decisao` para o documento de
+decisão (e `/bi-html:dashboard` para renderizar ou publicar o painel).
+
+**concluido** — O ciclo está completo. Mostre o `proximo_passo` como veio.
 
 **pbix** — Diga que essa etapa está em construção (fases F6 e F7 do
 `PLANO_DE_CONSTRUCAO.md`).

@@ -1,0 +1,31 @@
+{
+  "versao_spec": "0.1",
+  "titulo": "Painel do faturamento",
+  "subtitulo": "Vendas do ano, depois da análise revisada no plugin analise-dados",
+  "pergunta_negocio": "Onde está o faturamento do ano, por região, mês e canal?",
+  "publico": "diretoria comercial",
+  "origem": "analise",
+  "estilo": { "fonte": "enviado", "tokens": "design/tokens.json", "dominio": "vendas" },
+  "layout": "duas_colunas",
+  "periodo": "tudo",
+  "filtros_globais": ["canal_venda"],
+  "blocos": [
+    { "id": "faturamento", "tipo": "numero_destaque", "titulo": "Faturamento do ano",
+      "metricas": ["faturamento"], "largura": "metade" },
+    { "id": "apoio", "tipo": "faixa_kpis", "titulo": "Vendas, valor por venda e margem",
+      "metricas": ["vendas", "ticket_medio", "margem"], "largura": "metade" },
+    { "id": "regioes", "tipo": "barras_ranking", "titulo": "Faturamento por região",
+      "subtitulo": "Vendas sem região ficam como não informada, como decidido na análise",
+      "metricas": ["faturamento", "participacao_faturamento"], "dimensoes": ["regiao"], "largura": "metade",
+      "achado": "A região líder responde por {participacao_faturamento} do faturamento." },
+    { "id": "ticket", "tipo": "barras_agrupadas", "titulo": "Valor por venda em cada região",
+      "subtitulo": "Parecido entre as regiões: a liderança vem do volume",
+      "metricas": ["ticket_medio"], "dimensoes": ["regiao"], "largura": "metade" },
+    { "id": "ritmo", "tipo": "linha_tempo", "titulo": "Faturamento por dia, mês a mês",
+      "subtitulo": "Por dia, porque os meses têm tamanhos diferentes",
+      "metricas": ["faturamento_por_dia"], "dimensoes": ["mes"], "largura": "inteira" },
+    { "id": "canais", "tipo": "tabela", "titulo": "Canais lado a lado",
+      "metricas": ["faturamento", "vendas", "margem"], "dimensoes": ["canal_venda"], "largura": "inteira" }
+  ],
+  "notas": "Dados fictícios do projeto de exemplo do plugin analise-dados."
+}

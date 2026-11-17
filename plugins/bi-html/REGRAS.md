@@ -8,8 +8,8 @@
    uma ferramenta do servidor `bi-dados` (hoje: `validar_spec`,
    `estado_do_ciclo`, `checar_contrato`, `ingerir`, `ingerir_texto`, `perfilar`,
    `propor_modelo`, `validar_modelo`, `consultar`, `exportar_cubo`, `propor_estilos`,
-   `aplicar_estilo`, `importar_design` e `renderizar_dashboard`; na próxima fase:
-   achados). Ao mostrar um número, use o texto de `formatado` que a ferramenta devolve.
+   `aplicar_estilo`, `importar_design`, `renderizar_dashboard`, `gerar_achados`,
+   `reproduzir_conclusao`, `verificar_documento` e `renderizar_documento`). Ao mostrar um número, use o texto de `formatado` que a ferramenta devolve.
    Números já escritos na conclusão revisada da análise podem ser repetidos como
    estão, nunca recalculados de cabeça. Se a
    ferramenta não existe ainda, diga isso ao usuário em vez de calcular.
@@ -28,3 +28,7 @@
    fica privado até as colunas serem removidas ou agregadas.
 6. **Português do Brasil** em tudo que o usuário lê: `R$ 1.234,56`, `12,3%`,
    `31/12/2025`, comparações explícitas ("vs. mês anterior").
+7. **O documento de decisão só cita achados.** Todo número do texto sai de um
+   achado (`[A…]`) ou de um item da conclusão da análise reproduzido pela camada
+   de métricas (`[C…]`), arredondado como o texto escreve. Item não reproduzido
+   não entra no documento. O verificador confere antes de renderizar.

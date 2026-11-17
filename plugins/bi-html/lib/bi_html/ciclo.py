@@ -66,9 +66,12 @@ def estado(projeto: Path) -> dict:
                                     "(design system próprio ou estilo proposto pelo domínio dos dados).")
     elif not spec:
         etapa, proximo = "dashboard", "Métricas e design prontos. Monte o dashboard com /bi-html:dashboard."
+    elif not (projeto / "saidas" / "bi" / "decisao.html").is_file():
+        etapa, proximo = "bi", ("Dashboard especificado. Escreva o documento de decisão com /bi-html:decisao "
+                                "(e renderize ou publique o painel com /bi-html:dashboard).")
     else:
-        etapa, proximo = "bi", ("Dashboard especificado. Renderize e publique com /bi-html:dashboard; "
-                                "o documento de decisão chega na fase F5.")
+        etapa, proximo = "concluido", ("Ciclo completo: dashboard e documento de decisão gerados. Para atualizar, "
+                                       "rode /bi-html:dashboard e /bi-html:decisao de novo.")
 
     return {
         "projeto": str(projeto),

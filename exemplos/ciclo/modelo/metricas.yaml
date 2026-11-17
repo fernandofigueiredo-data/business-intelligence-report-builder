@@ -1,0 +1,19 @@
+# Modelo revisado do ciclo completo: dados tratados pela análise do plugin analise-dados
+# (tests/dados/projeto_exemplo), lidos de saidas/dados_tratados.parquet.
+versao: "0.1"
+fonte:
+  arquivo: saidas/dados_tratados.parquet
+  coluna_data: data
+dimensoes:
+  regiao: {coluna: regiao, descricao: Região do cliente}
+  canal_venda: {coluna: canal_venda, descricao: Canal de venda}
+  categoria: {coluna: categoria, descricao: Categoria}
+  mes: {coluna: data, granularidade: mes, descricao: Mês}
+metricas:
+  faturamento: {descricao: Faturamento, tipo: soma, coluna: faturamento, formato: moeda}
+  lucro: {descricao: Lucro, tipo: soma, coluna: lucro, formato: moeda}
+  vendas: {descricao: Vendas, tipo: contagem, formato: inteiro}
+  ticket_medio: {descricao: Valor por venda, tipo: razao, numerador: faturamento, denominador: vendas, formato: moeda}
+  margem: {descricao: Margem, tipo: razao, numerador: lucro, denominador: faturamento, formato: percentual}
+  participacao_faturamento: {descricao: Participação no faturamento, tipo: participacao, metrica: faturamento, formato: percentual}
+  faturamento_por_dia: {descricao: Faturamento por dia, tipo: por_dia, metrica: faturamento, formato: moeda}
