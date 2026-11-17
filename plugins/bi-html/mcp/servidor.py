@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["mcp>=2.3,<3", "jsonschema>=4.21", "duckdb>=1.1", "openpyxl>=3.1"]
+# dependencies = ["mcp>=2.3,<3", "jsonschema>=4.21", "duckdb>=1.1", "openpyxl>=3.1", "pyyaml>=6"]
 # ///
 """
 servidor.py — servidor MCP `bi-dados` do plugin bi-html.
@@ -16,7 +16,11 @@ perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõ
   o que o BI reaproveita sem perguntar de novo (objetivo, dicionário, conclusão, esquema);
 - `ingerir` e `ingerir_texto`: leem CSV, Excel ou texto colado e gravam a tabela tipada
   (atalho sem análise prévia);
-- `perfilar`: perfil e validação da tabela ingerida, com dados pessoais e alertas.
+- `perfilar`: perfil e validação da tabela ingerida, com dados pessoais e alertas;
+- `propor_modelo` e `validar_modelo`: rascunho e validação de modelo/metricas.yaml, com a
+  linhagem de cada métrica registrada no manifesto;
+- `consultar`: o único caminho para um número (métricas × dimensões × filtros × período);
+- `exportar_cubo`: dados agregados que o dashboard embute.
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -32,6 +36,8 @@ from bi_html.ciclo import estado  # noqa: E402
 from bi_html.contrato import checar  # noqa: E402
 from bi_html.ingestao import ErroDeLeitura, ingerir as _ingerir, ingerir_texto as _ingerir_texto  # noqa: E402
 from bi_html.perfil import perfilar as _perfilar, resumo  # noqa: E402
+from bi_html.consulta import consultar as _consultar, exportar_cubo as _exportar_cubo, para_json  # noqa: E402
+from bi_html.modelo import carregar, propor, registrar_linhagem  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
 
 mcp = MCPServer("bi-dados")
@@ -109,6 +115,60 @@ def perfilar(tabela: str) -> dict:
     e devolve a versão curta."""
     try:
         return {"ok": True, **resumo(_perfilar(projeto(), tabela))}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def propor_modelo(tabela: str | None = None, sobrescrever: bool = False) -> dict:
+    """Escreve um rascunho de modelo/metricas.yaml a partir das colunas da fonte: a tabela ingerida
+    informada, ou saidas/dados_tratados.parquet da análise. Descrições vêm do dicionário do
+    contexto.md quando existe. Não sobrescreve um modelo existente sem `sobrescrever=true`."""
+    try:
+        return {"ok": True, **propor(projeto(), tabela, sobrescrever)}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def validar_modelo() -> dict:
+    """Valida modelo/metricas.yaml contra o arquivo da fonte e registra no manifesto a definição,
+    as colunas e a origem (com hash) de cada métrica. Devolve a lista de métricas e dimensões."""
+    try:
+        modelo, arquivo, _ = carregar(projeto())
+        linhagem = registrar_linhagem(projeto(), modelo, arquivo)
+    except ErroDeLeitura as e:
+        return _erro(e)
+    return {"ok": True, "fonte": linhagem and next(iter(linhagem.values()))["fonte"],
+            "metricas": {n: {k: l[k] for k in ("descricao", "tipo", "formato", "definicao", "colunas")}
+                         for n, l in linhagem.items()},
+            "dimensoes": {n: {"coluna": d["coluna"], "granularidade": d.get("granularidade"),
+                              "descricao": d.get("descricao", "")} for n, d in modelo["dimensoes"].items()}}
+
+
+@mcp.tool()
+def consultar(metricas: list[str], dimensoes: list[str] | None = None, filtros: list[dict] | None = None,
+              periodo: str = "tudo", comparacao: str = "nenhuma", ordenacao: str | None = None,
+              limite: int | None = None) -> dict:
+    """Calcula métricas do modelo, abertas por dimensões. `filtros`: [{dimensao, operador: em|fora_de,
+    valores}]. `periodo`: tudo, ultimos_trinta_dias, ultimo_mes, ultimo_trimestre, ano_corrente,
+    ultimo_ano_completo (relativos à data mais recente dos dados). `comparacao`: nenhuma,
+    periodo_anterior, mesmo_periodo_ano_anterior. `ordenacao`: maior_primeiro, menor_primeiro,
+    cronologica, alfabetica. Use os textos de `formatado` ao mostrar números ao usuário."""
+    try:
+        return {"ok": True, **para_json(_consultar(projeto(), metricas, dimensoes, filtros, periodo, comparacao,
+                                                    ordenacao, limite))}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def exportar_cubo(nome: str, metricas: list[str], dimensoes: list[str], periodo: str = "tudo",
+                  comparacao: str = "nenhuma") -> dict:
+    """Grava saidas/bi/cubos/<nome>.json: componentes somáveis das métricas no grão das dimensões,
+    com a receita de recálculo de cada métrica, para o dashboard refiltrar no navegador."""
+    try:
+        return {"ok": True, **_exportar_cubo(projeto(), nome, metricas, dimensoes, periodo, comparacao)}
     except ErroDeLeitura as e:
         return _erro(e)
 

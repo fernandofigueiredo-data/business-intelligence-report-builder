@@ -1,7 +1,7 @@
 """
 Testes da fase F1: ingestão (CSV, Excel, texto colado) e perfil com os conjuntos fictícios.
 
-    uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb --with openpyxl -m unittest discover -s tests -v
+    uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb --with openpyxl --with pyyaml -m unittest discover -s tests -v
 """
 import csv, json, os, shutil, subprocess, sys, tempfile, unittest
 from datetime import date

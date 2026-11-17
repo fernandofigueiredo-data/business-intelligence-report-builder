@@ -38,7 +38,13 @@ planilha. Com o arquivo em `dados/`, volte ao Passo 1.
   correção), sem reformular nem acrescentar itens. Itens com estado
   `alerta` vão numa linha à parte, como pontos a conferir que não bloqueiam.
 
-**dashboard** — A análise está pronta para o BI. Chame `checar_contrato`
+**metricas** — Falta definir (ou corrigir) o modelo de métricas. Se o
+projeto veio da análise, faça antes o resumo descrito em **dashboard** abaixo
+(objetivo e conclusão, sem perguntar de novo). Depois indique
+`/bi-html:metricas`. Se o `proximo_passo` traz problemas do modelo, mostre-os
+como vieram.
+
+**dashboard** — Métricas validadas. Se o projeto veio da análise, chame `checar_contrato`
 (`mcp__plugin_bi-html_bi-dados__checar_contrato`) e mostre, **sem perguntar
 de novo ao usuário**:
 - a pergunta de negócio, o público e a decisão, como estão no `contexto`;
@@ -47,14 +53,11 @@ de novo ao usuário**:
 
 Os números que aparecem nesses textos vêm da análise, que já foi revisada;
 repita-os como estão, sem recalcular nem arredondar. Depois diga com clareza
-que a camada de métricas (F2) e o dashboard (F4) ainda estão em construção, e
-não tente gerar dashboard, spec ou números por outro caminho.
+que o dashboard (F4) ainda está em construção, e não tente gerar dashboard,
+spec ou números por outro caminho; para ver números agora, use `consultar`.
 
 **perfil** — Há tabelas ingeridas pelo atalho, mas todas bloqueadas pelo
 perfil. Mostre o `proximo_passo` como veio.
-
-**metricas** — Atalho sem análise prévia: as tabelas foram ingeridas e
-perfiladas. Diga que a camada de métricas (F2) ainda está em construção.
 
 **bi** e **pbix** — Diga que essas etapas estão em construção (fases F5 a F7
 do `PLANO_DE_CONSTRUCAO.md`).
