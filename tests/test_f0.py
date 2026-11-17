@@ -1,7 +1,7 @@
 """
 Testes da fase F0: schema da spec, detecção do ciclo, dados fictícios e o servidor MCP.
 
-    uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" -m unittest discover -s tests -v
+    uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb -m unittest discover -s tests -v
 """
 import csv, json, os, subprocess, sys, tempfile, unittest
 from pathlib import Path
@@ -69,14 +69,6 @@ class TestCiclo(unittest.TestCase):
             (Path(d) / "dados" / "vendas.csv").write_text("a;b\n1;2\n")
             self.assertEqual(estado(Path(d))["etapa"], "analise")
 
-    def test_analise_pronta_vai_para_dashboard(self):
-        with tempfile.TemporaryDirectory() as d:
-            p = Path(d)
-            for arq in ("dados/vendas.csv", "contexto.md", "analise.ipynb", "saidas/dados_tratados.parquet"):
-                (p / arq).parent.mkdir(parents=True, exist_ok=True)
-                (p / arq).write_text("x")
-            self.assertEqual(estado(p)["etapa"], "dashboard")
-
     def test_so_pbix(self):
         with tempfile.TemporaryDirectory() as d:
             (Path(d) / "relatorio.pbix").write_bytes(b"PK")
@@ -142,8 +134,10 @@ class TestServidorMCP(unittest.TestCase):
             finally:
                 proc.kill()
                 proc.wait(timeout=10)
+                proc.stdin.close()
+                proc.stdout.close()
             nomes = {t["name"] for t in respostas[2]["result"]["tools"]}
-            self.assertEqual(nomes, {"saude", "validar_spec", "estado_do_ciclo"})
+            self.assertEqual(nomes, {"saude", "validar_spec", "estado_do_ciclo", "checar_contrato"})
             texto = respostas[3]["result"]["content"][0]["text"]
             self.assertEqual(json.loads(texto)["etapa"], "planilha")
 

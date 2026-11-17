@@ -5,8 +5,10 @@
 
 1. **Nenhum número sai do modelo de linguagem.** Todo valor que aparece num
    dashboard, num documento de decisão ou numa resposta sobre os dados vem de
-   uma ferramenta do servidor `bi-dados` (hoje: `validar_spec` e
-   `estado_do_ciclo`; nas próximas fases: perfil, métricas e achados). Se a
+   uma ferramenta do servidor `bi-dados` (hoje: `validar_spec`,
+   `estado_do_ciclo` e `checar_contrato`; nas próximas fases: perfil, métricas e achados).
+   Números já escritos na conclusão revisada da análise podem ser repetidos como
+   estão, nunca recalculados de cabeça. Se a
    ferramenta não existe ainda, diga isso ao usuário em vez de calcular.
 2. **A spec descreve, não informa.** Ao escrever uma spec de dashboard, ligue
    cada bloco a métricas por id. Textos não levam algarismos: um valor no

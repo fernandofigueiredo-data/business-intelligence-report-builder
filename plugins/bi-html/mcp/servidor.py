@@ -1,18 +1,19 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["mcp>=2.3,<3", "jsonschema>=4.21"]
+# dependencies = ["mcp>=2.3,<3", "jsonschema>=4.21", "duckdb>=1.1"]
 # ///
 """
 servidor.py — servidor MCP `bi-dados` do plugin bi-html.
 
 É o único caminho para números no sistema: nas próximas fases, ingestão,
-perfil, métricas e achados entram aqui como ferramentas tipadas. Na F0 ele
-expõe só o necessário para provar a ligação com o Claude Code:
+perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõe:
 
 - `saude`: versão do plugin e pasta do projeto vista pelo servidor;
 - `validar_spec`: confere uma spec de dashboard contra o schema e as regras;
 - `estado_do_ciclo`: diz em que etapa do ciclo Planilha → Análise → Dashboard → BI
-  a pasta do projeto está.
+  a pasta do projeto está;
+- `checar_contrato`: confere o que a análise (plugin analise-dados) entregou e devolve
+  o que o BI reaproveita sem perguntar de novo (objetivo, dicionário, conclusão, esquema).
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -25,6 +26,7 @@ PLUGIN = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PLUGIN / "lib"))
 import bi_html  # noqa: E402
 from bi_html.ciclo import estado  # noqa: E402
+from bi_html.contrato import checar  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
 
 mcp = MCPServer("bi-dados")
@@ -53,6 +55,14 @@ def validar_spec(caminho: str, metricas: list[str] | None = None) -> dict:
 def estado_do_ciclo() -> dict:
     """Em que etapa do ciclo a pasta do projeto está e qual é o próximo passo."""
     return estado(projeto())
+
+
+@mcp.tool()
+def checar_contrato() -> dict:
+    """Confere se a análise entregou os três arquivos do contrato (saidas/dados_tratados.parquet,
+    analise.ipynb com conclusão, contexto.md). Devolve o veredito, o que falta com a correção, e o
+    objetivo, o dicionário de colunas, as decisões de tratamento, os itens da conclusão e o esquema."""
+    return checar(projeto())
 
 
 if __name__ == "__main__":
