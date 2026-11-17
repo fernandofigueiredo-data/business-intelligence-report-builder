@@ -324,7 +324,7 @@ class TestCicloComAnalise(unittest.TestCase):
             modelo, arquivo, _ = carregar(p)
             self.assertEqual(modelo["dimensoes"]["regiao"]["descricao"], "região do cliente")
             registrar_linhagem(p, modelo, arquivo)
-            self.assertEqual(estado(p)["etapa"], "dashboard")
+            self.assertEqual(estado(p)["etapa"], "design")
             # a conclusão diz "o Sudeste concentra cerca de 39% do faturamento"
             linhas = {l["regiao"]: l for l in consultar(p, ["participacao_faturamento_total"], ["regiao"])["linhas"]}
             self.assertEqual(round(100 * linhas["Sudeste"]["participacao_faturamento_total"]), 39)

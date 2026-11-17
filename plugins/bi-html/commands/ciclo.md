@@ -44,7 +44,9 @@ projeto veio da análise, faça antes o resumo descrito em **dashboard** abaixo
 `/bi-html:metricas`. Se o `proximo_passo` traz problemas do modelo, mostre-os
 como vieram.
 
-**dashboard** — Métricas validadas. Se o projeto veio da análise, chame `checar_contrato`
+**design** — Métricas validadas; falta o visual. Indique `/bi-html:design`.
+
+**dashboard** — Métricas e design prontos. Se o projeto veio da análise, chame `checar_contrato`
 (`mcp__plugin_bi-html_bi-dados__checar_contrato`) e mostre, **sem perguntar
 de novo ao usuário**:
 - a pergunta de negócio, o público e a decisão, como estão no `contexto`;

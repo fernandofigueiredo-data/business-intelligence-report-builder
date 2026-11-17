@@ -138,7 +138,8 @@ class TestServidorMCP(unittest.TestCase):
                 proc.stdout.close()
             nomes = {t["name"] for t in respostas[2]["result"]["tools"]}
             self.assertEqual(nomes, {"saude", "validar_spec", "estado_do_ciclo", "checar_contrato", "ingerir", "ingerir_texto", "perfilar",
-                                     "propor_modelo", "validar_modelo", "consultar", "exportar_cubo"})
+                                     "propor_modelo", "validar_modelo", "consultar", "exportar_cubo",
+                                     "propor_estilos", "aplicar_estilo", "importar_design"})
             texto = respostas[3]["result"]["content"][0]["text"]
             self.assertEqual(json.loads(texto)["etapa"], "planilha")
 

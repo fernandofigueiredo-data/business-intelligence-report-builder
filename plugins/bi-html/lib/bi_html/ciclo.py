@@ -61,8 +61,11 @@ def estado(projeto: Path) -> dict:
         else:
             proximo = (f"Atalho sem análise prévia: {', '.join(utilizaveis)} ingerida(s) e perfilada(s). "
                        "Defina as métricas com /bi-html:metricas; o dashboard sairá com o aviso 'sem análise prévia'.")
+    elif not (projeto / "design" / "tokens.json").is_file():
+        etapa, proximo = "design", ("Métricas definidas e validadas. Escolha o visual com /bi-html:design "
+                                    "(design system próprio ou estilo proposto pelo domínio dos dados).")
     elif not spec:
-        etapa, proximo = "dashboard", "Métricas definidas e validadas. O dashboard é gerado a partir da fase F4."
+        etapa, proximo = "dashboard", "Métricas e design prontos. O dashboard é gerado a partir da fase F4."
     else:
         etapa, proximo = "bi", "Dashboard especificado. O documento de decisão chega na fase F5."
 

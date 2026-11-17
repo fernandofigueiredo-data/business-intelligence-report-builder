@@ -1,0 +1,12 @@
+{
+  "name": "Tema de exemplo (fictício)",
+  "dataColors": ["#9B1B30", "#D9485F", "#F2A0B0", "#5B2A86", "#2D6A4F", "#E9C46A", "#264653", "#A8DADC"],
+  "background": "#FFFFFF",
+  "foreground": "#E8789A",
+  "tableAccent": "#9B1B30",
+  "good": "#2D6A4F",
+  "bad": "#C1121F",
+  "textClasses": {
+    "label": { "fontFace": "Segoe UI", "fontSize": 10 }
+  }
+}

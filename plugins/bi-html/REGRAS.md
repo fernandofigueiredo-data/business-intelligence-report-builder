@@ -7,7 +7,8 @@
    dashboard, num documento de decisão ou numa resposta sobre os dados vem de
    uma ferramenta do servidor `bi-dados` (hoje: `validar_spec`,
    `estado_do_ciclo`, `checar_contrato`, `ingerir`, `ingerir_texto`, `perfilar`,
-   `propor_modelo`, `validar_modelo`, `consultar` e `exportar_cubo`; na próxima fase:
+   `propor_modelo`, `validar_modelo`, `consultar`, `exportar_cubo`, `propor_estilos`,
+   `aplicar_estilo` e `importar_design`; na próxima fase:
    achados). Ao mostrar um número, use o texto de `formatado` que a ferramenta devolve.
    Números já escritos na conclusão revisada da análise podem ser repetidos como
    estão, nunca recalculados de cabeça. Se a

@@ -20,7 +20,9 @@ perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõ
 - `propor_modelo` e `validar_modelo`: rascunho e validação de modelo/metricas.yaml, com a
   linhagem de cada métrica registrada no manifesto;
 - `consultar`: o único caminho para um número (métricas × dimensões × filtros × período);
-- `exportar_cubo`: dados agregados que o dashboard embute.
+- `exportar_cubo`: dados agregados que o dashboard embute;
+- `propor_estilos`, `aplicar_estilo` e `importar_design`: domínio inferido, estilos base e
+  design system enviado, gravados em design/tokens.json e tokens.css com contraste AA.
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -38,6 +40,7 @@ from bi_html.ingestao import ErroDeLeitura, ingerir as _ingerir, ingerir_texto a
 from bi_html.perfil import perfilar as _perfilar, resumo  # noqa: E402
 from bi_html.consulta import consultar as _consultar, exportar_cubo as _exportar_cubo, para_json  # noqa: E402
 from bi_html.modelo import carregar, propor, registrar_linhagem  # noqa: E402
+from bi_html import design as _design  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
 
 mcp = MCPServer("bi-dados")
@@ -169,6 +172,38 @@ def exportar_cubo(nome: str, metricas: list[str], dimensoes: list[str], periodo:
     com a receita de recálculo de cada métrica, para o dashboard refiltrar no navegador."""
     try:
         return {"ok": True, **_exportar_cubo(projeto(), nome, metricas, dimensoes, periodo, comparacao)}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def propor_estilos(tabela: str | None = None) -> dict:
+    """Infere o domínio dos dados (marketing, vendas, financeiro, operacoes, rh ou outro) pelos nomes
+    das colunas e pelo contexto.md, e propõe duas opções de estilo e os blocos típicos do domínio.
+    Não grava nada."""
+    try:
+        return {"ok": True, **_design.propor_estilos(projeto(), tabela)}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def aplicar_estilo(estilo: str, dominio: str | None = None, com_acento: bool = True) -> dict:
+    """Grava design/tokens.json e tokens.css a partir de um estilo base (claro, escuro, corporativo,
+    alto_contraste), com o acento do domínio quando informado. Contraste AA conferido e ajustado."""
+    try:
+        return {"ok": True, **_design.aplicar_estilo(projeto(), estilo, dominio, com_acento)}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def importar_design(caminho: str) -> dict:
+    """Lê um design system enviado (DESIGN.md, tema JSON do Power BI, CSS com variáveis, tokens.json
+    ou estilos/design-system.md do analise-dados) e grava design/tokens.json e tokens.css nos modos
+    claro e escuro, com contraste AA. Devolve cada ajuste de contraste feito."""
+    try:
+        return {"ok": True, **_design.importar(projeto(), caminho)}
     except ErroDeLeitura as e:
         return _erro(e)
 

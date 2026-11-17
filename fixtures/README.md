@@ -16,3 +16,13 @@ com semente fixa, então rodar de novo produz exatamente os mesmos bytes:
 
 Os três primeiros cobrem os domínios que a inferência de design reconhece
 (seção 7 do plano). Os dois últimos são casos de teste da fase F1.
+
+## Design systems de exemplo (`design/`)
+
+Usados nos testes da fase F3. Também são fictícios.
+
+| Arquivo | Formato | O que exercita |
+|---|---|---|
+| `design/DESIGN.md` | DESIGN.md (formato aberto do Google Labs, versão alpha) | Mapeamento de nomes (`surface`, `on-surface`, `outline`, `error`), uma cor em `oklch()`, tipografia e cantos; um cinza claro demais para texto, que o validador precisa ajustar |
+| `design/tema_powerbi.json` | Tema JSON do Power BI | `dataColors`, `tableAccent`, `good`/`bad`; texto rosa-claro sobre branco, abaixo do AA, que precisa ser ajustado |
+| `design/tokens.css` | Variáveis CSS no padrão shadcn/ui, em `oklch()` | Leitura de CSS e conversão de oklch para hex |
