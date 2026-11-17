@@ -1,0 +1,5 @@
+{
+  "success": true,
+  "message": "Query returned no results.",
+  "warnings": []
+}

@@ -1,0 +1,1 @@
+{"success":true,"message":"TableName  PartitionName  Expression                                                  \nMedidas    Medidas        let\n    Fonte = Table.FromRows(Json.Document(Binary.Decom...\nifdata     ifdata         let\n    Fonte = Excel.Workbook(File.Contents(\"<caminho omitido>\\Home...","warnings":[]}

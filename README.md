@@ -7,7 +7,7 @@ o bi-html parte dela e gera um dashboard HTML e um documento de decisão em que
 **nenhum número sai do modelo de linguagem**: o Claude desenha e escreve, e os
 valores vêm de um servidor MCP com uma camada de métricas determinística.
 
-**Estado:** fases F0 (fundações), F0b (contrato com o analise-dados), F1 (ingestão e perfil), F2 (camada de métricas), F3 (design), F4 (dashboard e publicação) e F5 (documento de decisão). O plano completo, com fases e critérios de
+**Estado:** fases F0 (fundações), F0b (contrato com o analise-dados), F1 (ingestão e perfil), F2 (camada de métricas), F3 (design), F4 (dashboard e publicação), F5 (documento de decisão) e F6 (prova de conceito com .pbix reais). O plano completo, com fases e critérios de
 aceite, está em [`PLANO_DE_CONSTRUCAO.md`](PLANO_DE_CONSTRUCAO.md).
 
 ## O que já existe
@@ -27,6 +27,7 @@ aceite, está em [`PLANO_DE_CONSTRUCAO.md`](PLANO_DE_CONSTRUCAO.md).
 | Documento de decisão: achados calculados, reprodução da conclusão da análise, verificador que rastreia cada número do texto e HTML em até duas páginas A4 (ferramentas `gerar_achados`, `reproduzir_conclusao`, `verificar_documento`, `renderizar_documento`) | `plugins/bi-html/lib/bi_html/achados.py`, `conclusao.py`, `verificador.py`, `documento.py` |
 | Quatro exemplos: vendas, marketing e financeiro pelo atalho, e o ciclo completo (análise do analise-dados → dashboard → documento de decisão) | `exemplos/` (monte com `exemplos/construir.py`) |
 | Dados fictícios (vendas, marketing, financeiro, casos de teste e design systems de exemplo) | `fixtures/` |
+| Prova de conceito .pbix: a matriz de viabilidade do plano testada com três arquivos reais em importação, com a saída de cada ferramenta, tempo e memória | `provas/f6/` (resultado em `provas/f6/MATRIZ.md`) |
 
 ## Instalar localmente
 

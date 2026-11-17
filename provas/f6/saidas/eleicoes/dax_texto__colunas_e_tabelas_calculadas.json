@@ -1,0 +1,20 @@
+{
+  "colunas": [
+    {
+      "tabela": "dMunicipio",
+      "coluna": "Quartil Alfabetização",
+      "expressao": "\nVAR valor = dMunicipio[alfabetizacao_2022]\nVAR q1 = PERCENTILE.INC ( dMunicipio[alfabetizacao_2022], 0.25 )\nVAR q2 = PERCENTILE.INC ( dMunicipio[alfabetizacao_2022], 0.50 )\nVAR q3 = PERCENTILE.INC ( dMunicipio[alfabetizacao_2022], 0.75 )\nRETURN\n    SWITCH (\n        TRUE (),\n        ISBLANK ( valor ), \"Sem dado\",\n        valor <= q1, \"1º quartil (menor alfabetização)\",\n        valor <= q2, \"2º quartil\",\n        valor <= q3, \"3º quartil\",\n        \"4º quartil (maior alfabetização)\"\n    )"
+    },
+    {
+      "tabela": "dMunicipio",
+      "coluna": "Quartil PIB per capita",
+      "expressao": "\nVAR valor = dMunicipio[pib_per_capita]\nVAR q1 = PERCENTILE.INC ( dMunicipio[pib_per_capita], 0.25 )\nVAR q2 = PERCENTILE.INC ( dMunicipio[pib_per_capita], 0.50 )\nVAR q3 = PERCENTILE.INC ( dMunicipio[pib_per_capita], 0.75 )\nRETURN\n    SWITCH (\n        TRUE (),\n        ISBLANK ( valor ), \"Sem dado\",\n        valor <= q1, \"1º quartil (menor PIB)\",\n        valor <= q2, \"2º quartil\",\n        valor <= q3, \"3º quartil\",\n        \"4º quartil (maior PIB)\"\n    )"
+    }
+  ],
+  "tabelas": [
+    {
+      "tabela": "PartidoCores",
+      "expressao": "\nDATATABLE (\n    \"sg_partido\", STRING,\n    \"cor\", STRING,\n    {\n        { \"PT\",       \"#C8102E\" },\n        { \"PSDB\",     \"#1E5AA8\" },\n        { \"PSB\",      \"#F08C00\" },\n        { \"PSL\",      \"#2E8B3E\" },\n        { \"PL\",       \"#23408E\" },\n        { \"PDT\",      \"#7B3FA0\" },\n        { \"MDB\",      \"#1F7A4D\" },\n        { \"NOVO\",     \"#F26522\" },\n        { \"PSOL\",     \"#F2C200\" },\n        { \"REDE\",     \"#0FA39A\" },\n        { \"UNIÃO\",    \"#00A3E0\" },\n        { \"PODE\",     \"#7CB342\" },\n        { \"PSD\",      \"#E0A100\" },\n        { \"AVANTE\",   \"#B5525C\" },\n        { \"PV\",       \"#4CAF50\" },\n        { \"PSC\",      \"#8C9BAB\" },\n        { \"PSTU\",     \"#9AA3AE\" },\n        { \"PCB\",      \"#A7AFB9\" },\n        { \"PCO\",      \"#B3BAC3\" },\n        { \"UP\",       \"#BFC5CD\" },\n        { \"DC\",       \"#7F8B99\" },\n        { \"PRTB\",     \"#97A1AD\" },\n        { \"PATRIOTA\", \"#8A96A3\" },\n        { \"PPL\",      \"#AEB6BF\" },\n        { \"PTB\",      \"#9099A4\" },\n        { \"MISSÃO\",   \"#A3ACB6\" },\n        { \"DEMOCRATA\",\"#868F9B\" }\n    }\n)"
+    }
+  ]
+}

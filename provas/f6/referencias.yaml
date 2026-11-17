@@ -1,0 +1,150 @@
+# Referências independentes para a célula "Medidas DAX (cálculo)" da matriz 5.1.
+#
+# Cada conferência avalia uma medida pelo motor DAX do pbix-mcp (pbix_evaluate_dax) num
+# contexto de filtro e compara com uma consulta SQL escrita à mão, rodada no DuckDB sobre as
+# tabelas lidas pelo pbixray (outro leitor, outro código). A SQL traduz a semântica da medida:
+# CALCULATE, REMOVEFILTERS, ALLSELECTED, TOPN, VAR e SELECTEDVALUE.
+#
+# contexto: filtros no formato do pbix-mcp ({"Tabela.Coluna": [valores]}).
+# agrupar: chaves do contexto que são o agrupamento do visual (ALLSELECTED e ISINSCOPE).
+# cobertura: contexto em que todas as medidas do arquivo são avaliadas, só para contar erros.
+#
+# Os nomes dos arquivos são os apelidos passados a executar.py (--arquivo apelido=caminho).
+
+ifdata:
+  cobertura: {}
+  conferencias:
+    - medida: Ativo Total
+      contexto: {}
+      sql: SELECT SUM("Ativo Total(R$ mil)") FROM ifdata
+    - medida: Qtd Instituições
+      contexto: {"ifdata.UF": ["SP"]}
+      sql: SELECT COUNT(*) FROM ifdata WHERE UF = 'SP'
+    - medida: ROE Agregado
+      contexto: {"ifdata.Segmento": ["S1"]}
+      sql: >
+        SELECT SUM("Lucro Líquido(R$ mil)") / SUM("Patrimônio Líquido(R$ mil)")
+        FROM ifdata WHERE Segmento = 'S1'
+    - medida: ROE Sistema
+      # REMOVEFILTERS(ifdata[Segmento]) ignora o filtro de segmento: dá o ROE do sistema.
+      contexto: {"ifdata.Segmento": ["S1"]}
+      sql: SELECT SUM("Lucro Líquido(R$ mil)") / SUM("Patrimônio Líquido(R$ mil)") FROM ifdata
+    - medida: ROE Médio Simples
+      contexto: {}
+      sql: >
+        SELECT AVG("Lucro Líquido(R$ mil)" / "Patrimônio Líquido(R$ mil)")
+        FROM ifdata WHERE "Patrimônio Líquido(R$ mil)" > 0
+    - medida: Qtd Digitais
+      contexto: {}
+      sql: >
+        SELECT COUNT(*) FROM ifdata
+        WHERE TCB IN ('n1', 'n2', 'n4') AND "Número deAgências" <= 1
+    - medida: Qtd sem Agência
+      contexto: {"ifdata.UF": ["SP"]}
+      sql: SELECT COUNT(*) FROM ifdata WHERE UF = 'SP' AND "Número deAgências" = 0
+    - medida: Concentração Top 5
+      contexto: {}
+      sql: >
+        SELECT (SELECT SUM(a) FROM (SELECT "Ativo Total(R$ mil)" AS a FROM ifdata
+                                    ORDER BY a DESC LIMIT 5))
+               / SUM("Ativo Total(R$ mil)") FROM ifdata
+    - medida: Ativo % do Total
+      # Linha TC = 1 de um visual agrupado por TC: ALLSELECTED(ifdata[TC]) devolve todos os TC.
+      contexto: {"ifdata.TC": [1]}
+      agrupar: ["ifdata.TC"]
+      sql: >
+        SELECT SUM(CASE WHEN TC = 1 THEN "Ativo Total(R$ mil)" END) / SUM("Ativo Total(R$ mil)")
+        FROM ifdata
+
+eleicoes:
+  cobertura: {"dTurno.ano": [2022], "dTurno.nr_turno": [1]}
+  conferencias:
+    - medida: "% Abstenção"
+      contexto: {"dTurno.ano": [2022], "dTurno.nr_turno": [2]}
+      sql: >
+        SELECT SUM(f.abstencoes) / SUM(f.aptos) FROM fComparecimento f
+        JOIN dTurno t USING (chave_turno) WHERE t.ano = 2022 AND t.nr_turno = 2
+    - medida: "% Abstenção Eleição Anterior"
+      # VAR anoAnterior = [Ano Selecionado] - 4 e REMOVEFILTERS(dTurno): 2018, mesmo turno.
+      contexto: {"dTurno.ano": [2022], "dTurno.nr_turno": [1]}
+      sql: >
+        SELECT SUM(f.abstencoes) / SUM(f.aptos) FROM fComparecimento f
+        JOIN dTurno t USING (chave_turno) WHERE t.ano = 2018 AND t.nr_turno = 1
+    - medida: "% Abstenção Nacional"
+      # REMOVEFILTERS(dMunicipio[sg_uf]): o filtro de UF não vale.
+      contexto: {"dTurno.ano": [2022], "dTurno.nr_turno": [1], "dMunicipio.sg_uf": ["SP"]}
+      sql: >
+        SELECT SUM(f.abstencoes) / SUM(f.aptos) FROM fComparecimento f
+        JOIN dTurno t USING (chave_turno) WHERE t.ano = 2022 AND t.nr_turno = 1
+    - medida: Votos
+      contexto: {"dTurno.ano": [2022], "dTurno.nr_turno": [2], "dCandidato.nm_urna": ["Lula"]}
+      sql: >
+        SELECT SUM(v.qt_votos_nominais) FROM fVotos v
+        JOIN dTurno t USING (chave_turno) JOIN dCandidato c USING (chave_candidato)
+        WHERE t.ano = 2022 AND t.nr_turno = 2 AND c.nm_urna = 'Lula'
+    - medida: "% Votos Válidos"
+      contexto: {"dTurno.ano": [2022], "dTurno.nr_turno": [2], "dCandidato.nm_urna": ["Lula"]}
+      sql: >
+        SELECT SUM(CASE WHEN c.nm_urna = 'Lula' THEN v.qt_votos_nominais END)
+               / SUM(v.qt_votos_nominais)
+        FROM fVotos v JOIN dTurno t USING (chave_turno) JOIN dCandidato c USING (chave_candidato)
+        WHERE t.ano = 2022 AND t.nr_turno = 2
+    - medida: Vencedor
+      contexto: {"dTurno.ano": [2018], "dTurno.nr_turno": [2]}
+      sql: >
+        SELECT c.nm_urna FROM fVotos v
+        JOIN dTurno t USING (chave_turno) JOIN dCandidato c USING (chave_candidato)
+        WHERE t.ano = 2018 AND t.nr_turno = 2
+        GROUP BY c.nm_urna ORDER BY SUM(v.qt_votos_nominais) DESC LIMIT 1
+    - medida: Municípios Vencidos
+      contexto: {"dTurno.ano": [2022], "dTurno.nr_turno": [2], "dCandidato.nm_urna": ["Lula"]}
+      sql: >
+        WITH por_mun AS (
+          SELECT v.cd_municipio_tse AS mun, c.nm_urna AS nome, SUM(v.qt_votos_nominais) AS votos
+          FROM fVotos v JOIN dTurno t USING (chave_turno) JOIN dCandidato c USING (chave_candidato)
+          WHERE t.ano = 2022 AND t.nr_turno = 2 GROUP BY 1, 2)
+        SELECT COUNT(*) FROM por_mun p
+        WHERE p.nome = 'Lula' AND p.votos > 0
+          AND p.votos = (SELECT MAX(q.votos) FROM por_mun q WHERE q.mun = p.mun)
+    - medida: Variação p.p.
+      # PL em 2022 contra PSL em 2018 (regra da própria medida), 1º turno.
+      contexto: {"dTurno.ano": [2022], "dTurno.nr_turno": [1], "dCandidato.partido_atual": ["PL"]}
+      sql: >
+        WITH pct AS (
+          SELECT t.ano, SUM(v.qt_votos_nominais) AS total,
+                 SUM(CASE WHEN c.partido_atual = 'PL' THEN v.qt_votos_nominais END) AS pl,
+                 SUM(CASE WHEN c.partido_atual = 'PSL' THEN v.qt_votos_nominais END) AS psl
+          FROM fVotos v JOIN dTurno t USING (chave_turno) JOIN dCandidato c USING (chave_candidato)
+          WHERE t.nr_turno = 1 AND t.ano IN (2018, 2022) GROUP BY t.ano)
+        SELECT ((SELECT pl / total FROM pct WHERE ano = 2022)
+              - (SELECT psl / total FROM pct WHERE ano = 2018)) * 100
+    - medida: Municípios
+      contexto: {}
+      sql: SELECT COUNT(DISTINCT cd_municipio_tse) FROM dMunicipio WHERE NOT exterior
+    - medida: PIB per capita
+      contexto: {"dMunicipio.sg_uf": ["SP"]}
+      sql: >
+        SELECT SUM(pib_per_capita * populacao_2022)
+               / SUM(CASE WHEN pib_per_capita IS NOT NULL THEN populacao_2022 END)
+        FROM dMunicipio WHERE sg_uf = 'SP'
+    - medida: Municípios que Viraram
+      # Vencedor do 1º turno diferente do vencedor do 2º turno no município, em 2022.
+      contexto: {"dTurno.ano": [2022]}
+      sql: >
+        WITH por_mun AS (
+          SELECT v.cd_municipio_tse AS mun, t.nr_turno AS turno, c.nm_urna AS nome,
+                 SUM(v.qt_votos_nominais) AS votos
+          FROM fVotos v JOIN dTurno t USING (chave_turno) JOIN dCandidato c USING (chave_candidato)
+          WHERE t.ano = 2022 GROUP BY 1, 2, 3),
+        maximo AS (SELECT mun, turno, MAX(votos) AS m, SUM(votos) AS total FROM por_mun GROUP BY 1, 2),
+        vencedor AS (
+          SELECT p.mun, p.turno, string_agg(p.nome, ' / ' ORDER BY p.nome) AS nome
+          FROM por_mun p JOIN maximo x USING (mun, turno)
+          WHERE p.votos = x.m AND x.total > 0 GROUP BY 1, 2)
+        SELECT COUNT(*) FROM vencedor a JOIN vencedor b ON a.mun = b.mun AND a.turno = 1 AND b.turno = 2
+        WHERE a.nome <> b.nome
+
+lab1:
+  # O arquivo não tem medidas DAX: os visuais usam agregações implícitas (Soma de uma coluna).
+  cobertura: {}
+  conferencias: []

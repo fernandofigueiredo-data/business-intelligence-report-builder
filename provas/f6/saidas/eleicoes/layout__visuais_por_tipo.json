@@ -1,0 +1,53 @@
+{
+  "formato": "PBIR",
+  "visuais_por_pagina_ferramenta": [
+    16,
+    10,
+    12,
+    14,
+    14,
+    13,
+    8,
+    7
+  ],
+  "visuais_por_pagina_json": [
+    16,
+    10,
+    12,
+    14,
+    14,
+    13,
+    8,
+    7
+  ],
+  "tipos": {
+    "pageNavigator": 7,
+    "barChart": 6,
+    "cardVisual": 24,
+    "shape": 21,
+    "clusteredColumnChart": 2,
+    "slicer": 10,
+    "azureMap": 5,
+    "tableEx": 5,
+    "lineChart": 1,
+    "clusteredBarChart": 1,
+    "scatterChart": 2,
+    "textbox": 9,
+    "pivotTable": 1
+  },
+  "bloco_bi_html": {
+    "azureMap": "sem bloco equivalente",
+    "barChart": "barras_ranking",
+    "cardVisual": "faixa_kpis",
+    "clusteredBarChart": "barras_ranking",
+    "clusteredColumnChart": "barras_agrupadas",
+    "lineChart": "linha_tempo",
+    "pageNavigator": "decorativo",
+    "pivotTable": "tabela",
+    "scatterChart": "sem bloco equivalente",
+    "shape": "decorativo",
+    "slicer": "filtro",
+    "tableEx": "tabela",
+    "textbox": "decorativo"
+  }
+}

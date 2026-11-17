@@ -1,0 +1,17 @@
+{
+  "colunas_pbix_mcp": 28,
+  "colunas_pbixray": 28,
+  "so_no_pbix_mcp": [],
+  "so_no_pbixray": [],
+  "relacoes_pbix_mcp": [],
+  "relacoes_pbixray": [],
+  "relacoes_com_datas_automaticas": [
+    [
+      "dataset",
+      "Data_Pedido",
+      "LocalDateTable_7aff0774-ff3f-4000-85e6-4744fab2780f",
+      "Date",
+      true
+    ]
+  ]
+}

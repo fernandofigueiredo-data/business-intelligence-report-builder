@@ -1,0 +1,1 @@
+{"success":true,"message":"TableName        ColumnCount  RowCount\nPartidoCores     2            27      \n_Medidas         0            0       \ndCandidato       6            47      \ndMunicipio       18           5766    \ndTurno           5            8       \nfComparecimento  10           45834   \nfVotos           7            309308  ","warnings":[]}

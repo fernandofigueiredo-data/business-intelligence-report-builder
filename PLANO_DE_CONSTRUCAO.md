@@ -4,7 +4,7 @@
 
 **Legenda epistêmica.** **[F]** fato verificado nesta sessão em documentação, página ou ambiente consultado (número da fonte no fim). **[I]** inferência minha a partir de fatos. **[H]** hipótese a validar. **[NV]** afirmação técnica não verificada nesta sessão.
 
-**Estado das provas de conceito.** A pasta do projeto estava vazia em 16/11/2026 [F], então a leitura de .pbix está **não testada**. Você vai enviar de 2 a 3 arquivos (importação, DirectQuery e conexão dinâmica), e a fase F6 roda com eles. O servidor MCP `pbix-mcp` já está instalado neste ambiente [F].
+**Estado das provas de conceito.** A F6 rodou em 17/11/2026 com três .pbix seus, todos em modo de importação; a coluna de importação da matriz 5.1 está **testada** [F21], e as colunas DirectQuery e conexão dinâmica continuam com base documental, à espera de um arquivo em cada modo. O servidor MCP `pbix-mcp` já está instalado neste ambiente [F].
 
 ---
 
@@ -53,22 +53,24 @@
 
 ## 5. Fluxo do Power BI ao HTML
 
-### 5.1 Matriz de viabilidade (não testada; base documental)
+### 5.1 Matriz de viabilidade (importação testada na F6; DirectQuery e conexão dinâmica sem arquivo)
 
-A Microsoft afirma que o .pbix é binário e que **não há métodos suportados** para ver ou modificar o conteúdo [F1]; toda extração depende de engenharia reversa de terceiros. O PBIP (PBIR + TMDL) é documentado, com JSON schema público [F2]. Escala: **I** = integral, **P** = parcial, **N** = não extraível. A F6 substitui cada célula pelo resultado real com os seus arquivos.
+A Microsoft afirma que o .pbix é binário e que **não há métodos suportados** para ver ou modificar o conteúdo [F1]; toda extração depende de engenharia reversa de terceiros. O PBIP (PBIR + TMDL) é documentado, com JSON schema público [F2]. Escala: **I** = integral, **P** = parcial, **N** = não extraível. Na coluna de importação, cada célula foi testada na F6 com o `pbix-mcp` 0.9.153 e conferida com o `pbixray` 0.15.5, o JSON do relatório ou SQL independente; a saída das ferramentas, o tempo e a memória estão em `provas/f6/MATRIZ.md` [F21]. As outras duas colunas continuam documentais: nenhum dos três arquivos está nesses modos.
 
-| Elemento | Importação | DirectQuery | Conexão dinâmica | Justificativa |
+| Elemento | Importação (testada) | DirectQuery (documental) | Conexão dinâmica (documental) | Justificativa |
 |---|---|---|---|---|
-| Dados das tabelas | I (alegado por pbixray e pbix-mcp [F9][F10]) | N | N | Em DirectQuery nenhum dado é importado [F3]; o pbix-mcp declara erro ao ler tabelas DirectQuery [F9]; na conexão dinâmica o modelo é externo [F3] |
-| Modelo e relacionamentos | I | I [I] | N | Leitura de relações [F9][F10]; na conexão dinâmica os campos vêm do modelo externo [F3] |
-| Medidas DAX (texto) | I | I | P | Expressões retornadas como texto [F10]; na conexão dinâmica só as medidas do próprio relatório [I] |
-| Medidas DAX (cálculo) | P | N | N | O pbixray não avalia DAX [F10]; o pbix-mcp avalia, com paridade alegada pelo mantenedor [F9][NV] |
-| Consultas Power Query (M) | P (texto I, execução N) | P | N | Executar exige fontes e credenciais; PBIDS não carrega credenciais [F4], e presumo o mesmo para o .pbix [I] |
-| Layout de páginas e visuais | P | P | P | O layout legado não é documentado; o PBIR é [F2]; o pbix-mcp lê ambos [F9]; só visuais nativos são recriáveis com fidelidade [I] |
-| Filtros e segmentações | P | P | P | O pbix-mcp lê filtros e seleções padrão [F9]; a interação cruzada é reimplementada [I] |
-| Temas | I (JSON) / P (tokens) | idem | idem | O pbix-mcp lê o tema [F9]; o tema extraído pode servir de design system de entrada (seção 7) [I] |
-| Visuais personalizados | N (funcional) | N | N | Rodar código de terceiros fora do Power BI não é viável nem seguro [I]; vira bloco equivalente ou placeholder |
-| Segurança por linha (RLS) | P | P | N | Papéis e filtros são extraíveis [F9][F10]; membros são atribuídos no serviço [F5], então não estariam no arquivo [I] |
+| Dados das tabelas | **I** — 415.364 linhas em 12 tabelas, conteúdo idêntico nos dois leitores [F21] | N | N | Em DirectQuery nenhum dado é importado [F3]; o pbix-mcp declara erro ao ler tabelas DirectQuery [F9]; na conexão dinâmica o modelo é externo [F3] |
+| Modelo e relacionamentos | **I** — colunas e relações iguais nos dois leitores; a relação da tabela de datas automática só aparece no pbix-mcp [F21] | I [I] | N | Na conexão dinâmica os campos vêm do modelo externo [F3] |
+| Medidas DAX (texto) | **I** — 74 medidas, 2 colunas calculadas e 1 tabela calculada, texto idêntico; a saída formatada da ferramenta corta expressões longas, o texto integral vem do leitor do pacote [F21] | I | P | Na conexão dinâmica só as medidas do próprio relatório [I] |
+| Medidas DAX (cálculo) | **I na amostra** — 74 de 74 medidas avaliadas sem erro e 20 de 20 conferências contra SQL batem, com CALCULATE, REMOVEFILTERS, ALLSELECTED, TOPN, RANKX e SELECTEDVALUE; caro em tabela grande: de 60 a 103 s e de 1,4 a 1,7 GB para 55 medidas sobre 309 mil linhas, em cinco execuções [F21] | N | N | Amostra não é auditoria: a F7 mantém o teste de equivalência e o selo "não validada" |
+| Consultas Power Query (M) | **P** — texto I (inclusive consultas compartilhadas, só visíveis nos metadados); execução N: as origens são arquivos de outra máquina [F21] | P | N | PBIDS não carrega credenciais [F4]; o `pbix_list_data_sources` rotula como "Embedded" tabelas que leem CSV por consulta compartilhada [F21] |
+| Layout de páginas e visuais | **P** — leitura I (11 páginas e 122 visuais em PBIR, com tipo e posição); recriação: 53 de 62 visuais de dados têm bloco no bi-html, faltam dispersão e mapa do Azure [F21] | P | P | O layout legado não foi testado (os três arquivos são PBIR) |
+| Filtros e segmentações | **P** — segmentações, filtros de página e seleções padrão lidos pelas ferramentas; filtros de visual e interações só pelo JSON do visual [F21] | P | P | A interação cruzada é reimplementada [I] |
+| Temas | **P** — o tema registrado vem em JSON e importa no bi-html com AA; num arquivo, o tema em uso (`CopilotDefault`, embutido) não veio da ferramenta e foi lido do pacote [F21] | I/P | I/P | O tema extraído serve de design system de entrada (seção 7) |
+| Visuais personalizados | — não testável: nenhum nos três arquivos (detecção conferida em 17 tipos de visual) [F21] | N | N | Rodar código de terceiros fora do Power BI não é viável nem seguro [I]; vira bloco equivalente ou placeholder |
+| Segurança por linha (RLS) | — não testável: nenhum papel nos três arquivos [F21] | P | N | Papéis e filtros são extraíveis [F9][F10]; membros são atribuídos no serviço [F5] |
+
+**O que a F6 muda nas próximas fases [F21] [I].** (1) A leitura de .pbix roda num processo à parte: o `pbix-mcp` exige `mcp<2` e o servidor `bi-dados` usa `mcp>=2.3`. (2) No híbrido da seção 5.2, pré-calcular pelo avaliador do `pbix-mcp` só serve para grades pequenas; o que for traduzível vai para SQL. (3) O mapa de visuais para blocos precisa de dispersão e de um destino para o mapa do Azure. (4) O tema em uso é lido do `report.json`, não só da ferramenta.
 
 ### 5.2 Tradução de medidas
 
@@ -169,7 +171,9 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 | Risco ou dependência | Probabilidade / impacto | Mitigação |
 |---|---|---|
 | Formato .pbix sem suporte oficial [F1]; atualização do Desktop quebra leitores [I] | Alta / alto | Preferir PBIP; isolar o leitor; testar arquivos de versões diferentes |
-| pbix-mcp com um mantenedor; paridade DAX não auditada [F9] | Média / alto | Validar na F6; fixar versões; pbixray como plano B |
+| pbix-mcp com um mantenedor; paridade DAX não auditada [F9] | Média / alto | Validada na amostra da F6 (20 de 20) [F21]; fixar versões; pbixray como plano B e segundo leitor |
+| Avaliação DAX do pbix-mcp lenta e com muita memória em tabelas grandes (de 60 a 103 s e de 1,4 a 1,7 GB para 55 medidas sobre 309 mil linhas) [F21] | Alta / médio | Traduzir para SQL o que for traduzível; pré-calcular só grades pequenas, em processo à parte |
+| Conflito de dependências: o pbix-mcp exige `mcp<2`, o `bi-dados` usa `mcp>=2.3` [F21] | Certa / baixo | Leitura de .pbix em processo próprio, como na prova da F6 |
 | Tradução DAX infiel gera número errado com aparência confiável | Alta / alto | Híbrido, teste de equivalência e selo "não validada" |
 | O Claude contorna as ferramentas e escreve números na spec ou no texto | Média / alto | Schema sem campos numéricos livres; verificador; skills com regra explícita |
 | O Artifact bloqueia o iframe do Power BI ou bibliotecas fora da lista permitida [H] | Média / médio | Testar na F7b; plano B na interface externa |
@@ -219,3 +223,4 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 18. Documentação da ferramenta Artifact nesta sessão: privado por padrão, exclusão derruba o link, republicação no mesmo link, limite de 16 MB, CDNs permitidas (cdnjs, jsdelivr, unpkg), capacidades de execução (como perguntar ao Claude).
 19. Não lidos: https://www.tiktok.com/@uxerflow/video/7642617380111174920 e https://www.tiktok.com/@paulcodes4/video/7707346514556865812 (só o título genérico; exigem JavaScript ou login).
 20. Plugin `analise-dados` v1.1.0 (MIT), cópia local do repositório https://github.com/fernandofigueiredo-data/analise-dados-plugin, commit `10bbdaf` de 18/10/2026: README, `REGRAS.md`, `.mcp.json`, `hooks/hooks.json`, comandos `/analise`, `/painel` e `/relatorio`, `scripts/projeto.py`, `lib/analise_dados/painel.py`, `modelo/estilos/design-system.md`, skill `analista-senior`.
+21. Prova de conceito da F6 neste repositório, executada em 17/11/2026 com três .pbix do autor em modo de importação: `provas/f6/MATRIZ.md`, `provas/f6/resultados.json` e as saídas das ferramentas em `provas/f6/saidas/`.

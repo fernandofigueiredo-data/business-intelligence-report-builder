@@ -1,0 +1,1 @@
+{"success":true,"message":"Resources:\n\n  Report/StaticResources/SharedResources/BaseThemes/Fluent2-CY26SU10.json (39,127 bytes)\n  Report/StaticResources/SharedResources/BuiltInThemes/CopilotDefault.json (18,675 bytes)","warnings":[]}

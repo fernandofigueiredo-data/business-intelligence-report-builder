@@ -1,0 +1,89 @@
+{
+  "tema_em_uso": {
+    "name": "IFData_Navy_Teal5276342275015783.json",
+    "reportVersionAtImport": {
+      "visual": "2.14.0",
+      "report": "3.4.0",
+      "page": "2.3.1"
+    },
+    "type": "RegisteredResources"
+  },
+  "temas_da_ferramenta": [
+    "Fluent2-CY26SU10.json",
+    "IFData_Navy_Teal5276342275015783.json"
+  ],
+  "importacao": {
+    "ok": true,
+    "origem": "pbix_get_theme",
+    "nome": "IFData Navy Teal",
+    "aa": true,
+    "ajustes_de_contraste": [
+      {
+        "modo": "claro",
+        "papel": "positivo",
+        "sobre": "card",
+        "antes": "#2a9d8f",
+        "depois": "#008477",
+        "contraste_antes": 3.32
+      },
+      {
+        "modo": "claro",
+        "papel": "negativo",
+        "sobre": "card",
+        "antes": "#c8553d",
+        "depois": "#c5523a",
+        "contraste_antes": 4.35
+      },
+      {
+        "modo": "claro",
+        "papel": "grafico_3",
+        "sobre": "card",
+        "antes": "#9ad3cb",
+        "depois": "#669d96",
+        "contraste_antes": 1.67
+      },
+      {
+        "modo": "claro",
+        "papel": "grafico_4",
+        "sobre": "card",
+        "antes": "#9fb1cf",
+        "depois": "#8495b2",
+        "contraste_antes": 2.17
+      },
+      {
+        "modo": "claro",
+        "papel": "grafico_5",
+        "sobre": "card",
+        "antes": "#e9a23b",
+        "depois": "#cb860d",
+        "contraste_antes": 2.17
+      }
+    ],
+    "claro": {
+      "background": "#ffffff",
+      "foreground": "#1f2937",
+      "card": "#ffffff",
+      "card_foreground": "#1f2937",
+      "muted": "#f2f2f3",
+      "muted_foreground": "#4b5563",
+      "border": "#d1d5db",
+      "primary": "#1f3a6e",
+      "primary_foreground": "#ffffff",
+      "positivo": "#008477",
+      "negativo": "#c5523a",
+      "alerta": "#b45309",
+      "grafico": [
+        "#1f3a6e",
+        "#2a9d8f",
+        "#669d96",
+        "#8495b2",
+        "#cb860d"
+      ]
+    },
+    "tipografia": {
+      "sans": "Inter",
+      "titulo": "Inter",
+      "mono": "JetBrains Mono"
+    }
+  }
+}

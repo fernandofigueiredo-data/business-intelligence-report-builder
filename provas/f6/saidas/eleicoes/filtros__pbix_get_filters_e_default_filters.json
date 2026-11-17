@@ -1,0 +1,145 @@
+[
+  {
+    "success": true,
+    "message": "Filters (report):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 0):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Default slicer filters:\n\n  dTurno.rotulo_turno: ['2026 · 2º turno']\n\nUse as filter_context in pbix_evaluate_dax:\n  {\"dTurno.rotulo_turno\": [\"2026 \\u00b7 2\\u00ba turno\"]}",
+    "data": {
+      "filters": {
+        "dTurno.rotulo_turno": [
+          "2026 · 2º turno"
+        ]
+      }
+    },
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 1):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Default slicer filters:\n\n  dTurno.rotulo_turno: ['2026 · 2º turno']\n\nUse as filter_context in pbix_evaluate_dax:\n  {\"dTurno.rotulo_turno\": [\"2026 \\u00b7 2\\u00ba turno\"]}",
+    "data": {
+      "filters": {
+        "dTurno.rotulo_turno": [
+          "2026 · 2º turno"
+        ]
+      }
+    },
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 2):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Default slicer filters:\n\n  dTurno.rotulo_turno: ['2026 · 2º turno']\n\nUse as filter_context in pbix_evaluate_dax:\n  {\"dTurno.rotulo_turno\": [\"2026 \\u00b7 2\\u00ba turno\"]}",
+    "data": {
+      "filters": {
+        "dTurno.rotulo_turno": [
+          "2026 · 2º turno"
+        ]
+      }
+    },
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 3):\n[\n  {\n    \"name\": \"f0e1d2c3b4a596870001\",\n    \"field\": {\n      \"Column\": {\n        \"Expression\": {\n          \"SourceRef\": {\n            \"Entity\": \"dMunicipio\"\n          }\n        },\n        \"Property\": \"exterior\"\n      }\n    },\n    \"type\": \"Categorical\",\n    \"filter\": {\n      \"Version\": 2,\n      \"From\": [\n        {\n          \"Name\": \"d\",\n          \"Entity\": \"dMunicipio\",\n          \"Type\": 0\n        }\n      ],\n      \"Where\": [\n        {\n          \"Condition\": {\n            \"In\": {\n              \"Expressions\": [\n                {\n                  \"Column\": {\n                    \"Expression\": {\n                      \"SourceRef\": {\n                        \"Source\": \"d\"\n                      }\n                    },\n                    \"Property\": \"exterior\"\n                  }\n                }\n              ],\n              \"Values\": [\n                [\n                  {\n                    \"Literal\": {\n                      \"Value\": \"false\"\n                    }\n                  }\n                ]\n              ]\n            }\n          }\n        }\n      ]\n    },\n    \"howCreated\": \"User\"\n  }\n]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Default slicer filters:\n\n  dCandidato.partido_atual: ['PT']\n  dTurno.rotulo_turno: ['2026 · 2º turno']\n\nUse as filter_context in pbix_evaluate_dax:\n  {\"dCandidato.partido_atual\": [\"PT\"], \"dTurno.rotulo_turno\": [\"2026 \\u00b7 2\\u00ba turno\"]}",
+    "data": {
+      "filters": {
+        "dCandidato.partido_atual": [
+          "PT"
+        ],
+        "dTurno.rotulo_turno": [
+          "2026 · 2º turno"
+        ]
+      }
+    },
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 4):\n[\n  {\n    \"name\": \"872e4a33ce68ab1b1043\",\n    \"field\": {\n      \"Column\": {\n        \"Expression\": {\n          \"SourceRef\": {\n            \"Entity\": \"dMunicipio\"\n          }\n        },\n        \"Property\": \"exterior\"\n      }\n    },\n    \"type\": \"Categorical\",\n    \"filter\": {\n      \"Version\": 2,\n      \"From\": [\n        {\n          \"Name\": \"d\",\n          \"Entity\": \"dMunicipio\",\n          \"Type\": 0\n        }\n      ],\n      \"Where\": [\n        {\n          \"Condition\": {\n            \"In\": {\n              \"Expressions\": [\n                {\n                  \"Column\": {\n                    \"Expression\": {\n                      \"SourceRef\": {\n                        \"Source\": \"d\"\n                      }\n                    },\n                    \"Property\": \"exterior\"\n                  }\n                }\n              ],\n              \"Values\": [\n                [\n                  {\n                    \"Literal\": {\n                      \"Value\": \"false\"\n                    }\n                  }\n                ]\n              ]\n            }\n          }\n        }\n      ]\n    },\n    \"howCreated\": \"User\",\n    \"objects\": {\n      \"general\": [\n        {\n          \"properties\": {}\n        }\n      ]\n    }\n  }\n]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Default slicer filters:\n\n  dTurno.rotulo_turno: ['2026 · 2º turno']\n\nUse as filter_context in pbix_evaluate_dax:\n  {\"dTurno.rotulo_turno\": [\"2026 \\u00b7 2\\u00ba turno\"]}",
+    "data": {
+      "filters": {
+        "dTurno.rotulo_turno": [
+          "2026 · 2º turno"
+        ]
+      }
+    },
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 5):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Default slicer filters:\n\n  dTurno.rotulo_turno: ['2026 · 2º turno']\n  dCandidato.nm_urna: ['Lula']\n\nUse as filter_context in pbix_evaluate_dax:\n  {\"dTurno.rotulo_turno\": [\"2026 \\u00b7 2\\u00ba turno\"], \"dCandidato.nm_urna\": [\"Lula\"]}",
+    "data": {
+      "filters": {
+        "dTurno.rotulo_turno": [
+          "2026 · 2º turno"
+        ],
+        "dCandidato.nm_urna": [
+          "Lula"
+        ]
+      }
+    },
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 6):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "No default slicer filters found on this page.",
+    "data": {
+      "filters": {}
+    },
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 7):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Default slicer filters:\n\n  dTurno.rotulo_turno: ['2026 · 2º turno']\n\nUse as filter_context in pbix_evaluate_dax:\n  {\"dTurno.rotulo_turno\": [\"2026 \\u00b7 2\\u00ba turno\"]}",
+    "data": {
+      "filters": {
+        "dTurno.rotulo_turno": [
+          "2026 · 2º turno"
+        ]
+      }
+    },
+    "warnings": []
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "tema_em_uso": {
+    "name": "CopilotDefault",
+    "reportVersionAtImport": {
+      "visual": "2.14.0",
+      "report": "3.4.0",
+      "page": "2.3.1"
+    },
+    "type": "SharedResources"
+  },
+  "temas_da_ferramenta": [
+    "Fluent2-CY26SU10.json"
+  ],
+  "importacao": {
+    "ok": true,
+    "origem": "lido do pacote, CopilotDefault.json",
+    "nome": "Copilot_Theme",
+    "aa": true,
+    "ajustes_de_contraste": [],
+    "claro": {
+      "background": "#ffffff",
+      "foreground": "#0f172a",
+      "card": "#ffffff",
+      "card_foreground": "#0f172a",
+      "muted": "#f1f1f2",
+      "muted_foreground": "#6a6f7b",
+      "border": "#dddfe1",
+      "primary": "#118dff",
+      "primary_foreground": "#0b0b0b",
+      "positivo": "#15803d",
+      "negativo": "#b91c1c",
+      "alerta": "#b45309",
+      "grafico": [
+        "#118dff",
+        "#12239e",
+        "#e044a7",
+        "#6b007b",
+        "#e66c37"
+      ]
+    },
+    "tipografia": {
+      "sans": "Segoe UI",
+      "titulo": "Segoe UI",
+      "mono": "JetBrains Mono"
+    }
+  }
+}

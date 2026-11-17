@@ -1,0 +1,1 @@
+{"success":true,"message":"Data sources (3 tables):\n\n  DateTableTemplate_13ccc290-bdc4-44fb-8b9b-86e0efef36c0: Embedded (Import)\n  LocalDateTable_7aff0774-ff3f-4000-85e6-4744fab2780f: Embedded (Import)\n  dataset: CSV (Import) — path=<caminho omitido>\\dataset.csv","warnings":[]}

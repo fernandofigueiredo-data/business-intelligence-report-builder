@@ -1,0 +1,1 @@
+{"success":true,"message":"Data sources (2 tables):\n\n  Medidas: JSON/Web (Import)\n  ifdata: Excel (Import) — path=<caminho omitido>\\Analise_IFData_Junho_2026.xlsx, sheet=Base_IFData_Original","warnings":[]}

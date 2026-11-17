@@ -1,0 +1,65 @@
+{
+  "tema_em_uso": {
+    "name": "Elei__es_BR12491567103830592.json",
+    "reportVersionAtImport": {
+      "visual": "2.14.0",
+      "report": "3.4.0",
+      "page": "2.3.1"
+    },
+    "type": "RegisteredResources"
+  },
+  "temas_da_ferramenta": [
+    "Elei__es_BR12491567103830592.json",
+    "Fluent2-CY26SU10.json"
+  ],
+  "importacao": {
+    "ok": true,
+    "origem": "pbix_get_theme",
+    "nome": "Eleições BR",
+    "aa": true,
+    "ajustes_de_contraste": [
+      {
+        "modo": "claro",
+        "papel": "muted_foreground",
+        "sobre": "card",
+        "antes": "#727781",
+        "depois": "#6f747e",
+        "contraste_antes": 4.5
+      },
+      {
+        "modo": "claro",
+        "papel": "grafico_3",
+        "sobre": "card",
+        "antes": "#e3b505",
+        "depois": "#b98c00",
+        "contraste_antes": 1.93
+      }
+    ],
+    "claro": {
+      "background": "#ffffff",
+      "foreground": "#1c2333",
+      "card": "#ffffff",
+      "card_foreground": "#1c2333",
+      "muted": "#f1f2f3",
+      "muted_foreground": "#6f747e",
+      "border": "#dfe0e2",
+      "primary": "#002776",
+      "primary_foreground": "#ffffff",
+      "positivo": "#1a7f4b",
+      "negativo": "#b42318",
+      "alerta": "#b45309",
+      "grafico": [
+        "#002776",
+        "#009c3b",
+        "#b98c00",
+        "#3a7dc9",
+        "#0f7b6c"
+      ]
+    },
+    "tipografia": {
+      "sans": "Segoe UI",
+      "titulo": "Segoe UI",
+      "mono": "JetBrains Mono"
+    }
+  }
+}

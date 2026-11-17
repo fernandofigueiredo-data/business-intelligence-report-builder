@@ -1,0 +1,15 @@
+{
+  "pacotes_custom_visual": [],
+  "pastas_CustomVisuals": [],
+  "tipos_fora_da_lista_nativa": [],
+  "tipos": [
+    "barChart",
+    "cardVisual",
+    "columnChart",
+    "donutChart",
+    "scatterChart",
+    "slicer",
+    "tableEx",
+    "textbox"
+  ]
+}

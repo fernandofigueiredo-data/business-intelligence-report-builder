@@ -1,0 +1,81 @@
+{
+  "colunas_pbix_mcp": 48,
+  "colunas_pbixray": 48,
+  "so_no_pbix_mcp": [],
+  "so_no_pbixray": [],
+  "relacoes_pbix_mcp": [
+    [
+      "fComparecimento",
+      "cd_municipio_tse",
+      "dMunicipio",
+      "cd_municipio_tse",
+      true
+    ],
+    [
+      "fComparecimento",
+      "chave_turno",
+      "dTurno",
+      "chave_turno",
+      true
+    ],
+    [
+      "fVotos",
+      "cd_municipio_tse",
+      "dMunicipio",
+      "cd_municipio_tse",
+      true
+    ],
+    [
+      "fVotos",
+      "chave_candidato",
+      "dCandidato",
+      "chave_candidato",
+      true
+    ],
+    [
+      "fVotos",
+      "chave_turno",
+      "dTurno",
+      "chave_turno",
+      true
+    ]
+  ],
+  "relacoes_pbixray": [
+    [
+      "fComparecimento",
+      "cd_municipio_tse",
+      "dMunicipio",
+      "cd_municipio_tse",
+      true
+    ],
+    [
+      "fComparecimento",
+      "chave_turno",
+      "dTurno",
+      "chave_turno",
+      true
+    ],
+    [
+      "fVotos",
+      "cd_municipio_tse",
+      "dMunicipio",
+      "cd_municipio_tse",
+      true
+    ],
+    [
+      "fVotos",
+      "chave_candidato",
+      "dCandidato",
+      "chave_candidato",
+      true
+    ],
+    [
+      "fVotos",
+      "chave_turno",
+      "dTurno",
+      "chave_turno",
+      true
+    ]
+  ],
+  "relacoes_com_datas_automaticas": []
+}

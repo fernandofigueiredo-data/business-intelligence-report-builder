@@ -1,0 +1,1 @@
+{"success":true,"message":"Data sources (7 tables):\n\n  PartidoCores: Embedded (Import)\n  _Medidas: JSON/Web (Import)\n  dCandidato: Embedded (Import)\n  dMunicipio: Embedded (Import)\n  dTurno: Embedded (Import)\n  fComparecimento: Embedded (Import)\n  fVotos: Embedded (Import)","warnings":[]}

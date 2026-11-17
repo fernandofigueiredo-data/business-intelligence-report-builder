@@ -1,0 +1,26 @@
+{
+  "tabelas_calculadas_em_dax": [],
+  "consultas_compartilhadas": [
+    "Erros em BASE DE DADOS | IFData Junho 2026 (Base_IFData_Original)"
+  ],
+  "fontes": [
+    {
+      "tabela": "Medidas",
+      "tipo": "dados embutidos",
+      "via_consulta_compartilhada": false,
+      "rotulo_em_pbix_list_data_sources": "JSON/Web",
+      "arquivo_de_origem": [],
+      "origem_existe_nesta_maquina": null
+    },
+    {
+      "tabela": "ifdata",
+      "tipo": "arquivo",
+      "via_consulta_compartilhada": false,
+      "rotulo_em_pbix_list_data_sources": "Excel",
+      "arquivo_de_origem": [
+        "Analise_IFData_Junho_2026.xlsx"
+      ],
+      "origem_existe_nesta_maquina": false
+    }
+  ]
+}

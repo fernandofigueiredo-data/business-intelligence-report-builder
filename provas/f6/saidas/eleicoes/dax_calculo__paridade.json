@@ -1,0 +1,191 @@
+[
+  {
+    "medida": "% Abstenção",
+    "contexto": {
+      "dTurno.ano": [
+        2022
+      ],
+      "dTurno.nr_turno": [
+        2
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 0.20581484484919982,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.20581484484919982,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.003
+  },
+  {
+    "medida": "% Abstenção Eleição Anterior",
+    "contexto": {
+      "dTurno.ano": [
+        2022
+      ],
+      "dTurno.nr_turno": [
+        1
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 0.2032585676771438,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.2032585676771438,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.002
+  },
+  {
+    "medida": "% Abstenção Nacional",
+    "contexto": {
+      "dTurno.ano": [
+        2022
+      ],
+      "dTurno.nr_turno": [
+        1
+      ],
+      "dMunicipio.sg_uf": [
+        "SP"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 0.20946079803604395,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.20946079803604395,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.001
+  },
+  {
+    "medida": "Votos",
+    "contexto": {
+      "dTurno.ano": [
+        2022
+      ],
+      "dTurno.nr_turno": [
+        2
+      ],
+      "dCandidato.nm_urna": [
+        "Lula"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 60345999.0,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 60345999.0,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.002
+  },
+  {
+    "medida": "% Votos Válidos",
+    "contexto": {
+      "dTurno.ano": [
+        2022
+      ],
+      "dTurno.nr_turno": [
+        2
+      ],
+      "dCandidato.nm_urna": [
+        "Lula"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 0.5090240511717216,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.5090240511717216,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.001
+  },
+  {
+    "medida": "Vencedor",
+    "contexto": {
+      "dTurno.ano": [
+        2018
+      ],
+      "dTurno.nr_turno": [
+        2
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": "Jair Bolsonaro",
+    "status_pbix_mcp": "ok",
+    "referencia_sql": "Jair Bolsonaro",
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.013
+  },
+  {
+    "medida": "Municípios Vencidos",
+    "contexto": {
+      "dTurno.ano": [
+        2022
+      ],
+      "dTurno.nr_turno": [
+        2
+      ],
+      "dCandidato.nm_urna": [
+        "Lula"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 3205,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 3205.0,
+    "bate": true,
+    "tempo_pbix_mcp_s": 16.444
+  },
+  {
+    "medida": "Variação p.p.",
+    "contexto": {
+      "dTurno.ano": [
+        2022
+      ],
+      "dTurno.nr_turno": [
+        1
+      ],
+      "dCandidato.partido_atual": [
+        "PL"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": -2.833895576756645,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": -2.833895576756645,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.007
+  },
+  {
+    "medida": "Municípios",
+    "contexto": {},
+    "agrupar": null,
+    "pbix_mcp": 5571,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 5571.0,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.002
+  },
+  {
+    "medida": "PIB per capita",
+    "contexto": {
+      "dMunicipio.sg_uf": [
+        "SP"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 77566.26908261373,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 77566.26908261373,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.092
+  },
+  {
+    "medida": "Municípios que Viraram",
+    "contexto": {
+      "dTurno.ano": [
+        2022
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 262,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 262.0,
+    "bate": true,
+    "tempo_pbix_mcp_s": 14.814
+  }
+]

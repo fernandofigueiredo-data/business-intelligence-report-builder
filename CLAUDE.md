@@ -18,3 +18,6 @@ aceite e decisões).
   e `claude plugin validate --strict plugins/bi-html`.
 - Os dados de `fixtures/` são gerados por `fixtures/gerar.py`; não edite os
   arquivos à mão.
+- `provas/f6/` é a prova de conceito com .pbix: roda fora do servidor (o
+  `pbix-mcp` exige `mcp<2`). `MATRIZ.md`, `resultados.json` e `saidas/` são
+  gerados por `provas/f6/executar.py`; não edite à mão.

@@ -1,0 +1,22 @@
+[
+  {
+    "tabela": "Medidas",
+    "linhas_metadados": 0,
+    "linhas_pbix_mcp": 0,
+    "linhas_pbixray": 0,
+    "colunas": 0,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "ifdata",
+    "linhas_metadados": 1622,
+    "linhas_pbix_mcp": 1622,
+    "linhas_pbixray": 1622,
+    "colunas": 22,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  }
+]

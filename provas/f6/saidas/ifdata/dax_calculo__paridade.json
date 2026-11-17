@@ -1,0 +1,114 @@
+[
+  {
+    "medida": "Ativo Total",
+    "contexto": {},
+    "agrupar": null,
+    "pbix_mcp": 19497752152,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 19497752152.0,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.0
+  },
+  {
+    "medida": "Qtd Instituições",
+    "contexto": {
+      "ifdata.UF": [
+        "SP"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 684,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 684.0,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.004
+  },
+  {
+    "medida": "ROE Agregado",
+    "contexto": {
+      "ifdata.Segmento": [
+        "S1"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 0.06999414914825393,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.06999414914825393,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.003
+  },
+  {
+    "medida": "ROE Sistema",
+    "contexto": {
+      "ifdata.Segmento": [
+        "S1"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 0.07520479129553322,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.07520479129553322,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.001
+  },
+  {
+    "medida": "ROE Médio Simples",
+    "contexto": {},
+    "agrupar": null,
+    "pbix_mcp": 0.008442440431316625,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.008442440431316625,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.113
+  },
+  {
+    "medida": "Qtd Digitais",
+    "contexto": {},
+    "agrupar": null,
+    "pbix_mcp": 215,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 215.0,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.001
+  },
+  {
+    "medida": "Qtd sem Agência",
+    "contexto": {
+      "ifdata.UF": [
+        "SP"
+      ]
+    },
+    "agrupar": null,
+    "pbix_mcp": 155,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 155.0,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.0
+  },
+  {
+    "medida": "Concentração Top 5",
+    "contexto": {},
+    "agrupar": null,
+    "pbix_mcp": 0.5211139715383946,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.5211139715383946,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.028
+  },
+  {
+    "medida": "Ativo % do Total",
+    "contexto": {
+      "ifdata.TC": [
+        1
+      ]
+    },
+    "agrupar": [
+      "ifdata.TC"
+    ],
+    "pbix_mcp": 0.32779036717544996,
+    "status_pbix_mcp": "ok",
+    "referencia_sql": 0.32779036717544996,
+    "bate": true,
+    "tempo_pbix_mcp_s": 0.001
+  }
+]

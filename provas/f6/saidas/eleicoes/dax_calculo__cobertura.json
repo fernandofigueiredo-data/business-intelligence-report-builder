@@ -1,0 +1,348 @@
+{
+  "contexto": {
+    "dTurno.ano": [
+      2022
+    ],
+    "dTurno.nr_turno": [
+      1
+    ]
+  },
+  "tempo_s": 103.053,
+  "saida": {
+    "success": true,
+    "message": "",
+    "warnings": [],
+    "results": [
+      {
+        "name": "% Abstenção",
+        "value": 0.20946079803604395,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Abstenção Eleição Anterior",
+        "value": 0.2032585676771438,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Abstenção Nacional",
+        "value": 0.20946079803604395,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Brancos",
+        "value": 0.015885683369655946,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Brancos e Nulos",
+        "value": 0.04408593489782036,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Comparecimento",
+        "value": 0.79053500264688,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Municípios Vencidos",
+        "value": 0.0001738828029907842,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Municípios que Mudaram",
+        "value": 0.15603085553997195,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Municípios que Viraram",
+        "value": 0.04590049053959355,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Nulos",
+        "value": 0.028200251528164418,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Votos Válidos",
+        "value": 1.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Votos Válidos 1º Turno",
+        "value": 1.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Votos Válidos 2º Turno",
+        "value": 1.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% Votos Válidos Eleição Anterior",
+        "value": 1.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "% do Vencedor",
+        "value": 0.48430719859868737,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Abstenções",
+        "value": 32770982.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Alfabetização",
+        "value": 92.85739903390945,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Ano Selecionado",
+        "value": 2022,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Aptos",
+        "value": 156454011.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Comparecimento",
+        "value": 123682372.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Conferência Válidos",
+        "value": "✔ confere",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Cor Mudança",
+        "value": "#E3B505",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Cor Virada",
+        "value": "#C9CED6",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Cor do Partido",
+        "value": "#C8102E",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Cor do Partido Vencedor",
+        "value": "#C8102E",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Diferença de Apuração",
+        "value": 0.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Margem de Vitória",
+        "value": 0.052331673054217445,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Mudou Partido Vencedor",
+        "value": 1,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Municípios",
+        "value": 5571,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Municípios Vencidos",
+        "value": 1,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Municípios que Mudaram",
+        "value": 890,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Municípios que Viraram",
+        "value": 262,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "PIB per capita",
+        "value": 53886.66871025436,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Partido Vencedor",
+        "value": "PT",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Partido Vencedor 1º Turno",
+        "value": "PT",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Partido Vencedor 1º Turno Anterior",
+        "value": "PSL",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "População 2022",
+        "value": 203080756,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Posição",
+        "value": 1,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Resumo Vencedor",
+        "value": "Lula teve 48,43% dos votos válidos",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Título Eleição",
+        "value": "Eleição presidencial · 2022 · 1º turno",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Variação Abstenção p.p.",
+        "value": 0.6202230358900163,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Variação entre Turnos p.p.",
+        "value": 0.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Variação p.p.",
+        "value": 0.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Vencedor",
+        "value": "Lula",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Vencedor 1º Turno",
+        "value": "Lula",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Vencedor 2º Turno",
+        "value": "Lula",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Virou no 2º Turno",
+        "value": 0,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Votos",
+        "value": 118229719.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Votos 1º Turno",
+        "value": 118229719.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Votos 2º Turno",
+        "value": 118552353.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Votos Brancos",
+        "value": 1964779.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Votos Ganhos no 2º Turno",
+        "value": 322634.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Votos Nulos",
+        "value": 3487874.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Votos Todos os Candidatos",
+        "value": 118229719.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Votos Válidos",
+        "value": 118229719.0,
+        "status": "ok",
+        "data_type": "Double"
+      }
+    ]
+  }
+}

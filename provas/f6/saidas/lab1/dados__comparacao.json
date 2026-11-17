@@ -1,0 +1,32 @@
+[
+  {
+    "tabela": "DateTableTemplate_13ccc290-bdc4-44fb-8b9b-86e0efef36c0",
+    "linhas_metadados": 1,
+    "linhas_pbix_mcp": 1,
+    "linhas_pbixray": 1,
+    "colunas": 7,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "LocalDateTable_7aff0774-ff3f-4000-85e6-4744fab2780f",
+    "linhas_metadados": 1461,
+    "linhas_pbix_mcp": 1461,
+    "linhas_pbixray": 1461,
+    "colunas": 7,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "dataset",
+    "linhas_metadados": 51290,
+    "linhas_pbix_mcp": 51290,
+    "linhas_pbixray": 51290,
+    "colunas": 14,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  }
+]

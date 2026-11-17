@@ -1,0 +1,1 @@
+{"success":true,"message":"Report has 2 page(s):\n\n  [0] Dados do Sistema Financeiro Brasileiro — 12 visuals, 1920x1080\n  [1] Rentabilidade e crédito — 6 visuals, 1920x1080","warnings":[]}

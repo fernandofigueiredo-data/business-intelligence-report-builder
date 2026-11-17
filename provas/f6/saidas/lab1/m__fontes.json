@@ -1,0 +1,19 @@
+{
+  "tabelas_calculadas_em_dax": [
+    "DateTableTemplate_13ccc290-bdc4-44fb-8b9b-86e0efef36c0",
+    "LocalDateTable_7aff0774-ff3f-4000-85e6-4744fab2780f"
+  ],
+  "consultas_compartilhadas": [],
+  "fontes": [
+    {
+      "tabela": "dataset",
+      "tipo": "arquivo",
+      "via_consulta_compartilhada": false,
+      "rotulo_em_pbix_list_data_sources": "CSV",
+      "arquivo_de_origem": [
+        "dataset.csv"
+      ],
+      "origem_existe_nesta_maquina": false
+    }
+  ]
+}

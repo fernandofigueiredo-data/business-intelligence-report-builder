@@ -1,0 +1,31 @@
+{
+  "formato": "PBIR",
+  "visuais_por_pagina_ferramenta": [
+    12,
+    6
+  ],
+  "visuais_por_pagina_json": [
+    12,
+    6
+  ],
+  "tipos": {
+    "donutChart": 1,
+    "slicer": 4,
+    "cardVisual": 5,
+    "textbox": 4,
+    "barChart": 1,
+    "tableEx": 1,
+    "scatterChart": 1,
+    "columnChart": 1
+  },
+  "bloco_bi_html": {
+    "barChart": "barras_ranking",
+    "cardVisual": "faixa_kpis",
+    "columnChart": "barras_agrupadas",
+    "donutChart": "rosca",
+    "scatterChart": "sem bloco equivalente",
+    "slicer": "filtro",
+    "tableEx": "tabela",
+    "textbox": "decorativo"
+  }
+}

@@ -1,0 +1,222 @@
+[
+  {
+    "medida": "% Abstenção",
+    "expressao": "\nDIVIDE ( [Abstenções], [Aptos] )"
+  },
+  {
+    "medida": "% Abstenção Eleição Anterior",
+    "expressao": "\nVAR anoAnterior = [Ano Selecionado] - 4\nVAR turnoAtual = SELECTEDVALUE ( dTurno[nr_turno] )\nRETURN\n    CALCULATE (\n        [% Abstenção],\n        REMOVEFILTERS ( dTurno ),\n        dTurno[ano] = anoAnterior,\n        dTurno[nr_turno] = turnoAtual\n    )"
+  },
+  {
+    "medida": "% Abstenção Nacional",
+    "expressao": "\nCALCULATE (\n    [% Abstenção],\n    REMOVEFILTERS ( dMunicipio[sg_uf] )\n)"
+  },
+  {
+    "medida": "% Brancos",
+    "expressao": "\nDIVIDE ( [Votos Brancos], [Comparecimento] )"
+  },
+  {
+    "medida": "% Brancos e Nulos",
+    "expressao": "\nDIVIDE ( [Votos Brancos] + [Votos Nulos], [Comparecimento] )"
+  },
+  {
+    "medida": "% Comparecimento",
+    "expressao": "\nDIVIDE ( [Comparecimento], [Aptos] )"
+  },
+  {
+    "medida": "% Municípios Vencidos",
+    "expressao": "\nDIVIDE (\n    [Municípios Vencidos],\n    CALCULATE ( DISTINCTCOUNT ( fVotos[cd_municipio_tse] ), REMOVEFILTERS ( dCandidato ) )\n)"
+  },
+  {
+    "medida": "% Municípios que Mudaram",
+    "expressao": "\nDIVIDE (\n    [Municípios que Mudaram],\n    SUMX (\n        VALUES ( dMunicipio[cd_municipio_tse] ),\n        IF ( NOT ISBLANK ( [Mudou Partido Vencedor] ), 1 )\n    )\n)"
+  },
+  {
+    "medida": "% Municípios que Viraram",
+    "expressao": "\nDIVIDE (\n    [Municípios que Viraram],\n    SUMX (\n        VALUES ( dMunicipio[cd_municipio_tse] ),\n        IF ( NOT ISBLANK ( [Virou no 2º Turno] ), 1 )\n    )\n)"
+  },
+  {
+    "medida": "% Nulos",
+    "expressao": "\nDIVIDE ( [Votos Nulos], [Comparecimento] )"
+  },
+  {
+    "medida": "% Votos Válidos",
+    "expressao": "\nDIVIDE ( [Votos], [Votos Todos os Candidatos] )"
+  },
+  {
+    "medida": "% Votos Válidos 1º Turno",
+    "expressao": "\nVAR anoAtual = [Ano Selecionado]\nRETURN\n    CALCULATE (\n        [% Votos Válidos],\n        REMOVEFILTERS ( dTurno ),\n        dTurno[ano] = anoAtual,\n        dTurno[nr_turno] = 1\n    )"
+  },
+  {
+    "medida": "% Votos Válidos 2º Turno",
+    "expressao": "\nVAR anoAtual = [Ano Selecionado]\nRETURN\n    CALCULATE (\n        [% Votos Válidos],\n        REMOVEFILTERS ( dTurno ),\n        dTurno[ano] = anoAtual,\n        dTurno[nr_turno] = 2\n    )"
+  },
+  {
+    "medida": "% Votos Válidos Eleição Anterior",
+    "expressao": "\nVAR anoAnterior = [Ano Selecionado] - 4\nVAR turnoAtual = SELECTEDVALUE ( dTurno[nr_turno] )\n-- Bolsonaro concorreu pelo PSL em 2018 e pelo PL em 2022: na comparação 2022 x 2018,\n-- o PL usa o resultado do PSL, como nos cards, no mapa e na tabela da página.\nVAR partidoSelecionado = SELECTEDVALUE ( dCandidato[partido_atual] )\nVAR usarPSL = partidoSelecionado = \"PL\" && anoAnterior = 2018\nRETURN\n    IF (\n        usarPSL,\n        CALCULATE (\n            [% Votos Válidos],\n            REMOVEFILTERS ( dTurno ),\n            dTurno[ano] = anoAnterior,\n            dTurno[nr_turno] = turnoAtual,\n            dCandidato[partido_atual] = \"PSL\"\n        ),\n        CALCULATE (\n            [% Votos Válidos],\n            REMOVEFILTERS ( dTurno ),\n            dTurno[ano] = anoAnterior,\n            dTurno[nr_turno] = turnoAtual\n        )\n    )"
+  },
+  {
+    "medida": "% do Vencedor",
+    "expressao": "\nVAR primeiro =\n    TOPN ( 1, VALUES ( dCandidato[chave_candidato] ), [Votos] )\nRETURN\n    DIVIDE ( MAXX ( primeiro, [Votos] ), [Votos Todos os Candidatos] )"
+  },
+  {
+    "medida": "Abstenções",
+    "expressao": "\nSUM ( fComparecimento[abstencoes] )"
+  },
+  {
+    "medida": "Alfabetização",
+    "expressao": "\nDIVIDE (\n    SUMX ( dMunicipio, dMunicipio[alfabetizacao_2022] * dMunicipio[populacao_2022] ),\n    CALCULATE ( SUM ( dMunicipio[populacao_2022] ), NOT ISBLANK ( dMunicipio[alfabetizacao_2022] ) )\n)"
+  },
+  {
+    "medida": "Ano Selecionado",
+    "expressao": "\nSELECTEDVALUE ( dTurno[ano] )"
+  },
+  {
+    "medida": "Aptos",
+    "expressao": "\nSUM ( fComparecimento[aptos] )"
+  },
+  {
+    "medida": "Comparecimento",
+    "expressao": "\nSUM ( fComparecimento[comparecimento] )"
+  },
+  {
+    "medida": "Conferência Válidos",
+    "expressao": "\nIF ( [Votos Todos os Candidatos] = [Votos Válidos], \"✔ confere\", \"✖ diferente\" )"
+  },
+  {
+    "medida": "Cor Mudança",
+    "expressao": "\nSWITCH ( [Mudou Partido Vencedor], 1, \"#E3B505\", 0, \"#C9CED6\" )"
+  },
+  {
+    "medida": "Cor Virada",
+    "expressao": "\nSWITCH ( [Virou no 2º Turno], 1, \"#E3B505\", 0, \"#C9CED6\" )"
+  },
+  {
+    "medida": "Cor do Partido",
+    "expressao": "\nVAR partido =\n    CONCATENATEX ( TOPN ( 1, VALUES ( dCandidato[partido_atual] ), [Votos] ), dCandidato[partido_atual], \" / \" )\nRETURN\n    COALESCE ( LOOKUPVALUE ( PartidoCores[cor], PartidoCores[sg_partido], partido ), \"#9AA3AE\" )"
+  },
+  {
+    "medida": "Cor do Partido Vencedor",
+    "expressao": "\nVAR partido = [Partido Vencedor]\nRETURN\n    IF (\n        NOT ISBLANK ( partido ),\n        COALESCE ( LOOKUPVALUE ( PartidoCores[cor], PartidoCores[sg_partido], partido ), \"#9AA3AE\" )\n    )"
+  },
+  {
+    "medida": "Diferença de Apuração",
+    "expressao": "\n[Comparecimento] - ( [Votos Válidos] + [Votos Brancos] + [Votos Nulos] )"
+  },
+  {
+    "medida": "Margem de Vitória",
+    "expressao": "\nVAR doisPrimeiros =\n    TOPN ( 2, VALUES ( dCandidato[chave_candidato] ), [Votos] )\nVAR primeiro = MAXX ( doisPrimeiros, [Votos] )\nVAR segundo = MINX ( doisPrimeiros, [Votos] )\nRETURN\n    IF (\n        COUNTROWS ( doisPrimeiros ) >= 2,\n        DIVIDE ( primeiro - segundo, [Votos Todos os Candidatos] )\n    )"
+  },
+  {
+    "medida": "Mudou Partido Vencedor",
+    "expressao": "VAR atual = [Partido Vencedor 1º Turno]\nVAR anterior = [Partido Vencedor 1º Turno Anterior]\n-- Bolsonaro concorreu pelo PSL em 2018 e pelo PL em 2022/2026: tratamos PSL e PL como o mesmo\n-- campo para que a troca de sigla do mesmo candidato não conte como mudança de vencedor.\nVAR atualComparavel = SUBSTITUTE ( atual, \"PSL\", \"PL\" )\nVAR anteriorComparavel = SUBSTITUTE ( anterior, \"PSL\", \"PL\" )\nRETURN\n    IF (\n        NOT ISBLANK ( atual ) && NOT ISBLANK ( anterior ),\n        IF ( atualComparavel <> anteriorComparavel, 1, 0 )\n    )"
+  },
+  {
+    "medida": "Municípios",
+    "expressao": "\nCALCULATE ( DISTINCTCOUNT ( dMunicipio[cd_municipio_tse] ), dMunicipio[exterior] = FALSE () )"
+  },
+  {
+    "medida": "Municípios Vencidos",
+    "expressao": "\nCOUNTROWS (\n    FILTER (\n        VALUES ( dMunicipio[cd_municipio_tse] ),\n        VAR votosCandidato = [Votos]\n        VAR maiorVotacao =\n            CALCULATE (\n                MAXX ( VALUES ( dCandidato[chave_candidato] ), [Votos] ),\n                REMOVEFILTERS ( dCandidato )\n            )\n        RETURN\n            votosCandidato > 0 && votosCandidato = maiorVotacao\n    )\n)"
+  },
+  {
+    "medida": "Municípios que Mudaram",
+    "expressao": "\nSUMX ( VALUES ( dMunicipio[cd_municipio_tse] ), [Mudou Partido Vencedor] )"
+  },
+  {
+    "medida": "Municípios que Viraram",
+    "expressao": "\nSUMX ( VALUES ( dMunicipio[cd_municipio_tse] ), [Virou no 2º Turno] )"
+  },
+  {
+    "medida": "PIB per capita",
+    "expressao": "-- pib_mil_reais está como texto no modelo; usamos pib_per_capita (numérico), ponderado pela população.\nDIVIDE (\n    SUMX ( dMunicipio, dMunicipio[pib_per_capita] * dMunicipio[populacao_2022] ),\n    CALCULATE ( SUM ( dMunicipio[populacao_2022] ), NOT ISBLANK ( dMunicipio[pib_per_capita] ) )\n)"
+  },
+  {
+    "medida": "Partido Vencedor",
+    "expressao": "\nVAR primeiro =\n    TOPN ( 1, VALUES ( dCandidato[partido_atual] ), [Votos] )\nRETURN\n    IF ( [Votos Todos os Candidatos] > 0, CONCATENATEX ( primeiro, dCandidato[partido_atual], \" / \" ) )"
+  },
+  {
+    "medida": "Partido Vencedor 1º Turno",
+    "expressao": "\nVAR anoAtual = [Ano Selecionado]\nRETURN\n    CALCULATE (\n        [Partido Vencedor],\n        REMOVEFILTERS ( dTurno ),\n        dTurno[ano] = anoAtual,\n        dTurno[nr_turno] = 1\n    )"
+  },
+  {
+    "medida": "Partido Vencedor 1º Turno Anterior",
+    "expressao": "\nVAR anoAnterior = [Ano Selecionado] - 4\nRETURN\n    CALCULATE (\n        [Partido Vencedor],\n        REMOVEFILTERS ( dTurno ),\n        dTurno[ano] = anoAnterior,\n        dTurno[nr_turno] = 1\n    )"
+  },
+  {
+    "medida": "População 2022",
+    "expressao": "\nSUM ( dMunicipio[populacao_2022] )"
+  },
+  {
+    "medida": "Posição",
+    "expressao": "\nIF (\n    NOT ISBLANK ( [Votos] ),\n    RANKX ( ALLSELECTED ( dCandidato[nm_urna] ), [Votos],, DESC, DENSE ))"
+  },
+  {
+    "medida": "Resumo Vencedor",
+    "expressao": "\nVAR nome = [Vencedor]\nVAR pct = [% do Vencedor]\nRETURN\n    IF (\n        NOT ISBLANK ( nome ),\n        nome & \" teve \" & FORMAT ( pct, \"0.00%\" ) & \" dos votos válidos\"\n    )"
+  },
+  {
+    "medida": "Título Eleição",
+    "expressao": "\nVAR rotulo = SELECTEDVALUE ( dTurno[rotulo_turno], \"Selecione uma eleição e um turno\" )\nRETURN\n    \"Eleição presidencial · \" & rotulo"
+  },
+  {
+    "medida": "Variação Abstenção p.p.",
+    "expressao": "\nVAR atual = [% Abstenção]\nVAR anterior = [% Abstenção Eleição Anterior]\nRETURN\n    IF ( NOT ISBLANK ( anterior ), ( atual - anterior ) * 100 )"
+  },
+  {
+    "medida": "Variação entre Turnos p.p.",
+    "expressao": "\nVAR primeiro = [% Votos Válidos 1º Turno]\nVAR segundo = [% Votos Válidos 2º Turno]\nRETURN\n    IF ( NOT ISBLANK ( primeiro ) && NOT ISBLANK ( segundo ), ( segundo - primeiro ) * 100 )"
+  },
+  {
+    "medida": "Variação p.p.",
+    "expressao": "\nVAR atual = [% Votos Válidos]\nVAR anterior = [% Votos Válidos Eleição Anterior]\nRETURN\n    IF ( NOT ISBLANK ( atual ) && NOT ISBLANK ( anterior ), ( atual - anterior ) * 100 )"
+  },
+  {
+    "medida": "Vencedor",
+    "expressao": "\nVAR primeiro =\n    TOPN ( 1, VALUES ( dCandidato[nm_urna] ), [Votos] )\nRETURN\n    IF ( [Votos Todos os Candidatos] > 0, CONCATENATEX ( primeiro, dCandidato[nm_urna], \" / \" ) )"
+  },
+  {
+    "medida": "Vencedor 1º Turno",
+    "expressao": "\nVAR anoAtual = [Ano Selecionado]\nRETURN\n    CALCULATE (\n        [Vencedor],\n        REMOVEFILTERS ( dTurno ),\n        dTurno[ano] = anoAtual,\n        dTurno[nr_turno] = 1\n    )"
+  },
+  {
+    "medida": "Vencedor 2º Turno",
+    "expressao": "\nVAR anoAtual = [Ano Selecionado]\nRETURN\n    CALCULATE (\n        [Vencedor],\n        REMOVEFILTERS ( dTurno ),\n        dTurno[ano] = anoAtual,\n        dTurno[nr_turno] = 2\n    )"
+  },
+  {
+    "medida": "Virou no 2º Turno",
+    "expressao": "\nVAR primeiro = [Vencedor 1º Turno]\nVAR segundo = [Vencedor 2º Turno]\nRETURN\n    IF ( NOT ISBLANK ( primeiro ) && NOT ISBLANK ( segundo ), IF ( primeiro <> segundo, 1, 0 ) )"
+  },
+  {
+    "medida": "Votos",
+    "expressao": "\nSUM ( fVotos[qt_votos_nominais] )"
+  },
+  {
+    "medida": "Votos 1º Turno",
+    "expressao": "\nVAR anoAtual = [Ano Selecionado]\nRETURN\n    CALCULATE ( [Votos], REMOVEFILTERS ( dTurno ), dTurno[ano] = anoAtual, dTurno[nr_turno] = 1 )"
+  },
+  {
+    "medida": "Votos 2º Turno",
+    "expressao": "\nVAR anoAtual = [Ano Selecionado]\nRETURN\n    CALCULATE ( [Votos], REMOVEFILTERS ( dTurno ), dTurno[ano] = anoAtual, dTurno[nr_turno] = 2 )"
+  },
+  {
+    "medida": "Votos Brancos",
+    "expressao": "\nSUM ( fComparecimento[votos_brancos] )"
+  },
+  {
+    "medida": "Votos Ganhos no 2º Turno",
+    "expressao": "\nVAR primeiro = [Votos 1º Turno]\nVAR segundo = [Votos 2º Turno]\nRETURN\n    IF ( NOT ISBLANK ( segundo ), segundo - primeiro )"
+  },
+  {
+    "medida": "Votos Nulos",
+    "expressao": "\nSUM ( fComparecimento[votos_nulos] )"
+  },
+  {
+    "medida": "Votos Todos os Candidatos",
+    "expressao": "\nCALCULATE ( [Votos], REMOVEFILTERS ( dCandidato ) )"
+  },
+  {
+    "medida": "Votos Válidos",
+    "expressao": "\nSUM ( fComparecimento[votos_validos] )"
+  }
+]

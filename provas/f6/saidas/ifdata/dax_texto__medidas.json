@@ -1,0 +1,78 @@
+[
+  {
+    "medida": "Ativo % do Total",
+    "expressao": "\n    DIVIDE ([Ativo Total],\n        CALCULATE ([Ativo Total], ALLSELECTED (ifdata[TC])))"
+  },
+  {
+    "medida": "Ativo Total",
+    "expressao": "\n    SUM(ifdata[Ativo Total(R$ mil)])"
+  },
+  {
+    "medida": "Ativo Total (R$ bi)",
+    "expressao": "\n    DIVIDE ( [Ativo Total], 1000000 )"
+  },
+  {
+    "medida": "Ativo Total (R$ tri)",
+    "expressao": "\n    DIVIDE ([Ativo Total], 1000000000)"
+  },
+  {
+    "medida": "Carteira de Crédito",
+    "expressao": "SUM (ifdata[Carteira deCrédito (R$ mil)])"
+  },
+  {
+    "medida": "Concentração Top 5",
+    "expressao": "\n    DIVIDE (\n        SUMX (TOPN (5, ALLSELECTED (ifdata), ifdata[Ativo Total(R$ mil)], DESC), ifdata[Ativo Total(R$ mil)]),\n        CALCULATE ([Ativo Total], ALLSELECTED (ifdata))\n    )"
+  },
+  {
+    "medida": "Cor Barra Top 10",
+    "expressao": "\nIF ([Rank Ativo] = 1, \"#E9A23B\", \"#9FB1CF\")"
+  },
+  {
+    "medida": "Lucro Líquido",
+    "expressao": "\n    SUM (ifdata[Lucro Líquido(R$ mil)])"
+  },
+  {
+    "medida": "Patrimônio Líquido",
+    "expressao": "\n    SUM (ifdata[Patrimônio Líquido(R$ mil)])"
+  },
+  {
+    "medida": "Qtd Digitais",
+    "expressao": "\n    CALCULATE ([Qtd Instituições],\n        ifdata[TCB] IN {\"n1\", \"n2\", \"n4\"}, ifdata[Número deAgências] <= 1)"
+  },
+  {
+    "medida": "Qtd Instituições",
+    "expressao": "\n    COUNTROWS (ifdata)"
+  },
+  {
+    "medida": "Qtd Instituições (txt)",
+    "expressao": "FORMAT ( [Qtd Instituições], \"#,0\", \"pt-BR\" )"
+  },
+  {
+    "medida": "Qtd sem Agência",
+    "expressao": "\n    CALCULATE ([Qtd Instituições], ifdata[Número deAgências] = 0 )"
+  },
+  {
+    "medida": "ROE Agregado",
+    "expressao": "\n    DIVIDE ([Lucro Líquido], [Patrimônio Líquido])"
+  },
+  {
+    "medida": "ROE Médio Simples",
+    "expressao": "\n    AVERAGEX (\n        FILTER (ifdata, ifdata[Patrimônio Líquido(R$ mil)] > 0 ),\n        DIVIDE (ifdata[Lucro Líquido(R$ mil)], ifdata[Patrimônio Líquido(R$ mil)])\n    )"
+  },
+  {
+    "medida": "ROE Sistema",
+    "expressao": "CALCULATE ([ROE Agregado], REMOVEFILTERS (ifdata[Segmento]))"
+  },
+  {
+    "medida": "Rank Ativo",
+    "expressao": "\n    RANKX (ALLSELECTED (ifdata[Instituição]), [Ativo Total], , DESC, Dense)"
+  },
+  {
+    "medida": "Índice Crédito/Ativo",
+    "expressao": "\n    DIVIDE ([Carteira de Crédito], [Ativo Total])"
+  },
+  {
+    "medida": "Índice Sistema",
+    "expressao": "\nCALCULATE ([Índice Crédito/Ativo], ALLSELECTED (ifdata))"
+  }
+]

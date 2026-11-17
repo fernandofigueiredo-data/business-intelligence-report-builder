@@ -1,0 +1,7 @@
+[
+  {
+    "success": true,
+    "message": "Page 'Lab1' has 10 visual(s):\n\n  [0] textbox (name=156b7f10cd6804b0a4cb) at (24.0,24.0) size 400.0x120.0\n  [1] textbox (name=2b5d61bc84c039e7ea22) at (1064.0,480.0) size 192.0x72.0\n  [2] clusteredBarChart (name=6df550246c96c9684a8d) at (648.0,160.0) size 400.0x304.0\n  [3] slicer (name=b80f672094d7ccac080a) at (1064.0,24.0) size 192.0x120.0\n  [4] card (name=bb2e5c9d870756375cdd) at (440.0,24.0) size 400.0x120.0\n  [5] slicer (name=ca6fe6fe80595ed0035b) at (1064.0,160.0) size 192.0x304.0\n  [6] barChart (name=cebec62f3c8872d5c44a) at (24.0,160.0) size 608.0x304.0\n  [7] azureMap (name=d77dcad39a3bb3b3ba02) at (24.0,480.0) size 608.0x216.0\n  [8] slicer (name=d7b0ecb612a450070cb5) at (856.0,24.0) size 192.0x120.0\n  [9] pieChart (name=f4fbc72f4023e5273d41) at (648.0,480.0) size 400.0x216.0",
+    "warnings": []
+  }
+]

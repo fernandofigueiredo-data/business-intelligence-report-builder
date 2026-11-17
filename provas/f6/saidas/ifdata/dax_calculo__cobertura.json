@@ -1,0 +1,125 @@
+{
+  "contexto": {},
+  "tempo_s": 0.213,
+  "saida": {
+    "success": true,
+    "message": "",
+    "warnings": [],
+    "results": [
+      {
+        "name": "Ativo % do Total",
+        "value": 1.0,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Ativo Total",
+        "value": 19497752152,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Ativo Total (R$ bi)",
+        "value": 19497.752152,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Ativo Total (R$ tri)",
+        "value": 19.497752152,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Carteira de Crédito",
+        "value": 7386168497,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Concentração Top 5",
+        "value": 0.5211139715383946,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Cor Barra Top 10",
+        "value": "#E9A23B",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Lucro Líquido",
+        "value": 153467178,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Patrimônio Líquido",
+        "value": 2040656923,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Qtd Digitais",
+        "value": 215,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Qtd Instituições",
+        "value": 1622,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Qtd Instituições (txt)",
+        "value": "1.622",
+        "status": "ok",
+        "data_type": "String"
+      },
+      {
+        "name": "Qtd sem Agência",
+        "value": 756,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "ROE Agregado",
+        "value": 0.07520479129553322,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "ROE Médio Simples",
+        "value": 0.008442440431316625,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "ROE Sistema",
+        "value": 0.07520479129553322,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Rank Ativo",
+        "value": 1,
+        "status": "ok",
+        "data_type": "Int64"
+      },
+      {
+        "name": "Índice Crédito/Ativo",
+        "value": 0.37882154001236273,
+        "status": "ok",
+        "data_type": "Double"
+      },
+      {
+        "name": "Índice Sistema",
+        "value": 0.37882154001236273,
+        "status": "ok",
+        "data_type": "Double"
+      }
+    ]
+  }
+}

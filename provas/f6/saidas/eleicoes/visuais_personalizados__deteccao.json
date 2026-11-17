@@ -1,0 +1,20 @@
+{
+  "pacotes_custom_visual": [],
+  "pastas_CustomVisuals": [],
+  "tipos_fora_da_lista_nativa": [],
+  "tipos": [
+    "azureMap",
+    "barChart",
+    "cardVisual",
+    "clusteredBarChart",
+    "clusteredColumnChart",
+    "lineChart",
+    "pageNavigator",
+    "pivotTable",
+    "scatterChart",
+    "shape",
+    "slicer",
+    "tableEx",
+    "textbox"
+  ]
+}

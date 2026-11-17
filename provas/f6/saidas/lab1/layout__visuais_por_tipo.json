@@ -1,0 +1,27 @@
+{
+  "formato": "PBIR",
+  "visuais_por_pagina_ferramenta": [
+    10
+  ],
+  "visuais_por_pagina_json": [
+    10
+  ],
+  "tipos": {
+    "clusteredBarChart": 1,
+    "azureMap": 1,
+    "textbox": 2,
+    "pieChart": 1,
+    "card": 1,
+    "slicer": 3,
+    "barChart": 1
+  },
+  "bloco_bi_html": {
+    "azureMap": "sem bloco equivalente",
+    "barChart": "barras_ranking",
+    "card": "numero_destaque",
+    "clusteredBarChart": "barras_ranking",
+    "pieChart": "rosca",
+    "slicer": "filtro",
+    "textbox": "decorativo"
+  }
+}

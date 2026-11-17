@@ -1,0 +1,960 @@
+{
+  "executado_em": "2026-11-17T13:59:05-03:00",
+  "ambiente": {
+    "python": "3.12.14",
+    "pbix-mcp": "0.9.153",
+    "pbixray": "0.15.5",
+    "duckdb": "2.0.0",
+    "maquina": "Apple M2, 16 GB, Darwin 27.3.0"
+  },
+  "arquivos": {
+    "ifdata": {
+      "nome": "M5_Dashboard_IFdata.pbix",
+      "tamanho_bytes": 300525,
+      "sha256": "2823516303e5587158700c2849113e62fc5348234a191feb1b32203fd0448430",
+      "elementos": {
+        "dados": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "2 tabelas e 1.622 linhas lidas por inteiro; contagem e conteúdo de cada coluna iguais nos dois leitores",
+          "medidas": {
+            "tabelas": 2,
+            "linhas": 1622
+          },
+          "tempo_ferramenta_s": 0.035,
+          "tempo_conferencia_s": 0.066,
+          "tempo_abrir_s": 0.501,
+          "pico_rss_mb": 124.4,
+          "anexos": [
+            "saidas/ifdata/dados__pbix_list_tables.txt",
+            "saidas/ifdata/dados__comparacao.json"
+          ],
+          "tempo_processo_s": 1.29
+        },
+        "modelo": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "22 colunas e 0 relações; iguais nos dois leitores",
+          "medidas": {
+            "colunas": 22,
+            "relacoes": 0,
+            "relacoes_datas_automaticas": 0
+          },
+          "tempo_ferramenta_s": 0.018,
+          "tempo_conferencia_s": 0.011,
+          "tempo_abrir_s": 0.367,
+          "pico_rss_mb": 117.4,
+          "anexos": [
+            "saidas/ifdata/modelo__pbix_get_model_schema.txt",
+            "saidas/ifdata/modelo__pbix_get_model_relationships.txt",
+            "saidas/ifdata/modelo__comparacao.json"
+          ],
+          "tempo_processo_s": 0.785
+        },
+        "dax_texto": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "19 medidas, 0 colunas calculadas e 0 tabelas calculadas; texto integral igual nos dois leitores (19 medidas idênticas caractere a caractere); a saída formatada de pbix_get_model_measures corta expressões longas, o texto integral vem do leitor do pacote",
+          "medidas": {
+            "medidas": 19,
+            "colunas_calculadas": 0,
+            "tabelas_calculadas": 0
+          },
+          "tempo_ferramenta_s": 0.011,
+          "tempo_conferencia_s": 0.018,
+          "tempo_abrir_s": 0.39,
+          "pico_rss_mb": 114.1,
+          "anexos": [
+            "saidas/ifdata/dax_texto__pbix_get_model_measures.txt",
+            "saidas/ifdata/dax_texto__medidas.json"
+          ],
+          "tempo_processo_s": 0.97
+        },
+        "dax_calculo": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "19 de 19 medidas avaliadas sem erro; 9 de 9 conferências contra SQL independente batem; todas as medidas juntas em 0,2 s, a conferência mais lenta (ROE Médio Simples) em 0,1 s",
+          "medidas": {
+            "avaliadas": 19,
+            "erros": 0,
+            "conferencias": 9,
+            "batem": 9,
+            "tempo_cobertura_s": 0.213
+          },
+          "tempo_ferramenta_s": 0.364,
+          "tempo_conferencia_s": 0.105,
+          "tempo_abrir_s": 0.63,
+          "pico_rss_mb": 151.1,
+          "anexos": [
+            "saidas/ifdata/dax_calculo__cobertura.json",
+            "saidas/ifdata/dax_calculo__paridade.json"
+          ],
+          "tempo_processo_s": 1.864
+        },
+        "m": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "texto M de 2 de 2 tabelas e de 1 consulta compartilhada lido (igual no pbixray); execução não tentada: 1 de 2 consultas com a origem disponível aqui (dados embutidos); as demais leem arquivos de outra máquina; as consultas compartilhadas só aparecem nos metadados (pbix_datamodel_query_metadata), não em pbix_get_model_power_query",
+          "medidas": {
+            "consultas": 2,
+            "compartilhadas": 1,
+            "tabelas_dax": 0,
+            "tabelas": 2,
+            "origem_disponivel": 1,
+            "rotulo_errado": 0
+          },
+          "tempo_ferramenta_s": 0.052,
+          "tempo_conferencia_s": 0.019,
+          "tempo_abrir_s": 0.586,
+          "pico_rss_mb": 113.3,
+          "anexos": [
+            "saidas/ifdata/m__pbix_get_model_power_query.txt",
+            "saidas/ifdata/m__pbix_get_m_code.txt",
+            "saidas/ifdata/m__pbix_list_data_sources.txt",
+            "saidas/ifdata/m__pbix_datamodel_query_metadata_Expression.txt",
+            "saidas/ifdata/m__fontes.json"
+          ],
+          "tempo_processo_s": 1.4
+        },
+        "layout": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "PBIR: 2 páginas e 18 visuais lidos com tipo e posição (iguais no JSON do relatório); 9 de 10 visuais de dados têm bloco equivalente no bi-html; sem bloco: scatterChart (1)",
+          "medidas": {
+            "paginas": 2,
+            "visuais": 18,
+            "visuais_de_dados": 10,
+            "com_bloco": 9,
+            "leitura_confere": true
+          },
+          "tempo_ferramenta_s": 0.042,
+          "tempo_conferencia_s": 0.002,
+          "tempo_abrir_s": 0.493,
+          "pico_rss_mb": 69.5,
+          "anexos": [
+            "saidas/ifdata/layout__pbix_get_pages.txt",
+            "saidas/ifdata/layout__pbix_get_page_visuals.json",
+            "saidas/ifdata/layout__visuais_por_tipo.json"
+          ],
+          "tempo_processo_s": 0.788
+        },
+        "filtros": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "4 segmentações, 0 filtros de página (conferem com o JSON), 4 filtros de visual, 0 seleções padrão de segmentação e 4 interações editadas; filtros de visual e interações só aparecem no JSON do visual (não há ferramenta própria)",
+          "medidas": {
+            "segmentacoes": 4,
+            "filtros_pagina": 0,
+            "filtros_visual": 4,
+            "selecoes_padrao": 0,
+            "interacoes": 4,
+            "confere": true
+          },
+          "tempo_ferramenta_s": 0.015,
+          "tempo_conferencia_s": 0.0,
+          "tempo_abrir_s": 0.597,
+          "pico_rss_mb": 65.1,
+          "anexos": [
+            "saidas/ifdata/filtros__pbix_get_filters_e_default_filters.json",
+            "saidas/ifdata/filtros__contagem_no_json.json"
+          ],
+          "tempo_processo_s": 0.78
+        },
+        "tema": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "2 temas devolvidos por pbix_get_theme; o tema em uso (IFData_Navy_Teal5276342275015783.json) está entre eles; importado (pbix_get_theme) como design system do bi-html com contraste AA e 5 ajustes de cor",
+          "medidas": {
+            "temas": 2,
+            "tema_em_uso_na_ferramenta": true,
+            "importado": true,
+            "ajustes": 5
+          },
+          "tempo_ferramenta_s": 0.004,
+          "tempo_conferencia_s": 0.003,
+          "tempo_abrir_s": 0.395,
+          "pico_rss_mb": 69.6,
+          "anexos": [
+            "saidas/ifdata/tema__pbix_get_theme.txt",
+            "saidas/ifdata/tema__importacao_bi_html.json"
+          ],
+          "tempo_processo_s": 0.513
+        },
+        "visuais_personalizados": {
+          "status": "sem_elemento",
+          "classificacao": null,
+          "resumo": "nenhum visual personalizado (8 tipos de visual, todos nativos)",
+          "tempo_ferramenta_s": 0.0,
+          "tempo_conferencia_s": 0.001,
+          "tempo_abrir_s": 0.363,
+          "pico_rss_mb": 69.1,
+          "anexos": [
+            "saidas/ifdata/visuais_personalizados__pbix_list_resources.txt",
+            "saidas/ifdata/visuais_personalizados__deteccao.json"
+          ],
+          "tempo_processo_s": 0.471
+        },
+        "rls": {
+          "status": "sem_elemento",
+          "classificacao": null,
+          "resumo": "nenhum papel de RLS no arquivo (pbix-mcp e pbixray concordam)",
+          "tempo_ferramenta_s": 0.004,
+          "tempo_conferencia_s": 0.009,
+          "tempo_abrir_s": 0.338,
+          "pico_rss_mb": 115.3,
+          "anexos": [
+            "saidas/ifdata/rls__pbix_get_rls_roles.txt"
+          ],
+          "tempo_processo_s": 0.729
+        }
+      },
+      "modo": "importacao",
+      "deteccao_do_modo": {
+        "modo": "importacao",
+        "evidencia": {
+          "DataModel no arquivo": true,
+          "Connections": {
+            "Version": 3,
+            "RemoteArtifacts": "presente (ids omitidos)"
+          },
+          "conexão dinâmica declarada": false,
+          "modos das partições": [
+            "Import"
+          ],
+          "is_directquery (pbix-mcp)": false
+        },
+        "tempo_ferramenta_s": 0.006,
+        "tempo_abrir_s": 0.751,
+        "pico_rss_mb": 64.7,
+        "anexos": [
+          "saidas/ifdata/modo__pbix_open.txt",
+          "saidas/ifdata/modo__particoes.txt"
+        ],
+        "tempo_processo_s": 1.007
+      }
+    },
+    "eleicoes": {
+      "nome": "eleicoes-presidenciais-br - final - cópia.pbix",
+      "tamanho_bytes": 2852415,
+      "sha256": "ff59c36e4ffc8cb771ff5c64e861c7ecbbb11564e8aa6297752d138ddbe08011",
+      "elementos": {
+        "dados": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "7 tabelas e 360.990 linhas lidas por inteiro; contagem e conteúdo de cada coluna iguais nos dois leitores",
+          "medidas": {
+            "tabelas": 7,
+            "linhas": 360990
+          },
+          "tempo_ferramenta_s": 0.777,
+          "tempo_conferencia_s": 3.673,
+          "tempo_abrir_s": 1.023,
+          "pico_rss_mb": 244.3,
+          "anexos": [
+            "saidas/eleicoes/dados__pbix_list_tables.txt",
+            "saidas/eleicoes/dados__comparacao.json"
+          ],
+          "tempo_processo_s": 9.151
+        },
+        "modelo": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "48 colunas e 5 relações; iguais nos dois leitores",
+          "medidas": {
+            "colunas": 48,
+            "relacoes": 5,
+            "relacoes_datas_automaticas": 0
+          },
+          "tempo_ferramenta_s": 0.068,
+          "tempo_conferencia_s": 0.037,
+          "tempo_abrir_s": 0.708,
+          "pico_rss_mb": 141.8,
+          "anexos": [
+            "saidas/eleicoes/modelo__pbix_get_model_schema.txt",
+            "saidas/eleicoes/modelo__pbix_get_model_relationships.txt",
+            "saidas/eleicoes/modelo__comparacao.json"
+          ],
+          "tempo_processo_s": 1.608
+        },
+        "dax_texto": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "55 medidas, 2 colunas calculadas e 1 tabela calculada; texto integral igual nos dois leitores (55 medidas idênticas caractere a caractere); a saída formatada de pbix_get_model_measures corta expressões longas, o texto integral vem do leitor do pacote",
+          "medidas": {
+            "medidas": 55,
+            "colunas_calculadas": 2,
+            "tabelas_calculadas": 1
+          },
+          "tempo_ferramenta_s": 0.071,
+          "tempo_conferencia_s": 0.042,
+          "tempo_abrir_s": 0.831,
+          "pico_rss_mb": 155.8,
+          "anexos": [
+            "saidas/eleicoes/dax_texto__pbix_get_model_measures.txt",
+            "saidas/eleicoes/dax_texto__medidas.json",
+            "saidas/eleicoes/dax_texto__colunas_e_tabelas_calculadas.json"
+          ],
+          "tempo_processo_s": 1.905
+        },
+        "dax_calculo": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "55 de 55 medidas avaliadas sem erro; 11 de 11 conferências contra SQL independente batem; todas as medidas juntas em 103,1 s, a conferência mais lenta (Municípios Vencidos) em 16,4 s",
+          "medidas": {
+            "avaliadas": 55,
+            "erros": 0,
+            "conferencias": 11,
+            "batem": 11,
+            "tempo_cobertura_s": 103.053
+          },
+          "tempo_ferramenta_s": 134.434,
+          "tempo_conferencia_s": 0.443,
+          "tempo_abrir_s": 1.091,
+          "pico_rss_mb": 1358.0,
+          "anexos": [
+            "saidas/eleicoes/dax_calculo__cobertura.json",
+            "saidas/eleicoes/dax_calculo__paridade.json"
+          ],
+          "tempo_processo_s": 139.943
+        },
+        "m": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "texto M de 6 de 6 tabelas e de 2 consultas compartilhadas lido (igual no pbixray), mais 1 tabela calculada em DAX; execução não tentada: 1 de 6 consultas com a origem disponível aqui (dados embutidos); as demais leem arquivos de outra máquina; as consultas compartilhadas só aparecem nos metadados (pbix_datamodel_query_metadata), não em pbix_get_model_power_query; pbix_list_data_sources rotula como Embedded 5 tabelas cuja origem é um arquivo lido por consulta compartilhada",
+          "medidas": {
+            "consultas": 6,
+            "compartilhadas": 2,
+            "tabelas_dax": 1,
+            "tabelas": 6,
+            "origem_disponivel": 1,
+            "rotulo_errado": 5
+          },
+          "tempo_ferramenta_s": 0.106,
+          "tempo_conferencia_s": 0.025,
+          "tempo_abrir_s": 0.452,
+          "pico_rss_mb": 160.2,
+          "anexos": [
+            "saidas/eleicoes/m__pbix_get_model_power_query.txt",
+            "saidas/eleicoes/m__pbix_get_m_code.txt",
+            "saidas/eleicoes/m__pbix_list_data_sources.txt",
+            "saidas/eleicoes/m__pbix_datamodel_query_metadata_Expression.txt",
+            "saidas/eleicoes/m__fontes.json"
+          ],
+          "tempo_processo_s": 1.032
+        },
+        "layout": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "PBIR: 8 páginas e 94 visuais lidos com tipo e posição (iguais no JSON do relatório); 40 de 47 visuais de dados têm bloco equivalente no bi-html; sem bloco: azureMap (5), scatterChart (2)",
+          "medidas": {
+            "paginas": 8,
+            "visuais": 94,
+            "visuais_de_dados": 47,
+            "com_bloco": 40,
+            "leitura_confere": true
+          },
+          "tempo_ferramenta_s": 0.096,
+          "tempo_conferencia_s": 0.004,
+          "tempo_abrir_s": 0.368,
+          "pico_rss_mb": 94.3,
+          "anexos": [
+            "saidas/eleicoes/layout__pbix_get_pages.txt",
+            "saidas/eleicoes/layout__pbix_get_page_visuals.json",
+            "saidas/eleicoes/layout__visuais_por_tipo.json"
+          ],
+          "tempo_processo_s": 0.587
+        },
+        "filtros": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "10 segmentações, 2 filtros de página (conferem com o JSON), 64 filtros de visual, 9 seleções padrão de segmentação e 19 interações editadas; filtros de visual e interações só aparecem no JSON do visual (não há ferramenta própria)",
+          "medidas": {
+            "segmentacoes": 10,
+            "filtros_pagina": 2,
+            "filtros_visual": 64,
+            "selecoes_padrao": 9,
+            "interacoes": 19,
+            "confere": true
+          },
+          "tempo_ferramenta_s": 0.195,
+          "tempo_conferencia_s": 0.0,
+          "tempo_abrir_s": 0.402,
+          "pico_rss_mb": 94.5,
+          "anexos": [
+            "saidas/eleicoes/filtros__pbix_get_filters_e_default_filters.json",
+            "saidas/eleicoes/filtros__contagem_no_json.json"
+          ],
+          "tempo_processo_s": 0.762
+        },
+        "tema": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "2 temas devolvidos por pbix_get_theme; o tema em uso (Elei__es_BR12491567103830592.json) está entre eles; importado (pbix_get_theme) como design system do bi-html com contraste AA e 2 ajustes de cor",
+          "medidas": {
+            "temas": 2,
+            "tema_em_uso_na_ferramenta": true,
+            "importado": true,
+            "ajustes": 2
+          },
+          "tempo_ferramenta_s": 0.006,
+          "tempo_conferencia_s": 0.004,
+          "tempo_abrir_s": 0.445,
+          "pico_rss_mb": 93.9,
+          "anexos": [
+            "saidas/eleicoes/tema__pbix_get_theme.txt",
+            "saidas/eleicoes/tema__importacao_bi_html.json"
+          ],
+          "tempo_processo_s": 0.626
+        },
+        "visuais_personalizados": {
+          "status": "sem_elemento",
+          "classificacao": null,
+          "resumo": "nenhum visual personalizado (13 tipos de visual, todos nativos)",
+          "tempo_ferramenta_s": 0.0,
+          "tempo_conferencia_s": 0.004,
+          "tempo_abrir_s": 0.44,
+          "pico_rss_mb": 94.1,
+          "anexos": [
+            "saidas/eleicoes/visuais_personalizados__pbix_list_resources.txt",
+            "saidas/eleicoes/visuais_personalizados__deteccao.json"
+          ],
+          "tempo_processo_s": 0.59
+        },
+        "rls": {
+          "status": "sem_elemento",
+          "classificacao": null,
+          "resumo": "nenhum papel de RLS no arquivo (pbix-mcp e pbixray concordam)",
+          "tempo_ferramenta_s": 0.02,
+          "tempo_conferencia_s": 0.025,
+          "tempo_abrir_s": 0.39,
+          "pico_rss_mb": 144.1,
+          "anexos": [
+            "saidas/eleicoes/rls__pbix_get_rls_roles.txt"
+          ],
+          "tempo_processo_s": 0.823
+        }
+      },
+      "modo": "importacao",
+      "deteccao_do_modo": {
+        "modo": "importacao",
+        "evidencia": {
+          "DataModel no arquivo": true,
+          "Connections": {},
+          "conexão dinâmica declarada": false,
+          "modos das partições": [
+            "Import"
+          ],
+          "is_directquery (pbix-mcp)": false
+        },
+        "tempo_ferramenta_s": 0.021,
+        "tempo_abrir_s": 0.705,
+        "pico_rss_mb": 87.2,
+        "anexos": [
+          "saidas/eleicoes/modo__pbix_open.txt",
+          "saidas/eleicoes/modo__particoes.txt"
+        ],
+        "tempo_processo_s": 0.883
+      }
+    },
+    "lab1": {
+      "nome": "Lab1_reorganizado.pbix",
+      "tamanho_bytes": 1854253,
+      "sha256": "b202077ae9a029026818eb634c699edbde8702905e29ca25c7edf67f9b807643",
+      "elementos": {
+        "dados": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "3 tabelas e 52.752 linhas lidas por inteiro; contagem e conteúdo de cada coluna iguais nos dois leitores",
+          "medidas": {
+            "tabelas": 3,
+            "linhas": 52752
+          },
+          "tempo_ferramenta_s": 0.265,
+          "tempo_conferencia_s": 1.027,
+          "tempo_abrir_s": 0.363,
+          "pico_rss_mb": 180.7,
+          "anexos": [
+            "saidas/lab1/dados__pbix_list_tables.txt",
+            "saidas/lab1/dados__comparacao.json"
+          ],
+          "tempo_processo_s": 2.735
+        },
+        "modelo": {
+          "status": "testada",
+          "classificacao": "I",
+          "resumo": "28 colunas e 0 relações; iguais nos dois leitores; 1 relação com a tabela de datas automática, que só o pbix-mcp lista",
+          "medidas": {
+            "colunas": 28,
+            "relacoes": 0,
+            "relacoes_datas_automaticas": 1
+          },
+          "tempo_ferramenta_s": 0.038,
+          "tempo_conferencia_s": 0.021,
+          "tempo_abrir_s": 0.381,
+          "pico_rss_mb": 129.4,
+          "anexos": [
+            "saidas/lab1/modelo__pbix_get_model_schema.txt",
+            "saidas/lab1/modelo__pbix_get_model_relationships.txt",
+            "saidas/lab1/modelo__comparacao.json"
+          ],
+          "tempo_processo_s": 0.891
+        },
+        "dax_texto": {
+          "status": "sem_elemento",
+          "classificacao": null,
+          "resumo": "o arquivo não tem medidas, colunas nem tabelas calculadas em DAX do autor (os visuais usam agregação implícita; só há a tabela de datas automática)",
+          "tempo_ferramenta_s": 0.024,
+          "tempo_conferencia_s": 0.017,
+          "tempo_abrir_s": 0.361,
+          "pico_rss_mb": 129.1,
+          "anexos": [
+            "saidas/lab1/dax_texto__pbix_get_model_measures.txt",
+            "saidas/lab1/dax_texto__medidas.json"
+          ],
+          "tempo_processo_s": 0.766
+        },
+        "dax_calculo": {
+          "status": "sem_elemento",
+          "classificacao": null,
+          "resumo": "o arquivo não tem medidas DAX para avaliar (os visuais usam agregação implícita)",
+          "tempo_ferramenta_s": 0.011,
+          "tempo_abrir_s": 0.344,
+          "pico_rss_mb": 82.7,
+          "anexos": [
+            "saidas/lab1/dax_calculo__pbix_get_model_measures.txt"
+          ],
+          "tempo_processo_s": 0.489
+        },
+        "m": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "texto M de 1 de 1 tabela e de 0 consultas compartilhadas lido (igual no pbixray), mais 2 tabelas calculadas em DAX; execução não tentada: 0 de 1 consulta com a origem disponível aqui (dados embutidos); as demais leem arquivos de outra máquina",
+          "medidas": {
+            "consultas": 1,
+            "compartilhadas": 0,
+            "tabelas_dax": 2,
+            "tabelas": 1,
+            "origem_disponivel": 0,
+            "rotulo_errado": 0
+          },
+          "tempo_ferramenta_s": 0.068,
+          "tempo_conferencia_s": 0.017,
+          "tempo_abrir_s": 0.341,
+          "pico_rss_mb": 132.1,
+          "anexos": [
+            "saidas/lab1/m__pbix_get_model_power_query.txt",
+            "saidas/lab1/m__pbix_get_m_code.txt",
+            "saidas/lab1/m__pbix_list_data_sources.txt",
+            "saidas/lab1/m__pbix_datamodel_query_metadata_Expression.txt",
+            "saidas/lab1/m__fontes.json"
+          ],
+          "tempo_processo_s": 0.823
+        },
+        "layout": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "PBIR: 1 página e 10 visuais lidos com tipo e posição (iguais no JSON do relatório); 4 de 5 visuais de dados têm bloco equivalente no bi-html; sem bloco: azureMap (1)",
+          "medidas": {
+            "paginas": 1,
+            "visuais": 10,
+            "visuais_de_dados": 5,
+            "com_bloco": 4,
+            "leitura_confere": true
+          },
+          "tempo_ferramenta_s": 0.003,
+          "tempo_conferencia_s": 0.0,
+          "tempo_abrir_s": 0.352,
+          "pico_rss_mb": 76.1,
+          "anexos": [
+            "saidas/lab1/layout__pbix_get_pages.txt",
+            "saidas/lab1/layout__pbix_get_page_visuals.json",
+            "saidas/lab1/layout__visuais_por_tipo.json"
+          ],
+          "tempo_processo_s": 0.456
+        },
+        "filtros": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "3 segmentações, 0 filtros de página (conferem com o JSON), 1 filtro de visual, 0 seleções padrão de segmentação e 0 interações editadas; filtros de visual e interações só aparecem no JSON do visual (não há ferramenta própria)",
+          "medidas": {
+            "segmentacoes": 3,
+            "filtros_pagina": 0,
+            "filtros_visual": 1,
+            "selecoes_padrao": 0,
+            "interacoes": 0,
+            "confere": true
+          },
+          "tempo_ferramenta_s": 0.005,
+          "tempo_conferencia_s": 0.0,
+          "tempo_abrir_s": 0.352,
+          "pico_rss_mb": 76.3,
+          "anexos": [
+            "saidas/lab1/filtros__pbix_get_filters_e_default_filters.json",
+            "saidas/lab1/filtros__contagem_no_json.json"
+          ],
+          "tempo_processo_s": 0.453
+        },
+        "tema": {
+          "status": "testada",
+          "classificacao": "P",
+          "resumo": "1 tema devolvido por pbix_get_theme; o tema em uso (CopilotDefault, SharedResources) não está entre eles; importado (lido do pacote, CopilotDefault.json) como design system do bi-html com contraste AA e 0 ajustes de cor",
+          "medidas": {
+            "temas": 1,
+            "tema_em_uso_na_ferramenta": false,
+            "importado": true,
+            "ajustes": 0
+          },
+          "tempo_ferramenta_s": 0.004,
+          "tempo_conferencia_s": 0.002,
+          "tempo_abrir_s": 0.361,
+          "pico_rss_mb": 76.5,
+          "anexos": [
+            "saidas/lab1/tema__pbix_get_theme.txt",
+            "saidas/lab1/tema__importacao_bi_html.json"
+          ],
+          "tempo_processo_s": 0.49
+        },
+        "visuais_personalizados": {
+          "status": "sem_elemento",
+          "classificacao": null,
+          "resumo": "nenhum visual personalizado (7 tipos de visual, todos nativos)",
+          "tempo_ferramenta_s": 0.001,
+          "tempo_conferencia_s": 0.0,
+          "tempo_abrir_s": 0.352,
+          "pico_rss_mb": 76.3,
+          "anexos": [
+            "saidas/lab1/visuais_personalizados__pbix_list_resources.txt",
+            "saidas/lab1/visuais_personalizados__deteccao.json"
+          ],
+          "tempo_processo_s": 0.459
+        },
+        "rls": {
+          "status": "sem_elemento",
+          "classificacao": null,
+          "resumo": "nenhum papel de RLS no arquivo (pbix-mcp e pbixray concordam)",
+          "tempo_ferramenta_s": 0.01,
+          "tempo_conferencia_s": 0.02,
+          "tempo_abrir_s": 0.344,
+          "pico_rss_mb": 125.5,
+          "anexos": [
+            "saidas/lab1/rls__pbix_get_rls_roles.txt"
+          ],
+          "tempo_processo_s": 0.744
+        }
+      },
+      "modo": "importacao",
+      "deteccao_do_modo": {
+        "modo": "importacao",
+        "evidencia": {
+          "DataModel no arquivo": true,
+          "Connections": {},
+          "conexão dinâmica declarada": false,
+          "modos das partições": [
+            "Import"
+          ],
+          "is_directquery (pbix-mcp)": false
+        },
+        "tempo_ferramenta_s": 0.012,
+        "tempo_abrir_s": 0.394,
+        "pico_rss_mb": 76.4,
+        "anexos": [
+          "saidas/lab1/modo__pbix_open.txt",
+          "saidas/lab1/modo__particoes.txt"
+        ],
+        "tempo_processo_s": 0.521
+      }
+    }
+  },
+  "matriz": {
+    "dados": {
+      "importacao": {
+        "documental": "I",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "testada",
+        "classificacao": "I",
+        "testada_em": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "sem_elemento_em": []
+      },
+      "directquery": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "modelo": {
+      "importacao": {
+        "documental": "I",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "testada",
+        "classificacao": "I",
+        "testada_em": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "sem_elemento_em": []
+      },
+      "directquery": {
+        "documental": "I",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "dax_texto": {
+      "importacao": {
+        "documental": "I",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "testada",
+        "classificacao": "I",
+        "testada_em": [
+          "eleicoes",
+          "ifdata"
+        ],
+        "sem_elemento_em": [
+          "lab1"
+        ]
+      },
+      "directquery": {
+        "documental": "I",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "dax_calculo": {
+      "importacao": {
+        "documental": "P",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "testada",
+        "classificacao": "I",
+        "testada_em": [
+          "eleicoes",
+          "ifdata"
+        ],
+        "sem_elemento_em": [
+          "lab1"
+        ]
+      },
+      "directquery": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "m": {
+      "importacao": {
+        "documental": "P",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "testada",
+        "classificacao": "P",
+        "testada_em": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "sem_elemento_em": []
+      },
+      "directquery": {
+        "documental": "P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "layout": {
+      "importacao": {
+        "documental": "P",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "testada",
+        "classificacao": "P",
+        "testada_em": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "sem_elemento_em": []
+      },
+      "directquery": {
+        "documental": "P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "filtros": {
+      "importacao": {
+        "documental": "P",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "testada",
+        "classificacao": "P",
+        "testada_em": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "sem_elemento_em": []
+      },
+      "directquery": {
+        "documental": "P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "tema": {
+      "importacao": {
+        "documental": "I/P",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "testada",
+        "classificacao": "P",
+        "testada_em": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "sem_elemento_em": []
+      },
+      "directquery": {
+        "documental": "I/P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "I/P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "visuais_personalizados": {
+      "importacao": {
+        "documental": "N",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "sem_elemento",
+        "motivo": "nenhum dos arquivos tem este elemento; a detecção rodou e voltou vazia"
+      },
+      "directquery": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    },
+    "rls": {
+      "importacao": {
+        "documental": "P",
+        "arquivos": [
+          "eleicoes",
+          "ifdata",
+          "lab1"
+        ],
+        "status": "sem_elemento",
+        "motivo": "nenhum dos arquivos tem este elemento; a detecção rodou e voltou vazia"
+      },
+      "directquery": {
+        "documental": "P",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      },
+      "conexao_dinamica": {
+        "documental": "N",
+        "arquivos": [],
+        "status": "nao_testada",
+        "motivo": "nenhum dos arquivos enviados está neste modo"
+      }
+    }
+  }
+}

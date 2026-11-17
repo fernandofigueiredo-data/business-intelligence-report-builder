@@ -1,0 +1,69 @@
+{
+  "tabelas_calculadas_em_dax": [
+    "PartidoCores"
+  ],
+  "consultas_compartilhadas": [
+    "Eleicoes",
+    "Medidas"
+  ],
+  "fontes": [
+    {
+      "tabela": "_Medidas",
+      "tipo": "dados embutidos",
+      "via_consulta_compartilhada": false,
+      "rotulo_em_pbix_list_data_sources": "JSON/Web",
+      "arquivo_de_origem": [],
+      "origem_existe_nesta_maquina": null
+    },
+    {
+      "tabela": "dCandidato",
+      "tipo": "arquivo",
+      "via_consulta_compartilhada": true,
+      "rotulo_em_pbix_list_data_sources": "Embedded",
+      "arquivo_de_origem": [
+        "eleicoes_presidente.csv"
+      ],
+      "origem_existe_nesta_maquina": false
+    },
+    {
+      "tabela": "dMunicipio",
+      "tipo": "arquivo",
+      "via_consulta_compartilhada": true,
+      "rotulo_em_pbix_list_data_sources": "Embedded",
+      "arquivo_de_origem": [
+        "eleicoes_presidente.csv"
+      ],
+      "origem_existe_nesta_maquina": false
+    },
+    {
+      "tabela": "dTurno",
+      "tipo": "arquivo",
+      "via_consulta_compartilhada": true,
+      "rotulo_em_pbix_list_data_sources": "Embedded",
+      "arquivo_de_origem": [
+        "eleicoes_presidente.csv"
+      ],
+      "origem_existe_nesta_maquina": false
+    },
+    {
+      "tabela": "fComparecimento",
+      "tipo": "arquivo",
+      "via_consulta_compartilhada": true,
+      "rotulo_em_pbix_list_data_sources": "Embedded",
+      "arquivo_de_origem": [
+        "eleicoes_presidente.csv"
+      ],
+      "origem_existe_nesta_maquina": false
+    },
+    {
+      "tabela": "fVotos",
+      "tipo": "arquivo",
+      "via_consulta_compartilhada": true,
+      "rotulo_em_pbix_list_data_sources": "Embedded",
+      "arquivo_de_origem": [
+        "eleicoes_presidente.csv"
+      ],
+      "origem_existe_nesta_maquina": false
+    }
+  ]
+}

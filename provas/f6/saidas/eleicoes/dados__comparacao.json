@@ -1,0 +1,72 @@
+[
+  {
+    "tabela": "PartidoCores",
+    "linhas_metadados": 27,
+    "linhas_pbix_mcp": 27,
+    "linhas_pbixray": 27,
+    "colunas": 2,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "_Medidas",
+    "linhas_metadados": 0,
+    "linhas_pbix_mcp": 0,
+    "linhas_pbixray": 0,
+    "colunas": 0,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "dCandidato",
+    "linhas_metadados": 47,
+    "linhas_pbix_mcp": 47,
+    "linhas_pbixray": 47,
+    "colunas": 6,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "dMunicipio",
+    "linhas_metadados": 5766,
+    "linhas_pbix_mcp": 5766,
+    "linhas_pbixray": 5766,
+    "colunas": 18,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "dTurno",
+    "linhas_metadados": 8,
+    "linhas_pbix_mcp": 8,
+    "linhas_pbixray": 8,
+    "colunas": 5,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "fComparecimento",
+    "linhas_metadados": 45834,
+    "linhas_pbix_mcp": 45834,
+    "linhas_pbixray": 45834,
+    "colunas": 10,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  },
+  {
+    "tabela": "fVotos",
+    "linhas_metadados": 309308,
+    "linhas_pbix_mcp": 309308,
+    "linhas_pbixray": 309308,
+    "colunas": 7,
+    "colunas_divergentes": [],
+    "erro_pbixray": null,
+    "iguais": true
+  }
+]

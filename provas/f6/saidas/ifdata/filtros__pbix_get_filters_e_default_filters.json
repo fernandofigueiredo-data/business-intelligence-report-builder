@@ -1,0 +1,33 @@
+[
+  {
+    "success": true,
+    "message": "Filters (report):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 0):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "No default slicer filters found on this page.",
+    "data": {
+      "filters": {}
+    },
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Filters (page 1):\n[]",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "No default slicer filters found on this page.",
+    "data": {
+      "filters": {}
+    },
+    "warnings": []
+  }
+]

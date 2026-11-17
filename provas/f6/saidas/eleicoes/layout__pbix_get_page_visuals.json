@@ -1,0 +1,42 @@
+[
+  {
+    "success": true,
+    "message": "Page 'Visão Nacional' has 16 visual(s):\n\n  [0] pageNavigator (name=08047f7e439c5b61500b) at (816,24) size 756x48\n  [1] barChart (name=0b9ac624c13ac795b304) at (36,372) size 600x672\n  [2] cardVisual (name=14bfa690c16916e58bb3) at (348,228) size 288x120\n  [3] cardVisual (name=1a7c3217bdc7095178e6) at (1596,228) size 288x120\n  [4] cardVisual (name=30991a10a1ee604e2c3e) at (36,228) size 288x120\n  [5] shape (name=36b79b7270909ea699e0) at (0,96) size 960x6\n  [6] cardVisual (name=4f843fe263d501686a71) at (972,228) size 288x120\n  [7] barChart (name=5771cc2e31c4acc5ec6b) at (660,372) size 600x672\n  [8] shape (name=600bef7dd46295094100) at (0,0) size 1920x96\n  [9] clusteredColumnChart (name=67e36c8ed437de4e50d2) at (1284,372) size 600x672\n  [10] cardVisual (name=8448398770b440e3c29a) at (1284,228) size 288x120\n  [11] cardVisual (name=a14ebd8e9d0a3b7cd688) at (36,24) size 756x48\n  [12] cardVisual (name=ce12d3aa659e08a0b788) at (660,228) size 288x120\n  [13] cardVisual (name=e1eb29fb4cc037041d11) at (36,120) size 1848x84\n  [14] slicer (name=e4bb9340643980c2a64e) at (1596,24) size 288x48\n  [15] shape (name=f37ce7124e597479397e) at (960,96) size 960x6",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Page 'Mapa dos vencedores' has 10 visual(s):\n\n  [0] slicer (name=3fe193055dd241370024) at (1596,24) size 288x48\n  [1] azureMap (name=40165d388055ab51a579) at (36,204) size 756x840\n  [2] tableEx (name=5195da23ed9dd048d901) at (1284,204) size 600x840\n  [3] cardVisual (name=900b70e3d19817ae8545) at (36,24) size 756x48\n  [4] azureMap (name=a388571426b57d421153) at (816,204) size 444x840\n  [5] shape (name=ad9d8e1d706992ab7a16) at (0,96) size 960x6\n  [6] shape (name=c999f643b2b137650b43) at (0,0) size 1920x96\n  [7] shape (name=f0c2c73090eb057d695e) at (960,96) size 960x6\n  [8] slicer (name=fa7e1c76c709907d0400) at (36,120) size 1848x60\n  [9] pageNavigator (name=fd9ddbe4154c16220a85) at (816,24) size 756x48",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Page 'Comparecimento e abstenção' has 12 visual(s):\n\n  [0] cardVisual (name=08ee904a0dc4962180b7) at (36,120) size 600x120\n  [1] slicer (name=221a542280107b0d0370) at (1596,24) size 288x48\n  [2] clusteredColumnChart (name=281ee1272de695d8680a) at (972,576) size 912x468\n  [3] lineChart (name=47aba51655e3eca92702) at (36,576) size 912x468\n  [4] shape (name=4a6bdd5c1c5859b544e4) at (0,96) size 960x6\n  [5] clusteredBarChart (name=752e53408802ce1b4a30) at (1284,120) size 600x432\n  [6] scatterChart (name=7d989b256a6b974616a8) at (36,264) size 600x288\n  [7] shape (name=80e1817254531366d5ce) at (960,96) size 960x6\n  [8] azureMap (name=85bb20b6345e9e852950) at (660,120) size 600x432\n  [9] cardVisual (name=929e2ef697ea015eb507) at (36,24) size 756x48\n  [10] pageNavigator (name=97168b741e880830b71b) at (816,24) size 756x48\n  [11] shape (name=af979d11d86e5c7b3102) at (0,0) size 1920x96",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Page 'Mudanças entre eleições' has 14 visual(s):\n\n  [0] tableEx (name=0039b39f00c884e089da) at (972,312) size 912x348\n  [1] azureMap (name=1fcc0201e082870d78ac) at (36,312) size 912x732\n  [2] shape (name=2a66b6b06e38dca48d9c) at (960,96) size 960x6\n  [3] shape (name=438ad3f019c9a0187963) at (0,96) size 960x6\n  [4] textbox (name=4d1794768a1bb9c6cdae) at (696,960) size 228x60\n  [5] cardVisual (name=60d7f3b5e829ce944774) at (36,24) size 756x48\n  [6] pageNavigator (name=798a03ff056c80ab4195) at (816,24) size 756x48\n  [7] slicer (name=9821253107312283972c) at (972,168) size 912x120\n  [8] shape (name=aeada102aae4ee0c9ae0) at (0,0) size 1920x96\n  [9] cardVisual (name=af12415f01ab710400d6) at (36,168) size 444x120\n  [10] pivotTable (name=b5fcc0988a1d9cc6b679) at (972,684) size 912x360\n  [11] textbox (name=c4f1a9e27b3d5e6f8a01) at (36,120) size 1848x24\n  [12] slicer (name=cbd1544f2ddbc74ccc8a) at (1596,24) size 288x48\n  [13] cardVisual (name=efa6ff93433acc037a6d) at (504,168) size 444x120",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Page 'Do 1º ao 2º turno' has 14 visual(s):\n\n  [0] cardVisual (name=0549d028a81798b7b8b4) at (36,168) size 444x132\n  [1] cardVisual (name=0d229b215eb20de47323) at (36,24) size 756x48\n  [2] textbox (name=23d770190b81e23b1087) at (696,960) size 228x60\n  [3] cardVisual (name=339d34830a35c20de3ce) at (504,168) size 444x132\n  [4] textbox (name=4ee70efd058c40ab) at (36,120) size 1848x24\n  [5] pageNavigator (name=775bf4086b58700a4804) at (816,24) size 756x48\n  [6] slicer (name=a8b5268605ebd420501b) at (1596,24) size 288x48\n  [7] shape (name=b1205484ea06e9479230) at (0,0) size 1920x96\n  [8] shape (name=b2a14875c8a810a4990a) at (0,96) size 960x6\n  [9] azureMap (name=e547e02b268b5e20099c) at (36,324) size 912x720\n  [10] shape (name=ec2c465dbe5196cd6c8d) at (960,96) size 960x6\n  [11] tableEx (name=f263cf30dad600720a2c) at (972,324) size 912x228\n  [12] barChart (name=f2a0fe1810107ac03e87) at (972,576) size 912x468\n  [13] tableEx (name=f600b883ee0ba05006d9) at (972,168) size 912x132",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Page 'Perfil socioeconômico' has 13 visual(s):\n\n  [0] scatterChart (name=1e8048124ee00a90eb9b) at (36,612) size 1224x432\n  [1] cardVisual (name=2cb9d7b207e33ad42b30) at (36,24) size 756x48\n  [2] barChart (name=736dbe710041b90a76de) at (36,168) size 600x420\n  [3] slicer (name=8a2357706da1c3cbd8d6) at (1596,24) size 288x48\n  [4] pageNavigator (name=9cd5e9384938d02d40a4) at (816,24) size 756x48\n  [5] shape (name=9fecf31ba427a8a78a14) at (0,0) size 1920x96\n  [6] textbox (name=a27c036be95348d4) at (36,120) size 1848x24\n  [7] textbox (name=a436920f4c07115b4ee6) at (1284,828) size 600x216\n  [8] slicer (name=b754540bad4348a71e2d) at (1284,612) size 600x192\n  [9] barChart (name=c5890af063e7453cca9d) at (1284,168) size 600x420\n  [10] shape (name=d12c11ddede7416d790d) at (0,96) size 960x6\n  [11] barChart (name=f291313fc14177dd3ec9) at (660,168) size 600x420\n  [12] shape (name=ffce65e8bae4a74e1bc2) at (960,96) size 960x6",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Page 'Sobre os dados' has 8 visual(s):\n\n  [0] pageNavigator (name=06132da7cca001012803) at (816,24) size 756x48\n  [1] shape (name=1792e57320642275a390) at (0,0) size 1920x96\n  [2] shape (name=2c519ca05c7635b23eec) at (960,96) size 960x6\n  [3] textbox (name=3021600ac264a5723cb3) at (36,516) size 600x228\n  [4] tableEx (name=46ca30904d045a790830) at (36,120) size 1848x372\n  [5] textbox (name=975f68abb02e991edb70) at (36,24) size 756x48\n  [6] textbox (name=a61d7d3849040bd6ab42) at (660,516) size 1224x228\n  [7] shape (name=a9175a84a17c0185a059) at (0,96) size 960x6",
+    "warnings": []
+  },
+  {
+    "success": true,
+    "message": "Page 'Dica do município' has 7 visual(s):\n\n  [0] cardVisual (name=159c238240799980308a) at (12,52) size 376x56\n  [1] cardVisual (name=26f2f43d17b059d6304b) at (12,204) size 184x80\n  [2] cardVisual (name=32e57a7f1ea7d7a91604) at (12,12) size 376x32\n  [3] cardVisual (name=7883a61c530690e4a232) at (204,204) size 184x80\n  [4] slicer (name=8c7aeb19b572e75cb63b) at (124,28) size 276x40\n  [5] cardVisual (name=ec0968fd60e519ae2547) at (204,116) size 184x80\n  [6] cardVisual (name=fabf15c0db6c57903b7e) at (12,116) size 184x80",
+    "warnings": []
+  }
+]

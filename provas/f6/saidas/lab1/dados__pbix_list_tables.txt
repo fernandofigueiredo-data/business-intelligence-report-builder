@@ -1,0 +1,1 @@
+{"success":true,"message":"TableName                                               ColumnCount  RowCount\nDateTableTemplate_13ccc290-bdc4-44fb-8b9b-86e0efef36c0  7            1       \nLocalDateTable_7aff0774-ff3f-4000-85e6-4744fab2780f     7            1461    \ndataset                                                 14           51290   ","warnings":[]}

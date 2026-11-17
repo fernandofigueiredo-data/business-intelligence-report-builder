@@ -1,0 +1,1 @@
+{"success":true,"message":"Partitions (2):\n\n  Medidas:\n    Medidas [M/Import]: let\n    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"...\n  ifdata:\n    ifdata [M/Import]: let\n    Fonte = Excel.Workbook(File.Contents(\"<caminho omitido>\\análise-de-d...","warnings":[]}
