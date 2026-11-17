@@ -22,7 +22,8 @@ perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõ
 - `consultar`: o único caminho para um número (métricas × dimensões × filtros × período);
 - `exportar_cubo`: dados agregados que o dashboard embute;
 - `propor_estilos`, `aplicar_estilo` e `importar_design`: domínio inferido, estilos base e
-  design system enviado, gravados em design/tokens.json e tokens.css com contraste AA.
+  design system enviado, gravados em design/tokens.json e tokens.css com contraste AA;
+- `renderizar_dashboard`: calcula os blocos da spec e grava o HTML do dashboard.
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -41,6 +42,7 @@ from bi_html.perfil import perfilar as _perfilar, resumo  # noqa: E402
 from bi_html.consulta import consultar as _consultar, exportar_cubo as _exportar_cubo, para_json  # noqa: E402
 from bi_html.modelo import carregar, propor, registrar_linhagem  # noqa: E402
 from bi_html import design as _design  # noqa: E402
+from bi_html.render import renderizar  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
 
 mcp = MCPServer("bi-dados")
@@ -204,6 +206,18 @@ def importar_design(caminho: str) -> dict:
     claro e escuro, com contraste AA. Devolve cada ajuste de contraste feito."""
     try:
         return {"ok": True, **_design.importar(projeto(), caminho)}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def renderizar_dashboard() -> dict:
+    """Confere dashboard/spec.json contra o schema e o modelo, calcula cada bloco no DuckDB (para todas
+    as combinações dos filtros globais) e grava saidas/bi/dashboard.html (abre no navegador) e
+    saidas/bi/dashboard.artifact.html (para publicar como Artifact). Devolve tamanho, avisos e, em
+    `publicacao_bloqueada`, os motivos para não publicar (dados pessoais)."""
+    try:
+        return {"ok": True, **renderizar(projeto())}
     except ErroDeLeitura as e:
         return _erro(e)
 

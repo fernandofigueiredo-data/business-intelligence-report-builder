@@ -54,12 +54,14 @@ de novo ao usuário**:
 - o tamanho dos dados tratados (linhas e colunas) e os alertas, se houver.
 
 Os números que aparecem nesses textos vêm da análise, que já foi revisada;
-repita-os como estão, sem recalcular nem arredondar. Depois diga com clareza
-que o dashboard (F4) ainda está em construção, e não tente gerar dashboard,
-spec ou números por outro caminho; para ver números agora, use `consultar`.
+repita-os como estão, sem recalcular nem arredondar. Depois indique
+`/bi-html:dashboard`.
 
 **perfil** — Há tabelas ingeridas pelo atalho, mas todas bloqueadas pelo
 perfil. Mostre o `proximo_passo` como veio.
 
-**bi** e **pbix** — Diga que essas etapas estão em construção (fases F5 a F7
-do `PLANO_DE_CONSTRUCAO.md`).
+**bi** — Dashboard especificado. Indique `/bi-html:dashboard` para renderizar
+e publicar, e diga que o documento de decisão é a fase F5, em construção.
+
+**pbix** — Diga que essa etapa está em construção (fases F6 e F7 do
+`PLANO_DE_CONSTRUCAO.md`).

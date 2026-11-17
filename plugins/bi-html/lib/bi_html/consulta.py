@@ -186,7 +186,10 @@ def formatar(valor, formato: str, unidade: str | None = None) -> str:
         texto = _numero_br(v, 2)
     else:
         texto = _numero_br(v, 2).rstrip("0").rstrip(",")
-    return f"{texto} {unidade}".strip() if unidade else texto
+    if not unidade:
+        return texto
+    # símbolos como % e × colam no número (4,5%); palavras levam espaço (12 dias)
+    return texto + unidade if unidade in ("%", "×", "x", "°") else f"{texto} {unidade}"
 
 
 def _json(v):
@@ -274,15 +277,21 @@ def _executar(arquivo, modelo, metricas, dimensoes, filtros, janela, ordenacao, 
 
 
 def _data_max(arquivo: Path, coluna: str) -> date:
+    """Data mais recente dos dados. Coluna mensal (todas as datas no dia 1, como uma competência)
+    representa o mês inteiro, então a data mais recente vira o último dia desse mês."""
     import duckdb
 
     con = duckdb.connect()
     try:
-        v = con.execute(f"SELECT CAST(max({q(coluna)}) AS DATE) FROM read_parquet({literal(arquivo)})").fetchone()[0]
+        v, mensal = con.execute(
+            f"SELECT CAST(max({q(coluna)}) AS DATE), bool_and(day({q(coluna)}) = 1) "
+            f"FROM read_parquet({literal(arquivo)}) WHERE {q(coluna)} IS NOT NULL").fetchone()
     finally:
         con.close()
     if v is None:
         raise ErroDeModelo(f"a coluna {coluna} não tem datas preenchidas")
+    if mensal:
+        v = date(v.year, v.month, calendar.monthrange(v.year, v.month)[1])
     return v
 
 

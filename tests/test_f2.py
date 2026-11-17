@@ -349,7 +349,8 @@ class TestPeriodos(unittest.TestCase):
         self.assertEqual(formatar(-1234.5, "moeda"), "-R$ 1.234,50")
         self.assertEqual(formatar(0.3912, "percentual"), "39,1%")
         self.assertEqual(formatar(16254, "inteiro"), "16.254")
-        self.assertEqual(formatar(4.5, "numero", "%"), "4,5 %")
+        self.assertEqual(formatar(4.5, "numero", "%"), "4,5%")
+        self.assertEqual(formatar(12, "numero", "dias"), "12 dias")
         self.assertEqual(formatar(None, "moeda"), "—")
 
 

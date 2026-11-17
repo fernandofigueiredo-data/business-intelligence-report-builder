@@ -8,7 +8,7 @@
    uma ferramenta do servidor `bi-dados` (hoje: `validar_spec`,
    `estado_do_ciclo`, `checar_contrato`, `ingerir`, `ingerir_texto`, `perfilar`,
    `propor_modelo`, `validar_modelo`, `consultar`, `exportar_cubo`, `propor_estilos`,
-   `aplicar_estilo` e `importar_design`; na próxima fase:
+   `aplicar_estilo`, `importar_design` e `renderizar_dashboard`; na próxima fase:
    achados). Ao mostrar um número, use o texto de `formatado` que a ferramenta devolve.
    Números já escritos na conclusão revisada da análise podem ser repetidos como
    estão, nunca recalculados de cabeça. Se a
@@ -16,7 +16,8 @@
 2. **A spec descreve, não informa.** Ao escrever uma spec de dashboard, ligue
    cada bloco a métricas por id. Textos não levam algarismos: um valor no
    texto entra como marcador `{id_da_metrica}`, e a métrica precisa estar no
-   próprio bloco. Valide sempre com `validar_spec` antes de seguir.
+   próprio bloco; num bloco com dimensão, o marcador mostra o valor da primeira
+   linha (a líder, na ordenação do bloco). Valide sempre antes de seguir.
 3. **A análise vem antes.** O caminho padrão é Planilha → `/analise` do plugin
    `analise-dados` → dashboard → documento de decisão. O atalho sem análise
    existe, mas o dashboard sai com o aviso "sem análise prévia".

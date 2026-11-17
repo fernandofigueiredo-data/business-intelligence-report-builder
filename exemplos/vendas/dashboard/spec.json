@@ -1,0 +1,133 @@
+{
+  "versao_spec": "0.1",
+  "titulo": "Faturamento da rede",
+  "subtitulo": "Pedidos de janeiro a dezembro, por região, loja, canal e categoria",
+  "pergunta_negocio": "Onde está o faturamento da rede e o que muda de uma região, loja ou canal para outro?",
+  "publico": "diretoria comercial",
+  "origem": "planilha_direta",
+  "estilo": {
+    "fonte": "inferido",
+    "tokens": "design/tokens.json",
+    "dominio": "vendas"
+  },
+  "layout": "duas_colunas",
+  "periodo": "tudo",
+  "filtros_globais": [
+    "canal",
+    "regiao"
+  ],
+  "blocos": [
+    {
+      "id": "faturamento",
+      "tipo": "numero_destaque",
+      "titulo": "Faturamento no período",
+      "metricas": [
+        "receita_total"
+      ],
+      "largura": "metade",
+      "achado": "Soma de todos os pedidos dos filtros escolhidos."
+    },
+    {
+      "id": "apoio",
+      "tipo": "faixa_kpis",
+      "titulo": "Pedidos, ticket e desconto",
+      "metricas": [
+        "pedidos",
+        "ticket_medio",
+        "desconto_medio"
+      ],
+      "largura": "metade"
+    },
+    {
+      "id": "ritmo",
+      "tipo": "linha_tempo",
+      "titulo": "Faturamento por dia, mês a mês",
+      "subtitulo": "Por dia, porque os meses têm tamanhos diferentes",
+      "metricas": [
+        "receita_por_dia"
+      ],
+      "dimensoes": [
+        "mes"
+      ],
+      "largura": "inteira"
+    },
+    {
+      "id": "lojas",
+      "tipo": "barras_ranking",
+      "titulo": "Lojas que mais faturam",
+      "metricas": [
+        "receita_total"
+      ],
+      "dimensoes": [
+        "loja"
+      ],
+      "limite_itens": "medio",
+      "largura": "metade",
+      "achado": "A primeira do ranking faturou {receita_total}.",
+      "subtitulo": "Só lojas físicas; site e aplicativo saem do centro de distribuição",
+      "filtros": [
+        {
+          "dimensao": "loja",
+          "operador": "fora_de",
+          "valores": [
+            "Centro de distribuição"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "categorias",
+      "tipo": "rosca",
+      "titulo": "Mix de categorias",
+      "metricas": [
+        "receita_total"
+      ],
+      "dimensoes": [
+        "categoria"
+      ],
+      "largura": "metade"
+    },
+    {
+      "id": "estados",
+      "tipo": "mapa_uf",
+      "titulo": "Faturamento por estado",
+      "subtitulo": "Só lojas físicas têm UF; site e aplicativo saem do centro de distribuição",
+      "metricas": [
+        "receita_total"
+      ],
+      "dimensoes": [
+        "uf"
+      ],
+      "largura": "metade"
+    },
+    {
+      "id": "semana",
+      "tipo": "barras_agrupadas",
+      "titulo": "Pedidos por dia da semana",
+      "metricas": [
+        "pedidos"
+      ],
+      "dimensoes": [
+        "dia_da_semana"
+      ],
+      "ordenacao": "cronologica",
+      "largura": "metade"
+    },
+    {
+      "id": "regioes",
+      "tipo": "tabela",
+      "titulo": "Regiões lado a lado",
+      "metricas": [
+        "receita_total",
+        "participacao_receita",
+        "pedidos",
+        "ticket_medio"
+      ],
+      "dimensoes": [
+        "regiao"
+      ],
+      "largura": "inteira"
+    }
+  ],
+  "notas": "Dados fictícios, gerados para o portfólio. Pedidos sem região aparecem como não informados."
+}

@@ -1,0 +1,29 @@
+{
+  "versao_spec": "0.1",
+  "titulo": "Mídia do último trimestre",
+  "subtitulo": "Busca, social, display e e-mail, comparados com o trimestre anterior",
+  "pergunta_negocio": "Quanto a mídia trouxe de receita no trimestre e quais canais e campanhas pagam o investimento?",
+  "publico": "time de marketing",
+  "origem": "planilha_direta",
+  "estilo": { "fonte": "inferido", "tokens": "design/tokens.json", "dominio": "marketing" },
+  "layout": "duas_colunas",
+  "periodo": "ultimo_trimestre",
+  "filtros_globais": ["canal"],
+  "blocos": [
+    { "id": "receita", "tipo": "numero_destaque", "titulo": "Receita atribuída à mídia",
+      "metricas": ["receita_atribuida"], "comparacao": "periodo_anterior", "largura": "metade" },
+    { "id": "eficiencia", "tipo": "faixa_kpis", "titulo": "Quanto custou cada resultado",
+      "metricas": ["investimento", "custo_por_conversao", "retorno_sobre_investimento"],
+      "comparacao": "periodo_anterior", "largura": "metade" },
+    { "id": "funil", "tipo": "funil", "titulo": "Do anúncio à conversão",
+      "metricas": ["impressoes", "cliques", "conversoes"], "largura": "metade" },
+    { "id": "canais", "tipo": "barras_agrupadas", "titulo": "Investimento e receita por canal",
+      "metricas": ["investimento", "receita_atribuida"], "dimensoes": ["canal"], "largura": "metade" },
+    { "id": "semanas", "tipo": "linha_tempo", "titulo": "Investimento semana a semana",
+      "metricas": ["investimento"], "dimensoes": ["semana"], "largura": "inteira" },
+    { "id": "campanhas", "tipo": "tabela", "titulo": "Campanhas",
+      "metricas": ["investimento", "conversoes", "custo_por_conversao", "retorno_sobre_investimento", "taxa_de_clique"],
+      "dimensoes": ["campanha"], "largura": "inteira" }
+  ],
+  "notas": "Dados fictícios, gerados para o portfólio. Receita atribuída segue a regra de atribuição da plataforma de mídia."
+}

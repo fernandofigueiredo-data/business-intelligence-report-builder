@@ -1,0 +1,18 @@
+# Modelo revisado do exemplo de marketing (dados fictícios em fixtures/marketing.xlsx).
+versao: "0.1"
+fonte:
+  tabela: marketing
+  coluna_data: data
+dimensoes:
+  canal: {coluna: canal, descricao: Canal}
+  campanha: {coluna: campanha, descricao: Campanha}
+  semana: {coluna: data, granularidade: semana, descricao: Semana}
+metricas:
+  investimento: {descricao: Investimento, tipo: soma, coluna: investimento, formato: moeda}
+  receita_atribuida: {descricao: Receita atribuída, tipo: soma, coluna: receita_atribuida, formato: moeda}
+  impressoes: {descricao: Impressões, tipo: soma, coluna: impressoes, formato: inteiro}
+  cliques: {descricao: Cliques, tipo: soma, coluna: cliques, formato: inteiro}
+  conversoes: {descricao: Conversões, tipo: soma, coluna: conversoes, formato: inteiro}
+  taxa_de_clique: {descricao: Taxa de clique, tipo: razao, numerador: cliques, denominador: impressoes, formato: percentual}
+  custo_por_conversao: {descricao: Custo por conversão, tipo: razao, numerador: investimento, denominador: conversoes, formato: moeda, melhor: menor}
+  retorno_sobre_investimento: {descricao: Receita por real investido, tipo: razao, numerador: receita_atribuida, denominador: investimento, formato: decimal, unidade: "×"}

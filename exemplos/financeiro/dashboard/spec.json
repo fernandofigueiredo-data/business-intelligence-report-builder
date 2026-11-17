@@ -1,0 +1,28 @@
+{
+  "versao_spec": "0.1",
+  "titulo": "Resultado do ano",
+  "subtitulo": "Da receita bruta ao resultado, realizado contra orçado e contra o ano anterior",
+  "pergunta_negocio": "O resultado do último ano fechado ficou acima do orçado e do ano anterior, e onde está a diferença?",
+  "publico": "diretoria financeira",
+  "origem": "planilha_direta",
+  "estilo": { "fonte": "inferido", "tokens": "design/tokens.json", "dominio": "financeiro" },
+  "layout": "duas_colunas",
+  "periodo": "ultimo_ano_completo",
+  "filtros_globais": ["centro_custo"],
+  "blocos": [
+    { "id": "resultado", "tipo": "numero_destaque", "titulo": "Resultado realizado",
+      "metricas": ["resultado_realizado"], "comparacao": "mesmo_periodo_ano_anterior", "largura": "metade" },
+    { "id": "apoio", "tipo": "faixa_kpis", "titulo": "Receita e margem",
+      "metricas": ["receita_bruta", "margem", "resultado_orcado"], "comparacao": "mesmo_periodo_ano_anterior", "largura": "metade" },
+    { "id": "cascata", "tipo": "cascata", "titulo": "Da receita ao resultado",
+      "metricas": ["resultado_realizado"], "dimensoes": ["grupo"], "largura": "inteira" },
+    { "id": "orcado", "tipo": "barras_agrupadas", "titulo": "Realizado e orçado por grupo",
+      "metricas": ["resultado_realizado", "resultado_orcado"], "dimensoes": ["grupo"], "largura": "metade" },
+    { "id": "meses", "tipo": "linha_tempo", "titulo": "Resultado mês a mês",
+      "metricas": ["resultado_realizado", "resultado_orcado"], "dimensoes": ["mes"], "largura": "metade" },
+    { "id": "contas", "tipo": "tabela", "titulo": "Contas",
+      "metricas": ["resultado_realizado", "resultado_orcado"], "dimensoes": ["conta"],
+      "ordenacao": "alfabetica", "largura": "inteira" }
+  ],
+  "notas": "Dados fictícios, gerados para o portfólio. Despesas aparecem com sinal negativo."
+}

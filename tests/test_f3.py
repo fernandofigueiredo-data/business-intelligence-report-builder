@@ -131,7 +131,7 @@ class TestDesignEnviado(ProjetoTemp):
         importar(self.p, FIXTURES / "design" / "DESIGN.md")
         css = (self.p / "design" / "tokens.css").read_text(encoding="utf-8")
         for trecho in (":root {", "--primary: #1f6f5c;", "--chart-5:", "prefers-color-scheme: dark",
-                       ':root[data-tema="escuro"]', "--font-sans: 'Source Sans 3'", "--radius: 6px;"):
+                       ':root:not([data-theme="light"])', ':root[data-theme="dark"]', "--font-sans: 'Source Sans 3'", "--radius: 6px;"):
             self.assertIn(trecho, css)
         m = ler_manifesto(self.p)
         self.assertEqual(m["design"]["fonte"], "enviado")

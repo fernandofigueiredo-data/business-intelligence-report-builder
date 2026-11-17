@@ -65,9 +65,10 @@ def estado(projeto: Path) -> dict:
         etapa, proximo = "design", ("Métricas definidas e validadas. Escolha o visual com /bi-html:design "
                                     "(design system próprio ou estilo proposto pelo domínio dos dados).")
     elif not spec:
-        etapa, proximo = "dashboard", "Métricas e design prontos. O dashboard é gerado a partir da fase F4."
+        etapa, proximo = "dashboard", "Métricas e design prontos. Monte o dashboard com /bi-html:dashboard."
     else:
-        etapa, proximo = "bi", "Dashboard especificado. O documento de decisão chega na fase F5."
+        etapa, proximo = "bi", ("Dashboard especificado. Renderize e publique com /bi-html:dashboard; "
+                                "o documento de decisão chega na fase F5.")
 
     return {
         "projeto": str(projeto),

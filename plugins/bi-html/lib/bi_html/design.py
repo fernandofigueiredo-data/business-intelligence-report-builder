@@ -191,11 +191,16 @@ def _vars(paleta: dict, recuo: str = "  ") -> list[str]:
 
 
 def css(tokens: dict) -> str:
-    """CSS com o modo padrão em :root, o outro pela preferência do sistema e os dois forçáveis por data-tema."""
+    """CSS de tokens no contrato de tema dos Artifacts.
+
+    O modo padrão fica em :root; o outro entra pela preferência do sistema, guardado por
+    :root:not([data-theme=...]), e de novo por :root[data-theme=...], para a escolha explícita
+    do leitor vencer nos dois sentidos.
+    """
     t, f = tokens["tipografia"], tokens["forma"]
     padrao = tokens["modo_padrao"]
     outro = "escuro" if padrao == "claro" else "claro"
-    esquema = {"claro": "light", "escuro": "dark"}
+    tema = {"claro": "light", "escuro": "dark"}
     linhas = [f"/* Tokens do bi-html: {tokens['nome']} ({tokens['fonte']}). Gerado; não edite à mão. */",
               ":root {", *_vars(tokens[padrao]),
               f"  --font-sans: '{t['sans']}', {PILHA_SANS};",
@@ -203,13 +208,12 @@ def css(tokens: dict) -> str:
               f"  --font-mono: '{t['mono']}', {PILHA_MONO};",
               f"  --radius: {f['raio']};",
               f"  --border-width: {f['borda']};",
-              f"  color-scheme: {esquema[padrao]};",
+              f"  color-scheme: {tema[padrao]};",
               "}",
-              f"@media (prefers-color-scheme: {esquema[outro]}) {{",
-              f"  :root:not([data-tema=\"{padrao}\"]) {{", *_vars(tokens[outro], "    "),
-              f"    color-scheme: {esquema[outro]};", "  }", "}",
-              f":root[data-tema=\"{outro}\"] {{", *_vars(tokens[outro]), f"  color-scheme: {esquema[outro]};", "}",
-              f":root[data-tema=\"{padrao}\"] {{", *_vars(tokens[padrao]), f"  color-scheme: {esquema[padrao]};", "}"]
+              f"@media (prefers-color-scheme: {tema[outro]}) {{",
+              f"  :root:not([data-theme=\"{tema[padrao]}\"]) {{", *_vars(tokens[outro], "    "),
+              f"    color-scheme: {tema[outro]};", "  }", "}",
+              f":root[data-theme=\"{tema[outro]}\"] {{", *_vars(tokens[outro]), f"  color-scheme: {tema[outro]};", "}"]
     return "\n".join(linhas) + "\n"
 
 

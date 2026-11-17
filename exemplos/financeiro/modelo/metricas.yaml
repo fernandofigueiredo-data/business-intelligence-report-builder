@@ -1,0 +1,37 @@
+# Modelo revisado do exemplo financeiro (dados fictícios em fixtures/financeiro.csv).
+# A coluna valor mistura receitas (positivas) e despesas (negativas) e traz dois cenários;
+# por isso cada métrica fixa o cenário no filtro.
+versao: "0.1"
+fonte:
+  tabela: financeiro
+  coluna_data: competencia
+dimensoes:
+  grupo: {coluna: grupo, descricao: Grupo do resultado}
+  conta: {coluna: conta, descricao: Conta}
+  centro_custo: {coluna: centro_custo, descricao: Centro de custo}
+  mes: {coluna: competencia, granularidade: mes, descricao: Mês}
+metricas:
+  resultado_realizado:
+    descricao: Resultado realizado
+    tipo: soma
+    coluna: valor
+    formato: moeda
+    filtro: [{coluna: cenario, operador: igual, valor: Realizado}]
+  resultado_orcado:
+    descricao: Resultado orçado
+    tipo: soma
+    coluna: valor
+    formato: moeda
+    filtro: [{coluna: cenario, operador: igual, valor: Orçado}]
+  receita_bruta:
+    descricao: Receita bruta realizada
+    tipo: soma
+    coluna: valor
+    formato: moeda
+    filtro: [{coluna: cenario, operador: igual, valor: Realizado}, {coluna: conta, operador: igual, valor: Receita bruta}]
+  margem:
+    descricao: Margem sobre a receita bruta
+    tipo: razao
+    numerador: resultado_realizado
+    denominador: receita_bruta
+    formato: percentual

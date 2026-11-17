@@ -33,7 +33,8 @@ Tipos de métrica:
 - `participacao` (`metrica` dividida pelo total de todas as linhas do resultado);
 - `por_dia` (`metrica` dividida pelos dias entre o primeiro e o último registro do grupo).
 
-Toda métrica aceita `filtro`: lista de condições `{coluna, operador, valor | valores}`
+Toda métrica aceita `melhor: menor` para indicar que cair é bom (custos, prazos): o dashboard
+pinta a variação de verde quando ela cai. Toda métrica aceita `filtro`: lista de condições `{coluna, operador, valor | valores}`
 com operador `igual`, `diferente`, `em`, `fora_de`, `maior`, `menor`, `maior_igual`
 ou `menor_igual`. Não há SQL livre no modelo: colunas são conferidas contra o
 arquivo e valores entram como parâmetros.
@@ -177,6 +178,8 @@ def validar(modelo: dict, colunas: dict[str, str]) -> list[str]:
         if tipo not in TIPOS:
             p.append(f"{lugar}.tipo: {tipo!r} fora das opções: {', '.join(sorted(TIPOS))}")
             continue
+        if m.get("melhor", "maior") not in ("maior", "menor"):
+            p.append(f"{lugar}.melhor: use 'maior' (padrão) ou 'menor', para custos e prazos")
         if m.get("formato") not in FORMATOS:
             p.append(f"{lugar}.formato: {m.get('formato')!r} fora das opções: {', '.join(sorted(FORMATOS))}")
         col = m.get("coluna")
