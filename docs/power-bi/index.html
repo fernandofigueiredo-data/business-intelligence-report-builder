@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Original e convertido</title>
+<style>
+/* Duas telas lado a lado sobre os tokens do projeto; a tabela de visuais embaixo. */
+@import url("tokens.css");
+:root { --gutter: max(16px, env(safe-area-inset-left, 0px)); }
+* { box-sizing: border-box; }
+body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); margin: 0;
+       padding-block: 24px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px));
+       padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header, main, section { max-width: 1680px; margin-inline: auto; }
+h1 { font-family: var(--font-titulo); font-size: 1.6rem; margin: 0 0 4px; text-wrap: balance; }
+.sub { color: var(--muted-foreground); margin: 0 0 16px; }
+.fatos { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; }
+.fatos li { border: var(--border-width) solid var(--border); border-radius: 999px; padding: 4px 12px;
+            font-size: .85rem; font-variant-numeric: tabular-nums; }
+.fatos strong { font-weight: 600; }
+.alerta { color: var(--alerta); margin: -8px 0 20px; font-size: .9rem; }
+.telas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tela { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.tela h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted-foreground); margin: 0; }
+.quadro { border: var(--border-width) solid var(--border); border-radius: var(--radius); background: var(--card);
+          aspect-ratio: 16 / 10; max-width: 100%; overflow: hidden; }
+.quadro iframe { width: 100%; height: 100%; border: 0; display: block; }
+.nota { color: var(--muted-foreground); font-size: .8rem; margin: 0; }
+.vazio { padding: 24px; display: flex; flex-direction: column; gap: 12px; height: 100%; justify-content: center; }
+.vazio-titulo { font-weight: 600; margin: 0; }
+.vazio ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 60ch; }
+code { font-family: var(--font-mono); font-size: .85em; }
+section { margin-top: 32px; }
+section h2 { font-family: var(--font-titulo); font-size: 1.1rem; margin: 0 0 12px; }
+.rolagem { overflow-x: auto; border: var(--border-width) solid var(--border); border-radius: var(--radius); }
+table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: var(--border-width) solid var(--border); vertical-align: top; }
+th { color: var(--muted-foreground); font-weight: 600; background: var(--muted); }
+td.motivo { color: var(--muted-foreground); min-width: 24ch; }
+.st { display: inline-block; border-radius: 999px; padding: 2px 8px; font-size: .75rem; white-space: nowrap;
+      border: var(--border-width) solid currentColor; }
+.st-convertido, .st-filtro_global { color: var(--positivo); }
+.st-parcial { color: var(--alerta); }
+.st-nao_convertido { color: var(--negativo); }
+@media (max-width: 1100px) { .telas { grid-template-columns: 1fr; } .quadro { aspect-ratio: 4 / 5; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Original e convertido</h1>
+  <p class="sub">vendas.pbix: à esquerda o relatório no Power BI, à direita a mesma página recalculada pela camada de métricas do bi-html.</p>
+  <ul class="fatos">
+    <li><strong>2 de 2</strong> tabelas com linhas idênticas</li>
+    <li><strong>11 de 14</strong> medidas traduzidas</li>
+    <li><strong>10 de 11</strong> traduzidas batem com o Power BI</li>
+    <li><strong>9 de 10</strong> visuais com dado convertidos, 0 em parte</li>
+  </ul>
+  <p class="alerta">Não bateram com o Power BI no teste de equivalência e aparecem com “(não validada)”: Receita Site.</p>
+</header>
+<main class="telas">
+  <div class="tela">
+    <h2>No Power BI</h2>
+    <div class="quadro"><div class="vazio">
+  <p class="vazio-titulo">O original entra aqui quando o relatório estiver publicado</p>
+  <ol>
+    <li>Envie o .pbix ao serviço do Power BI (Meu workspace &gt; Carregar).</li>
+    <li>Abra o relatório e use Arquivo &gt; Inserir relatório &gt; Publicar na Web. O administrador do tenant precisa ter habilitado essa opção.</li>
+    <li>Copie o link (app.powerbi.com/view?r=…) e rode <code>/bi-html:comparar &lt;link&gt;</code>.</li>
+  </ol>
+  <p class="nota">Com conta Free, “Publicar na Web” é o único caminho. O link fica público: use dados fictícios ou públicos.</p>
+</div></div>
+    <p class="nota">Ainda sem link: a página mostra o passo a passo.</p>
+  </div>
+  <div class="tela">
+    <h2>No bi-html</h2>
+    <div class="quadro"><iframe title="Página convertida pelo bi-html" src="convertido.html" loading="lazy"></iframe></div>
+    <p class="nota">Medidas sem tradução para a camada de métricas ficam de fora; a tabela abaixo diz o que mudou em cada visual.</p>
+  </div>
+</main>
+<section>
+  <h2>Visual a visual</h2>
+  <div class="rolagem"><table>
+    <thead><tr><th>Página</th><th>Visual</th><th>Tipo no Power BI</th><th>No bi-html</th><th>Motivo</th></tr></thead>
+    <tbody>
+<tr><td>Visão geral</td><td>Faturamento</td><td><code>card</code></td><td><span class="st st-convertido">convertido</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>Pedidos</td><td><code>card</code></td><td><span class="st st-convertido">convertido</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>Ticket médio</td><td><code>card</code></td><td><span class="st st-convertido">convertido</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>(sem título)</td><td><code>slicer</code></td><td><span class="st st-filtro_global">virou filtro</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>Receita por loja</td><td><code>clusteredBarChart</code></td><td><span class="st st-convertido">convertido</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>Receita por canal</td><td><code>donutChart</code></td><td><span class="st st-convertido">convertido</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>Receita por UF</td><td><code>filledMap</code></td><td><span class="st st-convertido">convertido</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>Categorias</td><td><code>tableEx</code></td><td><span class="st st-convertido">convertido</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>Participação por UF</td><td><code>clusteredColumnChart</code></td><td><span class="st st-convertido">convertido</span></td><td class="motivo">—</td></tr>
+<tr><td>Visão geral</td><td>Receita acumulada</td><td><code>lineChart</code></td><td><span class="st st-nao_convertido">não convertido</span></td><td class="motivo">[Receita Acumulada no Ano] não traduzida: usa TOTALYTD, sem equivalente na camada de métricas</td></tr>
+    </tbody>
+  </table></div>
+</section>
+</body>
+</html>

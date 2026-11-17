@@ -1,0 +1,68 @@
+/* Tokens do bi-html: claro (padrao). Gerado; não edite à mão. */
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f1f2;
+  --muted-foreground: #6a6f7b;
+  --border: #dddfe1;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --positivo: #15803d;
+  --negativo: #b91c1c;
+  --alerta: #b45309;
+  --chart-1: #2563eb;
+  --chart-2: #0072b2;
+  --chart-3: #cb8600;
+  --chart-4: #009e73;
+  --chart-5: #cc79a7;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-titulo: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --radius: 10px;
+  --border-width: 1px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0d121b;
+    --foreground: #e5e7eb;
+    --card: #161b24;
+    --card-foreground: #e5e7eb;
+    --muted: #222730;
+    --muted-foreground: #96999f;
+    --border: #333840;
+    --primary: #589cff;
+    --primary-foreground: #0b0b0b;
+    --positivo: #4ade80;
+    --negativo: #f87171;
+    --alerta: #fbbf24;
+    --chart-1: #589cff;
+    --chart-2: #53acf0;
+    --chart-3: #db9500;
+    --chart-4: #3fbe91;
+    --chart-5: #da85b4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --background: #0d121b;
+  --foreground: #e5e7eb;
+  --card: #161b24;
+  --card-foreground: #e5e7eb;
+  --muted: #222730;
+  --muted-foreground: #96999f;
+  --border: #333840;
+  --primary: #589cff;
+  --primary-foreground: #0b0b0b;
+  --positivo: #4ade80;
+  --negativo: #f87171;
+  --alerta: #fbbf24;
+  --chart-1: #589cff;
+  --chart-2: #53acf0;
+  --chart-3: #db9500;
+  --chart-4: #3fbe91;
+  --chart-5: #da85b4;
+  color-scheme: dark;
+}

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Onde está o faturamento</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Onde está o faturamento do ano, por região, mês e canal?">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap">
+<style>
+/* Tokens do bi-html: design-system.md do analise-dados (enviado). Gerado; não edite à mão. */
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f1f2;
+  --muted-foreground: #6a6f7b;
+  --border: #dddfe1;
+  --primary: #0072b2;
+  --primary-foreground: #ffffff;
+  --positivo: #15803d;
+  --negativo: #b91c1c;
+  --alerta: #b45309;
+  --chart-1: #0072b2;
+  --chart-2: #cb8600;
+  --chart-3: #009e73;
+  --chart-4: #cc79a7;
+  --chart-5: #3a9bce;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-titulo: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --radius: 10px;
+  --border-width: 1px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0a131a;
+    --foreground: #e5e7eb;
+    --card: #131c23;
+    --card-foreground: #e5e7eb;
+    --muted: #20282f;
+    --muted-foreground: #959a9f;
+    --border: #30383f;
+    --primary: #53acf0;
+    --primary-foreground: #0b0b0b;
+    --positivo: #4ade80;
+    --negativo: #f87171;
+    --alerta: #fbbf24;
+    --chart-1: #53acf0;
+    --chart-2: #db9500;
+    --chart-3: #3fbe91;
+    --chart-4: #da85b4;
+    --chart-5: #51afe4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --background: #0a131a;
+  --foreground: #e5e7eb;
+  --card: #131c23;
+  --card-foreground: #e5e7eb;
+  --muted: #20282f;
+  --muted-foreground: #959a9f;
+  --border: #30383f;
+  --primary: #53acf0;
+  --primary-foreground: #0b0b0b;
+  --positivo: #4ade80;
+  --negativo: #f87171;
+  --alerta: #fbbf24;
+  --chart-1: #53acf0;
+  --chart-2: #db9500;
+  --chart-3: #3fbe91;
+  --chart-4: #da85b4;
+  --chart-5: #51afe4;
+  color-scheme: dark;
+}
+
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans);
+  font-size: 15px; line-height: 1.55; }
+.folha { max-width: 760px; margin: 0 auto; padding-block: 32px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 18px; }
+.olho { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; color: var(--muted-foreground); letter-spacing: .05em;
+  text-transform: uppercase; align-items: center; }
+.chip { display: inline-flex; padding: 1px 9px; border-radius: 999px; border: var(--border-width) solid var(--border);
+  font-size: 12px; text-transform: none; letter-spacing: 0; }
+.chip.positivo { color: var(--positivo); border-color: currentColor; }
+.chip.alerta { color: var(--alerta); border-color: currentColor; }
+h1 { font-family: var(--font-titulo); font-size: clamp(26px, 4.4vw, 34px); line-height: 1.15; margin: 0; text-wrap: balance; }
+.pergunta { margin: 0; color: var(--muted-foreground); }
+.resposta { margin: 0; font-size: 18px; line-height: 1.5; padding: 14px 16px; background: var(--muted);
+  border-radius: var(--radius); }
+h2 { font-family: var(--font-titulo); font-size: 17px; margin: 8px 0 0; padding-top: 10px; border-top: 1px solid var(--border); }
+.achado { display: flex; flex-direction: column; gap: 4px; break-inside: avoid; }
+.achado h3 { font-size: 15.5px; margin: 0; line-height: 1.35; text-wrap: balance; }
+.achado p, .secao p { margin: 0; }
+ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.ref { display: inline-block; font-family: var(--font-mono); font-size: 11px; padding: 0 5px; border-radius: 4px;
+  background: var(--muted); color: var(--muted-foreground); vertical-align: 1px; white-space: nowrap; }
+.num { font-variant-numeric: tabular-nums; }
+.apendice { font-size: 13px; color: var(--muted-foreground); display: flex; flex-direction: column; gap: 10px; }
+.apendice h2 { color: var(--foreground); }
+.apendice h3 { font-size: 13px; color: var(--foreground); margin: 4px 0 0; }
+.apendice table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.apendice th, .apendice td { text-align: left; padding: 5px 6px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.apendice th { font-weight: 600; color: var(--foreground); }
+.apendice code { font-family: var(--font-mono); font-size: 11.5px; overflow-wrap: anywhere; }
+.tabela-rolagem { overflow-x: auto; }
+.estado-reproduzido { color: var(--positivo); font-weight: 600; }
+.estado-nao_reproduzido { color: var(--negativo); font-weight: 600; }
+@page { size: A4; margin: 14mm 15mm; }
+@media print {
+  :root { color-scheme: light; }
+  body { font-size: 9.4pt; line-height: 1.3; background: #fff; color: #111; }
+  .folha { max-width: none; padding: 0; gap: 5px; }
+  .olho { font-size: 7.5pt; } .chip { font-size: 7.5pt; }
+  h1 { font-size: 16pt; } h2 { font-size: 10.5pt; margin-top: 2px; padding-top: 4px; }
+  .pergunta { font-size: 9.4pt; }
+  .resposta { font-size: 10pt; padding: 5px 8px; }
+  .achado { gap: 1px; } .achado h3 { font-size: 9.8pt; } ul { gap: 1px; padding-left: 16px; }
+  .ref { font-size: 7pt; }
+  .apendice { font-size: 7.6pt; gap: 3px; } .apendice table { font-size: 7.4pt; } .apendice h3 { font-size: 8pt; }
+  .apendice th, .apendice td { padding: 1px 3px; }
+}
+
+</style>
+<article class="folha">
+  <div class="olho"><span>Documento de decisão</span><span class="chip">01/01/2025 a 31/12/2025</span><span class="chip positivo">Análise revisada antes da decisão</span></div>
+  <h1>Onde está o faturamento</h1>
+  <p class="pergunta"><strong>Pergunta:</strong> Onde está o faturamento do ano, por região, mês e canal?</p>
+  <p class="pergunta"><strong>Decisão:</strong> Onde concentrar o esforço comercial no próximo ano.</p>
+  <p class="resposta">O Sudeste é a região que mais fatura, com 39,3% de R$ 25,0 milhões, porque vende mais e não porque vende mais caro. O faturamento por dia salta em novembro e dezembro, mais de 60% acima de outubro, mas com um ano só nos dados não dá para saber se o salto se repete.</p>
+  <h2>Achados</h2>
+  <section class="achado"><h3>O Sudeste lidera pela quantidade de vendas, não pelo valor de cada venda <span class="ref" title="Sudeste lidera faturamento por região do cliente">A6</span> <span class="ref" title="Valor por venda entre os grupos de região do cliente">A8</span> <span class="ref" title="**Onde:** o Sudeste concentra cerca de 39% do faturamento por volume de vendas — o valor de cada venda é parecido em todas as regiões.">C1</span></h3><p>O Sudeste soma R$ 9,8 milhões, 39,3% do faturamento, com 1.933 das 5.000 vendas (38,7%); o Sul, segundo colocado, tem 875 vendas e 17,5% do faturamento <span class="ref" title="Quantos grupos de região do cliente somam oitenta por cento">A7</span>. Nas cinco regiões, o valor por venda fica entre R$ 4.830,31 e R$ 5.230,97, então a diferença de faturamento entre elas vem principalmente do número de vendas.</p></section>
+<section class="achado"><h3>O faturamento por dia sobe ao longo do ano e salta no fim dele <span class="ref" title="Faturamento por dia mês a mês">A10</span> <span class="ref" title="**Quando:** novembro e dezembro faturam por dia mais de 60% acima de outubro. Sem os dados de 2024, não dá para separar fim de ano de crescimento.">C2</span></h3><p>O faturamento por dia passa de R$ 35.747,96 em janeiro para R$ 71.503,46 em outubro e salta em novembro e dezembro, mais de 60% acima de outubro (63,3% e 64,2%, como a análise mostrou e a camada de métricas reproduziu). De novembro para dezembro quase não muda (0,5%). Os dados cobrem só 2025 <span class="ref" title="O que os dados cobrem">A11</span>, então não dá para separar sazonalidade, crescimento ou um evento pontual.</p></section>
+<section class="achado"><h3>A margem bruta é praticamente igual nos três canais <span class="ref" title="Margem entre os grupos de canal de venda">A5</span> <span class="ref" title="**Como:** a margem é a mesma nos três canais (cerca de 36%); escolher canal não muda a rentabilidade.">C3</span></h3><p>A margem sobre o custo do produto fica entre 36,2% e 36,4% nos três canais, e o Online lidera o faturamento com 44,6% <span class="ref" title="Online lidera faturamento por canal de venda">A2</span>. Sem o custo de aquisição por canal, não dá para dizer se algum canal dá mais lucro no fim.</p></section>
+  <h2>O que os dados não permitem afirmar</h2>
+  <div class="secao"><ul><li>Se o salto de fim de ano é sazonal, crescimento ou um evento pontual, como uma promoção: só há um ano de dados.</li><li>Por que o Sudeste vende mais. Os dados não trazem número de lojas, equipe ou investimento por região, então a liderança em vendas não aponta uma causa.</li><li>Qual canal dá mais lucro depois do custo de aquisição. A margem medida é sobre o custo do produto; o custo de mídia e de comissão por canal não está nos dados.</li><li>Se o tamanho do Sudeste é um risco. A participação mede quanto a região fatura, não a volatilidade nem o risco de cada região.</li><li>As vendas sem região entram como &quot;Não informada&quot;, como decidido na análise: estão nos totais, mas fora da comparação entre regiões.</li></ul></div>
+  <h2>Opções de decisão</h2>
+  <div class="secao"><ul><li><strong>Reforçar o Sudeste.</strong> A favor: é a região que mais fatura, com mais que o dobro do faturamento do Sul. Contra: não sabemos quanto retorna cada real de esforço a mais nela. Vale se esse retorno for maior que nas outras regiões. Monitorar as vendas da região mês a mês.</li><li><strong>Crescer fora do Sudeste.</strong> A favor: em média, uma venda nas outras regiões rende parecido com uma no Sudeste, com valor por venda de R$ 4,8 mil a R$ 5,2 mil e margem de 36,3% a 36,5% <span class="ref" title="Valor por venda entre os grupos de região do cliente">A8</span> <span class="ref" title="Margem entre os grupos de região do cliente">A9</span>. Contra: também não sabemos o custo de conquistar vendas nelas. Vale se esse custo for menor que no Sudeste. Monitorar o número de vendas por região depois de cada ação.</li><li><strong>Preparar estoque e equipe para novembro e dezembro.</strong> Faz sentido se o salto for sazonal. Se for crescimento, a capacidade precisa subir no ano todo; se for um evento pontual, sobra estoque. Monitorar o faturamento por dia a partir de outubro e comparar com o ano que terminou.</li></ul></div>
+  <h2>Próximas perguntas</h2>
+  <div class="secao"><ul><li>O salto de novembro e dezembro se repete no ano anterior? Trazer as vendas do ano anterior responde isso.</li><li>Quantas lojas, vendedores e quanto investimento cada região teve, e quanto custou cada venda em cada região? Sem isso, não dá para escolher entre reforçar o Sudeste e crescer fora dele.</li><li>Quanto custa adquirir uma venda em cada canal? Com esse custo, dá para comparar o lucro real entre canais.</li></ul></div>
+  <section class="apendice"><h2>Apêndice de método</h2>
+<p>Fonte: <code>saidas/dados_tratados.parquet</code> · sha256 <code>f977d136375de7f0…</code> · 5.000 registros de 01/01/2025 a 31/12/2025 · achados calculados em 2026-11-17.</p>
+<h3>Como cada métrica citada é calculada</h3><div class="tabela-rolagem"><table><tr><th>Métrica</th><th>Definição</th></tr><tr><td>Faturamento</td><td>soma de faturamento</td></tr><tr><td>Faturamento por dia</td><td>faturamento dividido pelos dias entre o primeiro e o último registro de data do grupo</td></tr><tr><td>Margem</td><td>lucro dividido por faturamento</td></tr><tr><td>Valor por venda</td><td>faturamento dividido por vendas</td></tr><tr><td>Vendas</td><td>quantidade de linhas</td></tr></table></div>
+<h3>Conclusão da análise, reproduzida pela camada de métricas</h3><div class="tabela-rolagem"><table><tr><th>Item</th><th>O que a análise afirmou</th><th>Estado</th><th>Calculado agora</th></tr><tr><td>C1</td><td><strong>Onde:</strong> o Sudeste concentra cerca de 39% do faturamento por volume de vendas — o valor de cada venda é parecido em todas as regiões.</td><td class="estado-reproduzido">reproduzido</td><td class="num">39,3%</td></tr><tr><td>C2</td><td><strong>Quando:</strong> novembro e dezembro faturam por dia mais de 60% acima de outubro. Sem os dados de 2024, não dá para separar fim de ano de crescimento.</td><td class="estado-reproduzido">reproduzido</td><td class="num">63,3%, 64,2%</td></tr><tr><td>C3</td><td><strong>Como:</strong> a margem é a mesma nos três canais (cerca de 36%); escolher canal não muda a rentabilidade.</td><td class="estado-reproduzido">reproduzido</td><td class="num">36,4%, 36,2%, 36,4%</td></tr><tr><td>C4</td><td><strong>Próximo passo:</strong> trazer as vendas de 2024 para medir se o pico de fim de ano se repete.</td><td class="estado-sem_numero">sem número</td><td class="num">—</td></tr></table></div>
+<h3>Qualidade e tratamento dos dados</h3><ul><li>tratamento: 2026-10-18 — 154 vendas sem região mantidas como &quot;Não informada&quot; (apagar tiraria quase 3% do faturamento dos totais).</li><li>tratamento: 2026-10-18 — criadas `faturamento` (quantidade × preço) e `lucro` (quantidade × (preço − custo)).</li></ul>
+<p>Verificação dos números: 26 de 26 números do texto vêm de um valor calculado pela camada de métricas (achados ou conclusão reproduzida).</p></section>
+</article>
+</body>
+</html>

@@ -27,3 +27,6 @@ aceite e decisões).
   e `vendas_directquery.pbix`) são gerados por `fixtures/gerar_pbix.py`.
 - `provas/f7b/` (teste do iframe do Power BI) é gerado por
   `provas/f7b/executar.py`, que consulta o serviço com identificadores fictícios.
+- `docs/` (vitrine) é gerado por `vitrine/construir.py`; não edite à mão.
+  `provas/f10/` é gerado por `provas/f10/registrar.py` a partir do registro da
+  bateria gravado no Artifact do assistente.

@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Resultado do ano</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Da receita bruta ao resultado, realizado contra orçado e contra o ano anterior">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap">
+<style>
+/* Tokens do bi-html: corporativo (inferido). Gerado; não edite à mão. */
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f1f2;
+  --muted-foreground: #6a6f7b;
+  --border: #dddfe1;
+  --primary: #1e3a5f;
+  --primary-foreground: #ffffff;
+  --positivo: #15803d;
+  --negativo: #b91c1c;
+  --alerta: #b45309;
+  --chart-1: #1e3a5f;
+  --chart-2: #0072b2;
+  --chart-3: #cb8600;
+  --chart-4: #009e73;
+  --chart-5: #cc79a7;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-titulo: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --radius: 4px;
+  --border-width: 1px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0c121a;
+    --foreground: #e5e7eb;
+    --card: #151b24;
+    --card-foreground: #e5e7eb;
+    --muted: #212730;
+    --muted-foreground: #96999f;
+    --border: #323840;
+    --primary: #86a7d3;
+    --primary-foreground: #0b0b0b;
+    --positivo: #4ade80;
+    --negativo: #f87171;
+    --alerta: #fbbf24;
+    --chart-1: #86a7d3;
+    --chart-2: #53acf0;
+    --chart-3: #db9500;
+    --chart-4: #3fbe91;
+    --chart-5: #da85b4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --background: #0c121a;
+  --foreground: #e5e7eb;
+  --card: #151b24;
+  --card-foreground: #e5e7eb;
+  --muted: #212730;
+  --muted-foreground: #96999f;
+  --border: #323840;
+  --primary: #86a7d3;
+  --primary-foreground: #0b0b0b;
+  --positivo: #4ade80;
+  --negativo: #f87171;
+  --alerta: #fbbf24;
+  --chart-1: #86a7d3;
+  --chart-2: #53acf0;
+  --chart-3: #db9500;
+  --chart-4: #3fbe91;
+  --chart-5: #da85b4;
+  color-scheme: dark;
+}
+
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans);
+  font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+.pagina { max-width: 1240px; margin: 0 auto; padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 20px; }
+.topo { display: flex; flex-direction: column; gap: 10px; }
+.olho { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted-foreground); }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px;
+  border: var(--border-width) solid var(--border); background: var(--muted); color: var(--muted-foreground);
+  font-size: 12px; letter-spacing: 0; text-transform: none; }
+.chip.alerta { color: var(--alerta); border-color: currentColor; background: transparent; }
+.chip.positivo { color: var(--positivo); border-color: currentColor; background: transparent; }
+h1 { font-family: var(--font-titulo); font-size: clamp(26px, 4vw, 38px); line-height: 1.12; margin: 0;
+  text-wrap: balance; letter-spacing: -.01em; }
+.subtitulo { margin: 0; color: var(--muted-foreground); max-width: 70ch; }
+.pergunta { margin: 0; max-width: 70ch; font-size: 14px; }
+.pergunta b { font-weight: 600; }
+.filtros { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: end; padding: 12px 14px;
+  background: var(--muted); border-radius: var(--radius); }
+.filtros label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted-foreground);
+  min-width: 0; }
+.filtros select { font: inherit; font-size: 14px; color: var(--foreground); background: var(--card);
+  border: var(--border-width) solid var(--border); border-radius: calc(var(--radius) * .7); padding: 6px 30px 6px 10px;
+  max-width: 100%; }
+.filtros select:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.limpar { font: inherit; font-size: 13px; color: var(--primary); background: none; border: 0; padding: 6px 2px;
+  cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.grade { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+.bloco { grid-column: span var(--span, 6); min-width: 0; container-type: inline-size; background: var(--card); color: var(--card-foreground);
+  border: var(--border-width) solid var(--border); border-radius: var(--radius); padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 10px; }
+.bloco[data-largura="um_terco"] { --span: 4; } .bloco[data-largura="metade"] { --span: 6; }
+.bloco[data-largura="dois_tercos"] { --span: 8; } .bloco[data-largura="inteira"] { --span: 12; }
+.bloco h2 { font-family: var(--font-titulo); font-size: 16px; line-height: 1.3; margin: 0; text-wrap: balance; }
+.bloco .sub { margin: -6px 0 0; font-size: 13px; color: var(--muted-foreground); }
+.achado { margin: 0; font-size: 14px; }
+.destaque { display: flex; flex-direction: column; gap: 8px; }
+.valor-grande { font-family: var(--font-titulo); font-size: clamp(22px, 10cqi, 52px); line-height: 1.05; font-weight: 600;
+  font-variant-numeric: tabular-nums; letter-spacing: -.02em; white-space: nowrap; }
+.variacao { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; font-size: 13px; color: var(--muted-foreground); }
+.delta { font-weight: 600; font-variant-numeric: tabular-nums; }
+.delta.sobe { color: var(--positivo); } .delta.desce { color: var(--negativo); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.kpi { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: calc(var(--radius) * .7);
+  background: var(--muted); min-width: 0; container-type: inline-size; }
+.kpi .rotulo { font-size: 12px; color: var(--muted-foreground); }
+.kpi .valor { font-size: clamp(14px, 11cqi, 22px); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.grafico { width: 100%; height: 280px; min-width: 0; }
+.bloco[data-tipo="linha_tempo"] .grafico, .bloco[data-tipo="area_empilhada"] .grafico { height: 300px; }
+.bloco[data-tipo="mapa_calor"] .grafico { height: 320px; }
+.mapa { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.uf { aspect-ratio: 1.15; max-width: 100%; border-radius: 4px; display: flex; flex-direction: column; justify-content: center;
+  align-items: center; font-size: 11px; line-height: 1.15; font-variant-numeric: tabular-nums; min-width: 0; overflow: hidden; }
+.uf b { font-size: 12px; }
+.uf.vazia { background: var(--muted); color: var(--muted-foreground); }
+.legenda { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted-foreground); gap: 8px; }
+.tabela-rolagem { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th { font-weight: 600; color: var(--muted-foreground); font-size: 12px; }
+td.num, th.num { text-align: right; }
+tfoot td { font-weight: 600; border-bottom: 0; }
+details { font-size: 13px; }
+details summary { cursor: pointer; color: var(--muted-foreground); width: fit-content; }
+details[open] summary { margin-bottom: 6px; }
+.definicoes { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.definicoes b { font-weight: 600; }
+.definicoes span { color: var(--muted-foreground); }
+.sem-grafico { font-size: 13px; color: var(--muted-foreground); }
+.rodape { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--border);
+  font-size: 13px; color: var(--muted-foreground); }
+.rodape code { font-family: var(--font-mono); font-size: 12px; overflow-wrap: anywhere; }
+.rodape h2 { font-size: 14px; color: var(--foreground); margin: 0; font-family: var(--font-titulo); }
+@media (max-width: 960px) {
+  .bloco[data-largura="um_terco"] { --span: 6; }
+  .bloco[data-largura="metade"], .bloco[data-largura="dois_tercos"] { --span: 12; }
+}
+@media (max-width: 640px) {
+  .bloco { --span: 12 !important; padding: 14px; }
+  .grafico { height: 240px; }
+  .mapa { gap: 3px; } .uf { font-size: 10px; } .uf b { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+</style>
+<div class="pagina">
+  <header class="topo">
+    <div class="olho"><span>Financeiro</span><span class="chip">01/01/2025 a 31/12/2025</span><span class="chip alerta">Sem análise prévia</span></div>
+    <h1>Resultado do ano</h1>
+    <p class="subtitulo">Da receita bruta ao resultado, realizado contra orçado e contra o ano anterior</p>
+    <p class="pergunta"><b>Pergunta:</b> O resultado do último ano fechado ficou acima do orçado e do ano anterior, e onde está a diferença? <span class="subtitulo">· para diretoria financeira</span></p>
+  </header>
+  <div class="filtros" id="filtros" role="group" aria-label="Filtros"></div>
+  <main class="grade" id="grade"></main>
+  <footer class="rodape">
+    <h2>Sobre os números</h2>
+    <p>Todos os valores vêm da camada de métricas do bi-html, calculados a partir de <code>saidas/bi/tabelas/financeiro.parquet</code> (sha256 <code>d2d67e33ca07</code>…). Cada bloco mostra como a métrica é calculada em "Como calculamos".</p>
+    <p>Dados fictícios, gerados para o portfólio. Despesas aparecem com sinal negativo.</p>
+    
+    <p>Gerado em <span id="gerado-em">2026-11-17</span> pelo bi-html.</p>
+  </footer>
+</div>
+<script type="application/json" id="dados-bi">{"spec":{"versao_spec":"0.1","titulo":"Resultado do ano","subtitulo":"Da receita bruta ao resultado, realizado contra orçado e contra o ano anterior","pergunta_negocio":"O resultado do último ano fechado ficou acima do orçado e do ano anterior, e onde está a diferença?","publico":"diretoria financeira","origem":"planilha_direta","estilo":{"fonte":"inferido","tokens":"design/tokens.json","dominio":"financeiro"},"layout":"duas_colunas","periodo":"ultimo_ano_completo","filtros_globais":["centro_custo"],"notas":"Dados fictícios, gerados para o portfólio. Despesas aparecem com sinal negativo."},"blocos":[{"id":"resultado","tipo":"numero_destaque","titulo":"Resultado realizado","metricas":["resultado_realizado"],"comparacao":"mesmo_periodo_ano_anterior","largura":"metade","dados":{"__todos__":{"linhas":[{"resultado_realizado":2866757.41,"resultado_realizado__comparacao":1326832.16,"resultado_realizado__variacao_pct":1.1606028979580962}],"total":null},"Operações":{"linhas":[{"resultado_realizado":-15063894.38,"resultado_realizado__comparacao":-12898720.75,"resultado_realizado__variacao_pct":-0.1678595631276071}],"total":null},"Administrativo":{"linhas":[{"resultado_realizado":-6833244.92,"resultado_realizado__comparacao":-6413733.4,"resultado_realizado__variacao_pct":-0.06540831896754541}],"total":null},"Comercial":{"linhas":[{"resultado_realizado":24763896.71,"resultado_realizado__comparacao":20639286.31,"resultado_realizado__variacao_pct":0.19984268535494737}],"total":null}},"comparacao_periodo":{"inicio":"01/01/2024","fim":"31/12/2024"},"_largura":"metade"},{"id":"apoio","tipo":"faixa_kpis","titulo":"Receita e margem","metricas":["receita_bruta","margem","resultado_orcado"],"comparacao":"mesmo_periodo_ano_anterior","largura":"metade","dados":{"__todos__":{"linhas":[{"receita_bruta":32667374.63,"receita_bruta__comparacao":27052379.8,"receita_bruta__variacao_pct":0.20756010641252337,"margem":0.08775597801995759,"margem__comparacao":0.04904678145913063,"margem__variacao_pct":0.7892301066295716,"resultado_orcado":2828433.6,"resultado_orcado__comparacao":1678750.0,"resultado_orcado__variacao_pct":0.6848450335070738}],"total":null},"Operações":{"linhas":[{"receita_bruta":null,"receita_bruta__comparacao":null,"receita_bruta__variacao_pct":null,"margem":null,"margem__comparacao":null,"margem__variacao_pct":null,"resultado_orcado":-15272712.0,"resultado_orcado__comparacao":-12626250.0,"resultado_orcado__variacao_pct":-0.2096}],"total":null},"Administrativo":{"linhas":[{"receita_bruta":null,"receita_bruta__comparacao":null,"receita_bruta__variacao_pct":null,"margem":null,"margem__comparacao":null,"margem__variacao_pct":null,"resultado_orcado":-6914773.44,"resultado_orcado__comparacao":-6376150.0,"resultado_orcado__variacao_pct":-0.08447471279690728}],"total":null},"Comercial":{"linhas":[{"receita_bruta":32667374.63,"receita_bruta__comparacao":27052379.8,"receita_bruta__variacao_pct":0.20756010641252337,"margem":0.7580620417307162,"margem__comparacao":0.7629379175727822,"margem__variacao_pct":-0.006390920846584875,"resultado_orcado":25015919.04,"resultado_orcado__comparacao":20681150.0,"resultado_orcado__variacao_pct":0.20959999999999995}],"total":null}},"comparacao_periodo":{"inicio":"01/01/2024","fim":"31/12/2024"},"_largura":"metade"},{"id":"cascata","tipo":"cascata","titulo":"Da receita ao resultado","metricas":["resultado_realizado"],"dimensoes":["grupo"],"largura":"inteira","dados":{"__todos__":{"linhas":[{"grupo":"Receita","resultado_realizado":32667374.63},{"grupo":"Custos","resultado_realizado":-15063894.38},{"grupo":"Despesas operacionais","resultado_realizado":-9272488.36},{"grupo":"Deduções","resultado_realizado":-4719995.94},{"grupo":"Depreciação e amortização","resultado_realizado":-482483.22},{"grupo":"Resultado financeiro","resultado_realizado":-261755.32}],"total":{"grupo":"__todos__","resultado_realizado":2866757.41}},"Operações":{"linhas":[{"grupo":"Custos","resultado_realizado":-15063894.38}],"total":{"grupo":"__todos__","resultado_realizado":-15063894.38}},"Administrativo":{"linhas":[{"grupo":"Despesas operacionais","resultado_realizado":-6089006.38},{"grupo":"Depreciação e amortização","resultado_realizado":-482483.22},{"grupo":"Resultado financeiro","resultado_realizado":-261755.32}],"total":{"grupo":"__todos__","resultado_realizado":-6833244.92}},"Comercial":{"linhas":[{"grupo":"Receita","resultado_realizado":32667374.63},{"grupo":"Deduções","resultado_realizado":-4719995.94},{"grupo":"Despesas operacionais","resultado_realizado":-3183481.98}],"total":{"grupo":"__todos__","resultado_realizado":24763896.71}}},"comparacao_periodo":null,"_largura":"inteira"},{"id":"orcado","tipo":"barras_agrupadas","titulo":"Realizado e orçado por grupo","metricas":["resultado_realizado","resultado_orcado"],"dimensoes":["grupo"],"largura":"metade","dados":{"__todos__":{"linhas":[{"grupo":"Receita","resultado_realizado":32667374.63,"resultado_orcado":32895072.0},{"grupo":"Resultado financeiro","resultado_realizado":-261755.32,"resultado_orcado":-266293.44},{"grupo":"Depreciação e amortização","resultado_realizado":-482483.22,"resultado_orcado":-492480.0},{"grupo":"Deduções","resultado_realizado":-4719995.94,"resultado_orcado":-4699296.0},{"grupo":"Despesas operacionais","resultado_realizado":-9272488.36,"resultado_orcado":-9335856.96},{"grupo":"Custos","resultado_realizado":-15063894.38,"resultado_orcado":-15272712.0}],"total":null},"Operações":{"linhas":[{"grupo":"Custos","resultado_realizado":-15063894.38,"resultado_orcado":-15272712.0}],"total":null},"Administrativo":{"linhas":[{"grupo":"Resultado financeiro","resultado_realizado":-261755.32,"resultado_orcado":-266293.44},{"grupo":"Depreciação e amortização","resultado_realizado":-482483.22,"resultado_orcado":-492480.0},{"grupo":"Despesas operacionais","resultado_realizado":-6089006.38,"resultado_orcado":-6156000.0}],"total":null},"Comercial":{"linhas":[{"grupo":"Receita","resultado_realizado":32667374.63,"resultado_orcado":32895072.0},{"grupo":"Despesas operacionais","resultado_realizado":-3183481.98,"resultado_orcado":-3179856.96},{"grupo":"Deduções","resultado_realizado":-4719995.94,"resultado_orcado":-4699296.0}],"total":null}},"comparacao_periodo":null,"_largura":"metade"},{"id":"meses","tipo":"linha_tempo","titulo":"Resultado mês a mês","metricas":["resultado_realizado","resultado_orcado"],"dimensoes":["mes"],"largura":"metade","dados":{"__todos__":{"linhas":[{"mes":"2025-01","resultado_realizado":268482.14,"resultado_orcado":177768.0},{"mes":"2025-02","resultado_realizado":361836.44,"resultado_orcado":177768.0},{"mes":"2025-03","resultado_realizado":208961.31,"resultado_orcado":177768.0},{"mes":"2025-04","resultado_realizado":102539.62,"resultado_orcado":177768.0},{"mes":"2025-05","resultado_realizado":90352.15,"resultado_orcado":177768.0},{"mes":"2025-06","resultado_realizado":3873.09,"resultado_orcado":177768.0},{"mes":"2025-07","resultado_realizado":49225.72,"resultado_orcado":177768.0},{"mes":"2025-08","resultado_realizado":93752.3,"resultado_orcado":177768.0},{"mes":"2025-09","resultado_realizado":331588.05,"resultado_orcado":177768.0},{"mes":"2025-10","resultado_realizado":187876.45,"resultado_orcado":177768.0},{"mes":"2025-11","resultado_realizado":614952.77,"resultado_orcado":433900.8},{"mes":"2025-12","resultado_realizado":553317.37,"resultado_orcado":616852.8}],"total":null},"Operações":{"linhas":[{"mes":"2025-01","resultado_realizado":-1168465.6,"resultado_orcado":-1179360.0},{"mes":"2025-02","resultado_realizado":-1106554.18,"resultado_orcado":-1179360.0},{"mes":"2025-03","resultado_realizado":-1098916.59,"resultado_orcado":-1179360.0},{"mes":"2025-04","resultado_realizado":-1120894.79,"resultado_orcado":-1179360.0},{"mes":"2025-05","resultado_realizado":-1206689.18,"resultado_orcado":-1179360.0},{"mes":"2025-06","resultado_realizado":-1245895.92,"resultado_orcado":-1179360.0},{"mes":"2025-07","resultado_realizado":-1214658.13,"resultado_orcado":-1179360.0},{"mes":"2025-08","resultado_realizado":-1145885.39,"resultado_orcado":-1179360.0},{"mes":"2025-09","resultado_realizado":-1157062.72,"resultado_orcado":-1179360.0},{"mes":"2025-10","resultado_realizado":-1222861.23,"resultado_orcado":-1179360.0},{"mes":"2025-11","resultado_realizado":-1450869.8,"resultado_orcado":-1592136.0},{"mes":"2025-12","resultado_realizado":-1925140.85,"resultado_orcado":-1886976.0}],"total":null},"Administrativo":{"linhas":[{"mes":"2025-01","resultado_realizado":-564505.86,"resultado_orcado":-574603.2},{"mes":"2025-02","resultado_realizado":-569727.08,"resultado_orcado":-574603.2},{"mes":"2025-03","resultado_realizado":-597298.18,"resultado_orcado":-574603.2},{"mes":"2025-04","resultado_realizado":-551971.38,"resultado_orcado":-574603.2},{"mes":"2025-05","resultado_realizado":-587575.52,"resultado_orcado":-574603.2},{"mes":"2025-06","resultado_realizado":-556898.26,"resultado_orcado":-574603.2},{"mes":"2025-07","resultado_realizado":-560405.43,"resultado_orcado":-574603.2},{"mes":"2025-08","resultado_realizado":-561703.93,"resultado_orcado":-574603.2},{"mes":"2025-09","resultado_realizado":-584924.1,"resultado_orcado":-574603.2},{"mes":"2025-10","resultado_realizado":-576900.61,"resultado_orcado":-574603.2},{"mes":"2025-11","resultado_realizado":-567202.97,"resultado_orcado":-581800.32},{"mes":"2025-12","resultado_realizado":-554131.6,"resultado_orcado":-586941.12}],"total":null},"Comercial":{"linhas":[{"mes":"2025-01","resultado_realizado":2001453.6,"resultado_orcado":1931731.2},{"mes":"2025-02","resultado_realizado":2038117.7,"resultado_orcado":1931731.2},{"mes":"2025-03","resultado_realizado":1905176.08,"resultado_orcado":1931731.2},{"mes":"2025-04","resultado_realizado":1775405.79,"resultado_orcado":1931731.2},{"mes":"2025-05","resultado_realizado":1884616.85,"resultado_orcado":1931731.2},{"mes":"2025-06","resultado_realizado":1806667.27,"resultado_orcado":1931731.2},{"mes":"2025-07","resultado_realizado":1824289.28,"resultado_orcado":1931731.2},{"mes":"2025-08","resultado_realizado":1801341.62,"resultado_orcado":1931731.2},{"mes":"2025-09","resultado_realizado":2073574.87,"resultado_orcado":1931731.2},{"mes":"2025-10","resultado_realizado":1987638.29,"resultado_orcado":1931731.2},{"mes":"2025-11","resultado_realizado":2633025.54,"resultado_orcado":2607837.12},{"mes":"2025-12","resultado_realizado":3032589.82,"resultado_orcado":3090769.92}],"total":null}},"comparacao_periodo":null,"_largura":"metade"},{"id":"contas","tipo":"tabela","titulo":"Contas","metricas":["resultado_realizado","resultado_orcado"],"dimensoes":["conta"],"ordenacao":"alfabetica","largura":"inteira","dados":{"__todos__":{"linhas":[{"conta":"Aluguel e condomínio","resultado_realizado":-1587845.77,"resultado_orcado":-1555200.0},{"conta":"Comissões de venda","resultado_realizado":-994959.55,"resultado_orcado":-986852.16},{"conta":"Custo das mercadorias vendidas","resultado_realizado":-13543784.47,"resultado_orcado":-13784601.6},{"conta":"Depreciação","resultado_realizado":-482483.22,"resultado_orcado":-492480.0},{"conta":"Despesas financeiras","resultado_realizado":-404230.63,"resultado_orcado":-407272.32},{"conta":"Devoluções e cancelamentos","resultado_realizado":-1114326.85,"resultado_orcado":-1096502.4},{"conta":"Frete de entrega","resultado_realizado":-1520109.91,"resultado_orcado":-1488110.4},{"conta":"Impostos sobre vendas","resultado_realizado":-3605669.09,"resultado_orcado":-3602793.6},{"conta":"Marketing e mídia","resultado_realizado":-2188522.43,"resultado_orcado":-2193004.8},{"conta":"Receita bruta","resultado_realizado":32667374.63,"resultado_orcado":32895072.0},{"conta":"Receitas financeiras","resultado_realizado":142475.31,"resultado_orcado":140978.88},{"conta":"Salários e encargos","resultado_realizado":-3929396.15,"resultado_orcado":-4017600.0},{"conta":"Tecnologia","resultado_realizado":-571764.46,"resultado_orcado":-583200.0}],"total":{"conta":"__todos__","resultado_realizado":2866757.41,"resultado_orcado":2828433.6}},"Operações":{"linhas":[{"conta":"Custo das mercadorias vendidas","resultado_realizado":-13543784.47,"resultado_orcado":-13784601.6},{"conta":"Frete de entrega","resultado_realizado":-1520109.91,"resultado_orcado":-1488110.4}],"total":{"conta":"__todos__","resultado_realizado":-15063894.38,"resultado_orcado":-15272712.0}},"Administrativo":{"linhas":[{"conta":"Aluguel e condomínio","resultado_realizado":-1587845.77,"resultado_orcado":-1555200.0},{"conta":"Depreciação","resultado_realizado":-482483.22,"resultado_orcado":-492480.0},{"conta":"Despesas financeiras","resultado_realizado":-404230.63,"resultado_orcado":-407272.32},{"conta":"Receitas financeiras","resultado_realizado":142475.31,"resultado_orcado":140978.88},{"conta":"Salários e encargos","resultado_realizado":-3929396.15,"resultado_orcado":-4017600.0},{"conta":"Tecnologia","resultado_realizado":-571764.46,"resultado_orcado":-583200.0}],"total":{"conta":"__todos__","resultado_realizado":-6833244.92,"resultado_orcado":-6914773.44}},"Comercial":{"linhas":[{"conta":"Comissões de venda","resultado_realizado":-994959.55,"resultado_orcado":-986852.16},{"conta":"Devoluções e cancelamentos","resultado_realizado":-1114326.85,"resultado_orcado":-1096502.4},{"conta":"Impostos sobre vendas","resultado_realizado":-3605669.09,"resultado_orcado":-3602793.6},{"conta":"Marketing e mídia","resultado_realizado":-2188522.43,"resultado_orcado":-2193004.8},{"conta":"Receita bruta","resultado_realizado":32667374.63,"resultado_orcado":32895072.0}],"total":{"conta":"__todos__","resultado_realizado":24763896.71,"resultado_orcado":25015919.04}}},"comparacao_periodo":null,"_largura":"inteira"}],"metricas":{"margem":{"descricao":"Margem sobre a receita bruta","definicao":"resultado_realizado dividido por receita_bruta","formato":"percentual","unidade":null,"melhor":"maior"},"receita_bruta":{"descricao":"Receita bruta realizada","definicao":"soma de valor onde cenario = Realizado e conta = Receita bruta","formato":"moeda","unidade":null,"melhor":"maior"},"resultado_orcado":{"descricao":"Resultado orçado","definicao":"soma de valor onde cenario = Orçado","formato":"moeda","unidade":null,"melhor":"maior"},"resultado_realizado":{"descricao":"Resultado realizado","definicao":"soma de valor onde cenario = Realizado","formato":"moeda","unidade":null,"melhor":"maior"}},"dimensoes":{"mes":{"descricao":"Mês","granularidade":"mes"},"grupo":{"descricao":"Grupo do resultado","granularidade":null},"centro_custo":{"descricao":"Centro de custo","granularidade":null},"conta":{"descricao":"Conta","granularidade":null}},"filtros":[{"dimensao":"centro_custo","rotulo":"Centro de custo","opcoes":["Administrativo","Comercial","Operações"]}],"periodo":{"nome":"ultimo_ano_completo","rotulo":"01/01/2025 a 31/12/2025"},"fonte":{"arquivo":"saidas/bi/tabelas/financeiro.parquet","sha256":"d2d67e33ca070aa25954da50c5d6378d723f74e94ce793500a9936358dd40de3"},"origem":"planilha_direta","gerado_em":"2026-11-17T22:35:53+00:00","avisos":[],"constantes":{"todos":"__todos__","vazio":"(não informado)"}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js"></script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('dados-bi').textContent);
+  const TODOS = D.constantes.todos;
+  const estado = {};
+  D.filtros.forEach(f => { estado[f.dimensao] = TODOS; });
+  const graficos = [];
+  const temEcharts = typeof window.echarts !== 'undefined';
+
+  const moeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+  const inteiro = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
+  const dec2 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const ate2 = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 });
+  const pct1 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const compacto = new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 });
+  const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+  function fmt(v, m) {
+    if (v === null || v === undefined) return '—';
+    const def = D.metricas[m] || {};
+    const u = !def.unidade ? '' : (/^[%×x°]$/.test(def.unidade) ? '' : ' ') + def.unidade;
+    switch (def.formato) {
+      case 'moeda': return moeda.format(v);
+      case 'inteiro': return inteiro.format(v) + u;
+      case 'percentual': return pct1.format(v * 100) + '%';
+      case 'decimal': return dec2.format(v) + u;
+      default: return ate2.format(v) + u;
+    }
+  }
+  function fmtEixo(v, m) {
+    const def = D.metricas[m] || {};
+    if (def.formato === 'percentual') return pct1.format(v * 100) + '%';
+    const t = Math.abs(v) >= 10000 ? compacto.format(v) : ate2.format(v);
+    return def.formato === 'moeda' ? 'R$ ' + t : t;
+  }
+  function rotuloDim(dim, valor) {
+    if (valor === null || valor === undefined) return '—';
+    const g = (D.dimensoes[dim] || {}).granularidade;
+    const s = String(valor);
+    if (g === 'mes' && /^\d{4}-\d{2}$/.test(s)) return MESES[+s.slice(5, 7) - 1] + '/' + s.slice(2, 4);
+    if (g === 'trimestre') return s.replace(/^(\d{4})-T(\d)$/, (_, a, t) => t + 'º tri/' + a.slice(2));
+    if ((g === 'dia' || g === 'semana') && /^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(8, 10) + '/' + s.slice(5, 7) + '/' + s.slice(2, 4);
+    return s;
+  }
+  function cor(nome) { return getComputedStyle(document.documentElement).getPropertyValue('--' + nome).trim(); }
+  function serieCores() { return [1, 2, 3, 4, 5].map(i => cor('chart-' + i)); }
+  function el(tag, attrs, filhos) {
+    const e = document.createElement(tag);
+    Object.entries(attrs || {}).forEach(([k, v]) => {
+      if (k === 'texto') e.textContent = v; else if (k === 'classe') e.className = v; else e.setAttribute(k, v);
+    });
+    (filhos || []).forEach(f => f && e.appendChild(f));
+    return e;
+  }
+  function dadosDo(b) {
+    const dims = b.dimensoes || [];
+    const chave = D.filtros.map(f => dims.includes(f.dimensao) ? TODOS : estado[f.dimensao]).join('|');
+    const base = b.dados[chave] || { linhas: [], total: null };
+    const ativos = D.filtros.filter(f => dims.includes(f.dimensao) && estado[f.dimensao] !== TODOS);
+    if (!ativos.length) return base;
+    return { linhas: base.linhas.filter(l => ativos.every(f => l[f.dimensao] === estado[f.dimensao])), total: null };
+  }
+  function preencher(texto, b, dados) {
+    const ref = dados.linhas[0] || dados.total || {};
+    return texto.replace(/\{([a-z_]+)\}/g, (_, m) => fmt(ref[m], m));
+  }
+  function deltaEl(linha, m, b) {
+    const p = linha[m + '__variacao_pct'];
+    const box = el('div', { classe: 'variacao' });
+    if (p === null || p === undefined) {
+      if (b.comparacao_periodo) box.appendChild(el('span', { texto: 'Sem dados no período de comparação' }));
+      return box;
+    }
+    const sobe = p >= 0;
+    const bom = (D.metricas[m] || {}).melhor === 'menor' ? !sobe : sobe;
+    box.appendChild(el('span', { classe: 'delta ' + (bom ? 'sobe' : 'desce'), texto: (sobe ? '▲ ' : '▼ ') + pct1.format(Math.abs(p) * 100) + '%' }));
+    box.appendChild(el('span', { texto: 'vs. ' + fmt(linha[m + '__comparacao'], m) + ' em ' + b.comparacao_periodo.inicio + ' a ' + b.comparacao_periodo.fim }));
+    return box;
+  }
+  function tabelaNumeros(b, dados) {
+    const dims = b.dimensoes || [];
+    const cab = el('tr', {}, dims.map(d => el('th', { texto: D.dimensoes[d].descricao, scope: 'col' }))
+      .concat(b.metricas.map(m => el('th', { classe: 'num', texto: D.metricas[m].descricao, scope: 'col' }))));
+    const corpo = dados.linhas.map(l => el('tr', {}, dims.map(d => el('td', { texto: rotuloDim(d, l[d]) }))
+      .concat(b.metricas.map(m => el('td', { classe: 'num', texto: fmt(l[m], m) })))));
+    const filhos = [el('thead', {}, [cab]), el('tbody', {}, corpo)];
+    if (dados.total && dims.length) {
+      filhos.push(el('tfoot', {}, [el('tr', {}, [el('td', { texto: 'Total', colspan: String(dims.length) })]
+        .concat(b.metricas.map(m => el('td', { classe: 'num', texto: fmt(dados.total[m], m) }))))]));
+    }
+    return el('div', { classe: 'tabela-rolagem' }, [el('table', {}, filhos)]);
+  }
+  function eixoBase() {
+    return {
+      axisLine: { lineStyle: { color: cor('border') } }, axisTick: { show: false },
+      axisLabel: { color: cor('muted-foreground'), fontFamily: getComputedStyle(document.body).fontFamily, hideOverlap: true },
+      splitLine: { lineStyle: { color: cor('border'), type: 'dashed' } }
+    };
+  }
+  function opcoesBase() {
+    return {
+      color: serieCores(), animation: !matchMedia('(prefers-reduced-motion: reduce)').matches,
+      textStyle: { fontFamily: getComputedStyle(document.body).fontFamily, color: cor('card-foreground') },
+      grid: { left: 8, right: 16, top: 24, bottom: 8, containLabel: true },
+      tooltip: { trigger: 'axis', backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') } },
+      legend: { show: false, textStyle: { color: cor('muted-foreground') }, top: 0 }
+    };
+  }
+  function opcaoGrafico(b, dados) {
+    const o = opcoesBase();
+    const dims = b.dimensoes || [], ms = b.metricas, ls = dados.linhas;
+    const m0 = ms[0];
+    const tt = (params) => {
+      const ps = Array.isArray(params) ? params : [params];
+      return ps.map(p => (p.seriesName && ps.length > 1 ? p.marker + p.seriesName + ': ' : (p.name ? p.name + ': ' : '')) + (p.data && p.data.texto ? p.data.texto : '')).join('<br>');
+    };
+    o.tooltip.formatter = tt;
+    if (b.tipo === 'linha_tempo') {
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: ls.map(l => rotuloDim(dims[0], l[dims[0]])), boundaryGap: false, splitLine: { show: false } });
+      o.yAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      o.series = ms.map((m, i) => ({ type: 'line', name: D.metricas[m].descricao, smooth: true, showSymbol: ls.length < 20, symbolSize: 6,
+        areaStyle: i === 0 ? { opacity: .12 } : undefined, lineStyle: { width: 2.5 },
+        data: ls.map(l => ({ value: l[m], texto: fmt(l[m], m) })) }));
+      o.legend.show = ms.length > 1; if (ms.length > 1) o.grid.top = 36;
+    } else if (b.tipo === 'barras_ranking') {
+      const rev = ls.slice().reverse();
+      o.tooltip.trigger = 'item';
+      o.xAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      o.yAxis = Object.assign(eixoBase(), { type: 'category', data: rev.map(l => rotuloDim(dims[0], l[dims[0]])), splitLine: { show: false } });
+      o.series = [{ type: 'bar', barMaxWidth: 22, data: rev.map((l, i) => ({ value: l[m0], texto: fmt(l[m0], m0),
+        itemStyle: { color: i === rev.length - 1 ? cor('primary') : cor('muted-foreground'), opacity: i === rev.length - 1 ? 1 : .45, borderRadius: [0, 4, 4, 0] } })),
+        label: { show: true, position: 'right', color: cor('card-foreground'), opacity: 1, formatter: p => p.data.texto } }];
+      o.grid.right = 88;
+    } else if (b.tipo === 'barras_agrupadas') {
+      o.tooltip.axisPointer = { type: 'shadow' };
+      const cats = [...new Set(ls.map(l => l[dims[0]]))];
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: cats.map(c => rotuloDim(dims[0], c)), splitLine: { show: false } });
+      o.yAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      if (dims.length === 2) {
+        const grupos = [...new Set(ls.map(l => l[dims[1]]))];
+        o.series = grupos.map(g => ({ type: 'bar', name: rotuloDim(dims[1], g), barMaxWidth: 28,
+          data: cats.map(c => { const l = ls.find(x => x[dims[0]] === c && x[dims[1]] === g); return { value: l ? l[m0] : null, texto: l ? fmt(l[m0], m0) : '—' }; }) }));
+      } else {
+        o.series = ms.map(m => ({ type: 'bar', name: D.metricas[m].descricao, barMaxWidth: 28,
+          data: cats.map(c => { const l = ls.find(x => x[dims[0]] === c); return { value: l ? l[m] : null, texto: l ? fmt(l[m], m) : '—' }; }) }));
+      }
+      o.legend.show = o.series.length > 1; if (o.legend.show) o.grid.top = 36;
+    } else if (b.tipo === 'area_empilhada') {
+      const xs = [...new Set(ls.map(l => l[dims[0]]))], grupos = [...new Set(ls.map(l => l[dims[1]]))];
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: xs.map(x => rotuloDim(dims[0], x)), boundaryGap: false, splitLine: { show: false } });
+      o.yAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      o.series = grupos.map(g => ({ type: 'line', name: rotuloDim(dims[1], g), stack: 'total', areaStyle: { opacity: .55 }, showSymbol: false, smooth: true,
+        data: xs.map(x => { const l = ls.find(y => y[dims[0]] === x && y[dims[1]] === g); return { value: l ? l[m0] : 0, texto: l ? fmt(l[m0], m0) : '—' }; }) }));
+      o.legend.show = true; o.grid.top = 36;
+    } else if (b.tipo === 'rosca') {
+      o.tooltip = { trigger: 'item', backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') },
+        formatter: p => p.name + ': ' + p.data.texto + ' (' + pct1.format(p.percent) + '%)' };
+      o.legend = { show: true, bottom: 0, textStyle: { color: cor('muted-foreground') }, icon: 'circle' };
+      o.series = [{ type: 'pie', radius: ['54%', '78%'], center: ['50%', '44%'], avoidLabelOverlap: true, label: { show: false },
+        itemStyle: { borderColor: cor('card'), borderWidth: 2 },
+        data: ls.map(l => ({ name: rotuloDim(dims[0], l[dims[0]]), value: l[m0], texto: fmt(l[m0], m0) })) }];
+      if (dados.total) o.graphic = [{ type: 'text', left: 'center', top: '38%', style: { text: fmt(dados.total[m0], m0), fill: cor('card-foreground'), fontSize: 15, fontWeight: 600, align: 'center' } }];
+    } else if (b.tipo === 'cascata') {
+      let acumulado = 0; const base = [], valor = [], nomes = [];
+      ls.forEach(l => { const v = l[m0] || 0; nomes.push(rotuloDim(dims[0], l[dims[0]]));
+        base.push(v >= 0 ? acumulado : acumulado + v); valor.push({ value: Math.abs(v), texto: fmt(v, m0), itemStyle: { color: v >= 0 ? cor('positivo') : cor('negativo') } }); acumulado += v; });
+      if (dados.total) { nomes.push('Resultado'); base.push(Math.min(0, dados.total[m0])); valor.push({ value: Math.abs(dados.total[m0]), texto: fmt(dados.total[m0], m0), itemStyle: { color: cor('primary') } }); }
+      o.tooltip = { trigger: 'axis', axisPointer: { type: 'shadow' }, backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') },
+        formatter: ps => { const p = ps.find(x => x.seriesIndex === 1); return p.name + ': ' + p.data.texto; } };
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: nomes, splitLine: { show: false }, axisLabel: Object.assign(eixoBase().axisLabel, { interval: 0, rotate: nomes.length > 5 ? 30 : 0 }) });
+      o.yAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      o.series = [{ type: 'bar', stack: 'c', itemStyle: { color: 'transparent' }, emphasis: { disabled: true }, data: base },
+                  { type: 'bar', stack: 'c', barMaxWidth: 40, data: valor }];
+    } else if (b.tipo === 'funil') {
+      const linha = ls[0] || {};
+      o.tooltip = { trigger: 'item', backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') }, formatter: p => p.name + ': ' + p.data.texto };
+      o.series = [{ type: 'funnel', left: '8%', right: '8%', top: 8, bottom: 8, sort: 'none', gap: 3, minSize: '18%',
+        label: { position: 'inside', color: cor('primary-foreground'), formatter: p => p.name + '\n' + p.data.texto },
+        data: ms.map((m, i) => ({ name: D.metricas[m].descricao, value: linha[m], texto: fmt(linha[m], m),
+          itemStyle: { color: cor('primary'), opacity: 1 - i * (0.5 / ms.length) } })) }];
+    } else if (b.tipo === 'mapa_calor') {
+      const xs = [...new Set(ls.map(l => l[dims[0]]))], ys = [...new Set(ls.map(l => l[dims[1]]))];
+      const vals = ls.map(l => l[m0]).filter(v => v !== null);
+      o.tooltip = { trigger: 'item', backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') }, formatter: p => p.data.texto };
+      o.grid.bottom = 48;
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: xs.map(x => rotuloDim(dims[0], x)), splitArea: { show: false } });
+      o.yAxis = Object.assign(eixoBase(), { type: 'category', data: ys.map(y => rotuloDim(dims[1], y)) });
+      o.visualMap = { min: Math.min(...vals), max: Math.max(...vals), calculable: false, orient: 'horizontal', left: 'center', bottom: 0,
+        inRange: { color: [cor('muted'), cor('primary')] }, textStyle: { color: cor('muted-foreground') }, formatter: v => fmtEixo(v, m0) };
+      o.series = [{ type: 'heatmap', data: ls.map(l => ({ value: [xs.indexOf(l[dims[0]]), ys.indexOf(l[dims[1]]), l[m0]], texto: rotuloDim(dims[0], l[dims[0]]) + ' · ' + rotuloDim(dims[1], l[dims[1]]) + ': ' + fmt(l[m0], m0) })) }];
+    }
+    return o;
+  }
+  const GRADE_UF = { RR: [0, 3], AP: [0, 5], AM: [1, 1], PA: [1, 3], MA: [1, 4], CE: [1, 5], RN: [1, 6], AC: [2, 0], RO: [2, 1],
+    TO: [2, 3], PI: [2, 4], PE: [2, 5], PB: [2, 6], MT: [3, 2], GO: [3, 3], DF: [3, 4], BA: [3, 5], AL: [3, 6], MS: [4, 2],
+    MG: [4, 4], ES: [4, 5], SE: [4, 6], SP: [5, 3], RJ: [5, 4], PR: [6, 3], SC: [7, 3], RS: [8, 3] };
+  function mapaUF(b, dados) {
+    const dim = b.dimensoes[0], m0 = b.metricas[0];
+    const por = {}; dados.linhas.forEach(l => { por[l[dim]] = l; });
+    const vals = dados.linhas.map(l => l[m0]).filter(v => v !== null);
+    const max = Math.max(...vals, 0), min = Math.min(...vals, max);
+    const grade = el('div', { classe: 'mapa', role: 'img', 'aria-label': 'Mapa do Brasil por UF: ' + b.titulo });
+    for (let r = 0; r < 9; r++) for (let c = 0; c < 7; c++) {
+      const uf = Object.keys(GRADE_UF).find(k => GRADE_UF[k][0] === r && GRADE_UF[k][1] === c);
+      if (!uf) { grade.appendChild(el('div')); continue; }
+      const l = por[uf];
+      const cel = el('div', { classe: 'uf' + (l ? '' : ' vazia'), title: uf + (l ? ': ' + fmt(l[m0], m0) : ': sem dados') },
+        [el('b', { texto: uf }), l ? el('span', { texto: fmtEixo(l[m0], m0) }) : null]);
+      if (l) {
+        const t = max > min ? (l[m0] - min) / (max - min) : 1;
+        cel.style.background = 'color-mix(in srgb, var(--primary) ' + Math.round(18 + t * 82) + '%, var(--card))';
+        cel.style.color = t > 0.45 ? 'var(--primary-foreground)' : 'var(--card-foreground)';
+      }
+      grade.appendChild(cel);
+    }
+    const leg = el('div', { classe: 'legenda' }, [el('span', { texto: 'menor: ' + fmt(min, m0) }), el('span', { texto: 'maior: ' + fmt(max, m0) })]);
+    return el('div', {}, [grade, leg]);
+  }
+  function definicoes(b) {
+    return el('details', {}, [el('summary', { texto: 'Como calculamos' }), el('ul', { classe: 'definicoes' },
+      b.metricas.map(m => el('li', {}, [el('b', { texto: D.metricas[m].descricao + ': ' }), el('span', { texto: D.metricas[m].definicao })])))]);
+  }
+  const COMGRAFICO = ['linha_tempo', 'barras_ranking', 'barras_agrupadas', 'area_empilhada', 'rosca', 'cascata', 'funil', 'mapa_calor'];
+  function desenharBloco(b) {
+    const dados = dadosDo(b);
+    const corpo = b._corpo; corpo.replaceChildren();
+    if (!dados.linhas.length && !dados.total) {
+      if (b._achado) b._achado.hidden = true;
+      corpo.appendChild(el('p', { classe: 'sem-grafico', texto: 'Nenhum dado com estes filtros. Mude ou limpe os filtros acima.' }));
+      return;
+    }
+    if (b._achado) { b._achado.hidden = false; b._achado.textContent = preencher(b.achado || '', b, dados); }
+    if (b._titulo) b._titulo.textContent = preencher(b.titulo, b, dados);
+    if (b.tipo === 'numero_destaque') {
+      const l = dados.linhas[0] || {}, m = b.metricas[0];
+      corpo.appendChild(el('div', { classe: 'destaque' }, [el('div', { classe: 'valor-grande', texto: fmt(l[m], m) }), b.comparacao_periodo ? deltaEl(l, m, b) : null]));
+    } else if (b.tipo === 'faixa_kpis') {
+      const l = dados.linhas[0] || {};
+      corpo.appendChild(el('div', { classe: 'kpis' }, b.metricas.map(m => el('div', { classe: 'kpi' },
+        [el('span', { classe: 'rotulo', texto: D.metricas[m].descricao }), el('span', { classe: 'valor', texto: fmt(l[m], m) }), b.comparacao_periodo ? deltaEl(l, m, b) : null]))));
+    } else if (b.tipo === 'tabela') {
+      corpo.appendChild(tabelaNumeros(b, dados));
+    } else if (b.tipo === 'mapa_uf') {
+      corpo.appendChild(mapaUF(b, dados));
+      corpo.appendChild(el('details', {}, [el('summary', { texto: 'Ver os números' }), tabelaNumeros(b, dados)]));
+    } else if (COMGRAFICO.includes(b.tipo)) {
+      const alvo = el('div', { classe: 'grafico', role: 'img', 'aria-label': b.titulo });
+      corpo.appendChild(alvo);
+      const numeros = el('details', {}, [el('summary', { texto: 'Ver os números' }), tabelaNumeros(b, dados)]);
+      corpo.appendChild(numeros);
+      if (temEcharts) {
+        const g = echarts.init(alvo, null, { renderer: 'svg' });
+        g.setOption(opcaoGrafico(b, dados));
+        graficos.push(g);
+      } else {
+        alvo.replaceWith(el('p', { classe: 'sem-grafico', texto: 'O gráfico precisa de internet para carregar. Os números estão na tabela abaixo.' }));
+        numeros.open = true;
+      }
+    }
+  }
+  function desenharTudo() {
+    graficos.splice(0).forEach(g => g.dispose());
+    D.blocos.forEach(desenharBloco);
+  }
+  function montar() {
+    const grade = document.getElementById('grade');
+    D.blocos.forEach(b => {
+      const sec = el('section', { classe: 'bloco', 'data-tipo': b.tipo, 'data-largura': b._largura, 'aria-labelledby': 'tit-' + b.id });
+      b._titulo = el('h2', { id: 'tit-' + b.id });
+      sec.appendChild(b._titulo);
+      if (b.subtitulo) sec.appendChild(el('p', { classe: 'sub', texto: b.subtitulo }));
+      if (b.achado) { b._achado = el('p', { classe: 'achado' }); sec.appendChild(b._achado); }
+      b._corpo = el('div', { classe: 'corpo' });
+      sec.appendChild(b._corpo);
+      sec.appendChild(definicoes(b));
+      grade.appendChild(sec);
+    });
+    const caixa = document.getElementById('filtros');
+    if (!D.filtros.length) { caixa.hidden = true; } else {
+      D.filtros.forEach(f => {
+        const sel = el('select', { id: 'filtro-' + f.dimensao }, [el('option', { value: TODOS, texto: 'Todos' })]
+          .concat(f.opcoes.map(v => el('option', { value: v, texto: rotuloDim(f.dimensao, v) }))));
+        sel.addEventListener('change', () => { estado[f.dimensao] = sel.value; desenharTudo(); });
+        caixa.appendChild(el('label', { for: 'filtro-' + f.dimensao }, [document.createTextNode(f.rotulo), sel]));
+      });
+      const limpar = el('button', { classe: 'limpar', type: 'button', texto: 'Limpar filtros' });
+      limpar.addEventListener('click', () => { D.filtros.forEach(f => { estado[f.dimensao] = TODOS; document.getElementById('filtro-' + f.dimensao).value = TODOS; }); desenharTudo(); });
+      caixa.appendChild(limpar);
+    }
+    desenharTudo();
+    let espera;
+    window.addEventListener('resize', () => { clearTimeout(espera); espera = setTimeout(() => graficos.forEach(g => g.resize()), 120); });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', desenharTudo);
+    new MutationObserver(desenharTudo).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+  montar();
+})();
+</script>
+</body>
+</html>

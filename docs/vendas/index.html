@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Faturamento da rede</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Pedidos de janeiro a dezembro, por região, loja, canal e categoria">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap">
+<style>
+/* Tokens do bi-html: claro com acento verde-azulado (inferido). Gerado; não edite à mão. */
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f1f2;
+  --muted-foreground: #6a6f7b;
+  --border: #dddfe1;
+  --primary: #0f766e;
+  --primary-foreground: #ffffff;
+  --positivo: #15803d;
+  --negativo: #b91c1c;
+  --alerta: #b45309;
+  --chart-1: #0f766e;
+  --chart-2: #0072b2;
+  --chart-3: #cb8600;
+  --chart-4: #009e73;
+  --chart-5: #cc79a7;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-titulo: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --radius: 10px;
+  --border-width: 1px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #071413;
+    --foreground: #e5e7eb;
+    --card: #0f1e1c;
+    --card-foreground: #e5e7eb;
+    --muted: #1c2a28;
+    --muted-foreground: #949b9c;
+    --border: #2d3a39;
+    --primary: #5fb6ad;
+    --primary-foreground: #0b0b0b;
+    --positivo: #4ade80;
+    --negativo: #f87171;
+    --alerta: #fbbf24;
+    --chart-1: #5fb6ad;
+    --chart-2: #53acf0;
+    --chart-3: #db9500;
+    --chart-4: #3fbe91;
+    --chart-5: #da85b4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --background: #071413;
+  --foreground: #e5e7eb;
+  --card: #0f1e1c;
+  --card-foreground: #e5e7eb;
+  --muted: #1c2a28;
+  --muted-foreground: #949b9c;
+  --border: #2d3a39;
+  --primary: #5fb6ad;
+  --primary-foreground: #0b0b0b;
+  --positivo: #4ade80;
+  --negativo: #f87171;
+  --alerta: #fbbf24;
+  --chart-1: #5fb6ad;
+  --chart-2: #53acf0;
+  --chart-3: #db9500;
+  --chart-4: #3fbe91;
+  --chart-5: #da85b4;
+  color-scheme: dark;
+}
+
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans);
+  font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+.pagina { max-width: 1240px; margin: 0 auto; padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 20px; }
+.topo { display: flex; flex-direction: column; gap: 10px; }
+.olho { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted-foreground); }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px;
+  border: var(--border-width) solid var(--border); background: var(--muted); color: var(--muted-foreground);
+  font-size: 12px; letter-spacing: 0; text-transform: none; }
+.chip.alerta { color: var(--alerta); border-color: currentColor; background: transparent; }
+.chip.positivo { color: var(--positivo); border-color: currentColor; background: transparent; }
+h1 { font-family: var(--font-titulo); font-size: clamp(26px, 4vw, 38px); line-height: 1.12; margin: 0;
+  text-wrap: balance; letter-spacing: -.01em; }
+.subtitulo { margin: 0; color: var(--muted-foreground); max-width: 70ch; }
+.pergunta { margin: 0; max-width: 70ch; font-size: 14px; }
+.pergunta b { font-weight: 600; }
+.filtros { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: end; padding: 12px 14px;
+  background: var(--muted); border-radius: var(--radius); }
+.filtros label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted-foreground);
+  min-width: 0; }
+.filtros select { font: inherit; font-size: 14px; color: var(--foreground); background: var(--card);
+  border: var(--border-width) solid var(--border); border-radius: calc(var(--radius) * .7); padding: 6px 30px 6px 10px;
+  max-width: 100%; }
+.filtros select:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.limpar { font: inherit; font-size: 13px; color: var(--primary); background: none; border: 0; padding: 6px 2px;
+  cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.grade { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+.bloco { grid-column: span var(--span, 6); min-width: 0; container-type: inline-size; background: var(--card); color: var(--card-foreground);
+  border: var(--border-width) solid var(--border); border-radius: var(--radius); padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 10px; }
+.bloco[data-largura="um_terco"] { --span: 4; } .bloco[data-largura="metade"] { --span: 6; }
+.bloco[data-largura="dois_tercos"] { --span: 8; } .bloco[data-largura="inteira"] { --span: 12; }
+.bloco h2 { font-family: var(--font-titulo); font-size: 16px; line-height: 1.3; margin: 0; text-wrap: balance; }
+.bloco .sub { margin: -6px 0 0; font-size: 13px; color: var(--muted-foreground); }
+.achado { margin: 0; font-size: 14px; }
+.destaque { display: flex; flex-direction: column; gap: 8px; }
+.valor-grande { font-family: var(--font-titulo); font-size: clamp(22px, 10cqi, 52px); line-height: 1.05; font-weight: 600;
+  font-variant-numeric: tabular-nums; letter-spacing: -.02em; white-space: nowrap; }
+.variacao { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; font-size: 13px; color: var(--muted-foreground); }
+.delta { font-weight: 600; font-variant-numeric: tabular-nums; }
+.delta.sobe { color: var(--positivo); } .delta.desce { color: var(--negativo); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.kpi { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: calc(var(--radius) * .7);
+  background: var(--muted); min-width: 0; container-type: inline-size; }
+.kpi .rotulo { font-size: 12px; color: var(--muted-foreground); }
+.kpi .valor { font-size: clamp(14px, 11cqi, 22px); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.grafico { width: 100%; height: 280px; min-width: 0; }
+.bloco[data-tipo="linha_tempo"] .grafico, .bloco[data-tipo="area_empilhada"] .grafico { height: 300px; }
+.bloco[data-tipo="mapa_calor"] .grafico { height: 320px; }
+.mapa { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.uf { aspect-ratio: 1.15; max-width: 100%; border-radius: 4px; display: flex; flex-direction: column; justify-content: center;
+  align-items: center; font-size: 11px; line-height: 1.15; font-variant-numeric: tabular-nums; min-width: 0; overflow: hidden; }
+.uf b { font-size: 12px; }
+.uf.vazia { background: var(--muted); color: var(--muted-foreground); }
+.legenda { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted-foreground); gap: 8px; }
+.tabela-rolagem { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th { font-weight: 600; color: var(--muted-foreground); font-size: 12px; }
+td.num, th.num { text-align: right; }
+tfoot td { font-weight: 600; border-bottom: 0; }
+details { font-size: 13px; }
+details summary { cursor: pointer; color: var(--muted-foreground); width: fit-content; }
+details[open] summary { margin-bottom: 6px; }
+.definicoes { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.definicoes b { font-weight: 600; }
+.definicoes span { color: var(--muted-foreground); }
+.sem-grafico { font-size: 13px; color: var(--muted-foreground); }
+.rodape { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--border);
+  font-size: 13px; color: var(--muted-foreground); }
+.rodape code { font-family: var(--font-mono); font-size: 12px; overflow-wrap: anywhere; }
+.rodape h2 { font-size: 14px; color: var(--foreground); margin: 0; font-family: var(--font-titulo); }
+@media (max-width: 960px) {
+  .bloco[data-largura="um_terco"] { --span: 6; }
+  .bloco[data-largura="metade"], .bloco[data-largura="dois_tercos"] { --span: 12; }
+}
+@media (max-width: 640px) {
+  .bloco { --span: 12 !important; padding: 14px; }
+  .grafico { height: 240px; }
+  .mapa { gap: 3px; } .uf { font-size: 10px; } .uf b { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+</style>
+<div class="pagina">
+  <header class="topo">
+    <div class="olho"><span>Vendas</span><span class="chip">01/01/2025 a 31/12/2025</span><span class="chip alerta">Sem análise prévia</span></div>
+    <h1>Faturamento da rede</h1>
+    <p class="subtitulo">Pedidos de janeiro a dezembro, por região, loja, canal e categoria</p>
+    <p class="pergunta"><b>Pergunta:</b> Onde está o faturamento da rede e o que muda de uma região, loja ou canal para outro? <span class="subtitulo">· para diretoria comercial</span></p>
+  </header>
+  <div class="filtros" id="filtros" role="group" aria-label="Filtros"></div>
+  <main class="grade" id="grade"></main>
+  <footer class="rodape">
+    <h2>Sobre os números</h2>
+    <p>Todos os valores vêm da camada de métricas do bi-html, calculados a partir de <code>saidas/bi/tabelas/vendas.parquet</code> (sha256 <code>48a81d49d1b4</code>…). Cada bloco mostra como a métrica é calculada em "Como calculamos".</p>
+    <p>Dados fictícios, gerados para o portfólio. Pedidos sem região aparecem como não informados.</p>
+    
+    <p>Gerado em <span id="gerado-em">2026-11-17</span> pelo bi-html.</p>
+  </footer>
+</div>
+<script type="application/json" id="dados-bi">{"spec":{"versao_spec":"0.1","titulo":"Faturamento da rede","subtitulo":"Pedidos de janeiro a dezembro, por região, loja, canal e categoria","pergunta_negocio":"Onde está o faturamento da rede e o que muda de uma região, loja ou canal para outro?","publico":"diretoria comercial","origem":"planilha_direta","estilo":{"fonte":"inferido","tokens":"design/tokens.json","dominio":"vendas"},"layout":"duas_colunas","periodo":"tudo","filtros_globais":["canal","regiao"],"notas":"Dados fictícios, gerados para o portfólio. Pedidos sem região aparecem como não informados."},"blocos":[{"id":"faturamento","tipo":"numero_destaque","titulo":"Faturamento no período","metricas":["receita_total"],"largura":"metade","achado":"Soma de todos os pedidos dos filtros escolhidos.","dados":{"Loja física|Centro-Oeste":{"linhas":[{"receita_total":244112.3}],"total":null},"Loja física|Norte":{"linhas":[{"receita_total":149784.07}],"total":null},"__todos__|Nordeste":{"linhas":[{"receita_total":701453.87}],"total":null},"Loja física|__todos__":{"linhas":[{"receita_total":2255467.59}],"total":null},"Site|Nordeste":{"linhas":[{"receita_total":212737.55}],"total":null},"Site|Norte":{"linhas":[{"receita_total":74679.83}],"total":null},"__todos__|__todos__":{"linhas":[{"receita_total":4076230.52}],"total":null},"App|Nordeste":{"linhas":[{"receita_total":103499.14}],"total":null},"Site|(não informado)":{"linhas":[{"receita_total":11321.63}],"total":null},"__todos__|Norte":{"linhas":[{"receita_total":269179.61}],"total":null},"Site|Sudeste":{"linhas":[{"receita_total":564090.94}],"total":null},"__todos__|Sudeste":{"linhas":[{"receita_total":1890544.57}],"total":null},"App|(não informado)":{"linhas":[{"receita_total":4926.53}],"total":null},"__todos__|Sul":{"linhas":[{"receita_total":722466.81}],"total":null},"__todos__|Centro-Oeste":{"linhas":[{"receita_total":453009.2}],"total":null},"Loja física|(não informado)":{"linhas":[{"receita_total":23328.3}],"total":null},"Site|Centro-Oeste":{"linhas":[{"receita_total":136132.65}],"total":null},"App|__todos__":{"linhas":[{"receita_total":609748.29}],"total":null},"Loja física|Sul":{"linhas":[{"receita_total":400979.73}],"total":null},"App|Sudeste":{"linhas":[{"receita_total":274407.62}],"total":null},"App|Norte":{"linhas":[{"receita_total":44715.71}],"total":null},"App|Sul":{"linhas":[{"receita_total":109435.04}],"total":null},"Loja física|Sudeste":{"linhas":[{"receita_total":1052046.01}],"total":null},"Site|Sul":{"linhas":[{"receita_total":212052.04}],"total":null},"Site|__todos__":{"linhas":[{"receita_total":1211014.64}],"total":null},"App|Centro-Oeste":{"linhas":[{"receita_total":72764.25}],"total":null},"Loja física|Nordeste":{"linhas":[{"receita_total":385217.18}],"total":null},"__todos__|(não informado)":{"linhas":[{"receita_total":39576.46}],"total":null}},"comparacao_periodo":null,"_largura":"metade"},{"id":"apoio","tipo":"faixa_kpis","titulo":"Pedidos, ticket e desconto","metricas":["pedidos","ticket_medio","desconto_medio"],"largura":"metade","dados":{"Loja física|Centro-Oeste":{"linhas":[{"pedidos":988,"ticket_medio":247.07722672064776,"desconto_medio":4.473684210526316}],"total":null},"Loja física|Norte":{"linhas":[{"pedidos":606,"ticket_medio":247.16843234323434,"desconto_medio":4.7772277227722775}],"total":null},"__todos__|Nordeste":{"linhas":[{"pedidos":2742,"ticket_medio":255.81833333333333,"desconto_medio":4.387308533916849}],"total":null},"Loja física|__todos__":{"linhas":[{"pedidos":9019,"ticket_medio":250.07956425324315,"desconto_medio":4.551502383856303}],"total":null},"Site|Nordeste":{"linhas":[{"pedidos":827,"ticket_medio":257.240084643289,"desconto_medio":4.292623941958888}],"total":null},"Site|Norte":{"linhas":[{"pedidos":316,"ticket_medio":236.3285759493671,"desconto_medio":4.699367088607595}],"total":null},"__todos__|__todos__":{"linhas":[{"pedidos":16254,"ticket_medio":250.78322382182847,"desconto_medio":4.524424756982897}],"total":null},"App|Nordeste":{"linhas":[{"pedidos":402,"ticket_medio":257.4605472636816,"desconto_medio":4.564676616915423}],"total":null},"Site|(não informado)":{"linhas":[{"pedidos":46,"ticket_medio":246.12239130434781,"desconto_medio":4.021739130434782}],"total":null},"__todos__|Norte":{"linhas":[{"pedidos":1095,"ticket_medio":245.82612785388127,"desconto_medio":4.607305936073059}],"total":null},"App|Centro-Oeste":{"linhas":[{"pedidos":284,"ticket_medio":256.21214788732397,"desconto_medio":4.242957746478873}],"total":null},"App|(não informado)":{"linhas":[{"pedidos":23,"ticket_medio":214.1969565217391,"desconto_medio":4.3478260869565215}],"total":null},"__todos__|Sudeste":{"linhas":[{"pedidos":7562,"ticket_medio":250.00589394340122,"desconto_medio":4.563607511240413}],"total":null},"Site|Sudeste":{"linhas":[{"pedidos":2255,"ticket_medio":250.15119290465628,"desconto_medio":4.587583148558759}],"total":null},"__todos__|Sul":{"linhas":[{"pedidos":2871,"ticket_medio":251.64291536050158,"desconto_medio":4.548937652385928}],"total":null},"__todos__|Centro-Oeste":{"linhas":[{"pedidos":1822,"ticket_medio":248.63293084522505,"desconto_medio":4.451152579582876}],"total":null},"Loja física|(não informado)":{"linhas":[{"pedidos":93,"ticket_medio":250.84193548387097,"desconto_medio":5.376344086021505}],"total":null},"App|__todos__":{"linhas":[{"pedidos":2414,"ticket_medio":252.58835542667774,"desconto_medio":4.513256006628003}],"total":null},"Loja física|Sul":{"linhas":[{"pedidos":1604,"ticket_medio":249.98736284289276,"desconto_medio":4.613466334164588}],"total":null},"App|Sudeste":{"linhas":[{"pedidos":1092,"ticket_medio":251.2890293040293,"desconto_medio":4.555860805860806}],"total":null},"App|Sul":{"linhas":[{"pedidos":440,"ticket_medio":248.71599999999998,"desconto_medio":4.806818181818182}],"total":null},"App|Norte":{"linhas":[{"pedidos":173,"ticket_medio":258.47231213872834,"desconto_medio":3.8439306358381504}],"total":null},"Loja física|Sudeste":{"linhas":[{"pedidos":4215,"ticket_medio":249.5957319098458,"desconto_medio":4.552787663107948}],"total":null},"Site|Sul":{"linhas":[{"pedidos":827,"ticket_medio":256.4111729141475,"desconto_medio":4.286577992744861}],"total":null},"Site|__todos__":{"linhas":[{"pedidos":4821,"ticket_medio":251.19573532462144,"desconto_medio":4.479361128396598}],"total":null},"Site|Centro-Oeste":{"linhas":[{"pedidos":550,"ticket_medio":247.51390909090907,"desconto_medio":4.5181818181818185}],"total":null},"Loja física|Nordeste":{"linhas":[{"pedidos":1513,"ticket_medio":254.60487772637146,"desconto_medio":4.391936549900859}],"total":null},"__todos__|(não informado)":{"linhas":[{"pedidos":162,"ticket_medio":244.29913580246912,"desconto_medio":4.845679012345679}],"total":null}},"comparacao_periodo":null,"_largura":"metade"},{"id":"ritmo","tipo":"linha_tempo","titulo":"Faturamento por dia, mês a mês","subtitulo":"Por dia, porque os meses têm tamanhos diferentes","metricas":["receita_por_dia"],"dimensoes":["mes"],"largura":"inteira","dados":{"Loja física|Centro-Oeste":{"linhas":[{"mes":"2025-01","receita_por_dia":636.9809677419355},{"mes":"2025-02","receita_por_dia":695.2775},{"mes":"2025-03","receita_por_dia":779.5680645161291},{"mes":"2025-04","receita_por_dia":632.1044827586206},{"mes":"2025-05","receita_por_dia":526.4848387096774},{"mes":"2025-06","receita_por_dia":687.4916666666667},{"mes":"2025-07","receita_por_dia":591.8593548387097},{"mes":"2025-08","receita_por_dia":472.78433333333334},{"mes":"2025-09","receita_por_dia":636.2165517241378},{"mes":"2025-10","receita_por_dia":562.836},{"mes":"2025-11","receita_por_dia":881.244},{"mes":"2025-12","receita_por_dia":1004.8661290322581}],"total":null},"Loja física|Norte":{"linhas":[{"mes":"2025-01","receita_por_dia":571.7438709677419},{"mes":"2025-02","receita_por_dia":437.3514285714286},{"mes":"2025-03","receita_por_dia":331.7257142857143},{"mes":"2025-04","receita_por_dia":288.6246428571429},{"mes":"2025-05","receita_por_dia":454.1061290322581},{"mes":"2025-06","receita_por_dia":398.55833333333334},{"mes":"2025-07","receita_por_dia":355.42551724137934},{"mes":"2025-08","receita_por_dia":333.4596774193548},{"mes":"2025-09","receita_por_dia":311.685},{"mes":"2025-10","receita_por_dia":468.3451612903226},{"mes":"2025-11","receita_por_dia":525.4466666666666},{"mes":"2025-12","receita_por_dia":520.4219354838709}],"total":null},"__todos__|Nordeste":{"linhas":[{"mes":"2025-01","receita_por_dia":1601.5458064516129},{"mes":"2025-02","receita_por_dia":1779.9928571428572},{"mes":"2025-03","receita_por_dia":1671.087741935484},{"mes":"2025-04","receita_por_dia":1861.6533333333332},{"mes":"2025-05","receita_por_dia":2097.896129032258},{"mes":"2025-06","receita_por_dia":1715.5196666666666},{"mes":"2025-07","receita_por_dia":1516.0635483870967},{"mes":"2025-08","receita_por_dia":1669.7496774193548},{"mes":"2025-09","receita_por_dia":2049.787},{"mes":"2025-10","receita_por_dia":1700.5796774193548},{"mes":"2025-11","receita_por_dia":2277.3636666666666},{"mes":"2025-12","receita_por_dia":3113.5406451612903}],"total":null},"Loja física|__todos__":{"linhas":[{"mes":"2025-01","receita_por_dia":5462.170645161291},{"mes":"2025-02","receita_por_dia":6037.114285714286},{"mes":"2025-03","receita_por_dia":5857.965483870968},{"mes":"2025-04","receita_por_dia":5826.335},{"mes":"2025-05","receita_por_dia":5690.840322580645},{"mes":"2025-06","receita_por_dia":5982.007},{"mes":"2025-07","receita_por_dia":5650.514516129033},{"mes":"2025-08","receita_por_dia":5307.750967741936},{"mes":"2025-09","receita_por_dia":5676.696333333334},{"mes":"2025-10","receita_por_dia":5516.9980645161295},{"mes":"2025-11","receita_por_dia":7683.453666666666},{"mes":"2025-12","receita_por_dia":9461.296451612903}],"total":null},"Site|Nordeste":{"linhas":[{"mes":"2025-01","receita_por_dia":596.6110000000001},{"mes":"2025-02","receita_por_dia":632.0818518518519},{"mes":"2025-03","receita_por_dia":424.3696774193548},{"mes":"2025-04","receita_por_dia":474.36566666666664},{"mes":"2025-05","receita_por_dia":657.3429032258065},{"mes":"2025-06","receita_por_dia":414.2056666666667},{"mes":"2025-07","receita_por_dia":455.00466666666665},{"mes":"2025-08","receita_por_dia":541.3712903225806},{"mes":"2025-09","receita_por_dia":761.186},{"mes":"2025-10","receita_por_dia":567.5709677419355},{"mes":"2025-11","receita_por_dia":630.2953333333334},{"mes":"2025-12","receita_por_dia":897.1287096774194}],"total":null},"Site|Norte":{"linhas":[{"mes":"2025-01","receita_por_dia":339.47925925925927},{"mes":"2025-02","receita_por_dia":291.7338461538462},{"mes":"2025-03","receita_por_dia":209.7132142857143},{"mes":"2025-04","receita_por_dia":143.46133333333333},{"mes":"2025-05","receita_por_dia":148.78833333333333},{"mes":"2025-06","receita_por_dia":142.10653846153846},{"mes":"2025-07","receita_por_dia":230.35333333333335},{"mes":"2025-08","receita_por_dia":222.77827586206897},{"mes":"2025-09","receita_por_dia":140.71074074074073},{"mes":"2025-10","receita_por_dia":128.94233333333332},{"mes":"2025-11","receita_por_dia":271.017},{"mes":"2025-12","receita_por_dia":336.30451612903227}],"total":null},"__todos__|__todos__":{"linhas":[{"mes":"2025-01","receita_por_dia":9979.987419354838},{"mes":"2025-02","receita_por_dia":10843.538571428571},{"mes":"2025-03","receita_por_dia":10297.138387096773},{"mes":"2025-04","receita_por_dia":10532.971333333333},{"mes":"2025-05","receita_por_dia":10157.555161290324},{"mes":"2025-06","receita_por_dia":10673.703000000001},{"mes":"2025-07","receita_por_dia":9941.897741935485},{"mes":"2025-08","receita_por_dia":9858.34193548387},{"mes":"2025-09","receita_por_dia":10367.408},{"mes":"2025-10","receita_por_dia":9959.286451612903},{"mes":"2025-11","receita_por_dia":13971.624666666667},{"mes":"2025-12","receita_por_dia":17426.445483870968}],"total":null},"App|Nordeste":{"linhas":[{"mes":"2025-01","receita_por_dia":185.57566666666668},{"mes":"2025-02","receita_por_dia":286.70851851851853},{"mes":"2025-03","receita_por_dia":159.99387096774194},{"mes":"2025-04","receita_por_dia":446.7739285714286},{"mes":"2025-05","receita_por_dia":278.1462068965517},{"mes":"2025-06","receita_por_dia":248.07206896551725},{"mes":"2025-07","receita_por_dia":168.64451612903224},{"mes":"2025-08","receita_por_dia":233.28285714285715},{"mes":"2025-09","receita_por_dia":356.19800000000004},{"mes":"2025-10","receita_por_dia":262.13},{"mes":"2025-11","receita_por_dia":460.8403333333333},{"mes":"2025-12","receita_por_dia":444.1993333333333}],"total":null},"Site|(não informado)":{"linhas":[{"mes":"2025-01","receita_por_dia":52.64727272727273},{"mes":"2025-02","receita_por_dia":147.9},{"mes":"2025-03","receita_por_dia":35.11192307692308},{"mes":"2025-04","receita_por_dia":189.9},{"mes":"2025-06","receita_por_dia":84.2075},{"mes":"2025-07","receita_por_dia":116.91},{"mes":"2025-08","receita_por_dia":93.32304347826086},{"mes":"2025-09","receita_por_dia":67.1052380952381},{"mes":"2025-10","receita_por_dia":31.72047619047619},{"mes":"2025-11","receita_por_dia":19.666521739130435},{"mes":"2025-12","receita_por_dia":72.97416666666668}],"total":null},"__todos__|Norte":{"linhas":[{"mes":"2025-01","receita_por_dia":1039.6251612903227},{"mes":"2025-02","receita_por_dia":800.1846428571428},{"mes":"2025-03","receita_por_dia":666.2012903225807},{"mes":"2025-04","receita_por_dia":464.242},{"mes":"2025-05","receita_por_dia":684.0699999999999},{"mes":"2025-06","receita_por_dia":636.2536666666667},{"mes":"2025-07","receita_por_dia":664.2158064516128},{"mes":"2025-08","receita_por_dia":699.6641935483871},{"mes":"2025-09","receita_por_dia":554.316},{"mes":"2025-10","receita_por_dia":740.0164516129032},{"mes":"2025-11","receita_por_dia":931.9169999999999},{"mes":"2025-12","receita_por_dia":963.3870967741935}],"total":null},"App|(não informado)":{"linhas":[{"mes":"2025-01","receita_por_dia":81.21625},{"mes":"2025-02","receita_por_dia":219.9},{"mes":"2025-03","receita_por_dia":46.472},{"mes":"2025-04","receita_por_dia":119.8},{"mes":"2025-05","receita_por_dia":159.91},{"mes":"2025-06","receita_por_dia":31.414285714285715},{"mes":"2025-07","receita_por_dia":41.88727272727272},{"mes":"2025-08","receita_por_dia":46.85625},{"mes":"2025-09","receita_por_dia":12.895714285714286},{"mes":"2025-11","receita_por_dia":22.066086956521737},{"mes":"2025-12","receita_por_dia":43.86833333333333}],"total":null},"__todos__|Sudeste":{"linhas":[{"mes":"2025-01","receita_por_dia":4529.676774193549},{"mes":"2025-02","receita_por_dia":5092.515714285714},{"mes":"2025-03","receita_por_dia":4703.923548387097},{"mes":"2025-04","receita_por_dia":4871.159},{"mes":"2025-05","receita_por_dia":4572.698064516129},{"mes":"2025-06","receita_por_dia":5144.052},{"mes":"2025-07","receita_por_dia":4624.4474193548385},{"mes":"2025-08","receita_por_dia":4729.099032258065},{"mes":"2025-09","receita_por_dia":4939.172666666666},{"mes":"2025-10","receita_por_dia":4556.133870967742},{"mes":"2025-11","receita_por_dia":6569.515333333333},{"mes":"2025-12","receita_por_dia":7840.05870967742}],"total":null},"Site|Sudeste":{"linhas":[{"mes":"2025-01","receita_por_dia":1280.6274193548386},{"mes":"2025-02","receita_por_dia":1443.7389285714287},{"mes":"2025-03","receita_por_dia":1443.7212903225807},{"mes":"2025-04","receita_por_dia":1430.7226666666668},{"mes":"2025-05","receita_por_dia":1360.4512903225807},{"mes":"2025-06","receita_por_dia":1719.9886666666669},{"mes":"2025-07","receita_por_dia":1273.2512903225806},{"mes":"2025-08","receita_por_dia":1425.967741935484},{"mes":"2025-09","receita_por_dia":1511.1196666666665},{"mes":"2025-10","receita_por_dia":1385.687741935484},{"mes":"2025-11","receita_por_dia":1870.6966666666667},{"mes":"2025-12","receita_por_dia":2400.951935483871}],"total":null},"__todos__|Sul":{"linhas":[{"mes":"2025-01","receita_por_dia":1517.859677419355},{"mes":"2025-02","receita_por_dia":1906.5735714285713},{"mes":"2025-03","receita_por_dia":1825.5967741935483},{"mes":"2025-04","receita_por_dia":2069.4066666666668},{"mes":"2025-05","receita_por_dia":1654.5603225806453},{"mes":"2025-06","receita_por_dia":1783.0423333333333},{"mes":"2025-07","receita_por_dia":1988.328064516129},{"mes":"2025-08","receita_por_dia":1770.0348387096774},{"mes":"2025-09","receita_por_dia":1623.3633333333335},{"mes":"2025-10","receita_por_dia":1698.7274193548387},{"mes":"2025-11","receita_por_dia":2614.8353333333334},{"mes":"2025-12","receita_por_dia":3298.548387096774}],"total":null},"__todos__|Centro-Oeste":{"linhas":[{"mes":"2025-01","receita_por_dia":1206.8103225806453},{"mes":"2025-02","receita_por_dia":1165.037857142857},{"mes":"2025-03","receita_por_dia":1281.8367741935485},{"mes":"2025-04","receita_por_dia":1180.4683333333335},{"mes":"2025-05","receita_por_dia":1082.2706451612903},{"mes":"2025-06","receita_por_dia":1233.3813333333335},{"mes":"2025-07","receita_por_dia":1087.5829032258064},{"mes":"2025-08","receita_por_dia":839.8445161290323},{"mes":"2025-09","receita_por_dia":1081.4676666666667},{"mes":"2025-10","receita_por_dia":1187.2664516129032},{"mes":"2025-11","receita_por_dia":1495.6526666666666},{"mes":"2025-12","receita_por_dia":2045.3251612903227}],"total":null},"Loja física|(não informado)":{"linhas":[{"mes":"2025-01","receita_por_dia":99.265},{"mes":"2025-02","receita_por_dia":82.68863636363636},{"mes":"2025-03","receita_por_dia":129.0252},{"mes":"2025-04","receita_por_dia":94.64833333333333},{"mes":"2025-05","receita_por_dia":90.94947368421053},{"mes":"2025-06","receita_por_dia":78.69269230769231},{"mes":"2025-07","receita_por_dia":33.10115384615385},{"mes":"2025-08","receita_por_dia":64.90037037037037},{"mes":"2025-09","receita_por_dia":73.03923076923077},{"mes":"2025-10","receita_por_dia":74.23086956521739},{"mes":"2025-11","receita_por_dia":62.93208333333333},{"mes":"2025-12","receita_por_dia":115.50222222222222}],"total":null},"Site|Centro-Oeste":{"linhas":[{"mes":"2025-01","receita_por_dia":251.71166666666667},{"mes":"2025-02","receita_por_dia":316.6557142857143},{"mes":"2025-03","receita_por_dia":339.9129032258064},{"mes":"2025-04","receita_por_dia":357.66266666666667},{"mes":"2025-05","receita_por_dia":395.2883870967742},{"mes":"2025-06","receita_por_dia":338.5816666666667},{"mes":"2025-07","receita_por_dia":347.5364516129032},{"mes":"2025-08","receita_por_dia":263.79806451612905},{"mes":"2025-09","receita_por_dia":243.157},{"mes":"2025-10","receita_por_dia":452.242},{"mes":"2025-11","receita_por_dia":424.17133333333334},{"mes":"2025-12","receita_por_dia":757.9964516129032}],"total":null},"App|__todos__":{"linhas":[{"mes":"2025-01","receita_por_dia":1623.4696774193549},{"mes":"2025-02","receita_por_dia":1732.6371428571426},{"mes":"2025-03","receita_por_dia":1467.2074193548387},{"mes":"2025-04","receita_por_dia":1691.901},{"mes":"2025-05","receita_por_dia":1384.9635483870968},{"mes":"2025-06","receita_por_dia":1481.8283333333334},{"mes":"2025-07","receita_por_dia":1384.3793548387098},{"mes":"2025-08","receita_por_dia":1484.91},{"mes":"2025-09","receita_por_dia":1517.2546666666667},{"mes":"2025-10","receita_por_dia":1392.8654838709679},{"mes":"2025-11","receita_por_dia":2306.6076666666663},{"mes":"2025-12","receita_por_dia":2594.678709677419}],"total":null},"Loja física|Sul":{"linhas":[{"mes":"2025-01","receita_por_dia":822.9867741935484},{"mes":"2025-02","receita_por_dia":1117.6314285714286},{"mes":"2025-03","receita_por_dia":1067.7066666666667},{"mes":"2025-04","receita_por_dia":1112.4496666666666},{"mes":"2025-05","receita_por_dia":927.7154838709678},{"mes":"2025-06","receita_por_dia":979.6713333333333},{"mes":"2025-07","receita_por_dia":1064.1593548387098},{"mes":"2025-08","receita_por_dia":825.9858064516129},{"mes":"2025-09","receita_por_dia":981.8443333333333},{"mes":"2025-10","receita_por_dia":1003.3125806451612},{"mes":"2025-11","receita_por_dia":1503.8123333333335},{"mes":"2025-12","receita_por_dia":1817.8245161290322}],"total":null},"App|Sudeste":{"linhas":[{"mes":"2025-01","receita_por_dia":708.0106451612904},{"mes":"2025-02","receita_por_dia":820.9089285714286},{"mes":"2025-03","receita_por_dia":705.4693548387097},{"mes":"2025-04","receita_por_dia":652.9856666666667},{"mes":"2025-05","receita_por_dia":665.808064516129},{"mes":"2025-06","receita_por_dia":659.4713793103448},{"mes":"2025-07","receita_por_dia":624.0493548387096},{"mes":"2025-08","receita_por_dia":586.5564516129032},{"mes":"2025-09","receita_por_dia":655.599},{"mes":"2025-10","receita_por_dia":604.1948387096775},{"mes":"2025-11","receita_por_dia":1162.4416666666666},{"mes":"2025-12","receita_por_dia":1208.0632258064516}],"total":null},"App|Sul":{"linhas":[{"mes":"2025-01","receita_por_dia":216.4674193548387},{"mes":"2025-02","receita_por_dia":382.36357142857145},{"mes":"2025-03","receita_por_dia":247.23774193548385},{"mes":"2025-04","receita_por_dia":409.3430769230769},{"mes":"2025-05","receita_por_dia":223.82535714285714},{"mes":"2025-06","receita_por_dia":268.032},{"mes":"2025-07","receita_por_dia":326.00620689655176},{"mes":"2025-08","receita_por_dia":387.15032258064514},{"mes":"2025-09","receita_por_dia":196.4225},{"mes":"2025-10","receita_por_dia":189.281},{"mes":"2025-11","receita_por_dia":352.46655172413796},{"mes":"2025-12","receita_por_dia":559.1312903225806}],"total":null},"App|Norte":{"linhas":[{"mes":"2025-01","receita_por_dia":190.65642857142856},{"mes":"2025-02","receita_por_dia":102.97},{"mes":"2025-03","receita_por_dia":177.15967741935484},{"mes":"2025-04","receita_por_dia":57.10851851851852},{"mes":"2025-05","receita_por_dia":121.14681818181818},{"mes":"2025-06","receita_por_dia":143.17041666666668},{"mes":"2025-07","receita_por_dia":112.425},{"mes":"2025-08","receita_por_dia":174.70607142857145},{"mes":"2025-09","receita_por_dia":119.99103448275861},{"mes":"2025-10","receita_por_dia":146.88838709677418},{"mes":"2025-11","receita_por_dia":150.5037037037037},{"mes":"2025-12","receita_por_dia":114.01655172413793}],"total":null},"Loja física|Sudeste":{"linhas":[{"mes":"2025-01","receita_por_dia":2541.0387096774193},{"mes":"2025-02","receita_por_dia":2827.8678571428572},{"mes":"2025-03","receita_por_dia":2554.7329032258067},{"mes":"2025-04","receita_por_dia":2787.4506666666666},{"mes":"2025-05","receita_por_dia":2546.4387096774194},{"mes":"2025-06","receita_por_dia":2786.574333333333},{"mes":"2025-07","receita_por_dia":2727.1467741935485},{"mes":"2025-08","receita_por_dia":2716.574838709678},{"mes":"2025-09","receita_por_dia":2772.4539999999997},{"mes":"2025-10","receita_por_dia":2566.2512903225806},{"mes":"2025-11","receita_por_dia":3536.377},{"mes":"2025-12","receita_por_dia":4231.043548387097}],"total":null},"Site|Sul":{"linhas":[{"mes":"2025-01","receita_por_dia":478.4054838709677},{"mes":"2025-02","receita_por_dia":406.5785714285715},{"mes":"2025-03","receita_por_dia":545.0945161290323},{"mes":"2025-04","receita_por_dia":602.193},{"mes":"2025-05","receita_por_dia":524.68},{"mes":"2025-06","receita_por_dia":535.339},{"mes":"2025-07","receita_por_dia":619.1951612903225},{"mes":"2025-08","receita_por_dia":556.8987096774193},{"mes":"2025-09","receita_por_dia":501.0837931034483},{"mes":"2025-10","receita_por_dia":512.2396774193548},{"mes":"2025-11","receita_por_dia":796.8675862068966},{"mes":"2025-12","receita_por_dia":921.5925806451612}],"total":null},"Site|__todos__":{"linhas":[{"mes":"2025-01","receita_por_dia":2894.3470967741932},{"mes":"2025-02","receita_por_dia":3073.7871428571425},{"mes":"2025-03","receita_por_dia":2971.9654838709675},{"mes":"2025-04","receita_por_dia":3014.735333333333},{"mes":"2025-05","receita_por_dia":3081.7512903225806},{"mes":"2025-06","receita_por_dia":3209.8676666666665},{"mes":"2025-07","receita_por_dia":2907.003870967742},{"mes":"2025-08","receita_por_dia":3065.6809677419355},{"mes":"2025-09","receita_por_dia":3173.4570000000003},{"mes":"2025-10","receita_por_dia":3049.4229032258063},{"mes":"2025-11","receita_por_dia":3981.563333333333},{"mes":"2025-12","receita_por_dia":5370.470322580645}],"total":null},"App|Centro-Oeste":{"linhas":[{"mes":"2025-01","receita_por_dia":337.112},{"mes":"2025-02","receita_por_dia":158.7751851851852},{"mes":"2025-03","receita_por_dia":193.5780769230769},{"mes":"2025-04","receita_por_dia":264.7141666666667},{"mes":"2025-05","receita_por_dia":160.4974193548387},{"mes":"2025-06","receita_por_dia":259.135},{"mes":"2025-07","receita_por_dia":170.14074074074074},{"mes":"2025-08","receita_por_dia":166.9959090909091},{"mes":"2025-09","receita_por_dia":239.25142857142856},{"mes":"2025-10","receita_por_dia":204.93290322580646},{"mes":"2025-11","receita_por_dia":190.23733333333334},{"mes":"2025-12","receita_por_dia":282.46258064516127}],"total":null},"Loja física|Nordeste":{"linhas":[{"mes":"2025-01","receita_por_dia":844.5909677419355},{"mes":"2025-02","receita_por_dia":927.1281481481482},{"mes":"2025-03","receita_por_dia":1086.724193548387},{"mes":"2025-04","receita_por_dia":970.2986666666667},{"mes":"2025-05","receita_por_dia":1180.351935483871},{"mes":"2025-06","receita_por_dia":1061.511},{"mes":"2025-07","receita_por_dia":907.0919354838709},{"mes":"2025-08","receita_por_dia":917.6712903225807},{"mes":"2025-09","receita_por_dia":932.403},{"mes":"2025-10","receita_por_dia":879.3345161290322},{"mes":"2025-11","receita_por_dia":1186.2279999999998},{"mes":"2025-12","receita_por_dia":1786.5416129032258}],"total":null},"__todos__|(não informado)":{"linhas":[{"mes":"2025-01","receita_por_dia":124.69333333333333},{"mes":"2025-02","receita_por_dia":99.23392857142858},{"mes":"2025-03","receita_por_dia":170.4911111111111},{"mes":"2025-04","receita_por_dia":95.60222222222222},{"mes":"2025-05","receita_por_dia":81.9144},{"mes":"2025-06","receita_por_dia":167.02137931034483},{"mes":"2025-07","receita_por_dia":61.26},{"mes":"2025-08","receita_por_dia":160.29103448275862},{"mes":"2025-09","receita_por_dia":123.4151724137931},{"mes":"2025-10","receita_por_dia":103.19304347826088},{"mes":"2025-11","receita_por_dia":98.80879999999999},{"mes":"2025-12","receita_por_dia":177.0051724137931}],"total":null}},"comparacao_periodo":null,"_largura":"inteira"},{"id":"lojas","tipo":"barras_ranking","titulo":"Lojas que mais faturam","metricas":["receita_total"],"dimensoes":["loja"],"limite_itens":"medio","largura":"metade","achado":"A primeira do ranking faturou {receita_total}.","subtitulo":"Só lojas físicas; site e aplicativo saem do centro de distribuição","filtros":[{"dimensao":"loja","operador":"fora_de","valores":["Centro de distribuição"]}],"dados":{"Loja física|Centro-Oeste":{"linhas":[{"loja":"Loja Asa Sul","receita_total":144199.2},{"loja":"Loja Setor Bueno","receita_total":99913.1}],"total":{"loja":"__todos__","receita_total":244112.3}},"Loja física|Norte":{"linhas":[{"loja":"Loja Umarizal","receita_total":78077.11},{"loja":"Loja Adrianópolis","receita_total":71706.96}],"total":{"loja":"__todos__","receita_total":149784.07}},"__todos__|Nordeste":{"linhas":[{"loja":"Loja Pituba","receita_total":155308.4},{"loja":"Loja Boa Viagem","receita_total":123541.63},{"loja":"Loja Aldeota","receita_total":106367.15}],"total":{"loja":"__todos__","receita_total":385217.18}},"Loja física|__todos__":{"linhas":[{"loja":"Loja Paulista","receita_total":405405.32},{"loja":"Loja Botafogo","receita_total":268467.23},{"loja":"Loja Campinas","receita_total":204054.73},{"loja":"Loja Savassi","receita_total":189657.95},{"loja":"Loja Pituba","receita_total":156085.92},{"loja":"Loja Batel","receita_total":151389.91},{"loja":"Loja Moinhos","receita_total":150644.58},{"loja":"Loja Asa Sul","receita_total":144799.01},{"loja":"Loja Boa Viagem","receita_total":125078.17},{"loja":"Loja Aldeota","receita_total":107348.5}],"total":{"loja":"__todos__","receita_total":2255467.59}},"__todos__|__todos__":{"linhas":[{"loja":"Loja Paulista","receita_total":405405.32},{"loja":"Loja Botafogo","receita_total":268467.23},{"loja":"Loja Campinas","receita_total":204054.73},{"loja":"Loja Savassi","receita_total":189657.95},{"loja":"Loja Pituba","receita_total":156085.92},{"loja":"Loja Batel","receita_total":151389.91},{"loja":"Loja Moinhos","receita_total":150644.58},{"loja":"Loja Asa Sul","receita_total":144799.01},{"loja":"Loja Boa Viagem","receita_total":125078.17},{"loja":"Loja Aldeota","receita_total":107348.5}],"total":{"loja":"__todos__","receita_total":2255467.59}},"__todos__|Norte":{"linhas":[{"loja":"Loja Umarizal","receita_total":78077.11},{"loja":"Loja Adrianópolis","receita_total":71706.96}],"total":{"loja":"__todos__","receita_total":149784.07}},"__todos__|Sudeste":{"linhas":[{"loja":"Loja Paulista","receita_total":400509.32},{"loja":"Loja Botafogo","receita_total":265234.73},{"loja":"Loja Campinas","receita_total":201800.96},{"loja":"Loja Savassi","receita_total":184501.0}],"total":{"loja":"__todos__","receita_total":1052046.01}},"__todos__|Sul":{"linhas":[{"loja":"Loja Moinhos","receita_total":150144.87},{"loja":"Loja Batel","receita_total":150113.5},{"loja":"Loja Trindade","receita_total":100721.36}],"total":{"loja":"__todos__","receita_total":400979.73}},"__todos__|Centro-Oeste":{"linhas":[{"loja":"Loja Asa Sul","receita_total":144199.2},{"loja":"Loja Setor Bueno","receita_total":99913.1}],"total":{"loja":"__todos__","receita_total":244112.3}},"Loja física|(não informado)":{"linhas":[{"loja":"Loja Savassi","receita_total":5156.95},{"loja":"Loja Paulista","receita_total":4896.0},{"loja":"Loja Botafogo","receita_total":3232.5},{"loja":"Loja Campinas","receita_total":2253.77},{"loja":"Loja Boa Viagem","receita_total":1536.54},{"loja":"Loja Batel","receita_total":1276.41},{"loja":"Loja Aldeota","receita_total":981.35},{"loja":"Loja Umarizal","receita_total":810.53},{"loja":"Loja Pituba","receita_total":777.52},{"loja":"Loja Trindade","receita_total":637.71}],"total":{"loja":"__todos__","receita_total":23328.3}},"Loja física|Sul":{"linhas":[{"loja":"Loja Moinhos","receita_total":150144.87},{"loja":"Loja Batel","receita_total":150113.5},{"loja":"Loja Trindade","receita_total":100721.36}],"total":{"loja":"__todos__","receita_total":400979.73}},"Loja física|Sudeste":{"linhas":[{"loja":"Loja Paulista","receita_total":400509.32},{"loja":"Loja Botafogo","receita_total":265234.73},{"loja":"Loja Campinas","receita_total":201800.96},{"loja":"Loja Savassi","receita_total":184501.0}],"total":{"loja":"__todos__","receita_total":1052046.01}},"Loja física|Nordeste":{"linhas":[{"loja":"Loja Pituba","receita_total":155308.4},{"loja":"Loja Boa Viagem","receita_total":123541.63},{"loja":"Loja Aldeota","receita_total":106367.15}],"total":{"loja":"__todos__","receita_total":385217.18}},"__todos__|(não informado)":{"linhas":[{"loja":"Loja Savassi","receita_total":5156.95},{"loja":"Loja Paulista","receita_total":4896.0},{"loja":"Loja Botafogo","receita_total":3232.5},{"loja":"Loja Campinas","receita_total":2253.77},{"loja":"Loja Boa Viagem","receita_total":1536.54},{"loja":"Loja Batel","receita_total":1276.41},{"loja":"Loja Aldeota","receita_total":981.35},{"loja":"Loja Umarizal","receita_total":810.53},{"loja":"Loja Pituba","receita_total":777.52},{"loja":"Loja Trindade","receita_total":637.71}],"total":{"loja":"__todos__","receita_total":23328.3}}},"comparacao_periodo":null,"_largura":"metade"},{"id":"categorias","tipo":"rosca","titulo":"Mix de categorias","metricas":["receita_total"],"dimensoes":["categoria"],"largura":"metade","dados":{"__todos__|Nordeste":{"linhas":[{"categoria":"Vestuário","receita_total":303573.17},{"categoria":"Calçados","receita_total":254208.35},{"categoria":"Acessórios","receita_total":83920.05},{"categoria":"Casa","receita_total":59752.3}],"total":{"categoria":"__todos__","receita_total":701453.87}},"Site|Nordeste":{"linhas":[{"categoria":"Vestuário","receita_total":94582.96},{"categoria":"Calçados","receita_total":74033.12},{"categoria":"Acessórios","receita_total":27636.53},{"categoria":"Casa","receita_total":16484.94}],"total":{"categoria":"__todos__","receita_total":212737.55}},"Site|Norte":{"linhas":[{"categoria":"Vestuário","receita_total":31924.58},{"categoria":"Calçados","receita_total":25041.72},{"categoria":"Acessórios","receita_total":10796.05},{"categoria":"Casa","receita_total":6917.48}],"total":{"categoria":"__todos__","receita_total":74679.83}},"App|Nordeste":{"linhas":[{"categoria":"Vestuário","receita_total":51652.33},{"categoria":"Calçados","receita_total":33541.91},{"categoria":"Acessórios","receita_total":9662.59},{"categoria":"Casa","receita_total":8642.31}],"total":{"categoria":"__todos__","receita_total":103499.14}},"Site|(não informado)":{"linhas":[{"categoria":"Calçados","receita_total":4707.43},{"categoria":"Vestuário","receita_total":3595.34},{"categoria":"Acessórios","receita_total":2566.15},{"categoria":"Casa","receita_total":452.71}],"total":{"categoria":"__todos__","receita_total":11321.63}},"__todos__|Norte":{"linhas":[{"categoria":"Vestuário","receita_total":118684.85},{"categoria":"Calçados","receita_total":91379.35},{"categoria":"Acessórios","receita_total":33531.45},{"categoria":"Casa","receita_total":25583.96}],"total":{"categoria":"__todos__","receita_total":269179.61}},"App|(não informado)":{"linhas":[{"categoria":"Vestuário","receita_total":2488.54},{"categoria":"Calçados","receita_total":1248.05},{"categoria":"Acessórios","receita_total":890.14},{"categoria":"Casa","receita_total":299.8}],"total":{"categoria":"__todos__","receita_total":4926.53}},"__todos__|Sudeste":{"linhas":[{"categoria":"Vestuário","receita_total":813098.85},{"categoria":"Calçados","receita_total":684771.69},{"categoria":"Acessórios","receita_total":238467.27},{"categoria":"Casa","receita_total":154206.76}],"total":{"categoria":"__todos__","receita_total":1890544.57}},"Site|Sudeste":{"linhas":[{"categoria":"Vestuário","receita_total":242726.52},{"categoria":"Calçados","receita_total":202118.68},{"categoria":"Acessórios","receita_total":69854.32},{"categoria":"Casa","receita_total":49391.42}],"total":{"categoria":"__todos__","receita_total":564090.94}},"__todos__|Sul":{"linhas":[{"categoria":"Vestuário","receita_total":313944.58},{"categoria":"Calçados","receita_total":264712.01},{"categoria":"Acessórios","receita_total":93895.52},{"categoria":"Casa","receita_total":49914.7}],"total":{"categoria":"__todos__","receita_total":722466.81}},"Loja física|(não informado)":{"linhas":[{"categoria":"Calçados","receita_total":9888.01},{"categoria":"Vestuário","receita_total":7652.63},{"categoria":"Acessórios","receita_total":4042.85},{"categoria":"Casa","receita_total":1744.81}],"total":{"categoria":"__todos__","receita_total":23328.3}},"App|Sudeste":{"linhas":[{"categoria":"Vestuário","receita_total":118783.3},{"categoria":"Calçados","receita_total":97217.34},{"categoria":"Acessórios","receita_total":34158.08},{"categoria":"Casa","receita_total":24248.9}],"total":{"categoria":"__todos__","receita_total":274407.62}},"App|Norte":{"linhas":[{"categoria":"Vestuário","receita_total":22525.32},{"categoria":"Calçados","receita_total":13895.42},{"categoria":"Casa","receita_total":4527.97},{"categoria":"Acessórios","receita_total":3767.0}],"total":{"categoria":"__todos__","receita_total":44715.71}},"Site|Centro-Oeste":{"linhas":[{"categoria":"Vestuário","receita_total":62536.84},{"categoria":"Calçados","receita_total":48296.82},{"categoria":"Acessórios","receita_total":13309.97},{"categoria":"Casa","receita_total":11989.02}],"total":{"categoria":"__todos__","receita_total":136132.65}},"App|Centro-Oeste":{"linhas":[{"categoria":"Vestuário","receita_total":32661.55},{"categoria":"Calçados","receita_total":25580.23},{"categoria":"Casa","receita_total":8311.53},{"categoria":"Acessórios","receita_total":6210.94}],"total":{"categoria":"__todos__","receita_total":72764.25}},"Loja física|Centro-Oeste":{"linhas":[{"categoria":"Vestuário","receita_total":103988.33},{"categoria":"Calçados","receita_total":84641.67},{"categoria":"Acessórios","receita_total":37219.48},{"categoria":"Casa","receita_total":18262.82}],"total":{"categoria":"__todos__","receita_total":244112.3}},"Loja física|Norte":{"linhas":[{"categoria":"Vestuário","receita_total":64234.95},{"categoria":"Calçados","receita_total":52442.21},{"categoria":"Acessórios","receita_total":18968.4},{"categoria":"Casa","receita_total":14138.51}],"total":{"categoria":"__todos__","receita_total":149784.07}},"Loja física|__todos__":{"linhas":[{"categoria":"Vestuário","receita_total":957134.57},{"categoria":"Calçados","receita_total":827667.24},{"categoria":"Acessórios","receita_total":294723.81},{"categoria":"Casa","receita_total":175941.97}],"total":{"categoria":"__todos__","receita_total":2255467.59}},"__todos__|__todos__":{"linhas":[{"categoria":"Vestuário","receita_total":1762224.68},{"categoria":"Calçados","receita_total":1469433.61},{"categoria":"Acessórios","receita_total":514053.82},{"categoria":"Casa","receita_total":330518.41}],"total":{"categoria":"__todos__","receita_total":4076230.52}},"__todos__|Centro-Oeste":{"linhas":[{"categoria":"Vestuário","receita_total":199186.72},{"categoria":"Calçados","receita_total":158518.72},{"categoria":"Acessórios","receita_total":56740.39},{"categoria":"Casa","receita_total":38563.37}],"total":{"categoria":"__todos__","receita_total":453009.2}},"App|__todos__":{"linhas":[{"categoria":"Vestuário","receita_total":270288.47},{"categoria":"Calçados","receita_total":216971.79},{"categoria":"Acessórios","receita_total":69299.27},{"categoria":"Casa","receita_total":53188.76}],"total":{"categoria":"__todos__","receita_total":609748.29}},"Loja física|Sul":{"linhas":[{"categoria":"Vestuário","receita_total":172331.75},{"categoria":"Calçados","receita_total":148626.36},{"categoria":"Acessórios","receita_total":53417.28},{"categoria":"Casa","receita_total":26604.34}],"total":{"categoria":"__todos__","receita_total":400979.73}},"App|Sul":{"linhas":[{"categoria":"Calçados","receita_total":45488.84},{"categoria":"Vestuário","receita_total":42177.43},{"categoria":"Acessórios","receita_total":14610.52},{"categoria":"Casa","receita_total":7158.25}],"total":{"categoria":"__todos__","receita_total":109435.04}},"Loja física|Sudeste":{"linhas":[{"categoria":"Vestuário","receita_total":451589.03},{"categoria":"Calçados","receita_total":385435.67},{"categoria":"Acessórios","receita_total":134454.87},{"categoria":"Casa","receita_total":80566.44}],"total":{"categoria":"__todos__","receita_total":1052046.01}},"Site|Sul":{"linhas":[{"categoria":"Vestuário","receita_total":99435.4},{"categoria":"Calçados","receita_total":70596.81},{"categoria":"Acessórios","receita_total":25867.72},{"categoria":"Casa","receita_total":16152.11}],"total":{"categoria":"__todos__","receita_total":212052.04}},"Site|__todos__":{"linhas":[{"categoria":"Vestuário","receita_total":534801.64},{"categoria":"Calçados","receita_total":424794.58},{"categoria":"Acessórios","receita_total":150030.74},{"categoria":"Casa","receita_total":101387.68}],"total":{"categoria":"__todos__","receita_total":1211014.64}},"Loja física|Nordeste":{"linhas":[{"categoria":"Vestuário","receita_total":157337.88},{"categoria":"Calçados","receita_total":146633.32},{"categoria":"Acessórios","receita_total":46620.93},{"categoria":"Casa","receita_total":34625.05}],"total":{"categoria":"__todos__","receita_total":385217.18}},"__todos__|(não informado)":{"linhas":[{"categoria":"Calçados","receita_total":15843.49},{"categoria":"Vestuário","receita_total":13736.51},{"categoria":"Acessórios","receita_total":7499.14},{"categoria":"Casa","receita_total":2497.32}],"total":{"categoria":"__todos__","receita_total":39576.46}}},"comparacao_periodo":null,"_largura":"metade"},{"id":"estados","tipo":"mapa_uf","titulo":"Faturamento por estado","subtitulo":"Só lojas físicas têm UF; site e aplicativo saem do centro de distribuição","metricas":["receita_total"],"dimensoes":["uf"],"largura":"metade","dados":{"Loja física|Centro-Oeste":{"linhas":[{"uf":"DF","receita_total":144199.2},{"uf":"GO","receita_total":99913.1}],"total":null},"Loja física|Norte":{"linhas":[{"uf":"PA","receita_total":78077.11},{"uf":"AM","receita_total":71706.96}],"total":null},"__todos__|Nordeste":{"linhas":[{"uf":"BA","receita_total":286420.72},{"uf":"PE","receita_total":224346.33},{"uf":"CE","receita_total":190686.82}],"total":null},"Loja física|__todos__":{"linhas":[{"uf":"SP","receita_total":602310.28},{"uf":"RJ","receita_total":265234.73},{"uf":"MG","receita_total":184501.0},{"uf":"BA","receita_total":155308.4},{"uf":"RS","receita_total":150144.87},{"uf":"PR","receita_total":150113.5},{"uf":"DF","receita_total":144199.2},{"uf":"PE","receita_total":123541.63},{"uf":"CE","receita_total":106367.15},{"uf":"SC","receita_total":100721.36},{"uf":"GO","receita_total":99913.1},{"uf":"PA","receita_total":78077.11},{"uf":"AM","receita_total":71706.96},{"uf":"(não informado)","receita_total":23328.3}],"total":null},"Site|Nordeste":{"linhas":[{"uf":"BA","receita_total":92833.62},{"uf":"PE","receita_total":67364.04},{"uf":"CE","receita_total":52539.89}],"total":null},"Site|Norte":{"linhas":[{"uf":"AM","receita_total":38191.35},{"uf":"PA","receita_total":36488.48}],"total":null},"__todos__|__todos__":{"linhas":[{"uf":"SP","receita_total":1094922.8},{"uf":"RJ","receita_total":476337.96},{"uf":"MG","receita_total":319283.81},{"uf":"BA","receita_total":286420.72},{"uf":"PR","receita_total":270526.72},{"uf":"RS","receita_total":263873.16},{"uf":"DF","receita_total":259774.3},{"uf":"PE","receita_total":224346.33},{"uf":"GO","receita_total":193234.9},{"uf":"CE","receita_total":190686.82},{"uf":"SC","receita_total":188066.93},{"uf":"PA","receita_total":140410.51},{"uf":"AM","receita_total":128769.1},{"uf":"(não informado)","receita_total":39576.46}],"total":null},"App|Nordeste":{"linhas":[{"uf":"BA","receita_total":38278.7},{"uf":"PE","receita_total":33440.66},{"uf":"CE","receita_total":31779.78}],"total":null},"Site|(não informado)":{"linhas":[{"uf":"(não informado)","receita_total":11321.63}],"total":null},"__todos__|Norte":{"linhas":[{"uf":"PA","receita_total":140410.51},{"uf":"AM","receita_total":128769.1}],"total":null},"App|Centro-Oeste":{"linhas":[{"uf":"DF","receita_total":40728.29},{"uf":"GO","receita_total":32035.96}],"total":null},"Site|Sudeste":{"linhas":[{"uf":"SP","receita_total":329509.83},{"uf":"RJ","receita_total":144182.47},{"uf":"MG","receita_total":90398.64}],"total":null},"__todos__|Sudeste":{"linhas":[{"uf":"SP","receita_total":1094922.8},{"uf":"RJ","receita_total":476337.96},{"uf":"MG","receita_total":319283.81}],"total":null},"App|(não informado)":{"linhas":[{"uf":"(não informado)","receita_total":4926.53}],"total":null},"__todos__|Sul":{"linhas":[{"uf":"PR","receita_total":270526.72},{"uf":"RS","receita_total":263873.16},{"uf":"SC","receita_total":188066.93}],"total":null},"__todos__|Centro-Oeste":{"linhas":[{"uf":"DF","receita_total":259774.3},{"uf":"GO","receita_total":193234.9}],"total":null},"Loja física|(não informado)":{"linhas":[{"uf":"(não informado)","receita_total":23328.3}],"total":null},"App|__todos__":{"linhas":[{"uf":"SP","receita_total":163102.69},{"uf":"RJ","receita_total":66920.76},{"uf":"MG","receita_total":44384.17},{"uf":"DF","receita_total":40728.29},{"uf":"RS","receita_total":39023.71},{"uf":"BA","receita_total":38278.7},{"uf":"PR","receita_total":35608.88},{"uf":"SC","receita_total":34802.45},{"uf":"PE","receita_total":33440.66},{"uf":"GO","receita_total":32035.96},{"uf":"CE","receita_total":31779.78},{"uf":"PA","receita_total":25844.92},{"uf":"AM","receita_total":18870.79},{"uf":"(não informado)","receita_total":4926.53}],"total":null},"Loja física|Sul":{"linhas":[{"uf":"RS","receita_total":150144.87},{"uf":"PR","receita_total":150113.5},{"uf":"SC","receita_total":100721.36}],"total":null},"App|Sudeste":{"linhas":[{"uf":"SP","receita_total":163102.69},{"uf":"RJ","receita_total":66920.76},{"uf":"MG","receita_total":44384.17}],"total":null},"App|Sul":{"linhas":[{"uf":"RS","receita_total":39023.71},{"uf":"PR","receita_total":35608.88},{"uf":"SC","receita_total":34802.45}],"total":null},"App|Norte":{"linhas":[{"uf":"PA","receita_total":25844.92},{"uf":"AM","receita_total":18870.79}],"total":null},"Loja física|Sudeste":{"linhas":[{"uf":"SP","receita_total":602310.28},{"uf":"RJ","receita_total":265234.73},{"uf":"MG","receita_total":184501.0}],"total":null},"Site|Sul":{"linhas":[{"uf":"PR","receita_total":84804.34},{"uf":"RS","receita_total":74704.58},{"uf":"SC","receita_total":52543.12}],"total":null},"Site|__todos__":{"linhas":[{"uf":"SP","receita_total":329509.83},{"uf":"RJ","receita_total":144182.47},{"uf":"BA","receita_total":92833.62},{"uf":"MG","receita_total":90398.64},{"uf":"PR","receita_total":84804.34},{"uf":"DF","receita_total":74846.81},{"uf":"RS","receita_total":74704.58},{"uf":"PE","receita_total":67364.04},{"uf":"GO","receita_total":61285.84},{"uf":"SC","receita_total":52543.12},{"uf":"CE","receita_total":52539.89},{"uf":"AM","receita_total":38191.35},{"uf":"PA","receita_total":36488.48},{"uf":"(não informado)","receita_total":11321.63}],"total":null},"Site|Centro-Oeste":{"linhas":[{"uf":"DF","receita_total":74846.81},{"uf":"GO","receita_total":61285.84}],"total":null},"Loja física|Nordeste":{"linhas":[{"uf":"BA","receita_total":155308.4},{"uf":"PE","receita_total":123541.63},{"uf":"CE","receita_total":106367.15}],"total":null},"__todos__|(não informado)":{"linhas":[{"uf":"(não informado)","receita_total":39576.46}],"total":null}},"comparacao_periodo":null,"_largura":"metade"},{"id":"semana","tipo":"barras_agrupadas","titulo":"Pedidos por dia da semana","metricas":["pedidos"],"dimensoes":["dia_da_semana"],"ordenacao":"cronologica","largura":"metade","dados":{"Loja física|Centro-Oeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":128},{"dia_da_semana":"terça","pedidos":154},{"dia_da_semana":"quarta","pedidos":162},{"dia_da_semana":"quinta","pedidos":145},{"dia_da_semana":"sexta","pedidos":130},{"dia_da_semana":"sábado","pedidos":133},{"dia_da_semana":"domingo","pedidos":136}],"total":null},"Loja física|Norte":{"linhas":[{"dia_da_semana":"segunda","pedidos":85},{"dia_da_semana":"terça","pedidos":87},{"dia_da_semana":"quarta","pedidos":93},{"dia_da_semana":"quinta","pedidos":102},{"dia_da_semana":"sexta","pedidos":95},{"dia_da_semana":"sábado","pedidos":75},{"dia_da_semana":"domingo","pedidos":69}],"total":null},"__todos__|Nordeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":425},{"dia_da_semana":"terça","pedidos":406},{"dia_da_semana":"quarta","pedidos":425},{"dia_da_semana":"quinta","pedidos":411},{"dia_da_semana":"sexta","pedidos":385},{"dia_da_semana":"sábado","pedidos":346},{"dia_da_semana":"domingo","pedidos":344}],"total":null},"Loja física|__todos__":{"linhas":[{"dia_da_semana":"segunda","pedidos":1369},{"dia_da_semana":"terça","pedidos":1393},{"dia_da_semana":"quarta","pedidos":1404},{"dia_da_semana":"quinta","pedidos":1322},{"dia_da_semana":"sexta","pedidos":1368},{"dia_da_semana":"sábado","pedidos":1080},{"dia_da_semana":"domingo","pedidos":1083}],"total":null},"Site|Nordeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":125},{"dia_da_semana":"terça","pedidos":114},{"dia_da_semana":"quarta","pedidos":125},{"dia_da_semana":"quinta","pedidos":120},{"dia_da_semana":"sexta","pedidos":130},{"dia_da_semana":"sábado","pedidos":110},{"dia_da_semana":"domingo","pedidos":103}],"total":null},"Site|Norte":{"linhas":[{"dia_da_semana":"segunda","pedidos":56},{"dia_da_semana":"terça","pedidos":61},{"dia_da_semana":"quarta","pedidos":47},{"dia_da_semana":"quinta","pedidos":34},{"dia_da_semana":"sexta","pedidos":46},{"dia_da_semana":"sábado","pedidos":44},{"dia_da_semana":"domingo","pedidos":28}],"total":null},"__todos__|__todos__":{"linhas":[{"dia_da_semana":"segunda","pedidos":2416},{"dia_da_semana":"terça","pedidos":2487},{"dia_da_semana":"quarta","pedidos":2520},{"dia_da_semana":"quinta","pedidos":2420},{"dia_da_semana":"sexta","pedidos":2438},{"dia_da_semana":"sábado","pedidos":2013},{"dia_da_semana":"domingo","pedidos":1960}],"total":null},"App|Nordeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":59},{"dia_da_semana":"terça","pedidos":60},{"dia_da_semana":"quarta","pedidos":64},{"dia_da_semana":"quinta","pedidos":72},{"dia_da_semana":"sexta","pedidos":51},{"dia_da_semana":"sábado","pedidos":51},{"dia_da_semana":"domingo","pedidos":45}],"total":null},"Site|(não informado)":{"linhas":[{"dia_da_semana":"segunda","pedidos":5},{"dia_da_semana":"terça","pedidos":5},{"dia_da_semana":"quarta","pedidos":8},{"dia_da_semana":"quinta","pedidos":9},{"dia_da_semana":"sexta","pedidos":4},{"dia_da_semana":"sábado","pedidos":10},{"dia_da_semana":"domingo","pedidos":5}],"total":null},"__todos__|Norte":{"linhas":[{"dia_da_semana":"segunda","pedidos":164},{"dia_da_semana":"terça","pedidos":174},{"dia_da_semana":"quarta","pedidos":168},{"dia_da_semana":"quinta","pedidos":166},{"dia_da_semana":"sexta","pedidos":158},{"dia_da_semana":"sábado","pedidos":145},{"dia_da_semana":"domingo","pedidos":120}],"total":null},"Site|Sudeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":322},{"dia_da_semana":"terça","pedidos":345},{"dia_da_semana":"quarta","pedidos":349},{"dia_da_semana":"quinta","pedidos":331},{"dia_da_semana":"sexta","pedidos":343},{"dia_da_semana":"sábado","pedidos":287},{"dia_da_semana":"domingo","pedidos":278}],"total":null},"__todos__|Sudeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":1144},{"dia_da_semana":"terça","pedidos":1184},{"dia_da_semana":"quarta","pedidos":1170},{"dia_da_semana":"quinta","pedidos":1100},{"dia_da_semana":"sexta","pedidos":1171},{"dia_da_semana":"sábado","pedidos":906},{"dia_da_semana":"domingo","pedidos":887}],"total":null},"App|(não informado)":{"linhas":[{"dia_da_semana":"segunda","pedidos":2},{"dia_da_semana":"terça","pedidos":9},{"dia_da_semana":"quarta","pedidos":3},{"dia_da_semana":"quinta","pedidos":7},{"dia_da_semana":"sexta","pedidos":1},{"dia_da_semana":"sábado","pedidos":1}],"total":null},"__todos__|Sul":{"linhas":[{"dia_da_semana":"segunda","pedidos":432},{"dia_da_semana":"terça","pedidos":415},{"dia_da_semana":"quarta","pedidos":443},{"dia_da_semana":"quinta","pedidos":418},{"dia_da_semana":"sexta","pedidos":467},{"dia_da_semana":"sábado","pedidos":344},{"dia_da_semana":"domingo","pedidos":352}],"total":null},"__todos__|Centro-Oeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":232},{"dia_da_semana":"terça","pedidos":278},{"dia_da_semana":"quarta","pedidos":286},{"dia_da_semana":"quinta","pedidos":298},{"dia_da_semana":"sexta","pedidos":239},{"dia_da_semana":"sábado","pedidos":248},{"dia_da_semana":"domingo","pedidos":241}],"total":null},"Loja física|(não informado)":{"linhas":[{"dia_da_semana":"segunda","pedidos":12},{"dia_da_semana":"terça","pedidos":16},{"dia_da_semana":"quarta","pedidos":17},{"dia_da_semana":"quinta","pedidos":11},{"dia_da_semana":"sexta","pedidos":13},{"dia_da_semana":"sábado","pedidos":13},{"dia_da_semana":"domingo","pedidos":11}],"total":null},"Site|Centro-Oeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":64},{"dia_da_semana":"terça","pedidos":88},{"dia_da_semana":"quarta","pedidos":81},{"dia_da_semana":"quinta","pedidos":87},{"dia_da_semana":"sexta","pedidos":71},{"dia_da_semana":"sábado","pedidos":86},{"dia_da_semana":"domingo","pedidos":73}],"total":null},"App|__todos__":{"linhas":[{"dia_da_semana":"segunda","pedidos":358},{"dia_da_semana":"terça","pedidos":357},{"dia_da_semana":"quarta","pedidos":387},{"dia_da_semana":"quinta","pedidos":393},{"dia_da_semana":"sexta","pedidos":340},{"dia_da_semana":"sábado","pedidos":288},{"dia_da_semana":"domingo","pedidos":291}],"total":null},"Loja física|Sul":{"linhas":[{"dia_da_semana":"segunda","pedidos":245},{"dia_da_semana":"terça","pedidos":234},{"dia_da_semana":"quarta","pedidos":254},{"dia_da_semana":"quinta","pedidos":234},{"dia_da_semana":"sexta","pedidos":258},{"dia_da_semana":"sábado","pedidos":182},{"dia_da_semana":"domingo","pedidos":197}],"total":null},"App|Sudeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":164},{"dia_da_semana":"terça","pedidos":169},{"dia_da_semana":"quarta","pedidos":179},{"dia_da_semana":"quinta","pedidos":158},{"dia_da_semana":"sexta","pedidos":160},{"dia_da_semana":"sábado","pedidos":127},{"dia_da_semana":"domingo","pedidos":135}],"total":null},"App|Sul":{"linhas":[{"dia_da_semana":"segunda","pedidos":70},{"dia_da_semana":"terça","pedidos":57},{"dia_da_semana":"quarta","pedidos":70},{"dia_da_semana":"quinta","pedidos":60},{"dia_da_semana":"sexta","pedidos":73},{"dia_da_semana":"sábado","pedidos":54},{"dia_da_semana":"domingo","pedidos":56}],"total":null},"App|Norte":{"linhas":[{"dia_da_semana":"segunda","pedidos":23},{"dia_da_semana":"terça","pedidos":26},{"dia_da_semana":"quarta","pedidos":28},{"dia_da_semana":"quinta","pedidos":30},{"dia_da_semana":"sexta","pedidos":17},{"dia_da_semana":"sábado","pedidos":26},{"dia_da_semana":"domingo","pedidos":23}],"total":null},"Loja física|Sudeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":658},{"dia_da_semana":"terça","pedidos":670},{"dia_da_semana":"quarta","pedidos":642},{"dia_da_semana":"quinta","pedidos":611},{"dia_da_semana":"sexta","pedidos":668},{"dia_da_semana":"sábado","pedidos":492},{"dia_da_semana":"domingo","pedidos":474}],"total":null},"Site|Sul":{"linhas":[{"dia_da_semana":"segunda","pedidos":117},{"dia_da_semana":"terça","pedidos":124},{"dia_da_semana":"quarta","pedidos":119},{"dia_da_semana":"quinta","pedidos":124},{"dia_da_semana":"sexta","pedidos":136},{"dia_da_semana":"sábado","pedidos":108},{"dia_da_semana":"domingo","pedidos":99}],"total":null},"Site|__todos__":{"linhas":[{"dia_da_semana":"segunda","pedidos":689},{"dia_da_semana":"terça","pedidos":737},{"dia_da_semana":"quarta","pedidos":729},{"dia_da_semana":"quinta","pedidos":705},{"dia_da_semana":"sexta","pedidos":730},{"dia_da_semana":"sábado","pedidos":645},{"dia_da_semana":"domingo","pedidos":586}],"total":null},"App|Centro-Oeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":40},{"dia_da_semana":"terça","pedidos":36},{"dia_da_semana":"quarta","pedidos":43},{"dia_da_semana":"quinta","pedidos":66},{"dia_da_semana":"sexta","pedidos":38},{"dia_da_semana":"sábado","pedidos":29},{"dia_da_semana":"domingo","pedidos":32}],"total":null},"Loja física|Nordeste":{"linhas":[{"dia_da_semana":"segunda","pedidos":241},{"dia_da_semana":"terça","pedidos":232},{"dia_da_semana":"quarta","pedidos":236},{"dia_da_semana":"quinta","pedidos":219},{"dia_da_semana":"sexta","pedidos":204},{"dia_da_semana":"sábado","pedidos":185},{"dia_da_semana":"domingo","pedidos":196}],"total":null},"__todos__|(não informado)":{"linhas":[{"dia_da_semana":"segunda","pedidos":19},{"dia_da_semana":"terça","pedidos":30},{"dia_da_semana":"quarta","pedidos":28},{"dia_da_semana":"quinta","pedidos":27},{"dia_da_semana":"sexta","pedidos":18},{"dia_da_semana":"sábado","pedidos":24},{"dia_da_semana":"domingo","pedidos":16}],"total":null}},"comparacao_periodo":null,"_largura":"metade"},{"id":"regioes","tipo":"tabela","titulo":"Regiões lado a lado","metricas":["receita_total","participacao_receita","pedidos","ticket_medio"],"dimensoes":["regiao"],"largura":"inteira","dados":{"App|__todos__":{"linhas":[{"regiao":"Sudeste","receita_total":274407.62,"participacao_receita":0.4500342592186687,"pedidos":1092,"ticket_medio":251.2890293040293},{"regiao":"Sul","receita_total":109435.04,"participacao_receita":0.17947576367946844,"pedidos":440,"ticket_medio":248.71599999999998},{"regiao":"Nordeste","receita_total":103499.14,"participacao_receita":0.16974076302862612,"pedidos":402,"ticket_medio":257.4605472636816},{"regiao":"Centro-Oeste","receita_total":72764.25,"participacao_receita":0.1193348980117681,"pedidos":284,"ticket_medio":256.21214788732397},{"regiao":"Norte","receita_total":44715.71,"participacao_receita":0.0733347034068763,"pedidos":173,"ticket_medio":258.47231213872834},{"regiao":"(não informado)","receita_total":4926.53,"participacao_receita":0.008079612654592274,"pedidos":23,"ticket_medio":214.1969565217391}],"total":{"regiao":"__todos__","receita_total":609748.29,"participacao_receita":1.0,"pedidos":2414,"ticket_medio":252.58835542667774}},"Loja física|__todos__":{"linhas":[{"regiao":"Sudeste","receita_total":1052046.01,"participacao_receita":0.46644253043777945,"pedidos":4215,"ticket_medio":249.5957319098458},{"regiao":"Sul","receita_total":400979.73,"participacao_receita":0.1777811979111613,"pedidos":1604,"ticket_medio":249.98736284289276},{"regiao":"Nordeste","receita_total":385217.18,"participacao_receita":0.17079260269929217,"pedidos":1513,"ticket_medio":254.60487772637146},{"regiao":"Centro-Oeste","receita_total":244112.3,"participacao_receita":0.10823134904811468,"pedidos":988,"ticket_medio":247.07722672064776},{"regiao":"Norte","receita_total":149784.07,"participacao_receita":0.06640932047265641,"pedidos":606,"ticket_medio":247.16843234323434},{"regiao":"(não informado)","receita_total":23328.3,"participacao_receita":0.010342999430996036,"pedidos":93,"ticket_medio":250.84193548387097}],"total":{"regiao":"__todos__","receita_total":2255467.59,"participacao_receita":1.0,"pedidos":9019,"ticket_medio":250.07956425324315}},"__todos__|__todos__":{"linhas":[{"regiao":"Sudeste","receita_total":1890544.57,"participacao_receita":0.46379726581312186,"pedidos":7562,"ticket_medio":250.00589394340122},{"regiao":"Sul","receita_total":722466.81,"participacao_receita":0.17723894820354763,"pedidos":2871,"ticket_medio":251.64291536050158},{"regiao":"Nordeste","receita_total":701453.87,"participacao_receita":0.17208395515374336,"pedidos":2742,"ticket_medio":255.81833333333333},{"regiao":"Centro-Oeste","receita_total":453009.2,"participacao_receita":0.11113434281435094,"pedidos":1822,"ticket_medio":248.63293084522505},{"regiao":"Norte","receita_total":269179.61,"participacao_receita":0.06603640512460517,"pedidos":1095,"ticket_medio":245.82612785388127},{"regiao":"(não informado)","receita_total":39576.46,"participacao_receita":0.009709082890631023,"pedidos":162,"ticket_medio":244.29913580246912}],"total":{"regiao":"__todos__","receita_total":4076230.52,"participacao_receita":1.0,"pedidos":16254,"ticket_medio":250.78322382182847}},"Site|__todos__":{"linhas":[{"regiao":"Sudeste","receita_total":564090.94,"participacao_receita":0.4658002648093503,"pedidos":2255,"ticket_medio":250.15119290465628},{"regiao":"Nordeste","receita_total":212737.55,"participacao_receita":0.17566885070852653,"pedidos":827,"ticket_medio":257.240084643289},{"regiao":"Sul","receita_total":212052.04,"participacao_receita":0.1751027881875978,"pedidos":827,"ticket_medio":256.4111729141475},{"regiao":"Centro-Oeste","receita_total":136132.65,"participacao_receita":0.11241205969235847,"pedidos":550,"ticket_medio":247.51390909090907},{"regiao":"Norte","receita_total":74679.83,"participacao_receita":0.06166715705435238,"pedidos":316,"ticket_medio":236.3285759493671},{"regiao":"(não informado)","receita_total":11321.63,"participacao_receita":0.00934887954781455,"pedidos":46,"ticket_medio":246.12239130434781}],"total":{"regiao":"__todos__","receita_total":1211014.64,"participacao_receita":1.0,"pedidos":4821,"ticket_medio":251.19573532462144}}},"comparacao_periodo":null,"_largura":"inteira"}],"metricas":{"desconto_medio":{"descricao":"Desconto médio","definicao":"média de desconto_pct","formato":"numero","unidade":"%","melhor":"maior"},"participacao_receita":{"descricao":"Participação no faturamento","definicao":"receita_total de cada grupo dividido pelo total de receita_total de todos os grupos","formato":"percentual","unidade":null,"melhor":"maior"},"pedidos":{"descricao":"Pedidos","definicao":"quantidade de valores diferentes de pedido_id","formato":"inteiro","unidade":null,"melhor":"maior"},"receita_por_dia":{"descricao":"Faturamento por dia","definicao":"receita_total dividido pelos dias entre o primeiro e o último registro de data_pedido do grupo","formato":"moeda","unidade":null,"melhor":"maior"},"receita_total":{"descricao":"Faturamento","definicao":"soma de receita","formato":"moeda","unidade":null,"melhor":"maior"},"ticket_medio":{"descricao":"Ticket médio","definicao":"receita_total dividido por pedidos","formato":"moeda","unidade":null,"melhor":"maior"}},"dimensoes":{"canal":{"descricao":"Canal de venda","granularidade":null},"mes":{"descricao":"Mês","granularidade":"mes"},"regiao":{"descricao":"Região","granularidade":null},"dia_da_semana":{"descricao":"Dia da semana","granularidade":"dia_semana"},"uf":{"descricao":"UF","granularidade":null},"categoria":{"descricao":"Categoria","granularidade":null},"loja":{"descricao":"Loja","granularidade":null}},"filtros":[{"dimensao":"canal","rotulo":"Canal de venda","opcoes":["App","Loja física","Site"]},{"dimensao":"regiao","rotulo":"Região","opcoes":["(não informado)","Centro-Oeste","Nordeste","Norte","Sudeste","Sul"]}],"periodo":{"nome":"tudo","rotulo":"01/01/2025 a 31/12/2025"},"fonte":{"arquivo":"saidas/bi/tabelas/vendas.parquet","sha256":"48a81d49d1b49184af2e01f09b718247711acf953568fa5168bbd43191985988"},"origem":"planilha_direta","gerado_em":"2026-11-17T22:35:52+00:00","avisos":[],"constantes":{"todos":"__todos__","vazio":"(não informado)"}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js"></script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('dados-bi').textContent);
+  const TODOS = D.constantes.todos;
+  const estado = {};
+  D.filtros.forEach(f => { estado[f.dimensao] = TODOS; });
+  const graficos = [];
+  const temEcharts = typeof window.echarts !== 'undefined';
+
+  const moeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+  const inteiro = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
+  const dec2 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const ate2 = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 });
+  const pct1 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const compacto = new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 });
+  const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+  function fmt(v, m) {
+    if (v === null || v === undefined) return '—';
+    const def = D.metricas[m] || {};
+    const u = !def.unidade ? '' : (/^[%×x°]$/.test(def.unidade) ? '' : ' ') + def.unidade;
+    switch (def.formato) {
+      case 'moeda': return moeda.format(v);
+      case 'inteiro': return inteiro.format(v) + u;
+      case 'percentual': return pct1.format(v * 100) + '%';
+      case 'decimal': return dec2.format(v) + u;
+      default: return ate2.format(v) + u;
+    }
+  }
+  function fmtEixo(v, m) {
+    const def = D.metricas[m] || {};
+    if (def.formato === 'percentual') return pct1.format(v * 100) + '%';
+    const t = Math.abs(v) >= 10000 ? compacto.format(v) : ate2.format(v);
+    return def.formato === 'moeda' ? 'R$ ' + t : t;
+  }
+  function rotuloDim(dim, valor) {
+    if (valor === null || valor === undefined) return '—';
+    const g = (D.dimensoes[dim] || {}).granularidade;
+    const s = String(valor);
+    if (g === 'mes' && /^\d{4}-\d{2}$/.test(s)) return MESES[+s.slice(5, 7) - 1] + '/' + s.slice(2, 4);
+    if (g === 'trimestre') return s.replace(/^(\d{4})-T(\d)$/, (_, a, t) => t + 'º tri/' + a.slice(2));
+    if ((g === 'dia' || g === 'semana') && /^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(8, 10) + '/' + s.slice(5, 7) + '/' + s.slice(2, 4);
+    return s;
+  }
+  function cor(nome) { return getComputedStyle(document.documentElement).getPropertyValue('--' + nome).trim(); }
+  function serieCores() { return [1, 2, 3, 4, 5].map(i => cor('chart-' + i)); }
+  function el(tag, attrs, filhos) {
+    const e = document.createElement(tag);
+    Object.entries(attrs || {}).forEach(([k, v]) => {
+      if (k === 'texto') e.textContent = v; else if (k === 'classe') e.className = v; else e.setAttribute(k, v);
+    });
+    (filhos || []).forEach(f => f && e.appendChild(f));
+    return e;
+  }
+  function dadosDo(b) {
+    const dims = b.dimensoes || [];
+    const chave = D.filtros.map(f => dims.includes(f.dimensao) ? TODOS : estado[f.dimensao]).join('|');
+    const base = b.dados[chave] || { linhas: [], total: null };
+    const ativos = D.filtros.filter(f => dims.includes(f.dimensao) && estado[f.dimensao] !== TODOS);
+    if (!ativos.length) return base;
+    return { linhas: base.linhas.filter(l => ativos.every(f => l[f.dimensao] === estado[f.dimensao])), total: null };
+  }
+  function preencher(texto, b, dados) {
+    const ref = dados.linhas[0] || dados.total || {};
+    return texto.replace(/\{([a-z_]+)\}/g, (_, m) => fmt(ref[m], m));
+  }
+  function deltaEl(linha, m, b) {
+    const p = linha[m + '__variacao_pct'];
+    const box = el('div', { classe: 'variacao' });
+    if (p === null || p === undefined) {
+      if (b.comparacao_periodo) box.appendChild(el('span', { texto: 'Sem dados no período de comparação' }));
+      return box;
+    }
+    const sobe = p >= 0;
+    const bom = (D.metricas[m] || {}).melhor === 'menor' ? !sobe : sobe;
+    box.appendChild(el('span', { classe: 'delta ' + (bom ? 'sobe' : 'desce'), texto: (sobe ? '▲ ' : '▼ ') + pct1.format(Math.abs(p) * 100) + '%' }));
+    box.appendChild(el('span', { texto: 'vs. ' + fmt(linha[m + '__comparacao'], m) + ' em ' + b.comparacao_periodo.inicio + ' a ' + b.comparacao_periodo.fim }));
+    return box;
+  }
+  function tabelaNumeros(b, dados) {
+    const dims = b.dimensoes || [];
+    const cab = el('tr', {}, dims.map(d => el('th', { texto: D.dimensoes[d].descricao, scope: 'col' }))
+      .concat(b.metricas.map(m => el('th', { classe: 'num', texto: D.metricas[m].descricao, scope: 'col' }))));
+    const corpo = dados.linhas.map(l => el('tr', {}, dims.map(d => el('td', { texto: rotuloDim(d, l[d]) }))
+      .concat(b.metricas.map(m => el('td', { classe: 'num', texto: fmt(l[m], m) })))));
+    const filhos = [el('thead', {}, [cab]), el('tbody', {}, corpo)];
+    if (dados.total && dims.length) {
+      filhos.push(el('tfoot', {}, [el('tr', {}, [el('td', { texto: 'Total', colspan: String(dims.length) })]
+        .concat(b.metricas.map(m => el('td', { classe: 'num', texto: fmt(dados.total[m], m) }))))]));
+    }
+    return el('div', { classe: 'tabela-rolagem' }, [el('table', {}, filhos)]);
+  }
+  function eixoBase() {
+    return {
+      axisLine: { lineStyle: { color: cor('border') } }, axisTick: { show: false },
+      axisLabel: { color: cor('muted-foreground'), fontFamily: getComputedStyle(document.body).fontFamily, hideOverlap: true },
+      splitLine: { lineStyle: { color: cor('border'), type: 'dashed' } }
+    };
+  }
+  function opcoesBase() {
+    return {
+      color: serieCores(), animation: !matchMedia('(prefers-reduced-motion: reduce)').matches,
+      textStyle: { fontFamily: getComputedStyle(document.body).fontFamily, color: cor('card-foreground') },
+      grid: { left: 8, right: 16, top: 24, bottom: 8, containLabel: true },
+      tooltip: { trigger: 'axis', backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') } },
+      legend: { show: false, textStyle: { color: cor('muted-foreground') }, top: 0 }
+    };
+  }
+  function opcaoGrafico(b, dados) {
+    const o = opcoesBase();
+    const dims = b.dimensoes || [], ms = b.metricas, ls = dados.linhas;
+    const m0 = ms[0];
+    const tt = (params) => {
+      const ps = Array.isArray(params) ? params : [params];
+      return ps.map(p => (p.seriesName && ps.length > 1 ? p.marker + p.seriesName + ': ' : (p.name ? p.name + ': ' : '')) + (p.data && p.data.texto ? p.data.texto : '')).join('<br>');
+    };
+    o.tooltip.formatter = tt;
+    if (b.tipo === 'linha_tempo') {
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: ls.map(l => rotuloDim(dims[0], l[dims[0]])), boundaryGap: false, splitLine: { show: false } });
+      o.yAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      o.series = ms.map((m, i) => ({ type: 'line', name: D.metricas[m].descricao, smooth: true, showSymbol: ls.length < 20, symbolSize: 6,
+        areaStyle: i === 0 ? { opacity: .12 } : undefined, lineStyle: { width: 2.5 },
+        data: ls.map(l => ({ value: l[m], texto: fmt(l[m], m) })) }));
+      o.legend.show = ms.length > 1; if (ms.length > 1) o.grid.top = 36;
+    } else if (b.tipo === 'barras_ranking') {
+      const rev = ls.slice().reverse();
+      o.tooltip.trigger = 'item';
+      o.xAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      o.yAxis = Object.assign(eixoBase(), { type: 'category', data: rev.map(l => rotuloDim(dims[0], l[dims[0]])), splitLine: { show: false } });
+      o.series = [{ type: 'bar', barMaxWidth: 22, data: rev.map((l, i) => ({ value: l[m0], texto: fmt(l[m0], m0),
+        itemStyle: { color: i === rev.length - 1 ? cor('primary') : cor('muted-foreground'), opacity: i === rev.length - 1 ? 1 : .45, borderRadius: [0, 4, 4, 0] } })),
+        label: { show: true, position: 'right', color: cor('card-foreground'), opacity: 1, formatter: p => p.data.texto } }];
+      o.grid.right = 88;
+    } else if (b.tipo === 'barras_agrupadas') {
+      o.tooltip.axisPointer = { type: 'shadow' };
+      const cats = [...new Set(ls.map(l => l[dims[0]]))];
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: cats.map(c => rotuloDim(dims[0], c)), splitLine: { show: false } });
+      o.yAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      if (dims.length === 2) {
+        const grupos = [...new Set(ls.map(l => l[dims[1]]))];
+        o.series = grupos.map(g => ({ type: 'bar', name: rotuloDim(dims[1], g), barMaxWidth: 28,
+          data: cats.map(c => { const l = ls.find(x => x[dims[0]] === c && x[dims[1]] === g); return { value: l ? l[m0] : null, texto: l ? fmt(l[m0], m0) : '—' }; }) }));
+      } else {
+        o.series = ms.map(m => ({ type: 'bar', name: D.metricas[m].descricao, barMaxWidth: 28,
+          data: cats.map(c => { const l = ls.find(x => x[dims[0]] === c); return { value: l ? l[m] : null, texto: l ? fmt(l[m], m) : '—' }; }) }));
+      }
+      o.legend.show = o.series.length > 1; if (o.legend.show) o.grid.top = 36;
+    } else if (b.tipo === 'area_empilhada') {
+      const xs = [...new Set(ls.map(l => l[dims[0]]))], grupos = [...new Set(ls.map(l => l[dims[1]]))];
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: xs.map(x => rotuloDim(dims[0], x)), boundaryGap: false, splitLine: { show: false } });
+      o.yAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      o.series = grupos.map(g => ({ type: 'line', name: rotuloDim(dims[1], g), stack: 'total', areaStyle: { opacity: .55 }, showSymbol: false, smooth: true,
+        data: xs.map(x => { const l = ls.find(y => y[dims[0]] === x && y[dims[1]] === g); return { value: l ? l[m0] : 0, texto: l ? fmt(l[m0], m0) : '—' }; }) }));
+      o.legend.show = true; o.grid.top = 36;
+    } else if (b.tipo === 'rosca') {
+      o.tooltip = { trigger: 'item', backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') },
+        formatter: p => p.name + ': ' + p.data.texto + ' (' + pct1.format(p.percent) + '%)' };
+      o.legend = { show: true, bottom: 0, textStyle: { color: cor('muted-foreground') }, icon: 'circle' };
+      o.series = [{ type: 'pie', radius: ['54%', '78%'], center: ['50%', '44%'], avoidLabelOverlap: true, label: { show: false },
+        itemStyle: { borderColor: cor('card'), borderWidth: 2 },
+        data: ls.map(l => ({ name: rotuloDim(dims[0], l[dims[0]]), value: l[m0], texto: fmt(l[m0], m0) })) }];
+      if (dados.total) o.graphic = [{ type: 'text', left: 'center', top: '38%', style: { text: fmt(dados.total[m0], m0), fill: cor('card-foreground'), fontSize: 15, fontWeight: 600, align: 'center' } }];
+    } else if (b.tipo === 'cascata') {
+      let acumulado = 0; const base = [], valor = [], nomes = [];
+      ls.forEach(l => { const v = l[m0] || 0; nomes.push(rotuloDim(dims[0], l[dims[0]]));
+        base.push(v >= 0 ? acumulado : acumulado + v); valor.push({ value: Math.abs(v), texto: fmt(v, m0), itemStyle: { color: v >= 0 ? cor('positivo') : cor('negativo') } }); acumulado += v; });
+      if (dados.total) { nomes.push('Resultado'); base.push(Math.min(0, dados.total[m0])); valor.push({ value: Math.abs(dados.total[m0]), texto: fmt(dados.total[m0], m0), itemStyle: { color: cor('primary') } }); }
+      o.tooltip = { trigger: 'axis', axisPointer: { type: 'shadow' }, backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') },
+        formatter: ps => { const p = ps.find(x => x.seriesIndex === 1); return p.name + ': ' + p.data.texto; } };
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: nomes, splitLine: { show: false }, axisLabel: Object.assign(eixoBase().axisLabel, { interval: 0, rotate: nomes.length > 5 ? 30 : 0 }) });
+      o.yAxis = Object.assign(eixoBase(), { type: 'value', axisLabel: Object.assign(eixoBase().axisLabel, { formatter: v => fmtEixo(v, m0) }) });
+      o.series = [{ type: 'bar', stack: 'c', itemStyle: { color: 'transparent' }, emphasis: { disabled: true }, data: base },
+                  { type: 'bar', stack: 'c', barMaxWidth: 40, data: valor }];
+    } else if (b.tipo === 'funil') {
+      const linha = ls[0] || {};
+      o.tooltip = { trigger: 'item', backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') }, formatter: p => p.name + ': ' + p.data.texto };
+      o.series = [{ type: 'funnel', left: '8%', right: '8%', top: 8, bottom: 8, sort: 'none', gap: 3, minSize: '18%',
+        label: { position: 'inside', color: cor('primary-foreground'), formatter: p => p.name + '\n' + p.data.texto },
+        data: ms.map((m, i) => ({ name: D.metricas[m].descricao, value: linha[m], texto: fmt(linha[m], m),
+          itemStyle: { color: cor('primary'), opacity: 1 - i * (0.5 / ms.length) } })) }];
+    } else if (b.tipo === 'mapa_calor') {
+      const xs = [...new Set(ls.map(l => l[dims[0]]))], ys = [...new Set(ls.map(l => l[dims[1]]))];
+      const vals = ls.map(l => l[m0]).filter(v => v !== null);
+      o.tooltip = { trigger: 'item', backgroundColor: cor('card'), borderColor: cor('border'), textStyle: { color: cor('card-foreground') }, formatter: p => p.data.texto };
+      o.grid.bottom = 48;
+      o.xAxis = Object.assign(eixoBase(), { type: 'category', data: xs.map(x => rotuloDim(dims[0], x)), splitArea: { show: false } });
+      o.yAxis = Object.assign(eixoBase(), { type: 'category', data: ys.map(y => rotuloDim(dims[1], y)) });
+      o.visualMap = { min: Math.min(...vals), max: Math.max(...vals), calculable: false, orient: 'horizontal', left: 'center', bottom: 0,
+        inRange: { color: [cor('muted'), cor('primary')] }, textStyle: { color: cor('muted-foreground') }, formatter: v => fmtEixo(v, m0) };
+      o.series = [{ type: 'heatmap', data: ls.map(l => ({ value: [xs.indexOf(l[dims[0]]), ys.indexOf(l[dims[1]]), l[m0]], texto: rotuloDim(dims[0], l[dims[0]]) + ' · ' + rotuloDim(dims[1], l[dims[1]]) + ': ' + fmt(l[m0], m0) })) }];
+    }
+    return o;
+  }
+  const GRADE_UF = { RR: [0, 3], AP: [0, 5], AM: [1, 1], PA: [1, 3], MA: [1, 4], CE: [1, 5], RN: [1, 6], AC: [2, 0], RO: [2, 1],
+    TO: [2, 3], PI: [2, 4], PE: [2, 5], PB: [2, 6], MT: [3, 2], GO: [3, 3], DF: [3, 4], BA: [3, 5], AL: [3, 6], MS: [4, 2],
+    MG: [4, 4], ES: [4, 5], SE: [4, 6], SP: [5, 3], RJ: [5, 4], PR: [6, 3], SC: [7, 3], RS: [8, 3] };
+  function mapaUF(b, dados) {
+    const dim = b.dimensoes[0], m0 = b.metricas[0];
+    const por = {}; dados.linhas.forEach(l => { por[l[dim]] = l; });
+    const vals = dados.linhas.map(l => l[m0]).filter(v => v !== null);
+    const max = Math.max(...vals, 0), min = Math.min(...vals, max);
+    const grade = el('div', { classe: 'mapa', role: 'img', 'aria-label': 'Mapa do Brasil por UF: ' + b.titulo });
+    for (let r = 0; r < 9; r++) for (let c = 0; c < 7; c++) {
+      const uf = Object.keys(GRADE_UF).find(k => GRADE_UF[k][0] === r && GRADE_UF[k][1] === c);
+      if (!uf) { grade.appendChild(el('div')); continue; }
+      const l = por[uf];
+      const cel = el('div', { classe: 'uf' + (l ? '' : ' vazia'), title: uf + (l ? ': ' + fmt(l[m0], m0) : ': sem dados') },
+        [el('b', { texto: uf }), l ? el('span', { texto: fmtEixo(l[m0], m0) }) : null]);
+      if (l) {
+        const t = max > min ? (l[m0] - min) / (max - min) : 1;
+        cel.style.background = 'color-mix(in srgb, var(--primary) ' + Math.round(18 + t * 82) + '%, var(--card))';
+        cel.style.color = t > 0.45 ? 'var(--primary-foreground)' : 'var(--card-foreground)';
+      }
+      grade.appendChild(cel);
+    }
+    const leg = el('div', { classe: 'legenda' }, [el('span', { texto: 'menor: ' + fmt(min, m0) }), el('span', { texto: 'maior: ' + fmt(max, m0) })]);
+    return el('div', {}, [grade, leg]);
+  }
+  function definicoes(b) {
+    return el('details', {}, [el('summary', { texto: 'Como calculamos' }), el('ul', { classe: 'definicoes' },
+      b.metricas.map(m => el('li', {}, [el('b', { texto: D.metricas[m].descricao + ': ' }), el('span', { texto: D.metricas[m].definicao })])))]);
+  }
+  const COMGRAFICO = ['linha_tempo', 'barras_ranking', 'barras_agrupadas', 'area_empilhada', 'rosca', 'cascata', 'funil', 'mapa_calor'];
+  function desenharBloco(b) {
+    const dados = dadosDo(b);
+    const corpo = b._corpo; corpo.replaceChildren();
+    if (!dados.linhas.length && !dados.total) {
+      if (b._achado) b._achado.hidden = true;
+      corpo.appendChild(el('p', { classe: 'sem-grafico', texto: 'Nenhum dado com estes filtros. Mude ou limpe os filtros acima.' }));
+      return;
+    }
+    if (b._achado) { b._achado.hidden = false; b._achado.textContent = preencher(b.achado || '', b, dados); }
+    if (b._titulo) b._titulo.textContent = preencher(b.titulo, b, dados);
+    if (b.tipo === 'numero_destaque') {
+      const l = dados.linhas[0] || {}, m = b.metricas[0];
+      corpo.appendChild(el('div', { classe: 'destaque' }, [el('div', { classe: 'valor-grande', texto: fmt(l[m], m) }), b.comparacao_periodo ? deltaEl(l, m, b) : null]));
+    } else if (b.tipo === 'faixa_kpis') {
+      const l = dados.linhas[0] || {};
+      corpo.appendChild(el('div', { classe: 'kpis' }, b.metricas.map(m => el('div', { classe: 'kpi' },
+        [el('span', { classe: 'rotulo', texto: D.metricas[m].descricao }), el('span', { classe: 'valor', texto: fmt(l[m], m) }), b.comparacao_periodo ? deltaEl(l, m, b) : null]))));
+    } else if (b.tipo === 'tabela') {
+      corpo.appendChild(tabelaNumeros(b, dados));
+    } else if (b.tipo === 'mapa_uf') {
+      corpo.appendChild(mapaUF(b, dados));
+      corpo.appendChild(el('details', {}, [el('summary', { texto: 'Ver os números' }), tabelaNumeros(b, dados)]));
+    } else if (COMGRAFICO.includes(b.tipo)) {
+      const alvo = el('div', { classe: 'grafico', role: 'img', 'aria-label': b.titulo });
+      corpo.appendChild(alvo);
+      const numeros = el('details', {}, [el('summary', { texto: 'Ver os números' }), tabelaNumeros(b, dados)]);
+      corpo.appendChild(numeros);
+      if (temEcharts) {
+        const g = echarts.init(alvo, null, { renderer: 'svg' });
+        g.setOption(opcaoGrafico(b, dados));
+        graficos.push(g);
+      } else {
+        alvo.replaceWith(el('p', { classe: 'sem-grafico', texto: 'O gráfico precisa de internet para carregar. Os números estão na tabela abaixo.' }));
+        numeros.open = true;
+      }
+    }
+  }
+  function desenharTudo() {
+    graficos.splice(0).forEach(g => g.dispose());
+    D.blocos.forEach(desenharBloco);
+  }
+  function montar() {
+    const grade = document.getElementById('grade');
+    D.blocos.forEach(b => {
+      const sec = el('section', { classe: 'bloco', 'data-tipo': b.tipo, 'data-largura': b._largura, 'aria-labelledby': 'tit-' + b.id });
+      b._titulo = el('h2', { id: 'tit-' + b.id });
+      sec.appendChild(b._titulo);
+      if (b.subtitulo) sec.appendChild(el('p', { classe: 'sub', texto: b.subtitulo }));
+      if (b.achado) { b._achado = el('p', { classe: 'achado' }); sec.appendChild(b._achado); }
+      b._corpo = el('div', { classe: 'corpo' });
+      sec.appendChild(b._corpo);
+      sec.appendChild(definicoes(b));
+      grade.appendChild(sec);
+    });
+    const caixa = document.getElementById('filtros');
+    if (!D.filtros.length) { caixa.hidden = true; } else {
+      D.filtros.forEach(f => {
+        const sel = el('select', { id: 'filtro-' + f.dimensao }, [el('option', { value: TODOS, texto: 'Todos' })]
+          .concat(f.opcoes.map(v => el('option', { value: v, texto: rotuloDim(f.dimensao, v) }))));
+        sel.addEventListener('change', () => { estado[f.dimensao] = sel.value; desenharTudo(); });
+        caixa.appendChild(el('label', { for: 'filtro-' + f.dimensao }, [document.createTextNode(f.rotulo), sel]));
+      });
+      const limpar = el('button', { classe: 'limpar', type: 'button', texto: 'Limpar filtros' });
+      limpar.addEventListener('click', () => { D.filtros.forEach(f => { estado[f.dimensao] = TODOS; document.getElementById('filtro-' + f.dimensao).value = TODOS; }); desenharTudo(); });
+      caixa.appendChild(limpar);
+    }
+    desenharTudo();
+    let espera;
+    window.addEventListener('resize', () => { clearTimeout(espera); espera = setTimeout(() => graficos.forEach(g => g.resize()), 120); });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', desenharTudo);
+    new MutationObserver(desenharTudo).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+  montar();
+})();
+</script>
+</body>
+</html>

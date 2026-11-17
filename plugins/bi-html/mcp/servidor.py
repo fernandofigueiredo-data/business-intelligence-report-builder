@@ -33,6 +33,10 @@ perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõ
   num processo à parte (o pbix-mcp exige mcp<2).
 - `montar_comparativo`: Fluxo 2, via (b): o relatório original publicado no Power BI ao lado da
   página convertida, numa pasta estática (o Artifact do claude.ai não incorpora outros sites).
+- `exportar_offline`: o dashboard num HTML autocontido para enviar, que abre sem internet; recusado
+  com dados pessoais.
+- `renderizar_assistente`: o dashboard com um assistente de perguntas (capacidade `sample` do
+  Artifact), em que cada número da resposta é conferido contra o que o assistente consultou.
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -59,6 +63,8 @@ from bi_html.verificador import verificar as _verificar_documento  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
 from bi_html.conversao import converter as _converter_pbix  # noqa: E402
 from bi_html.incorporacao import montar_comparativo as _montar_comparativo  # noqa: E402
+from bi_html.exportacao import exportar as _exportar_offline  # noqa: E402
+from bi_html.assistente import renderizar_assistente as _renderizar_assistente  # noqa: E402
 
 mcp = MCPServer("bi-dados")
 
@@ -305,6 +311,35 @@ def montar_comparativo(link_power_bi: str | None = None, licenca: str = "free", 
     estática (abre do disco ou em qualquer hospedagem); o Artifact do claude.ai não incorpora outros sites."""
     try:
         return {"ok": True, **_montar_comparativo(projeto(), link_power_bi, licenca, pagina)}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def exportar_offline(spec: str | None = None) -> dict:
+    """Grava o dashboard num HTML autocontido, que abre sem internet (ECharts embutido, fontes do
+    sistema): saidas/bi/dashboard.offline.html. `spec`, se informado, é outra spec do projeto (por
+    exemplo dashboard/paginas/<pagina>.json), gravada em saidas/bi/paginas/<pagina>.offline.html.
+    Recusa quando há dados pessoais. Na primeira vez, baixa o ECharts do cdnjs (conferido pelo hash)
+    para o cache do usuário."""
+    try:
+        destino = None
+        if spec:
+            from pathlib import Path as _P
+            destino = _P("saidas") / "bi" / "paginas" / (_P(spec).stem + ".offline.html")
+        return {"ok": True, **_exportar_offline(projeto(), spec, destino)}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def renderizar_assistente() -> dict:
+    """Grava saidas/bi/assistente.artifact.html: o dashboard com o painel "Pergunte ao dashboard" (o Claude
+    responde só com os números do cubo; cada número é conferido antes de aparecer) e as perguntas de controle
+    com resposta conhecida. Só funciona publicado como Artifact, com as capacidades devolvidas em
+    `capacidades`. Recusa publicar (em `publicacao_bloqueada`) quando há dados pessoais."""
+    try:
+        return {"ok": True, **_renderizar_assistente(projeto())}
     except ErroDeLeitura as e:
         return _erro(e)
 

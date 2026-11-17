@@ -4,7 +4,7 @@
 
 **Legenda epistêmica.** **[F]** fato verificado nesta sessão em documentação, página ou ambiente consultado (número da fonte no fim). **[I]** inferência minha a partir de fatos. **[H]** hipótese a validar. **[NV]** afirmação técnica não verificada nesta sessão.
 
-**Estado das provas de conceito.** A F6 rodou em 17/11/2026 com três .pbix seus, todos em modo de importação; a coluna de importação da matriz 5.1 está **testada** [F21], e as colunas DirectQuery e conexão dinâmica continuam com base documental, à espera de um arquivo em cada modo. A F7 converteu os três arquivos [F22]; a F7b montou a comparação com o original e registrou o teste do iframe, e falta só a publicação do relatório fictício no Power BI [F23]. O servidor MCP `pbix-mcp` já está instalado neste ambiente [F].
+**Estado das provas de conceito.** A F6 rodou em 17/11/2026 com três .pbix seus, todos em modo de importação; a coluna de importação da matriz 5.1 está **testada** [F21], e as colunas DirectQuery e conexão dinâmica continuam com base documental, à espera de um arquivo em cada modo. A F7 converteu os três arquivos [F22]; a F7b montou a comparação com o original e registrou o teste do iframe, e falta só a publicação do relatório fictício no Power BI [F23]. A F9 (vitrine em `docs/`), a F10 (assistente, com a bateria de perguntas à espera do primeiro clique) e a F11 (HTML autocontido) estão implementadas [F24][F25][F26]; a F8 espera a indicação do projeto real. O servidor MCP `pbix-mcp` já está instalado neste ambiente [F].
 
 ---
 
@@ -107,7 +107,7 @@ A RLS de um .pbix **não se transfere sozinha** em nenhum modelo: as regras pode
 
 ### 6.2 Recomendação
 
-O padrão é **publicar como Artifact**: privado até você compartilhar, revogável por exclusão, atualizado no mesmo link a cada republicação e sem infraestrutura própria. O arquivo HTML local fica como cópia de trabalho. O HTML autocontido para envio (por exemplo, WhatsApp) entra na F11. A instância multiusuário só volta ao plano se o projeto virar serviço.
+O padrão é **publicar como Artifact**: privado até você compartilhar, revogável por exclusão, atualizado no mesmo link a cada republicação e sem infraestrutura própria. O arquivo HTML local fica como cópia de trabalho. O HTML autocontido para envio (por exemplo, WhatsApp) entrou na F11 (`/bi-html:exportar`): o ECharts vai embutido, conferido pelo hash do cdnjs, as fontes passam a ser as do sistema, o rodapé diz que é uma cópia congelada e a exportação é recusada com dados pessoais; aberto no navegador, o arquivo fez uma única requisição, a dele mesmo [F26]. A instância multiusuário só volta ao plano se o projeto virar serviço.
 
 LGPD: com dados fictícios, o risco é baixo. Para o seu projeto real em andamento, a regra é não publicar enquanto houver colunas pessoais. O perfilamento sinaliza CPF, e-mail e telefone, e a publicação é bloqueada até você removê-los ou agregá-los. Se o projeto virar serviço, o tema volta com contrato de operador e revisão jurídica (Lei 13.709/2018; conhecimento geral, sem documento consultado nesta sessão) [NV].
 
@@ -126,6 +126,11 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 **Duas formas possíveis.** *Dentro do Claude Code:* você pergunta na própria sessão e o Claude responde chamando `consulta()` do MCP; isso funciona desde a F2, sem fase própria [I]. *Dentro do dashboard publicado:* um Artifact pode declarar a capacidade de "perguntar ao Claude" [F18]; nesse caso o chat responde a partir do cubo embutido na página. Essa é a forma que exige fase própria, porque o Claude passa a ler números fora da camada de métricas.
 
 **Controles.** As respostas só podem citar valores presentes no cubo, e o verificador de números do documento de decisão é aplicado à resposta. O conteúdo das células é tratado como dado, nunca como instrução. Há um conjunto de perguntas com resposta conhecida, rodado a cada versão. Os detalhes da capacidade (custo, limites, quem paga a consulta) vêm da skill `artifact-capabilities` na hora de implementar [NV].
+
+**Como ficou na F10 [F25].** O painel "Pergunte ao dashboard" (`/bi-html:assistente`) usa a capacidade `sample` do Artifact, na conta de quem pergunta.
+- **O que o Claude enxerga:** só o cubo, por uma ferramenta da página que devolve valores já formatados; não há SQL nem dados brutos.
+- **A verificação:** cada número da resposta precisa estar nos blocos que ele consultou para aquela pergunta, arredondado como foi escrito. Valer o cubo inteiro deixaria passar números pequenos que algum valor arredonda por acaso; o teste da fase mostrou isso. A resposta que falha é retida.
+- **As perguntas de controle:** são 30, saem do cubo calculado pela camada de métricas e rodam por um botão de quem edita a página. O resultado fica no banco do Artifact, e a correção é refeita em Python. A correção da página (JavaScript) e a de Python são testadas para dar o mesmo resultado.
 
 **Na via (b) e critério de entrada.** Relatórios incorporados podem habilitar o Copilot com Premium ou Fabric pago [F7], e o Q&A do Power BI será descontinuado em fevereiro de 2027 [F13]. A fase só começa com o Fluxo 1 publicado e o catálogo de métricas estável.
 
@@ -178,6 +183,7 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 | Conflito de dependências: o pbix-mcp exige `mcp<2`, o `bi-dados` usa `mcp>=2.3` [F21] | Certa / baixo | Leitura de .pbix em processo próprio, como na prova da F6 |
 | Tradução DAX infiel gera número errado com aparência confiável | Alta / alto | Teste de equivalência contra o pbix-mcp em cada conversão e selo "não validada"; na F7, pegou o caso do filtro de `CALCULATE` [F22] |
 | O Claude contorna as ferramentas e escreve números na spec ou no texto | Média / alto | Schema sem campos numéricos livres; verificador; skills com regra explícita |
+| O assistente do dashboard cita um número que não leu | Média / alto | Verificador na página contra os blocos consultados naquela pergunta; resposta retida; bateria de perguntas de controle a cada versão [F25] |
 | O Artifact bloqueia o iframe do Power BI (confirmado na F7b [F23]) ou bibliotecas fora da lista permitida | Certa / médio | Comparação numa página estática (`saidas/bi/comparativo/`), hospedada fora do claude.ai; vitrine na F9 |
 | Limite de 16 MB por página [F18] | Baixa / médio | Embutir só o cubo agregado |
 | Dados reais publicados por engano | Baixa / alto | Bloqueio de publicação com dados pessoais; casos reais ficam privados |
@@ -228,3 +234,6 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 21. Prova de conceito da F6 neste repositório, executada em 17/11/2026 com três .pbix do autor em modo de importação: `provas/f6/MATRIZ.md`, `provas/f6/resultados.json` e as saídas das ferramentas em `provas/f6/saidas/`.
 22. Prova da F7 neste repositório, executada em 17/11/2026 com cópias dos três .pbix do autor (o de eleições e o Lab1 em versões posteriores às da F6) e com os .pbix fictícios de `fixtures/`: `provas/f7/RESULTADO.md`, `provas/f7/resultados.json` e os relatórios de fidelidade em `provas/f7/saidas/`.
 23. Teste do iframe da F7b neste repositório, em 17/11/2026: cabeçalhos HTTP do serviço do Power BI com identificadores fictícios e a página de comparação aberta num navegador local (`provas/f7b/RESULTADO.md` e `resultados.json`).
+24. Vitrine da F9 neste repositório, em 17/11/2026: `docs/`, gerada por `vitrine/construir.py` a partir dos exemplos fictícios e do .pbix fictício convertido.
+25. Assistente da F10 neste repositório, em 17/11/2026: `plugins/bi-html/lib/bi_html/assistente.py`, Artifact privado com o exemplo de vendas e `provas/f10/` (bateria pendente do primeiro clique).
+26. Exportação da F11 neste repositório, em 17/11/2026: `plugins/bi-html/lib/bi_html/exportacao.py`; arquivo aberto num navegador local com uma única requisição, a do próprio arquivo.
