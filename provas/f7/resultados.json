@@ -1,0 +1,204 @@
+{
+  "executado_em": "2026-11-17T14:34:10-03:00",
+  "ambiente": {
+    "python": "3.12.14",
+    "maquina": "arm64 Darwin"
+  },
+  "arquivos": {
+    "ifdata": {
+      "arquivo": {
+        "nome": "ifdata.pbix",
+        "bytes": 300525,
+        "sha256": "2823516303e5587158700c2849113e62fc5348234a191feb1b32203fd0448430"
+      },
+      "ok": true,
+      "tempo_s": 3.61,
+      "pico_rss_mb": 144.0,
+      "resumo": {
+        "tabelas": 2,
+        "tabelas_com_linhas_iguais": 2,
+        "medidas": 19,
+        "medidas_classificadas": 19,
+        "classes": {
+          "traduzida": 13,
+          "texto": 2,
+          "nao_traduzida": 4
+        },
+        "traduzidas_validadas": 13,
+        "traduzidas": 13,
+        "nao_validadas": [],
+        "implicitas": 0,
+        "implicitas_validadas": 0,
+        "contextos_testados": 62,
+        "contextos_que_batem": 62,
+        "visuais": 18,
+        "visuais_por_status": {
+          "convertido": 5,
+          "decorativo": 4,
+          "filtro_global": 4,
+          "nao_convertido": 2,
+          "parcial": 3
+        },
+        "visuais_com_status": 18,
+        "paginas": 2,
+        "paginas_com_spec": 2,
+        "formato_relatorio": "PBIR",
+        "tema_importado": true
+      },
+      "anexos": [
+        "saidas/ifdata/conversao.json",
+        "saidas/ifdata/fidelidade.md"
+      ]
+    },
+    "eleicoes": {
+      "arquivo": {
+        "nome": "eleicoes.pbix",
+        "bytes": 3294848,
+        "sha256": "8faccd122a5ef0ebcab3182eb129385baf0fe399ed1fef208a3ac13acba56745"
+      },
+      "ok": true,
+      "tempo_s": 7.09,
+      "pico_rss_mb": 460.7,
+      "resumo": {
+        "tabelas": 7,
+        "tabelas_com_linhas_iguais": 7,
+        "medidas": 55,
+        "medidas_classificadas": 55,
+        "classes": {
+          "traduzida": 17,
+          "texto": 9,
+          "nao_traduzida": 29
+        },
+        "traduzidas_validadas": 17,
+        "traduzidas": 17,
+        "nao_validadas": [],
+        "implicitas": 0,
+        "implicitas_validadas": 0,
+        "contextos_testados": 85,
+        "contextos_que_batem": 85,
+        "visuais": 87,
+        "visuais_por_status": {
+          "convertido": 7,
+          "decorativo": 37,
+          "filtro_global": 8,
+          "nao_convertido": 30,
+          "parcial": 5
+        },
+        "visuais_com_status": 87,
+        "paginas": 8,
+        "paginas_com_spec": 4,
+        "formato_relatorio": "PBIR",
+        "tema_importado": true
+      },
+      "anexos": [
+        "saidas/eleicoes/conversao.json",
+        "saidas/eleicoes/fidelidade.md"
+      ]
+    },
+    "lab1": {
+      "arquivo": {
+        "nome": "lab1.pbix",
+        "bytes": 1853729,
+        "sha256": "712d47c3b0f77c0c79c173396183ceefacc9bccebde1cb6b5099102e018e9316"
+      },
+      "ok": true,
+      "tempo_s": 1.48,
+      "pico_rss_mb": 179.3,
+      "resumo": {
+        "tabelas": 3,
+        "tabelas_com_linhas_iguais": 3,
+        "medidas": 0,
+        "medidas_classificadas": 0,
+        "classes": {
+          "traduzida": 0,
+          "texto": 0,
+          "nao_traduzida": 0
+        },
+        "traduzidas_validadas": 0,
+        "traduzidas": 0,
+        "nao_validadas": [],
+        "implicitas": 4,
+        "implicitas_validadas": 4,
+        "contextos_testados": 12,
+        "contextos_que_batem": 12,
+        "visuais": 10,
+        "visuais_por_status": {
+          "convertido": 4,
+          "decorativo": 2,
+          "filtro_global": 1,
+          "nao_convertido": 3
+        },
+        "visuais_com_status": 10,
+        "paginas": 1,
+        "paginas_com_spec": 1,
+        "formato_relatorio": "PBIR",
+        "tema_importado": true
+      },
+      "anexos": [
+        "saidas/lab1/conversao.json",
+        "saidas/lab1/fidelidade.md"
+      ]
+    },
+    "vendas_ficticio": {
+      "arquivo": {
+        "nome": "vendas.pbix",
+        "bytes": 437062,
+        "sha256": "f8ed43229fb59abaf7055dd0088ef627b223b36a93880d9dd2114f4c6b4f241b"
+      },
+      "ok": true,
+      "tempo_s": 3.25,
+      "pico_rss_mb": 146.5,
+      "resumo": {
+        "tabelas": 2,
+        "tabelas_com_linhas_iguais": 2,
+        "medidas": 14,
+        "medidas_classificadas": 14,
+        "classes": {
+          "traduzida": 11,
+          "texto": 1,
+          "nao_traduzida": 2
+        },
+        "traduzidas_validadas": 10,
+        "traduzidas": 11,
+        "nao_validadas": [
+          "Receita Site"
+        ],
+        "implicitas": 1,
+        "implicitas_validadas": 1,
+        "contextos_testados": 55,
+        "contextos_que_batem": 54,
+        "visuais": 11,
+        "visuais_por_status": {
+          "convertido": 8,
+          "decorativo": 1,
+          "filtro_global": 1,
+          "nao_convertido": 1
+        },
+        "visuais_com_status": 11,
+        "paginas": 1,
+        "paginas_com_spec": 1,
+        "formato_relatorio": "legado (Report/Layout)",
+        "tema_importado": true
+      },
+      "anexos": [
+        "saidas/vendas_ficticio/conversao.json",
+        "saidas/vendas_ficticio/fidelidade.md"
+      ]
+    },
+    "directquery_ficticio": {
+      "arquivo": {
+        "nome": "vendas_directquery.pbix",
+        "bytes": 267768,
+        "sha256": "d9d311abce6fa2af432c56ee98132060bdd84ee16ebe7cb24827451d4f2a99f4"
+      },
+      "ok": false,
+      "tempo_s": 0.75,
+      "pico_rss_mb": 116.0,
+      "erro": "a conversão só vale para importação; o arquivo está em DirectQuery: os dados ficam no banco de origem, não no .pbix",
+      "detalhes": [
+        "a via (b) do plano incorpora o relatório original pelo Power BI (Publicar na Web ou incorporação segura), conforme a licença da conta",
+        "ou salve uma cópia do relatório em modo de importação e converta essa cópia"
+      ]
+    }
+  }
+}

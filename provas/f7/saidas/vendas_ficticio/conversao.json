@@ -1,0 +1,1380 @@
+{
+  "arquivo": {
+    "nome": "vendas.pbix",
+    "bytes": 437062,
+    "sha256": "f8ed43229fb59abaf7055dd0088ef627b223b36a93880d9dd2114f4c6b4f241b"
+  },
+  "ferramentas": {
+    "pbix-mcp": "0.9.153",
+    "pbixray": "0.15.5",
+    "duckdb": "2.0.0"
+  },
+  "modo": "importacao",
+  "formato_relatorio": "legado (Report/Layout)",
+  "convertido_em": "2026-11-17T14:34:26-03:00",
+  "tabelas": [
+    {
+      "tabela": "Lojas",
+      "linhas_metadados": 15,
+      "linhas_extraidas": 15,
+      "linhas_no_plano": null,
+      "fato": false,
+      "datas_automaticas": false,
+      "ligada": true,
+      "iguais": true
+    },
+    {
+      "tabela": "Vendas",
+      "linhas_metadados": 16254,
+      "linhas_extraidas": 16254,
+      "linhas_no_plano": 16254,
+      "fato": true,
+      "datas_automaticas": false,
+      "ligada": false,
+      "iguais": true
+    }
+  ],
+  "fatos": [
+    "Vendas"
+  ],
+  "plano": {
+    "arquivo": "saidas/bi/pbix/plano.parquet",
+    "partes": {
+      "Vendas": {
+        "linhas_tabela": 16254,
+        "tabelas_ligadas": [
+          "Lojas"
+        ],
+        "linhas_no_plano": 16254,
+        "iguais": true
+      }
+    }
+  },
+  "medidas": [
+    {
+      "medida": "Faturamento",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "faturamento",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Pedidos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "DISTINCTCOUNT conta o vazio como um valor; a contagem distinta do bi-html, não"
+      ],
+      "metrica": "pedidos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pedidos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Itens",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "itens",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "itens",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Ticket Médio",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "DISTINCTCOUNT conta o vazio como um valor; a contagem distinta do bi-html, não"
+      ],
+      "metrica": "ticket_medio",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "ticket_medio",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Receita Site",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "o filtro do CALCULATE se soma ao filtro do leitor; no Power BI ele substitui um filtro na mesma coluna"
+      ],
+      "metrica": "receita_site",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 4,
+        "metrica": "receita_site",
+        "referencia": "pbix-mcp",
+        "validada": false
+      }
+    },
+    {
+      "medida": "Receita Sudeste",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "o filtro do CALCULATE se soma ao filtro do leitor; no Power BI ele substitui um filtro na mesma coluna"
+      ],
+      "metrica": "receita_sudeste",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "receita_sudeste",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Receita Bruta",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "receita_bruta",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "receita_bruta",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Desconto Médio",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "desconto_medio",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "desconto_medio",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Pedidos com Desconto",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "DISTINCTCOUNT conta o vazio como um valor; a contagem distinta do bi-html, não",
+        "o filtro do CALCULATE se soma ao filtro do leitor; no Power BI ele substitui um filtro na mesma coluna"
+      ],
+      "metrica": "pedidos_com_desconto",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pedidos_com_desconto",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Participação da UF",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "participação: equivale quando o bloco agrupa pela coluna do ALLSELECTED"
+      ],
+      "metrica": "participacao_da_uf",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 2,
+        "batem": 2,
+        "metrica": "participacao_da_uf",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Receita (R$ mil)",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "faturamento",
+      "escala": 0.001,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Receita de Todas as Lojas",
+      "classe": "nao_traduzida",
+      "motivo": "usa REMOVEFILTERS, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Receita Acumulada no Ano",
+      "classe": "nao_traduzida",
+      "motivo": "usa TOTALYTD, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Rótulo da Receita",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Média de desconto_pct",
+      "classe": "implicita",
+      "metrica": "media_de_desconto_pct",
+      "motivo": null,
+      "ressalvas": [],
+      "equivalencia": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "media_de_desconto_pct",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      }
+    }
+  ],
+  "resumo_medidas": {
+    "implicita": 1,
+    "nao_traduzida": 2,
+    "texto": 1,
+    "traduzida": 11
+  },
+  "paginas": [
+    {
+      "nome": "Visão geral",
+      "spec": "dashboard/paginas/visao_geral.json",
+      "visuais": [
+        {
+          "visual": "a838546732684470",
+          "tipo_power_bi": "card",
+          "titulo": "Faturamento",
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Faturamento",
+              "classe": "traduzida",
+              "metrica": "faturamento"
+            }
+          ],
+          "bloco_id": "bloco_a"
+        },
+        {
+          "visual": "e5b84ef41b0c4b64",
+          "tipo_power_bi": "card",
+          "titulo": "Pedidos",
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Pedidos",
+              "classe": "traduzida",
+              "metrica": "pedidos"
+            }
+          ],
+          "bloco_id": "bloco_b"
+        },
+        {
+          "visual": "7e9e789f685d4a5e",
+          "tipo_power_bi": "card",
+          "titulo": "Ticket médio",
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Ticket Médio",
+              "classe": "traduzida",
+              "metrica": "ticket_medio"
+            }
+          ],
+          "bloco_id": "bloco_c"
+        },
+        {
+          "visual": "4e13c476169b4078",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "regiao",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "0e634046920242df",
+          "tipo_power_bi": "clusteredBarChart",
+          "titulo": "Receita por loja",
+          "bloco": "barras_ranking",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Faturamento",
+              "classe": "traduzida",
+              "metrica": "faturamento"
+            }
+          ],
+          "bloco_id": "bloco_d"
+        },
+        {
+          "visual": "602b025e847d466c",
+          "tipo_power_bi": "donutChart",
+          "titulo": "Receita por canal",
+          "bloco": "rosca",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Faturamento",
+              "classe": "traduzida",
+              "metrica": "faturamento"
+            }
+          ],
+          "bloco_id": "bloco_e"
+        },
+        {
+          "visual": "0c48566baf634504",
+          "tipo_power_bi": "filledMap",
+          "titulo": "Receita por UF",
+          "bloco": "mapa_uf",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Faturamento",
+              "classe": "traduzida",
+              "metrica": "faturamento"
+            }
+          ],
+          "bloco_id": "bloco_f"
+        },
+        {
+          "visual": "0970bca013844393",
+          "tipo_power_bi": "tableEx",
+          "titulo": "Categorias",
+          "bloco": "tabela",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Faturamento",
+              "classe": "traduzida",
+              "metrica": "faturamento"
+            },
+            {
+              "medida": "Itens",
+              "classe": "traduzida",
+              "metrica": "itens"
+            },
+            {
+              "medida": "Média de desconto_pct",
+              "classe": "implicita",
+              "metrica": "media_de_desconto_pct"
+            }
+          ],
+          "bloco_id": "bloco_g"
+        },
+        {
+          "visual": "845d6900d09f47ae",
+          "tipo_power_bi": "clusteredColumnChart",
+          "titulo": "Participação por UF",
+          "bloco": "barras_agrupadas",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Participação da UF",
+              "classe": "traduzida",
+              "metrica": "participacao_da_uf"
+            }
+          ],
+          "bloco_id": "bloco_h"
+        },
+        {
+          "visual": "9b7dad78e0ea423d",
+          "tipo_power_bi": "lineChart",
+          "titulo": "Receita acumulada",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Receita Acumulada no Ano] não traduzida: usa TOTALYTD, sem equivalente na camada de métricas"
+          ],
+          "medidas": [
+            {
+              "medida": "Receita Acumulada no Ano",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "25d811c3c7f547d6",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        }
+      ],
+      "html": "saidas/bi/paginas/visao_geral.html",
+      "resumo": "8 de 10 visuais com dado viraram bloco ou filtro"
+    }
+  ],
+  "resumo_visuais": {
+    "convertido": 8,
+    "decorativo": 1,
+    "filtro_global": 1,
+    "nao_convertido": 1
+  },
+  "equivalencia": {
+    "casos": [
+      {
+        "medida": "Faturamento",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4076230.5199995562,
+        "valor_bi_html": 4076230.52,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0951
+      },
+      {
+        "medida": "Faturamento",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2888348.1599996984,
+        "valor_bi_html": 2888348.16,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0309
+      },
+      {
+        "medida": "Faturamento",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1820762.929999893,
+        "valor_bi_html": 1820762.93,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0195
+      },
+      {
+        "medida": "Faturamento",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2255467.5899998103,
+        "valor_bi_html": 2255467.59,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.013
+      },
+      {
+        "medida": "Faturamento",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1820762.929999893,
+        "valor_bi_html": 1820762.93,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Pedidos",
+        "metrica": "pedidos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 16254,
+        "valor_bi_html": 16254,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0013
+      },
+      {
+        "medida": "Pedidos",
+        "metrica": "pedidos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 11505,
+        "valor_bi_html": 11505,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Pedidos",
+        "metrica": "pedidos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 7235,
+        "valor_bi_html": 7235,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Pedidos",
+        "metrica": "pedidos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 9019,
+        "valor_bi_html": 9019,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Pedidos",
+        "metrica": "pedidos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 7235,
+        "valor_bi_html": 7235,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Itens",
+        "metrica": "itens",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 23200,
+        "valor_bi_html": 23200.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0004
+      },
+      {
+        "medida": "Itens",
+        "metrica": "itens",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 16448,
+        "valor_bi_html": 16448.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0005
+      },
+      {
+        "medida": "Itens",
+        "metrica": "itens",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 10345,
+        "valor_bi_html": 10345.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Itens",
+        "metrica": "itens",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 12855,
+        "valor_bi_html": 12855.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0004
+      },
+      {
+        "medida": "Itens",
+        "metrica": "itens",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 10345,
+        "valor_bi_html": 10345.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0006
+      },
+      {
+        "medida": "Ticket Médio",
+        "metrica": "ticket_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 250.78322382180116,
+        "valor_bi_html": 250.78322382182847,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Ticket Médio",
+        "metrica": "ticket_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 251.05155671444575,
+        "valor_bi_html": 251.05155671447199,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ticket Médio",
+        "metrica": "ticket_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 251.66039115409717,
+        "valor_bi_html": 251.66039115411195,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ticket Médio",
+        "metrica": "ticket_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 250.07956425322212,
+        "valor_bi_html": 250.07956425324315,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ticket Médio",
+        "metrica": "ticket_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 251.66039115409717,
+        "valor_bi_html": 251.66039115411195,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Receita Site",
+        "metrica": "receita_site",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1211014.6400000183,
+        "valor_bi_html": 1211014.64,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Receita Site",
+        "metrica": "receita_site",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1211014.6400000183,
+        "valor_bi_html": 1211014.64,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0006
+      },
+      {
+        "medida": "Receita Site",
+        "metrica": "receita_site",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1211014.6400000183,
+        "valor_bi_html": 1211014.64,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0006
+      },
+      {
+        "medida": "Receita Site",
+        "metrica": "receita_site",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1211014.6400000183,
+        "valor_bi_html": null,
+        "bate": false,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Receita Site",
+        "metrica": "receita_site",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1211014.6400000183,
+        "valor_bi_html": 1211014.64,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Receita Sudeste",
+        "metrica": "receita_sudeste",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2888348.1599996984,
+        "valor_bi_html": 2888348.16,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Receita Sudeste",
+        "metrica": "receita_sudeste",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2888348.1599996984,
+        "valor_bi_html": 2888348.16,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Receita Sudeste",
+        "metrica": "receita_sudeste",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1820762.929999893,
+        "valor_bi_html": 1820762.93,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Receita Sudeste",
+        "metrica": "receita_sudeste",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1067585.230000041,
+        "valor_bi_html": 1067585.23,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0006
+      },
+      {
+        "medida": "Receita Sudeste",
+        "metrica": "receita_sudeste",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1820762.929999893,
+        "valor_bi_html": 1820762.93,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Receita Bruta",
+        "metrica": "receita_bruta",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4271239.999999204,
+        "valor_bi_html": 4271240.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.1222
+      },
+      {
+        "medida": "Receita Bruta",
+        "metrica": "receita_bruta",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 3026695.199999503,
+        "valor_bi_html": 3026695.2,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0868
+      },
+      {
+        "medida": "Receita Bruta",
+        "metrica": "receita_bruta",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1907345.4999998738,
+        "valor_bi_html": 1907345.5,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0543
+      },
+      {
+        "medida": "Receita Bruta",
+        "metrica": "receita_bruta",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2363894.499999734,
+        "valor_bi_html": 2363894.5,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0671
+      },
+      {
+        "medida": "Receita Bruta",
+        "metrica": "receita_bruta",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1907345.4999998738,
+        "valor_bi_html": 1907345.5,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0547
+      },
+      {
+        "medida": "Desconto Médio",
+        "metrica": "desconto_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4.524424756982897,
+        "valor_bi_html": 4.524424756982897,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Desconto Médio",
+        "metrica": "desconto_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4.523250760538896,
+        "valor_bi_html": 4.523250760538896,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Desconto Médio",
+        "metrica": "desconto_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4.4906703524533516,
+        "valor_bi_html": 4.4906703524533516,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0005
+      },
+      {
+        "medida": "Desconto Médio",
+        "metrica": "desconto_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4.551502383856303,
+        "valor_bi_html": 4.551502383856303,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0006
+      },
+      {
+        "medida": "Desconto Médio",
+        "metrica": "desconto_medio",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4.4906703524533516,
+        "valor_bi_html": 4.4906703524533516,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Pedidos com Desconto",
+        "metrica": "pedidos_com_desconto",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 6663,
+        "valor_bi_html": 6663,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0038
+      },
+      {
+        "medida": "Pedidos com Desconto",
+        "metrica": "pedidos_com_desconto",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4727,
+        "valor_bi_html": 4727,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Pedidos com Desconto",
+        "metrica": "pedidos_com_desconto",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2946,
+        "valor_bi_html": 2946,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0006
+      },
+      {
+        "medida": "Pedidos com Desconto",
+        "metrica": "pedidos_com_desconto",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 3717,
+        "valor_bi_html": 3717,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Pedidos com Desconto",
+        "metrica": "pedidos_com_desconto",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2946,
+        "valor_bi_html": 2946,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Participação da UF",
+        "metrica": "participacao_da_uf",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.uf": "SP"
+        },
+        "agrupado_por": "Lojas.uf",
+        "escala": 1.0,
+        "valor_referencia": 0.5961937059438064,
+        "valor_bi_html": 0.5961937059437944,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0012
+      },
+      {
+        "medida": "Participação da UF",
+        "metrica": "participacao_da_uf",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.uf": "RJ"
+        },
+        "agrupado_por": "Lojas.uf",
+        "escala": 1.0,
+        "valor_referencia": 0.0658616407199729,
+        "valor_bi_html": 0.06586164071996595,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Receita (R$ mil)",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 0.001,
+        "valor_referencia": 4076.2305199995562,
+        "valor_bi_html": 4076.23052,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Receita (R$ mil)",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste"
+        },
+        "agrupado_por": null,
+        "escala": 0.001,
+        "valor_referencia": 2888.3481599996985,
+        "valor_bi_html": 2888.34816,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Receita (R$ mil)",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 0.001,
+        "valor_referencia": 1820.762929999893,
+        "valor_bi_html": 1820.7629299999999,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Receita (R$ mil)",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 0.001,
+        "valor_referencia": 2255.46758999981,
+        "valor_bi_html": 2255.4675899999997,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0
+      },
+      {
+        "medida": "Receita (R$ mil)",
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "Lojas.regiao": "Sudeste",
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 0.001,
+        "valor_referencia": 1820.762929999893,
+        "valor_bi_html": 1820.7629299999999,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0
+      },
+      {
+        "medida": "Média de desconto_pct",
+        "metrica": "media_de_desconto_pct",
+        "referencia": "sql_tabela_original",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4.524424756982897,
+        "valor_bi_html": 4.524424756982897,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Média de desconto_pct",
+        "metrica": "media_de_desconto_pct",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "Vendas.loja": "Centro de distribuição"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4.4906703524533516,
+        "valor_bi_html": 4.4906703524533516,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Média de desconto_pct",
+        "metrica": "media_de_desconto_pct",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "Vendas.canal": "Loja física"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4.551502383856303,
+        "valor_bi_html": 4.551502383856303,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      }
+    ],
+    "por_medida": {
+      "Faturamento": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Pedidos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pedidos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Itens": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "itens",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Ticket Médio": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "ticket_medio",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Receita Site": {
+        "contextos": 5,
+        "batem": 4,
+        "metrica": "receita_site",
+        "referencia": "pbix-mcp",
+        "validada": false
+      },
+      "Receita Sudeste": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "receita_sudeste",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Receita Bruta": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "receita_bruta",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Desconto Médio": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "desconto_medio",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Pedidos com Desconto": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pedidos_com_desconto",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Participação da UF": {
+        "contextos": 2,
+        "batem": 2,
+        "metrica": "participacao_da_uf",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Receita (R$ mil)": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "faturamento",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Média de desconto_pct": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "media_de_desconto_pct",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      }
+    }
+  },
+  "tema": {
+    "importado": true,
+    "nome": "claro (estilo base do bi-html)",
+    "aa": true,
+    "ajustes_de_contraste": 1,
+    "motivo": "o tema em uso (CY24SU10) não vem dentro do arquivo"
+  },
+  "dados_pessoais": [],
+  "semantica": [
+    "cada métrica filtra a própria tabela de origem na tabela convertida, então somas de fatos diferentes não se misturam",
+    "filtro numa tabela que não se liga ao fato da métrica esvazia a métrica no bi-html; no Power BI, não filtra",
+    "o filtro de um CALCULATE se soma ao filtro do leitor; no Power BI, substitui o filtro da mesma coluna",
+    "métrica com escala (por exemplo, R$ tri) usa a métrica base; o bi-html formata a grandeza",
+    "medida sem validação no teste de equivalência leva \"(não validada)\" na descrição"
+  ]
+}

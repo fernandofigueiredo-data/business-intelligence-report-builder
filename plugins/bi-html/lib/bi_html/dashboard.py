@@ -59,14 +59,14 @@ def _texto(v):
     return str(v)
 
 
-def ler_spec(projeto: Path) -> dict:
-    caminho = Path(projeto) / ARQUIVO_SPEC
+def ler_spec(projeto: Path, arquivo: Path = ARQUIVO_SPEC) -> dict:
+    caminho = Path(projeto) / arquivo
     if not caminho.is_file():
-        raise ErroDeDashboard(f"não existe {ARQUIVO_SPEC}", ["escreva a spec (ou use propor_spec) antes de renderizar"])
+        raise ErroDeDashboard(f"não existe {arquivo}", ["escreva a spec (ou use propor_spec) antes de renderizar"])
     try:
         return json.loads(caminho.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
-        raise ErroDeDashboard(f"{ARQUIVO_SPEC} não é JSON válido (linha {e.lineno})") from None
+        raise ErroDeDashboard(f"{arquivo} não é JSON válido (linha {e.lineno})") from None
 
 
 def checar_spec(spec: dict, modelo: dict) -> list[str]:
@@ -260,16 +260,17 @@ def _br(d: date) -> str:
     return d.strftime("%d/%m/%Y")
 
 
-def montar(projeto: Path) -> dict:
-    """Tudo o que o HTML precisa, calculado: spec, métricas, filtros, blocos e metadados."""
+def montar(projeto: Path, arquivo_spec: Path = ARQUIVO_SPEC) -> dict:
+    """Tudo o que o HTML precisa, calculado: spec, métricas, filtros, blocos e metadados.
+    `arquivo_spec` permite montar outra spec do projeto (as páginas de um .pbix convertido)."""
     import duckdb
 
     projeto = Path(projeto)
     modelo, arquivo, _ = carregar(projeto)
-    spec = ler_spec(projeto)
+    spec = ler_spec(projeto, arquivo_spec)
     problemas = checar_spec(spec, modelo)
     if problemas:
-        raise ErroDeDashboard(f"{ARQUIVO_SPEC} tem {len(problemas)} problema(s)", problemas)
+        raise ErroDeDashboard(f"{arquivo_spec} tem {len(problemas)} problema(s)", problemas)
     tokens_rel = spec["estilo"]["tokens"]
     if not (projeto / tokens_rel).is_file():
         raise ErroDeDesign(f"não existe {tokens_rel}", ["defina o visual com /bi-html:design antes de renderizar"])

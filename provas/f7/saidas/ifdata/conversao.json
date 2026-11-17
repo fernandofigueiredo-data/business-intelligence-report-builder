@@ -1,0 +1,1606 @@
+{
+  "arquivo": {
+    "nome": "ifdata.pbix",
+    "bytes": 300525,
+    "sha256": "2823516303e5587158700c2849113e62fc5348234a191feb1b32203fd0448430"
+  },
+  "ferramentas": {
+    "pbix-mcp": "0.9.153",
+    "pbixray": "0.15.5",
+    "duckdb": "2.0.0"
+  },
+  "modo": "importacao",
+  "formato_relatorio": "PBIR",
+  "convertido_em": "2026-11-17T14:34:14-03:00",
+  "tabelas": [
+    {
+      "tabela": "Medidas",
+      "linhas_metadados": 0,
+      "linhas_extraidas": 0,
+      "linhas_no_plano": null,
+      "fato": false,
+      "datas_automaticas": false,
+      "ligada": false,
+      "iguais": true
+    },
+    {
+      "tabela": "ifdata",
+      "linhas_metadados": 1622,
+      "linhas_extraidas": 1622,
+      "linhas_no_plano": 1622,
+      "fato": true,
+      "datas_automaticas": false,
+      "ligada": false,
+      "iguais": true
+    }
+  ],
+  "fatos": [
+    "ifdata"
+  ],
+  "plano": {
+    "arquivo": "saidas/bi/pbix/plano.parquet",
+    "partes": {
+      "ifdata": {
+        "linhas_tabela": 1622,
+        "tabelas_ligadas": [],
+        "linhas_no_plano": 1622,
+        "iguais": true
+      }
+    }
+  },
+  "medidas": [
+    {
+      "medida": "Ativo Total",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "ativo_total",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Ativo Total (R$ tri)",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "ativo_total",
+      "escala": 1e-09,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Ativo Total (R$ bi)",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "ativo_total",
+      "escala": 1e-06,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Carteira de Crédito",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "carteira_de_credito",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "carteira_de_credito",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Patrimônio Líquido",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "patrimonio_liquido",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "patrimonio_liquido",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Lucro Líquido",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "lucro_liquido",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "lucro_liquido",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Qtd Instituições",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "qtd_instituicoes",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "qtd_instituicoes",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "ROE Agregado",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "roe_agregado",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "roe_agregado",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "ROE Médio Simples",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "roe_medio_simples",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "roe_medio_simples",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Índice Crédito/Ativo",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "indice_credito_ativo",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "indice_credito_ativo",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Qtd sem Agência",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "o filtro do CALCULATE se soma ao filtro do leitor; no Power BI ele substitui um filtro na mesma coluna"
+      ],
+      "metrica": "qtd_sem_agencia",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "qtd_sem_agencia",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Qtd Digitais",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "o filtro do CALCULATE se soma ao filtro do leitor; no Power BI ele substitui um filtro na mesma coluna"
+      ],
+      "metrica": "qtd_digitais",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "qtd_digitais",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Ativo % do Total",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "participação: equivale quando o bloco agrupa pela coluna do ALLSELECTED"
+      ],
+      "metrica": "ativo_pct_do_total",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 2,
+        "batem": 2,
+        "metrica": "ativo_pct_do_total",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Rank Ativo",
+      "classe": "nao_traduzida",
+      "motivo": "usa RANKX, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Cor Barra Top 10",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Concentração Top 5",
+      "classe": "nao_traduzida",
+      "motivo": "usa TOPN, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Qtd Instituições (txt)",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "ROE Sistema",
+      "classe": "nao_traduzida",
+      "motivo": "usa REMOVEFILTERS, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Índice Sistema",
+      "classe": "nao_traduzida",
+      "motivo": "CALCULATE com ALLSELECTED (remove filtros do leitor) fora do padrão de participação",
+      "ressalvas": []
+    }
+  ],
+  "resumo_medidas": {
+    "nao_traduzida": 4,
+    "texto": 2,
+    "traduzida": 13
+  },
+  "paginas": [
+    {
+      "nome": "Dados do Sistema Financeiro Brasileiro",
+      "spec": "dashboard/paginas/dados_do_sistema_financeiro_brasileiro.json",
+      "visuais": [
+        {
+          "visual": "3c3c5bd443fd50dbe376",
+          "tipo_power_bi": "textbox",
+          "titulo": "Cinco instituições concentram 52% do ativo do sistema financeiro brasileiro",
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "764bba1384cf4331f118",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "segmento",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "7c162bc9717fa0da53f2",
+          "tipo_power_bi": "cardVisual",
+          "titulo": "52% do ativo em 5 instituições",
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Ativo Total (R$ tri)",
+              "classe": "traduzida",
+              "metrica": "ativo_total"
+            }
+          ],
+          "bloco_id": "bloco_a"
+        },
+        {
+          "visual": "9410f1a2abd3e8226eb9",
+          "tipo_power_bi": "cardVisual",
+          "titulo": "Dois terços têm menos de R$ 1 bi",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Qtd Instituições (txt)] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Qtd Instituições (txt)",
+              "classe": "texto",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "7d3a2b1423918522db07",
+          "tipo_power_bi": "cardVisual",
+          "titulo": "A média simples (0,8%) engana",
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "ROE Agregado",
+              "classe": "traduzida",
+              "metrica": "roe_agregado"
+            }
+          ],
+          "bloco_id": "bloco_b"
+        },
+        {
+          "visual": "4506530ab69badcc4ae7",
+          "tipo_power_bi": "cardVisual",
+          "titulo": "São cooperativas, não digitais",
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Qtd sem Agência",
+              "classe": "traduzida",
+              "metrica": "qtd_sem_agencia"
+            }
+          ],
+          "bloco_id": "bloco_c"
+        },
+        {
+          "visual": "291898ea1d4f34999453",
+          "tipo_power_bi": "cardVisual",
+          "titulo": "Pesam só 5% do ativo",
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Qtd Digitais",
+              "classe": "traduzida",
+              "metrica": "qtd_digitais"
+            }
+          ],
+          "bloco_id": "bloco_d"
+        },
+        {
+          "visual": "70e2265ad248e3a75ef7",
+          "tipo_power_bi": "barChart",
+          "titulo": "As dez maiores somam 67% do ativo; o Banco do Brasil sozinho, 13%",
+          "bloco": "barras_ranking",
+          "status": "parcial",
+          "motivos": [
+            "1 filtro(s) do visual não foram convertidos"
+          ],
+          "medidas": [
+            {
+              "medida": "Ativo Total (R$ bi)",
+              "classe": "traduzida",
+              "metrica": "ativo_total"
+            }
+          ],
+          "bloco_id": "bloco_e"
+        },
+        {
+          "visual": "099f9af600cae345d997",
+          "tipo_power_bi": "donutChart",
+          "titulo": "Privadas nacionais detêm metade do ativo; as públicas, um terço",
+          "bloco": "rosca",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Ativo Total (R$ tri)",
+              "classe": "traduzida",
+              "metrica": "ativo_total"
+            },
+            {
+              "medida": "Ativo Total (R$ tri)",
+              "classe": "traduzida",
+              "metrica": "ativo_total"
+            }
+          ],
+          "bloco_id": "bloco_f"
+        },
+        {
+          "visual": "142f5bbdead1f2b1217b",
+          "tipo_power_bi": "slicer",
+          "titulo": "",
+          "bloco": "uf",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "badfb1948b6973558c57",
+          "tipo_power_bi": "tableEx",
+          "titulo": "Mais de mil instituições somam apenas 1% do ativo",
+          "bloco": "tabela",
+          "status": "parcial",
+          "motivos": [
+            "o bloco usa uma dimensão; ficaram de fora 3"
+          ],
+          "medidas": [
+            {
+              "medida": "Ativo Total (R$ bi)",
+              "classe": "traduzida",
+              "metrica": "ativo_total"
+            },
+            {
+              "medida": "Índice Crédito/Ativo",
+              "classe": "traduzida",
+              "metrica": "indice_credito_ativo"
+            },
+            {
+              "medida": "ROE Agregado",
+              "classe": "traduzida",
+              "metrica": "roe_agregado"
+            }
+          ],
+          "bloco_id": "bloco_g"
+        },
+        {
+          "visual": "6835edf22e94a5a2fe17",
+          "tipo_power_bi": "textbox",
+          "titulo": "Valores originais em R$ mil (junho/2026); exibidos em R$ bi e R$ tri. Segmento aproximado por ativo ÷ PIB (R$ 13 tri). Digitais*: TCB n1, n2 e n4 com até 1 agência. Instituições individuais: pode haver sobreposição entre holding e controladas.",
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        }
+      ],
+      "html": "saidas/bi/paginas/dados_do_sistema_financeiro_brasileiro.html",
+      "resumo": "7 de 10 visuais com dado viraram bloco ou filtro"
+    },
+    {
+      "nome": "Rentabilidade e crédito",
+      "spec": "dashboard/paginas/rentabilidade_e_credito.json",
+      "visuais": [
+        {
+          "visual": "83129986b60ea916abb7",
+          "tipo_power_bi": "textbox",
+          "titulo": "Rentabilidade e crédito: o segmento S2 rende mais e o porte não define o crédito",
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "9c5f5ecb9d7beba4b714",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "segmento",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "ee96e0cdee88611e7f57",
+          "tipo_power_bi": "columnChart",
+          "titulo": "S2 é o segmento mais rentável (8,8%); S4 e S5 rendem 3 pontos a menos",
+          "bloco": "barras_agrupadas",
+          "status": "parcial",
+          "motivos": [
+            "1 filtro(s) do visual não foram convertidos"
+          ],
+          "medidas": [
+            {
+              "medida": "ROE Agregado",
+              "classe": "traduzida",
+              "metrica": "roe_agregado"
+            }
+          ],
+          "bloco_id": "bloco_a"
+        },
+        {
+          "visual": "5a9cf955a9575088a3cd",
+          "tipo_power_bi": "scatterChart",
+          "titulo": "O porte não define o crédito: grandes e pequenas emprestam 37% a 39% do ativo",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "dispersão não tem bloco equivalente no bi-html"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "c18569ff6f3f2c69c25b",
+          "tipo_power_bi": "slicer",
+          "titulo": "",
+          "bloco": "uf",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "9d3a1a3b5de026140ce9",
+          "tipo_power_bi": "textbox",
+          "titulo": "  Valores em R$ mil, junho/2026. Segmento aproximado por ativo ÷ PIB (R$ 13 tri). Digitais*: TCB n1, n2 e n4 com até 1 agência. Instituições individuais: pode haver sobreposição entre holding e controladas.",
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        }
+      ],
+      "html": "saidas/bi/paginas/rentabilidade_e_credito.html",
+      "resumo": "1 de 4 visuais com dado viraram bloco ou filtro"
+    }
+  ],
+  "resumo_visuais": {
+    "convertido": 5,
+    "decorativo": 4,
+    "filtro_global": 4,
+    "nao_convertido": 2,
+    "parcial": 3
+  },
+  "equivalencia": {
+    "casos": [
+      {
+        "medida": "Ativo Total",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 19497752152,
+        "valor_bi_html": 19497752152.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0645
+      },
+      {
+        "medida": "Ativo Total",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 9761967942,
+        "valor_bi_html": 9761967942.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0019
+      },
+      {
+        "medida": "Ativo Total",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 9855875216,
+        "valor_bi_html": 9855875216.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Ativo Total",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 177781,
+        "valor_bi_html": 177781.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0031
+      },
+      {
+        "medida": "Ativo Total",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 6619242786,
+        "valor_bi_html": 6619242786.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ativo Total (R$ tri)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1e-09,
+        "valor_referencia": 19.497752152,
+        "valor_bi_html": 19.497752152,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Ativo Total (R$ tri)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1e-09,
+        "valor_referencia": 9.761967942,
+        "valor_bi_html": 9.761967942,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ativo Total (R$ tri)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1e-09,
+        "valor_referencia": 9.855875216,
+        "valor_bi_html": 9.855875216000001,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ativo Total (R$ tri)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1e-09,
+        "valor_referencia": 0.000177781,
+        "valor_bi_html": 0.000177781,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ativo Total (R$ tri)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1e-09,
+        "valor_referencia": 6.619242786,
+        "valor_bi_html": 6.619242786,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ativo Total (R$ bi)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1e-06,
+        "valor_referencia": 19497.752152,
+        "valor_bi_html": 19497.752152,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Ativo Total (R$ bi)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1e-06,
+        "valor_referencia": 9761.967942,
+        "valor_bi_html": 9761.967942,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ativo Total (R$ bi)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1e-06,
+        "valor_referencia": 9855.875216,
+        "valor_bi_html": 9855.875216,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Ativo Total (R$ bi)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1e-06,
+        "valor_referencia": 0.177781,
+        "valor_bi_html": 0.177781,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0
+      },
+      {
+        "medida": "Ativo Total (R$ bi)",
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1e-06,
+        "valor_referencia": 6619.242786,
+        "valor_bi_html": 6619.242786,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Carteira de Crédito",
+        "metrica": "carteira_de_credito",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 7386168497,
+        "valor_bi_html": 7386168497.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Carteira de Crédito",
+        "metrica": "carteira_de_credito",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 3260463210,
+        "valor_bi_html": 3260463210.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Carteira de Crédito",
+        "metrica": "carteira_de_credito",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 3444719310,
+        "valor_bi_html": 3444719310.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Carteira de Crédito",
+        "metrica": "carteira_de_credito",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 53456,
+        "valor_bi_html": 53456.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Carteira de Crédito",
+        "metrica": "carteira_de_credito",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2393127387,
+        "valor_bi_html": 2393127387.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Patrimônio Líquido",
+        "metrica": "patrimonio_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2040656923,
+        "valor_bi_html": 2040656923.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Patrimônio Líquido",
+        "metrica": "patrimonio_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1135572000,
+        "valor_bi_html": 1135572000.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Patrimônio Líquido",
+        "metrica": "patrimonio_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1119886071,
+        "valor_bi_html": 1119886071.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Patrimônio Líquido",
+        "metrica": "patrimonio_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 136314,
+        "valor_bi_html": 136314.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Patrimônio Líquido",
+        "metrica": "patrimonio_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 781370513,
+        "valor_bi_html": 781370513.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Lucro Líquido",
+        "metrica": "lucro_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 153467178,
+        "valor_bi_html": 153467178.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Lucro Líquido",
+        "metrica": "lucro_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 96755445,
+        "valor_bi_html": 96755445.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Lucro Líquido",
+        "metrica": "lucro_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 97632176,
+        "valor_bi_html": 97632176.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Lucro Líquido",
+        "metrica": "lucro_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 78214,
+        "valor_bi_html": 78214.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Lucro Líquido",
+        "metrica": "lucro_liquido",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 70587766,
+        "valor_bi_html": 70587766.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Qtd Instituições",
+        "metrica": "qtd_instituicoes",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1622,
+        "valor_bi_html": 1622,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0022
+      },
+      {
+        "medida": "Qtd Instituições",
+        "metrica": "qtd_instituicoes",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1353,
+        "valor_bi_html": 1353,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0015
+      },
+      {
+        "medida": "Qtd Instituições",
+        "metrica": "qtd_instituicoes",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 684,
+        "valor_bi_html": 684,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Qtd Instituições",
+        "metrica": "qtd_instituicoes",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1,
+        "valor_bi_html": 1,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0
+      },
+      {
+        "medida": "Qtd Instituições",
+        "metrica": "qtd_instituicoes",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 477,
+        "valor_bi_html": 477,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0006
+      },
+      {
+        "medida": "ROE Agregado",
+        "metrica": "roe_agregado",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.07520479129553322,
+        "valor_bi_html": 0.07520479129553322,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "ROE Agregado",
+        "metrica": "roe_agregado",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.08520414821781445,
+        "valor_bi_html": 0.08520414821781445,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "ROE Agregado",
+        "metrica": "roe_agregado",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.08718045391244088,
+        "valor_bi_html": 0.08718045391244088,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "ROE Agregado",
+        "metrica": "roe_agregado",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.5737781885939816,
+        "valor_bi_html": 0.5737781885939816,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "ROE Agregado",
+        "metrica": "roe_agregado",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.0903384051811538,
+        "valor_bi_html": 0.0903384051811538,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "ROE Médio Simples",
+        "metrica": "roe_medio_simples",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.008442440431316625,
+        "valor_bi_html": 0.008442440431316625,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0397
+      },
+      {
+        "medida": "ROE Médio Simples",
+        "metrica": "roe_medio_simples",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.01372456934019946,
+        "valor_bi_html": 0.013724569340199451,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0345
+      },
+      {
+        "medida": "ROE Médio Simples",
+        "metrica": "roe_medio_simples",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.01225768489600889,
+        "valor_bi_html": 0.012257684896008906,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0172
+      },
+      {
+        "medida": "ROE Médio Simples",
+        "metrica": "roe_medio_simples",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.5737781885939816,
+        "valor_bi_html": 0.5737781885939816,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "ROE Médio Simples",
+        "metrica": "roe_medio_simples",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.016127165096098087,
+        "valor_bi_html": 0.016127165096098114,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0116
+      },
+      {
+        "medida": "Índice Crédito/Ativo",
+        "metrica": "indice_credito_ativo",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.37882154001236273,
+        "valor_bi_html": 0.37882154001236273,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0004
+      },
+      {
+        "medida": "Índice Crédito/Ativo",
+        "metrica": "indice_credito_ativo",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.33399650863143554,
+        "valor_bi_html": 0.33399650863143554,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Índice Crédito/Ativo",
+        "metrica": "indice_credito_ativo",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.3495092251581932,
+        "valor_bi_html": 0.3495092251581932,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Índice Crédito/Ativo",
+        "metrica": "indice_credito_ativo",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.3006845500925296,
+        "valor_bi_html": 0.3006845500925296,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Índice Crédito/Ativo",
+        "metrica": "indice_credito_ativo",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.3615409593468264,
+        "valor_bi_html": 0.3615409593468264,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Qtd sem Agência",
+        "metrica": "qtd_sem_agencia",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 756,
+        "valor_bi_html": 756,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0015
+      },
+      {
+        "medida": "Qtd sem Agência",
+        "metrica": "qtd_sem_agencia",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 756,
+        "valor_bi_html": 756,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Qtd sem Agência",
+        "metrica": "qtd_sem_agencia",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 155,
+        "valor_bi_html": 155,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Qtd sem Agência",
+        "metrica": "qtd_sem_agencia",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": null,
+        "valor_bi_html": 0,
+        "bate": true,
+        "nota": "vazio no Power BI, zero no bi-html",
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Qtd sem Agência",
+        "metrica": "qtd_sem_agencia",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 155,
+        "valor_bi_html": 155,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Qtd Digitais",
+        "metrica": "qtd_digitais",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 215,
+        "valor_bi_html": 215,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0026
+      },
+      {
+        "medida": "Qtd Digitais",
+        "metrica": "qtd_digitais",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 140,
+        "valor_bi_html": 140,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Qtd Digitais",
+        "metrica": "qtd_digitais",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 144,
+        "valor_bi_html": 144,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Qtd Digitais",
+        "metrica": "qtd_digitais",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Instituição": "321 SOCIEDADE DE CRÉDITO DIRETO S.A."
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": null,
+        "valor_bi_html": 0,
+        "bate": true,
+        "nota": "vazio no Power BI, zero no bi-html",
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Qtd Digitais",
+        "metrica": "qtd_digitais",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.Tipo de Controle": "Privado Nacional",
+          "ifdata.UF": "SP"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 82,
+        "valor_bi_html": 82,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Ativo % do Total",
+        "metrica": "ativo_pct_do_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.TC": "2"
+        },
+        "agrupado_por": "ifdata.TC",
+        "escala": 1.0,
+        "valor_referencia": 0.5006714551450823,
+        "valor_bi_html": 0.5006714551450823,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Ativo % do Total",
+        "metrica": "ativo_pct_do_total",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "ifdata.TC": "3"
+        },
+        "agrupado_por": "ifdata.TC",
+        "escala": 1.0,
+        "valor_referencia": 0.17153817767946772,
+        "valor_bi_html": 0.17153817767946772,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      }
+    ],
+    "por_medida": {
+      "Ativo Total": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Ativo Total (R$ tri)": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Ativo Total (R$ bi)": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "ativo_total",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Carteira de Crédito": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "carteira_de_credito",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Patrimônio Líquido": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "patrimonio_liquido",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Lucro Líquido": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "lucro_liquido",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Qtd Instituições": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "qtd_instituicoes",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "ROE Agregado": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "roe_agregado",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "ROE Médio Simples": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "roe_medio_simples",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Índice Crédito/Ativo": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "indice_credito_ativo",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Qtd sem Agência": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "qtd_sem_agencia",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Qtd Digitais": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "qtd_digitais",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Ativo % do Total": {
+        "contextos": 2,
+        "batem": 2,
+        "metrica": "ativo_pct_do_total",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    }
+  },
+  "tema": {
+    "importado": true,
+    "nome": "IFData_Navy_Teal5276342275015783.json",
+    "aa": true,
+    "ajustes_de_contraste": 5
+  },
+  "dados_pessoais": [],
+  "semantica": [
+    "cada métrica filtra a própria tabela de origem na tabela convertida, então somas de fatos diferentes não se misturam",
+    "filtro numa tabela que não se liga ao fato da métrica esvazia a métrica no bi-html; no Power BI, não filtra",
+    "o filtro de um CALCULATE se soma ao filtro do leitor; no Power BI, substitui o filtro da mesma coluna",
+    "métrica com escala (por exemplo, R$ tri) usa a métrica base; o bi-html formata a grandeza",
+    "medida sem validação no teste de equivalência leva \"(não validada)\" na descrição"
+  ]
+}

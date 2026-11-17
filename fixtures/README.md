@@ -17,6 +17,18 @@ com semente fixa, então rodar de novo produz exatamente os mesmos bytes:
 Os três primeiros cobrem os domínios que a inferência de design reconhece
 (seção 7 do plano). Os dois últimos são casos de teste da fase F1.
 
+## Relatórios do Power BI (`*.pbix`)
+
+Usados nos testes da fase F7 (conversão de .pbix). Gerados a partir de
+`vendas.csv` pelo construtor do pbix-mcp (os bytes mudam a cada geração):
+
+    uv run --no-project --python 3.12 --with pbix-mcp==0.9.153 python -I fixtures/gerar_pbix.py
+
+| Arquivo | O que exercita |
+|---|---|
+| `vendas.pbix` | Importação; fato `Vendas` e dimensão `Lojas` ligadas por relação; medidas de cada padrão traduzível e três que não traduzem (`REMOVEFILTERS`, `TOTALYTD`, `FORMAT`); uma medida com `CALCULATE` cujo filtro diverge do Power BI quando o leitor filtra a mesma coluna; página no layout legado com cartões, barras, rosca, tabela, mapa por UF, linha e segmentação |
+| `vendas_directquery.pbix` | DirectQuery: a conversão precisa recusar com a explicação e a via (b) |
+
 ## Design systems de exemplo (`design/`)
 
 Usados nos testes da fase F3. Também são fictícios.

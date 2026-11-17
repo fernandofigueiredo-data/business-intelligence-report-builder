@@ -90,6 +90,8 @@ def _condicao(filtros) -> str:
         op = OPERADORES[f["operador"]]
         if f["operador"] in ("em", "fora_de"):
             partes.append(f"{q(f['coluna'])} {op} ({', '.join(_valor_sql(v) for v in f['valores'])})")
+        elif f["operador"] in ("preenchido", "vazio"):
+            partes.append(f"{q(f['coluna'])} {op}")
         else:
             partes.append(f"{q(f['coluna'])} {op} {_valor_sql(f['valor'])}")
     return " AND ".join(partes)

@@ -35,8 +35,8 @@ Tipos de métrica:
 
 Toda métrica aceita `melhor: menor` para indicar que cair é bom (custos, prazos): o dashboard
 pinta a variação de verde quando ela cai. Toda métrica aceita `filtro`: lista de condições `{coluna, operador, valor | valores}`
-com operador `igual`, `diferente`, `em`, `fora_de`, `maior`, `menor`, `maior_igual`
-ou `menor_igual`. Não há SQL livre no modelo: colunas são conferidas contra o
+com operador `igual`, `diferente`, `em`, `fora_de`, `maior`, `menor`, `maior_igual`,
+`menor_igual`, `preenchido` ou `vazio` (os dois últimos sem valor). Não há SQL livre no modelo: colunas são conferidas contra o
 arquivo e valores entram como parâmetros.
 """
 from __future__ import annotations
@@ -58,7 +58,8 @@ NUMERICAS = {"soma", "media"}
 FORMATOS = {"moeda", "inteiro", "decimal", "percentual", "numero"}
 GRANULARIDADES = {"dia", "semana", "mes", "trimestre", "ano", "dia_semana"}
 OPERADORES = {"igual": "=", "diferente": "<>", "maior": ">", "menor": "<", "maior_igual": ">=",
-              "menor_igual": "<=", "em": "IN", "fora_de": "NOT IN"}
+              "menor_igual": "<=", "em": "IN", "fora_de": "NOT IN", "preenchido": "IS NOT NULL", "vazio": "IS NULL"}
+SEM_VALOR = {"preenchido", "vazio"}
 TIPOS_NUMERICOS_DUCKDB = ("TINYINT", "SMALLINT", "INTEGER", "BIGINT", "HUGEINT", "FLOAT", "DOUBLE", "DECIMAL",
                           "UTINYINT", "USMALLINT", "UINTEGER", "UBIGINT")
 TIPOS_DATA_DUCKDB = ("DATE", "TIMESTAMP")
@@ -128,6 +129,9 @@ def _validar_filtro(filtros, onde, colunas, problemas):
         elif op in ("em", "fora_de"):
             if not isinstance(f.get("valores"), list) or not f["valores"]:
                 problemas.append(f"{lugar}: operador {op} precisa de 'valores' (lista)")
+        elif op in SEM_VALOR:
+            if "valor" in f or "valores" in f:
+                problemas.append(f"{lugar}: operador {op} não leva valor")
         elif "valor" not in f:
             problemas.append(f"{lugar}: operador {op} precisa de 'valor'")
 
@@ -267,6 +271,8 @@ def _texto_filtro(filtros) -> str:
         if f["operador"] in ("em", "fora_de"):
             lista = ", ".join(str(v) for v in f["valores"])
             partes.append(f"{f['coluna']} {'em' if f['operador'] == 'em' else 'fora de'} ({lista})")
+        elif f["operador"] in SEM_VALOR:
+            partes.append(f"{f['coluna']} {'preenchido' if f['operador'] == 'preenchido' else 'vazio'}")
         else:
             simbolo = {"igual": "=", "diferente": "≠", "maior": ">", "menor": "<", "maior_igual": "≥",
                        "menor_igual": "≤"}[f["operador"]]

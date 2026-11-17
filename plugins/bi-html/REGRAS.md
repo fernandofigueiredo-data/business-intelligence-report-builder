@@ -32,3 +32,8 @@
    achado (`[A…]`) ou de um item da conclusão da análise reproduzido pela camada
    de métricas (`[C…]`), arredondado como o texto escreve. Item não reproduzido
    não entra no documento. O verificador confere antes de renderizar.
+8. **Medida do Power BI só vale depois do teste.** Na conversão de um .pbix, só
+   a medida traduzida para a camada de métricas vira número no dashboard, e só
+   conta como validada se bateu com o Power BI no teste de equivalência; a que
+   não bateu leva "(não validada)" na descrição. Medida não traduzida fica fora,
+   com o motivo no relatório de fidelidade; não a recrie à mão na spec.

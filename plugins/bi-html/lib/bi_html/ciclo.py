@@ -40,7 +40,7 @@ def estado(projeto: Path) -> dict:
     if not dados and not pbix and not da_analise:
         etapa, proximo = "planilha", "Coloque a planilha em dados/ (ou envie um .pbix) para começar."
     elif pbix and not dados and not da_analise:
-        etapa, proximo = "pbix", "Fluxo do Power BI: a leitura do .pbix chega nas fases F6 e F7."
+        etapa, proximo = "pbix", f"Converta o relatório do Power BI com /bi-html:pbix {pbix[0]} (modo de importação)."
     elif not da_analise and not ingeridas:
         etapa, proximo = "analise", ("Rode /analise do plugin analise-dados (caminho padrão) ou "
                                      "/bi-html:ingerir para o atalho sem análise prévia.")

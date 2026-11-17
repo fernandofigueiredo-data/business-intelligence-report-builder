@@ -1,0 +1,3338 @@
+{
+  "arquivo": {
+    "nome": "eleicoes.pbix",
+    "bytes": 3294848,
+    "sha256": "8faccd122a5ef0ebcab3182eb129385baf0fe399ed1fef208a3ac13acba56745"
+  },
+  "ferramentas": {
+    "pbix-mcp": "0.9.153",
+    "pbixray": "0.15.5",
+    "duckdb": "2.0.0"
+  },
+  "modo": "importacao",
+  "formato_relatorio": "PBIR",
+  "convertido_em": "2026-11-17T14:34:21-03:00",
+  "tabelas": [
+    {
+      "tabela": "PartidoCores",
+      "linhas_metadados": 27,
+      "linhas_extraidas": 27,
+      "linhas_no_plano": null,
+      "fato": false,
+      "datas_automaticas": false,
+      "ligada": false,
+      "iguais": true
+    },
+    {
+      "tabela": "_Medidas",
+      "linhas_metadados": 0,
+      "linhas_extraidas": 0,
+      "linhas_no_plano": null,
+      "fato": false,
+      "datas_automaticas": false,
+      "ligada": false,
+      "iguais": true
+    },
+    {
+      "tabela": "dCandidato",
+      "linhas_metadados": 47,
+      "linhas_extraidas": 47,
+      "linhas_no_plano": 47,
+      "fato": true,
+      "datas_automaticas": false,
+      "ligada": true,
+      "iguais": true
+    },
+    {
+      "tabela": "dMunicipio",
+      "linhas_metadados": 5766,
+      "linhas_extraidas": 5766,
+      "linhas_no_plano": 5766,
+      "fato": true,
+      "datas_automaticas": false,
+      "ligada": true,
+      "iguais": true
+    },
+    {
+      "tabela": "dTurno",
+      "linhas_metadados": 8,
+      "linhas_extraidas": 8,
+      "linhas_no_plano": null,
+      "fato": false,
+      "datas_automaticas": false,
+      "ligada": true,
+      "iguais": true
+    },
+    {
+      "tabela": "fComparecimento",
+      "linhas_metadados": 45834,
+      "linhas_extraidas": 45834,
+      "linhas_no_plano": 45834,
+      "fato": true,
+      "datas_automaticas": false,
+      "ligada": false,
+      "iguais": true
+    },
+    {
+      "tabela": "fVotos",
+      "linhas_metadados": 309308,
+      "linhas_extraidas": 309308,
+      "linhas_no_plano": 309308,
+      "fato": true,
+      "datas_automaticas": false,
+      "ligada": false,
+      "iguais": true
+    }
+  ],
+  "fatos": [
+    "dCandidato",
+    "dMunicipio",
+    "fComparecimento",
+    "fVotos"
+  ],
+  "plano": {
+    "arquivo": "saidas/bi/pbix/plano.parquet",
+    "partes": {
+      "dCandidato": {
+        "linhas_tabela": 47,
+        "tabelas_ligadas": [],
+        "linhas_no_plano": 47,
+        "iguais": true
+      },
+      "dMunicipio": {
+        "linhas_tabela": 5766,
+        "tabelas_ligadas": [],
+        "linhas_no_plano": 5766,
+        "iguais": true
+      },
+      "fComparecimento": {
+        "linhas_tabela": 45834,
+        "tabelas_ligadas": [
+          "dMunicipio",
+          "dTurno"
+        ],
+        "linhas_no_plano": 45834,
+        "iguais": true
+      },
+      "fVotos": {
+        "linhas_tabela": 309308,
+        "tabelas_ligadas": [
+          "dMunicipio",
+          "dTurno",
+          "dCandidato"
+        ],
+        "linhas_no_plano": 309308,
+        "iguais": true
+      }
+    }
+  },
+  "medidas": [
+    {
+      "medida": "Aptos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "aptos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "aptos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Comparecimento",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "comparecimento",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "comparecimento",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Abstenções",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "abstencoes",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "abstencoes",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Votos Válidos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "votos_validos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "votos_validos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Votos Brancos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "votos_brancos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "votos_brancos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Votos Nulos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "votos_nulos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "votos_nulos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "% Abstenção",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "pct_abstencao",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_abstencao",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "% Comparecimento",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "pct_comparecimento",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_comparecimento",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "% Brancos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "pct_brancos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_brancos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "% Nulos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "pct_nulos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_nulos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "% Brancos e Nulos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "pct_brancos_e_nulos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_brancos_e_nulos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Votos",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "votos",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "votos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Votos Todos os Candidatos",
+      "classe": "nao_traduzida",
+      "motivo": "usa REMOVEFILTERS, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Votos Válidos",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [Votos Todos os Candidatos], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "Posição",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, RANKX, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Vencedor",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Partido Vencedor",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "% do Vencedor",
+      "classe": "nao_traduzida",
+      "motivo": "usa TOPN, VALUES, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Margem de Vitória",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, TOPN, VALUES, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Municípios Vencidos",
+      "classe": "nao_traduzida",
+      "motivo": "usa REMOVEFILTERS, VALUES, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Municípios Vencidos",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [Municípios Vencidos], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "Ano Selecionado",
+      "classe": "nao_traduzida",
+      "motivo": "usa SELECTEDVALUE, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Partido Vencedor 1º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [Partido Vencedor], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "Partido Vencedor 1º Turno Anterior",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [Partido Vencedor], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "Mudou Partido Vencedor",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, SUBSTITUTE, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Municípios que Mudaram",
+      "classe": "nao_traduzida",
+      "motivo": "usa VALUES, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Municípios que Mudaram",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [Municípios que Mudaram], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Votos Válidos Eleição Anterior",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, REMOVEFILTERS, SELECTEDVALUE, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Variação p.p.",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Abstenção Eleição Anterior",
+      "classe": "nao_traduzida",
+      "motivo": "usa REMOVEFILTERS, SELECTEDVALUE, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Variação Abstenção p.p.",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Vencedor 1º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [Vencedor], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "Vencedor 2º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [Vencedor], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "Virou no 2º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Municípios que Viraram",
+      "classe": "nao_traduzida",
+      "motivo": "usa VALUES, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Municípios que Viraram",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [Municípios que Viraram], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "Votos 1º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "usa REMOVEFILTERS, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Votos 2º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "usa REMOVEFILTERS, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Votos Ganhos no 2º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Votos Válidos 1º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [% Votos Válidos], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Votos Válidos 2º Turno",
+      "classe": "nao_traduzida",
+      "motivo": "depende de [% Votos Válidos], que não foi traduzida",
+      "ressalvas": []
+    },
+    {
+      "medida": "Variação entre Turnos p.p.",
+      "classe": "nao_traduzida",
+      "motivo": "usa IF, sem equivalente na camada de métricas",
+      "ressalvas": []
+    },
+    {
+      "medida": "Municípios",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "DISTINCTCOUNT conta o vazio como um valor; a contagem distinta do bi-html, não",
+        "o filtro do CALCULATE se soma ao filtro do leitor; no Power BI ele substitui um filtro na mesma coluna"
+      ],
+      "metrica": "municipios",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "municipios",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "População 2022",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "populacao_dois_mil_e_vinte_e_dois",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "populacao_dois_mil_e_vinte_e_dois",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "PIB per capita",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "o filtro do CALCULATE se soma ao filtro do leitor; no Power BI ele substitui um filtro na mesma coluna"
+      ],
+      "metrica": "pib_per_capita",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pib_per_capita",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Alfabetização",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [
+        "o filtro do CALCULATE se soma ao filtro do leitor; no Power BI ele substitui um filtro na mesma coluna"
+      ],
+      "metrica": "alfabetizacao",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "alfabetizacao",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Diferença de Apuração",
+      "classe": "traduzida",
+      "motivo": null,
+      "ressalvas": [],
+      "metrica": "diferenca_de_apuracao",
+      "escala": 1.0,
+      "equivalencia": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "diferenca_de_apuracao",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Conferência Válidos",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Cor do Partido",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Cor do Partido Vencedor",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Cor Mudança",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Cor Virada",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Título Eleição",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "Resumo Vencedor",
+      "classe": "texto",
+      "motivo": "devolve texto (rótulo, cor ou frase), não número",
+      "ressalvas": []
+    },
+    {
+      "medida": "% Abstenção Nacional",
+      "classe": "nao_traduzida",
+      "motivo": "usa REMOVEFILTERS, sem equivalente na camada de métricas",
+      "ressalvas": []
+    }
+  ],
+  "resumo_medidas": {
+    "nao_traduzida": 29,
+    "texto": 9,
+    "traduzida": 17
+  },
+  "paginas": [
+    {
+      "nome": "Visão Nacional",
+      "spec": "dashboard/paginas/visao_nacional.json",
+      "visuais": [
+        {
+          "visual": "600bef7dd46295094100",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "a14ebd8e9d0a3b7cd688",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Título Eleição] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Título Eleição",
+              "classe": "texto",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "08047f7e439c5b61500b",
+          "tipo_power_bi": "pageNavigator",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "e4bb9340643980c2a64e",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "rotulo_turno",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "36b79b7270909ea699e0",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "f37ce7124e597479397e",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "e1eb29fb4cc037041d11",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Resumo Vencedor] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Resumo Vencedor",
+              "classe": "texto",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "30991a10a1ee604e2c3e",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Aptos",
+              "classe": "traduzida",
+              "metrica": "aptos"
+            }
+          ],
+          "bloco_id": "bloco_a"
+        },
+        {
+          "visual": "14bfa690c16916e58bb3",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Comparecimento",
+              "classe": "traduzida",
+              "metrica": "comparecimento"
+            }
+          ],
+          "bloco_id": "bloco_b"
+        },
+        {
+          "visual": "ce12d3aa659e08a0b788",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "% Abstenção",
+              "classe": "traduzida",
+              "metrica": "pct_abstencao"
+            }
+          ],
+          "bloco_id": "bloco_c"
+        },
+        {
+          "visual": "4f843fe263d501686a71",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Votos Válidos",
+              "classe": "traduzida",
+              "metrica": "votos_validos"
+            }
+          ],
+          "bloco_id": "bloco_d"
+        },
+        {
+          "visual": "8448398770b440e3c29a",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "% Brancos",
+              "classe": "traduzida",
+              "metrica": "pct_brancos"
+            }
+          ],
+          "bloco_id": "bloco_e"
+        },
+        {
+          "visual": "1a7c3217bdc7095178e6",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "% Nulos",
+              "classe": "traduzida",
+              "metrica": "pct_nulos"
+            }
+          ],
+          "bloco_id": "bloco_f"
+        },
+        {
+          "visual": "0b9ac624c13ac795b304",
+          "tipo_power_bi": "barChart",
+          "titulo": "Votos válidos por candidato",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[% Votos Válidos] não traduzida: depende de [Votos Todos os Candidatos], que não foi traduzida"
+          ],
+          "medidas": [
+            {
+              "medida": "% Votos Válidos",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "5771cc2e31c4acc5ec6b",
+          "tipo_power_bi": "barChart",
+          "titulo": "Municípios vencidos",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Municípios Vencidos] não traduzida: usa REMOVEFILTERS, VALUES, sem equivalente na camada de métricas"
+          ],
+          "medidas": [
+            {
+              "medida": "Municípios Vencidos",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "67e36c8ed437de4e50d2",
+          "tipo_power_bi": "clusteredColumnChart",
+          "titulo": "Participação ao longo das eleições",
+          "bloco": "barras_agrupadas",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "% Abstenção",
+              "classe": "traduzida",
+              "metrica": "pct_abstencao"
+            },
+            {
+              "medida": "% Brancos",
+              "classe": "traduzida",
+              "metrica": "pct_brancos"
+            },
+            {
+              "medida": "% Nulos",
+              "classe": "traduzida",
+              "metrica": "pct_nulos"
+            }
+          ],
+          "bloco_id": "bloco_g"
+        }
+      ],
+      "html": "saidas/bi/paginas/visao_nacional.html",
+      "resumo": "7 de 12 visuais com dado viraram bloco ou filtro"
+    },
+    {
+      "nome": "Mapa dos vencedores",
+      "spec": "dashboard/paginas/mapa_dos_vencedores.json",
+      "visuais": [
+        {
+          "visual": "c999f643b2b137650b43",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "900b70e3d19817ae8545",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Título Eleição] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Título Eleição",
+              "classe": "texto",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "fd9ddbe4154c16220a85",
+          "tipo_power_bi": "pageNavigator",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "3fe193055dd241370024",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "rotulo_turno",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "ad9d8e1d706992ab7a16",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "f0c2c73090eb057d695e",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "fa7e1c76c709907d0400",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "sg_regiao_nome",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "40165d388055ab51a579",
+          "tipo_power_bi": "azureMap",
+          "titulo": "Vencedor por município",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "o mapa usa dMunicipio.local_mapa, que não traz siglas de UF; o bi-html só desenha o mapa das unidades da federação"
+          ],
+          "medidas": [
+            {
+              "medida": "Aptos",
+              "classe": "traduzida",
+              "metrica": "aptos"
+            }
+          ]
+        },
+        {
+          "visual": "a388571426b57d421153",
+          "tipo_power_bi": "azureMap",
+          "titulo": "Partido vencedor por UF",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "o mapa usa dMunicipio.sg_uf_nome, que não traz siglas de UF; o bi-html só desenha o mapa das unidades da federação"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "5195da23ed9dd048d901",
+          "tipo_power_bi": "tableEx",
+          "titulo": "Resultado por UF",
+          "bloco": "tabela",
+          "status": "parcial",
+          "motivos": [
+            "[Vencedor] não traduzida: devolve texto (rótulo, cor ou frase), não número",
+            "[% do Vencedor] não traduzida: usa TOPN, VALUES, sem equivalente na camada de métricas",
+            "[Margem de Vitória] não traduzida: usa IF, TOPN, VALUES, sem equivalente na camada de métricas",
+            "1 filtro(s) do visual não foram convertidos"
+          ],
+          "medidas": [
+            {
+              "medida": "Vencedor",
+              "classe": "texto",
+              "metrica": null
+            },
+            {
+              "medida": "% do Vencedor",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "Margem de Vitória",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "% Abstenção",
+              "classe": "traduzida",
+              "metrica": "pct_abstencao"
+            }
+          ],
+          "bloco_id": "bloco_a"
+        }
+      ],
+      "html": "saidas/bi/paginas/mapa_dos_vencedores.html",
+      "resumo": "1 de 6 visuais com dado viraram bloco ou filtro"
+    },
+    {
+      "nome": "Comparecimento e abstenção",
+      "spec": "dashboard/paginas/comparecimento_e_abstencao.json",
+      "visuais": [
+        {
+          "visual": "af979d11d86e5c7b3102",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "929e2ef697ea015eb507",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Título Eleição] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Título Eleição",
+              "classe": "texto",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "97168b741e880830b71b",
+          "tipo_power_bi": "pageNavigator",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "221a542280107b0d0370",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "rotulo_turno",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "4a6bdd5c1c5859b544e4",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "80e1817254531366d5ce",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "08ee904a0dc4962180b7",
+          "tipo_power_bi": "cardVisual",
+          "titulo": "Variação vs. eleição anterior",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Variação Abstenção p.p.] não traduzida: usa IF, sem equivalente na camada de métricas"
+          ],
+          "medidas": [
+            {
+              "medida": "Variação Abstenção p.p.",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "85bb20b6345e9e852950",
+          "tipo_power_bi": "azureMap",
+          "titulo": "Abstenção por UF",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "o mapa usa dMunicipio.sg_uf_nome, que não traz siglas de UF; o bi-html só desenha o mapa das unidades da federação"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "752e53408802ce1b4a30",
+          "tipo_power_bi": "clusteredBarChart",
+          "titulo": null,
+          "bloco": "barras_ranking",
+          "status": "parcial",
+          "motivos": [
+            "1 filtro(s) do visual não foram convertidos"
+          ],
+          "medidas": [
+            {
+              "medida": "% Abstenção",
+              "classe": "traduzida",
+              "metrica": "pct_abstencao"
+            }
+          ],
+          "bloco_id": "bloco_a"
+        },
+        {
+          "visual": "7d989b256a6b974616a8",
+          "tipo_power_bi": "scatterChart",
+          "titulo": "Abstenção x alfabetização",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "dispersão não tem bloco equivalente no bi-html"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "47aba51655e3eca92702",
+          "tipo_power_bi": "lineChart",
+          "titulo": "Abstenção por região ao longo do tempo",
+          "bloco": "barras_agrupadas",
+          "status": "parcial",
+          "motivos": [
+            "a linha virou barras: o eixo não é data",
+            "1 filtro(s) do visual não foram convertidos"
+          ],
+          "medidas": [
+            {
+              "medida": "% Abstenção",
+              "classe": "traduzida",
+              "metrica": "pct_abstencao"
+            }
+          ],
+          "bloco_id": "bloco_b"
+        },
+        {
+          "visual": "281ee1272de695d8680a",
+          "tipo_power_bi": "clusteredColumnChart",
+          "titulo": "Brancos e nulos",
+          "bloco": "barras_agrupadas",
+          "status": "parcial",
+          "motivos": [
+            "1 filtro(s) do visual não foram convertidos"
+          ],
+          "medidas": [
+            {
+              "medida": "% Brancos",
+              "classe": "traduzida",
+              "metrica": "pct_brancos"
+            },
+            {
+              "medida": "% Nulos",
+              "classe": "traduzida",
+              "metrica": "pct_nulos"
+            }
+          ],
+          "bloco_id": "bloco_c"
+        }
+      ],
+      "html": "saidas/bi/paginas/comparecimento_e_abstencao.html",
+      "resumo": "3 de 8 visuais com dado viraram bloco ou filtro"
+    },
+    {
+      "nome": "Mudanças entre eleições",
+      "spec": null,
+      "visuais": [
+        {
+          "visual": "aeada102aae4ee0c9ae0",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "60d7f3b5e829ce944774",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Título Eleição] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Título Eleição",
+              "classe": "texto",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "798a03ff056c80ab4195",
+          "tipo_power_bi": "pageNavigator",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "cbd1544f2ddbc74ccc8a",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "rotulo_turno",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "438ad3f019c9a0187963",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "2a66b6b06e38dca48d9c",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "c4f1a9e27b3d5e6f8a01",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "af12415f01ab710400d6",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Municípios que Mudaram] não traduzida: usa VALUES, sem equivalente na camada de métricas"
+          ],
+          "medidas": [
+            {
+              "medida": "Municípios que Mudaram",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "efa6ff93433acc037a6d",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[% Municípios que Mudaram] não traduzida: depende de [Municípios que Mudaram], que não foi traduzida"
+          ],
+          "medidas": [
+            {
+              "medida": "% Municípios que Mudaram",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "9821253107312283972c",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "partido_atual",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "1fcc0201e082870d78ac",
+          "tipo_power_bi": "azureMap",
+          "titulo": "Municípios que mudaram de partido vencedor",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "o mapa usa dMunicipio.local_mapa, que não traz siglas de UF; o bi-html só desenha o mapa das unidades da federação"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "0039b39f00c884e089da",
+          "tipo_power_bi": "tableEx",
+          "titulo": "Municípios que mudaram de partido vencedor",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Partido Vencedor 1º Turno Anterior] não traduzida: depende de [Partido Vencedor], que não foi traduzida",
+            "[Partido Vencedor 1º Turno] não traduzida: depende de [Partido Vencedor], que não foi traduzida"
+          ],
+          "medidas": [
+            {
+              "medida": "Partido Vencedor 1º Turno Anterior",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "Partido Vencedor 1º Turno",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "b5fcc0988a1d9cc6b679",
+          "tipo_power_bi": "pivotTable",
+          "titulo": "Variação por UF (p.p.)",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "o bloco usa uma dimensão; ficaram de fora 1",
+            "[Variação p.p.] não traduzida: usa IF, sem equivalente na camada de métricas"
+          ],
+          "medidas": [
+            {
+              "medida": "Variação p.p.",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "4d1794768a1bb9c6cdae",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        }
+      ],
+      "resumo": "nenhum visual convertido"
+    },
+    {
+      "nome": "Do 1º ao 2º turno",
+      "spec": null,
+      "visuais": [
+        {
+          "visual": "b1205484ea06e9479230",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "0d229b215eb20de47323",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Título Eleição] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Título Eleição",
+              "classe": "texto",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "775bf4086b58700a4804",
+          "tipo_power_bi": "pageNavigator",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "a8b5268605ebd420501b",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "rotulo_turno",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "b2a14875c8a810a4990a",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "ec2c465dbe5196cd6c8d",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "4ee70efd058c40ab",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "0549d028a81798b7b8b4",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Municípios que Viraram] não traduzida: usa VALUES, sem equivalente na camada de métricas"
+          ],
+          "medidas": [
+            {
+              "medida": "Municípios que Viraram",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "339d34830a35c20de3ce",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[% Municípios que Viraram] não traduzida: depende de [Municípios que Viraram], que não foi traduzida"
+          ],
+          "medidas": [
+            {
+              "medida": "% Municípios que Viraram",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "f600b883ee0ba05006d9",
+          "tipo_power_bi": "tableEx",
+          "titulo": "Finalistas",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Votos 1º Turno] não traduzida: usa REMOVEFILTERS, sem equivalente na camada de métricas",
+            "[Votos 2º Turno] não traduzida: usa REMOVEFILTERS, sem equivalente na camada de métricas",
+            "[Votos Ganhos no 2º Turno] não traduzida: usa IF, sem equivalente na camada de métricas",
+            "[% Votos Válidos 1º Turno] não traduzida: depende de [% Votos Válidos], que não foi traduzida",
+            "[% Votos Válidos 2º Turno] não traduzida: depende de [% Votos Válidos], que não foi traduzida",
+            "[Variação entre Turnos p.p.] não traduzida: usa IF, sem equivalente na camada de métricas"
+          ],
+          "medidas": [
+            {
+              "medida": "Votos 1º Turno",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "Votos 2º Turno",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "Votos Ganhos no 2º Turno",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "% Votos Válidos 1º Turno",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "% Votos Válidos 2º Turno",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "Variação entre Turnos p.p.",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "e547e02b268b5e20099c",
+          "tipo_power_bi": "azureMap",
+          "titulo": "Municípios que viraram no 2º turno",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "o mapa usa dMunicipio.local_mapa, que não traz siglas de UF; o bi-html só desenha o mapa das unidades da federação"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "f263cf30dad600720a2c",
+          "tipo_power_bi": "tableEx",
+          "titulo": "Municípios que viraram no 2º turno",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Vencedor 1º Turno] não traduzida: depende de [Vencedor], que não foi traduzida",
+            "[Vencedor 2º Turno] não traduzida: depende de [Vencedor], que não foi traduzida"
+          ],
+          "medidas": [
+            {
+              "medida": "Vencedor 1º Turno",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "Vencedor 2º Turno",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "f2a0fe1810107ac03e87",
+          "tipo_power_bi": "barChart",
+          "titulo": "Variação por UF (p.p.)",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Variação entre Turnos p.p.] não traduzida: usa IF, sem equivalente na camada de métricas"
+          ],
+          "medidas": [
+            {
+              "medida": "Variação entre Turnos p.p.",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "23d770190b81e23b1087",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        }
+      ],
+      "resumo": "nenhum visual convertido"
+    },
+    {
+      "nome": "Perfil socioeconômico",
+      "spec": null,
+      "visuais": [
+        {
+          "visual": "9fecf31ba427a8a78a14",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "2cb9d7b207e33ad42b30",
+          "tipo_power_bi": "cardVisual",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[Título Eleição] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Título Eleição",
+              "classe": "texto",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "9cd5e9384938d02d40a4",
+          "tipo_power_bi": "pageNavigator",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "8a2357706da1c3cbd8d6",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "rotulo_turno",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "d12c11ddede7416d790d",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "ffce65e8bae4a74e1bc2",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "a27c036be95348d4",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "736dbe710041b90a76de",
+          "tipo_power_bi": "barChart",
+          "titulo": "Votos por faixa de PIB per capita",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[% Votos Válidos] não traduzida: depende de [Votos Todos os Candidatos], que não foi traduzida"
+          ],
+          "medidas": [
+            {
+              "medida": "% Votos Válidos",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "f291313fc14177dd3ec9",
+          "tipo_power_bi": "barChart",
+          "titulo": "Votos por porte de município",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[% Votos Válidos] não traduzida: depende de [Votos Todos os Candidatos], que não foi traduzida"
+          ],
+          "medidas": [
+            {
+              "medida": "% Votos Válidos",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "c5890af063e7453cca9d",
+          "tipo_power_bi": "barChart",
+          "titulo": "Votos por faixa de alfabetização",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "[% Votos Válidos] não traduzida: depende de [Votos Todos os Candidatos], que não foi traduzida"
+          ],
+          "medidas": [
+            {
+              "medida": "% Votos Válidos",
+              "classe": "nao_traduzida",
+              "metrica": null
+            }
+          ]
+        },
+        {
+          "visual": "1e8048124ee00a90eb9b",
+          "tipo_power_bi": "scatterChart",
+          "titulo": "PIB per capita x votação por município",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "dispersão não tem bloco equivalente no bi-html"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "b754540bad4348a71e2d",
+          "tipo_power_bi": "slicer",
+          "titulo": "Candidato",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "segmentação com valores demais para filtro global (o cubo cresceria demais)"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "a436920f4c07115b4ee6",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        }
+      ],
+      "resumo": "nenhum visual convertido"
+    },
+    {
+      "nome": "Sobre os dados",
+      "spec": "dashboard/paginas/sobre_os_dados.json",
+      "visuais": [
+        {
+          "visual": "1792e57320642275a390",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "975f68abb02e991edb70",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "06132da7cca001012803",
+          "tipo_power_bi": "pageNavigator",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "a9175a84a17c0185a059",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "2c519ca05c7635b23eec",
+          "tipo_power_bi": "shape",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "46ca30904d045a790830",
+          "tipo_power_bi": "tableEx",
+          "titulo": "Conferência com o TSE",
+          "bloco": "tabela",
+          "status": "parcial",
+          "motivos": [
+            "[Votos Todos os Candidatos] não traduzida: usa REMOVEFILTERS, sem equivalente na camada de métricas",
+            "[Conferência Válidos] não traduzida: devolve texto (rótulo, cor ou frase), não número"
+          ],
+          "medidas": [
+            {
+              "medida": "Comparecimento",
+              "classe": "traduzida",
+              "metrica": "comparecimento"
+            },
+            {
+              "medida": "Votos Válidos",
+              "classe": "traduzida",
+              "metrica": "votos_validos"
+            },
+            {
+              "medida": "Votos Todos os Candidatos",
+              "classe": "nao_traduzida",
+              "metrica": null
+            },
+            {
+              "medida": "Conferência Válidos",
+              "classe": "texto",
+              "metrica": null
+            },
+            {
+              "medida": "Diferença de Apuração",
+              "classe": "traduzida",
+              "metrica": "diferenca_de_apuracao"
+            }
+          ],
+          "bloco_id": "bloco_a"
+        },
+        {
+          "visual": "3021600ac264a5723cb3",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "a61d7d3849040bd6ab42",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        }
+      ],
+      "html": "saidas/bi/paginas/sobre_os_dados.html",
+      "resumo": "1 de 1 visuais com dado viraram bloco ou filtro"
+    },
+    {
+      "nome": "Dica do município",
+      "spec": null,
+      "resumo": "página de dica ou oculta: não convertida",
+      "visuais": []
+    }
+  ],
+  "resumo_visuais": {
+    "convertido": 7,
+    "decorativo": 37,
+    "filtro_global": 8,
+    "nao_convertido": 30,
+    "parcial": 5
+  },
+  "equivalencia": {
+    "casos": [
+      {
+        "medida": "Aptos",
+        "metrica": "aptos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1210653399.0,
+        "valor_bi_html": 1210653399.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.7429
+      },
+      {
+        "medida": "Aptos",
+        "metrica": "aptos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 158745502.0,
+        "valor_bi_html": 158745502.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.3177
+      },
+      {
+        "medida": "Aptos",
+        "metrica": "aptos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 85144.0,
+        "valor_bi_html": 85144.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0252
+      },
+      {
+        "medida": "Aptos",
+        "metrica": "aptos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 127198080.0,
+        "valor_bi_html": 127198080.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0123
+      },
+      {
+        "medida": "Aptos",
+        "metrica": "aptos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 15631.0,
+        "valor_bi_html": 15631.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Comparecimento",
+        "metrica": "comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 962551944.0,
+        "valor_bi_html": 962551944.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0046
+      },
+      {
+        "medida": "Comparecimento",
+        "metrica": "comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 125275835.0,
+        "valor_bi_html": 125275835.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Comparecimento",
+        "metrica": "comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 66475.0,
+        "valor_bi_html": 66475.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Comparecimento",
+        "metrica": "comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 99695033.0,
+        "valor_bi_html": 99695033.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Comparecimento",
+        "metrica": "comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 11753.0,
+        "valor_bi_html": 11753.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Abstenções",
+        "metrica": "abstencoes",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 248099287.0,
+        "valor_bi_html": 248099287.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0044
+      },
+      {
+        "medida": "Abstenções",
+        "metrica": "abstencoes",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 33469244.0,
+        "valor_bi_html": 33469244.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Abstenções",
+        "metrica": "abstencoes",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 18669.0,
+        "valor_bi_html": 18669.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Abstenções",
+        "metrica": "abstencoes",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 27503047.0,
+        "valor_bi_html": 27503047.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Abstenções",
+        "metrica": "abstencoes",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 3878.0,
+        "valor_bi_html": 3878.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Votos Válidos",
+        "metrica": "votos_validos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 901620710.0,
+        "valor_bi_html": 901620710.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0044
+      },
+      {
+        "medida": "Votos Válidos",
+        "metrica": "votos_validos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 119300788.0,
+        "valor_bi_html": 119300788.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Votos Válidos",
+        "metrica": "votos_validos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 63970.0,
+        "valor_bi_html": 63970.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Votos Válidos",
+        "metrica": "votos_validos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 92915377.0,
+        "valor_bi_html": 92915377.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Votos Válidos",
+        "metrica": "votos_validos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 11337.0,
+        "valor_bi_html": 11337.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Votos Brancos",
+        "metrica": "votos_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 19401589.0,
+        "valor_bi_html": 19401589.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0042
+      },
+      {
+        "medida": "Votos Brancos",
+        "metrica": "votos_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2300798.0,
+        "valor_bi_html": 2300798.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Votos Brancos",
+        "metrica": "votos_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 842.0,
+        "valor_bi_html": 842.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Votos Brancos",
+        "metrica": "votos_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 2179301.0,
+        "valor_bi_html": 2179301.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Votos Brancos",
+        "metrica": "votos_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 117.0,
+        "valor_bi_html": 117.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Votos Nulos",
+        "metrica": "votos_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 41528899.0,
+        "valor_bi_html": 41528899.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0043
+      },
+      {
+        "medida": "Votos Nulos",
+        "metrica": "votos_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 3674249.0,
+        "valor_bi_html": 3674249.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Votos Nulos",
+        "metrica": "votos_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1663.0,
+        "valor_bi_html": 1663.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Votos Nulos",
+        "metrica": "votos_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 4600355.0,
+        "valor_bi_html": 4600355.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0009
+      },
+      {
+        "medida": "Votos Nulos",
+        "metrica": "votos_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 299.0,
+        "valor_bi_html": 299.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Abstenção",
+        "metrica": "pct_abstencao",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.20493007098888094,
+        "valor_bi_html": 0.20493007098888094,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0085
+      },
+      {
+        "medida": "% Abstenção",
+        "metrica": "pct_abstencao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.21083585725786422,
+        "valor_bi_html": 0.21083585725786422,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0013
+      },
+      {
+        "medida": "% Abstenção",
+        "metrica": "pct_abstencao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.21926383538475994,
+        "valor_bi_html": 0.21926383538475994,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Abstenção",
+        "metrica": "pct_abstencao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.21622218668709464,
+        "valor_bi_html": 0.21622218668709464,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0017
+      },
+      {
+        "medida": "% Abstenção",
+        "metrica": "pct_abstencao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.24809673085535155,
+        "valor_bi_html": 0.24809673085535155,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Comparecimento",
+        "metrica": "pct_comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.7950681382425954,
+        "valor_bi_html": 0.7950681382425954,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0086
+      },
+      {
+        "medida": "% Comparecimento",
+        "metrica": "pct_comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.789161478099707,
+        "valor_bi_html": 0.789161478099707,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0016
+      },
+      {
+        "medida": "% Comparecimento",
+        "metrica": "pct_comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.7807361646152401,
+        "valor_bi_html": 0.7807361646152401,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Comparecimento",
+        "metrica": "pct_comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.7837778133129053,
+        "valor_bi_html": 0.7837778133129053,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0018
+      },
+      {
+        "medida": "% Comparecimento",
+        "metrica": "pct_comparecimento",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.7519032691446484,
+        "valor_bi_html": 0.7519032691446484,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Brancos",
+        "metrica": "pct_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.020156407268135963,
+        "valor_bi_html": 0.020156407268135963,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0086
+      },
+      {
+        "medida": "% Brancos",
+        "metrica": "pct_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.01836585643192879,
+        "valor_bi_html": 0.01836585643192879,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0014
+      },
+      {
+        "medida": "% Brancos",
+        "metrica": "pct_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.012666415945844302,
+        "valor_bi_html": 0.012666415945844302,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Brancos",
+        "metrica": "pct_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.02185967479443033,
+        "valor_bi_html": 0.02185967479443033,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0017
+      },
+      {
+        "medida": "% Brancos",
+        "metrica": "pct_brancos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.009954905130604952,
+        "valor_bi_html": 0.009954905130604952,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Nulos",
+        "metrica": "pct_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.04314457963423946,
+        "valor_bi_html": 0.04314457963423946,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0087
+      },
+      {
+        "medida": "% Nulos",
+        "metrica": "pct_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.02932927168276308,
+        "valor_bi_html": 0.02932927168276308,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0015
+      },
+      {
+        "medida": "% Nulos",
+        "metrica": "pct_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.02501692365550959,
+        "valor_bi_html": 0.02501692365550959,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Nulos",
+        "metrica": "pct_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.04614427481056153,
+        "valor_bi_html": 0.04614427481056153,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0017
+      },
+      {
+        "medida": "% Nulos",
+        "metrica": "pct_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.025440313111545987,
+        "valor_bi_html": 0.025440313111545987,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Brancos e Nulos",
+        "metrica": "pct_brancos_e_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.06330098690237543,
+        "valor_bi_html": 0.06330098690237543,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0127
+      },
+      {
+        "medida": "% Brancos e Nulos",
+        "metrica": "pct_brancos_e_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.04769512811469187,
+        "valor_bi_html": 0.04769512811469187,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.002
+      },
+      {
+        "medida": "% Brancos e Nulos",
+        "metrica": "pct_brancos_e_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.037683339601353893,
+        "valor_bi_html": 0.037683339601353893,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "% Brancos e Nulos",
+        "metrica": "pct_brancos_e_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.06800394960499186,
+        "valor_bi_html": 0.06800394960499186,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0025
+      },
+      {
+        "medida": "% Brancos e Nulos",
+        "metrica": "pct_brancos_e_nulos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.03539521824215094,
+        "valor_bi_html": 0.03539521824215094,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "Votos",
+        "metrica": "votos",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 901620710.0,
+        "valor_bi_html": 901620710.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0284
+      },
+      {
+        "medida": "Votos",
+        "metrica": "votos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dCandidato.nm_urna": "Lula"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 235741273.0,
+        "valor_bi_html": 235741273.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.1377
+      },
+      {
+        "medida": "Votos",
+        "metrica": "votos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2018 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 107050749.0,
+        "valor_bi_html": 107050749.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.1277
+      },
+      {
+        "medida": "Votos",
+        "metrica": "votos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 63970.0,
+        "valor_bi_html": 63970.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0722
+      },
+      {
+        "medida": "Votos",
+        "metrica": "votos",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dCandidato.nm_urna": "Lula",
+          "dTurno.rotulo_turno": "2018 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": null,
+        "valor_bi_html": null,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0007
+      },
+      {
+        "medida": "Municípios",
+        "metrica": "municipios",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 5571,
+        "valor_bi_html": 5571,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0024
+      },
+      {
+        "medida": "Municípios",
+        "metrica": "municipios",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 1,
+        "valor_bi_html": 1,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Municípios",
+        "metrica": "municipios",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 853,
+        "valor_bi_html": 853,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "Municípios",
+        "metrica": "municipios",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf_nome": "Minas Gerais"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 853,
+        "valor_bi_html": 853,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0046
+      },
+      {
+        "medida": "Municípios",
+        "metrica": "municipios",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil",
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": null,
+        "valor_bi_html": 0,
+        "bate": true,
+        "nota": "vazio no Power BI, zero no bi-html",
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "População 2022",
+        "metrica": "populacao_dois_mil_e_vinte_e_dois",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 203080756,
+        "valor_bi_html": 203080756.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0003
+      },
+      {
+        "medida": "População 2022",
+        "metrica": "populacao_dois_mil_e_vinte_e_dois",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 19128,
+        "valor_bi_html": 19128.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "População 2022",
+        "metrica": "populacao_dois_mil_e_vinte_e_dois",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 20539989,
+        "valor_bi_html": 20539989.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "População 2022",
+        "metrica": "populacao_dois_mil_e_vinte_e_dois",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf_nome": "Minas Gerais"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 20539989,
+        "valor_bi_html": 20539989.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "População 2022",
+        "metrica": "populacao_dois_mil_e_vinte_e_dois",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil",
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": null,
+        "valor_bi_html": null,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0001
+      },
+      {
+        "medida": "PIB per capita",
+        "metrica": "pib_per_capita",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 53886.66871025436,
+        "valor_bi_html": 53886.66871025436,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.1626
+      },
+      {
+        "medida": "PIB per capita",
+        "metrica": "pib_per_capita",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 24988.65537432037,
+        "valor_bi_html": 24988.65537432037,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0331
+      },
+      {
+        "medida": "PIB per capita",
+        "metrica": "pib_per_capita",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 47321.23025966567,
+        "valor_bi_html": 47321.23025966567,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0405
+      },
+      {
+        "medida": "PIB per capita",
+        "metrica": "pib_per_capita",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf_nome": "Minas Gerais"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 47321.23025966567,
+        "valor_bi_html": 47321.23025966567,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0414
+      },
+      {
+        "medida": "PIB per capita",
+        "metrica": "pib_per_capita",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil",
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": null,
+        "valor_bi_html": null,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0324
+      },
+      {
+        "medida": "Alfabetização",
+        "metrica": "alfabetizacao",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 92.85739903390945,
+        "valor_bi_html": 92.85739903390945,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0601
+      },
+      {
+        "medida": "Alfabetização",
+        "metrica": "alfabetizacao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 94.0,
+        "valor_bi_html": 94.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0008
+      },
+      {
+        "medida": "Alfabetização",
+        "metrica": "alfabetizacao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 94.1032410971593,
+        "valor_bi_html": 94.1032410971593,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0101
+      },
+      {
+        "medida": "Alfabetização",
+        "metrica": "alfabetizacao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf_nome": "Minas Gerais"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 94.1032410971593,
+        "valor_bi_html": 94.1032410971593,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0102
+      },
+      {
+        "medida": "Alfabetização",
+        "metrica": "alfabetizacao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil",
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": null,
+        "valor_bi_html": null,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.001
+      },
+      {
+        "medida": "Diferença de Apuração",
+        "metrica": "diferenca_de_apuracao",
+        "referencia": "pbix-mcp",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 746.0,
+        "valor_bi_html": 746.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.018
+      },
+      {
+        "medida": "Diferença de Apuração",
+        "metrica": "diferenca_de_apuracao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.0,
+        "valor_bi_html": 0.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0028
+      },
+      {
+        "medida": "Diferença de Apuração",
+        "metrica": "diferenca_de_apuracao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.0,
+        "valor_bi_html": 0.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      },
+      {
+        "medida": "Diferença de Apuração",
+        "metrica": "diferenca_de_apuracao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dMunicipio.sg_uf": "MG"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.0,
+        "valor_bi_html": 0.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0035
+      },
+      {
+        "medida": "Diferença de Apuração",
+        "metrica": "diferenca_de_apuracao",
+        "referencia": "pbix-mcp",
+        "contexto": {
+          "dTurno.rotulo_turno": "2026 · 1º turno",
+          "dMunicipio.local_mapa": "Abadia de Goiás, Goiás, Brasil"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.0,
+        "valor_bi_html": 0.0,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": 0.0002
+      }
+    ],
+    "por_medida": {
+      "Aptos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "aptos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Comparecimento": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "comparecimento",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Abstenções": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "abstencoes",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Votos Válidos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "votos_validos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Votos Brancos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "votos_brancos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Votos Nulos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "votos_nulos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "% Abstenção": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_abstencao",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "% Comparecimento": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_comparecimento",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "% Brancos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_brancos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "% Nulos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_nulos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "% Brancos e Nulos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pct_brancos_e_nulos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Votos": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "votos",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Municípios": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "municipios",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "População 2022": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "populacao_dois_mil_e_vinte_e_dois",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "PIB per capita": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "pib_per_capita",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Alfabetização": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "alfabetizacao",
+        "referencia": "pbix-mcp",
+        "validada": true
+      },
+      "Diferença de Apuração": {
+        "contextos": 5,
+        "batem": 5,
+        "metrica": "diferenca_de_apuracao",
+        "referencia": "pbix-mcp",
+        "validada": true
+      }
+    }
+  },
+  "tema": {
+    "importado": true,
+    "nome": "Elei__es_BR12491567103830592.json",
+    "aa": true,
+    "ajustes_de_contraste": 2
+  },
+  "dados_pessoais": [],
+  "semantica": [
+    "cada métrica filtra a própria tabela de origem na tabela convertida, então somas de fatos diferentes não se misturam",
+    "filtro numa tabela que não se liga ao fato da métrica esvazia a métrica no bi-html; no Power BI, não filtra",
+    "o filtro de um CALCULATE se soma ao filtro do leitor; no Power BI, substitui o filtro da mesma coluna",
+    "métrica com escala (por exemplo, R$ tri) usa a métrica base; o bi-html formata a grandeza",
+    "medida sem validação no teste de equivalência leva \"(não validada)\" na descrição"
+  ]
+}

@@ -141,7 +141,7 @@ class TestServidorMCP(unittest.TestCase):
                                      "propor_modelo", "validar_modelo", "consultar", "exportar_cubo",
                                      "propor_estilos", "aplicar_estilo", "importar_design",
                                      "renderizar_dashboard", "gerar_achados", "reproduzir_conclusao",
-                                     "verificar_documento", "renderizar_documento"})
+                                     "verificar_documento", "renderizar_documento", "converter_pbix"})
             texto = respostas[3]["result"]["content"][0]["text"]
             self.assertEqual(json.loads(texto)["etapa"], "planilha")
 

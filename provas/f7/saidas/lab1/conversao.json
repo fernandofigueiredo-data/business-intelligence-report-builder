@@ -1,0 +1,492 @@
+{
+  "arquivo": {
+    "nome": "lab1.pbix",
+    "bytes": 1853729,
+    "sha256": "712d47c3b0f77c0c79c173396183ceefacc9bccebde1cb6b5099102e018e9316"
+  },
+  "ferramentas": {
+    "pbix-mcp": "0.9.153",
+    "pbixray": "0.15.5",
+    "duckdb": "2.0.0"
+  },
+  "modo": "importacao",
+  "formato_relatorio": "PBIR",
+  "convertido_em": "2026-11-17T14:34:23-03:00",
+  "tabelas": [
+    {
+      "tabela": "DateTableTemplate_13ccc290-bdc4-44fb-8b9b-86e0efef36c0",
+      "linhas_metadados": 1,
+      "linhas_extraidas": 1,
+      "linhas_no_plano": null,
+      "fato": false,
+      "datas_automaticas": true,
+      "ligada": false,
+      "iguais": true
+    },
+    {
+      "tabela": "LocalDateTable_7aff0774-ff3f-4000-85e6-4744fab2780f",
+      "linhas_metadados": 1461,
+      "linhas_extraidas": 1461,
+      "linhas_no_plano": null,
+      "fato": false,
+      "datas_automaticas": true,
+      "ligada": false,
+      "iguais": true
+    },
+    {
+      "tabela": "dataset",
+      "linhas_metadados": 51290,
+      "linhas_extraidas": 51290,
+      "linhas_no_plano": 51290,
+      "fato": true,
+      "datas_automaticas": false,
+      "ligada": false,
+      "iguais": true
+    }
+  ],
+  "fatos": [
+    "dataset"
+  ],
+  "plano": {
+    "arquivo": "saidas/bi/pbix/plano.parquet",
+    "partes": {
+      "dataset": {
+        "linhas_tabela": 51290,
+        "tabelas_ligadas": [],
+        "linhas_no_plano": 51290,
+        "iguais": true
+      }
+    }
+  },
+  "medidas": [
+    {
+      "medida": "Média de Desconto",
+      "classe": "implicita",
+      "metrica": "media_de_desconto",
+      "motivo": null,
+      "ressalvas": [],
+      "equivalencia": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "media_de_desconto",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Soma de Total_Vendas",
+      "classe": "implicita",
+      "metrica": "soma_de_total_vendas",
+      "motivo": null,
+      "ressalvas": [],
+      "equivalencia": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "soma_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Contagem de ID_Pedido",
+      "classe": "implicita",
+      "metrica": "contagem_de_id_pedido",
+      "motivo": null,
+      "ressalvas": [],
+      "equivalencia": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "contagem_de_id_pedido",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      }
+    },
+    {
+      "medida": "Média de Total_Vendas",
+      "classe": "implicita",
+      "metrica": "media_de_total_vendas",
+      "motivo": null,
+      "ressalvas": [],
+      "equivalencia": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "media_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      }
+    }
+  ],
+  "resumo_medidas": {
+    "implicita": 4
+  },
+  "paginas": [
+    {
+      "nome": "Lab1",
+      "spec": "dashboard/paginas/lab_um.json",
+      "visuais": [
+        {
+          "visual": "156b7f10cd6804b0a4cb",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "bb2e5c9d870756375cdd",
+          "tipo_power_bi": "card",
+          "titulo": "Total Vendas Global",
+          "bloco": "numero_destaque",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Soma de Total_Vendas",
+              "classe": "implicita",
+              "metrica": "soma_de_total_vendas"
+            }
+          ],
+          "bloco_id": "bloco_a"
+        },
+        {
+          "visual": "d7b0ecb612a450070cb5",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "segmentação de data: no bi-html o tempo é o período da spec"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "b80f672094d7ccac080a",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": "segmento",
+          "status": "filtro_global",
+          "motivos": [],
+          "medidas": []
+        },
+        {
+          "visual": "cebec62f3c8872d5c44a",
+          "tipo_power_bi": "barChart",
+          "titulo": "Total de Vendas Por País e Prioridade",
+          "bloco": "barras_agrupadas",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Contagem de ID_Pedido",
+              "classe": "implicita",
+              "metrica": "contagem_de_id_pedido"
+            }
+          ],
+          "bloco_id": "bloco_b"
+        },
+        {
+          "visual": "6df550246c96c9684a8d",
+          "tipo_power_bi": "clusteredBarChart",
+          "titulo": "Média de Desconto Por Subcategoria",
+          "bloco": "barras_ranking",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Média de Desconto",
+              "classe": "implicita",
+              "metrica": "media_de_desconto"
+            }
+          ],
+          "bloco_id": "bloco_c"
+        },
+        {
+          "visual": "ca6fe6fe80595ed0035b",
+          "tipo_power_bi": "slicer",
+          "titulo": null,
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "segmentação com valores demais para filtro global (o cubo cresceria demais)"
+          ],
+          "medidas": []
+        },
+        {
+          "visual": "d77dcad39a3bb3b3ba02",
+          "tipo_power_bi": "azureMap",
+          "titulo": "Média de Vendas Por País",
+          "bloco": null,
+          "status": "nao_convertido",
+          "motivos": [
+            "o mapa usa dataset.Pais, que não traz siglas de UF; o bi-html só desenha o mapa das unidades da federação"
+          ],
+          "medidas": [
+            {
+              "medida": "Média de Total_Vendas",
+              "classe": "implicita",
+              "metrica": "media_de_total_vendas"
+            }
+          ]
+        },
+        {
+          "visual": "f4fbc72f4023e5273d41",
+          "tipo_power_bi": "pieChart",
+          "titulo": "Total de Vendas Por Categoria",
+          "bloco": "rosca",
+          "status": "convertido",
+          "motivos": [],
+          "medidas": [
+            {
+              "medida": "Contagem de ID_Pedido",
+              "classe": "implicita",
+              "metrica": "contagem_de_id_pedido"
+            }
+          ],
+          "bloco_id": "bloco_d"
+        },
+        {
+          "visual": "2b5d61bc84c039e7ea22",
+          "tipo_power_bi": "textbox",
+          "titulo": null,
+          "bloco": null,
+          "status": "decorativo",
+          "motivos": [
+            "texto, forma ou navegação: o bi-html desenha o próprio cabeçalho"
+          ],
+          "medidas": []
+        }
+      ],
+      "html": "saidas/bi/paginas/lab_um.html",
+      "resumo": "4 de 8 visuais com dado viraram bloco ou filtro"
+    }
+  ],
+  "resumo_visuais": {
+    "convertido": 4,
+    "decorativo": 2,
+    "filtro_global": 1,
+    "nao_convertido": 3
+  },
+  "equivalencia": {
+    "casos": [
+      {
+        "medida": "Média de Desconto",
+        "metrica": "media_de_desconto",
+        "referencia": "sql_tabela_original",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.1429075453304711,
+        "valor_bi_html": 0.1429075453304711,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Média de Desconto",
+        "metrica": "media_de_desconto",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "dataset.SubCategoria": "Binders"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.1792067620286145,
+        "valor_bi_html": 0.1792067620286145,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Média de Desconto",
+        "metrica": "media_de_desconto",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "dataset.Segmento": "Consumidor"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 0.14360215702539947,
+        "valor_bi_html": 0.14360215702539947,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Soma de Total_Vendas",
+        "metrica": "soma_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 12642501.909880092,
+        "valor_bi_html": 12642501.90988,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Soma de Total_Vendas",
+        "metrica": "soma_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "dataset.SubCategoria": "Binders"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 461911.5056999994,
+        "valor_bi_html": 461911.5057,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Soma de Total_Vendas",
+        "metrica": "soma_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "dataset.Segmento": "Consumidor"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 6507949.417859957,
+        "valor_bi_html": 6507949.41786,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Contagem de ID_Pedido",
+        "metrica": "contagem_de_id_pedido",
+        "referencia": "sql_tabela_original",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 51290,
+        "valor_bi_html": 51290,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Contagem de ID_Pedido",
+        "metrica": "contagem_de_id_pedido",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "dataset.SubCategoria": "Binders"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 6152,
+        "valor_bi_html": 6152,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Contagem de ID_Pedido",
+        "metrica": "contagem_de_id_pedido",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "dataset.Segmento": "Consumidor"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 26518,
+        "valor_bi_html": 26518,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Média de Total_Vendas",
+        "metrica": "media_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "contexto": {},
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 246.4905812025754,
+        "valor_bi_html": 246.4905812025754,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Média de Total_Vendas",
+        "metrica": "media_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "dataset.SubCategoria": "Binders"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 75.08314461963579,
+        "valor_bi_html": 75.08314461963579,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      },
+      {
+        "medida": "Média de Total_Vendas",
+        "metrica": "media_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "contexto": {
+          "dataset.Segmento": "Consumidor"
+        },
+        "agrupado_por": null,
+        "escala": 1.0,
+        "valor_referencia": 245.41629903687897,
+        "valor_bi_html": 245.41629903687897,
+        "bate": true,
+        "nota": null,
+        "tempo_referencia_s": null
+      }
+    ],
+    "por_medida": {
+      "Média de Desconto": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "media_de_desconto",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      },
+      "Soma de Total_Vendas": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "soma_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      },
+      "Contagem de ID_Pedido": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "contagem_de_id_pedido",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      },
+      "Média de Total_Vendas": {
+        "contextos": 3,
+        "batem": 3,
+        "metrica": "media_de_total_vendas",
+        "referencia": "sql_tabela_original",
+        "validada": true
+      }
+    }
+  },
+  "tema": {
+    "importado": true,
+    "nome": "CopilotDefault",
+    "aa": true,
+    "ajustes_de_contraste": 0
+  },
+  "dados_pessoais": [],
+  "semantica": [
+    "cada métrica filtra a própria tabela de origem na tabela convertida, então somas de fatos diferentes não se misturam",
+    "filtro numa tabela que não se liga ao fato da métrica esvazia a métrica no bi-html; no Power BI, não filtra",
+    "o filtro de um CALCULATE se soma ao filtro do leitor; no Power BI, substitui o filtro da mesma coluna",
+    "métrica com escala (por exemplo, R$ tri) usa a métrica base; o bi-html formata a grandeza",
+    "medida sem validação no teste de equivalência leva \"(não validada)\" na descrição"
+  ]
+}

@@ -21,3 +21,7 @@ aceite e decisões).
 - `provas/f6/` é a prova de conceito com .pbix: roda fora do servidor (o
   `pbix-mcp` exige `mcp<2`). `MATRIZ.md`, `resultados.json` e `saidas/` são
   gerados por `provas/f6/executar.py`; não edite à mão.
+- A leitura de .pbix do plugin fica em `plugins/bi-html/scripts/pbix_externo.py`,
+  chamado em processo à parte por `conversao.py` (via `uv`). `provas/f7/` é
+  gerado por `provas/f7/executar.py`. Os .pbix fictícios (`fixtures/vendas.pbix`
+  e `vendas_directquery.pbix`) são gerados por `fixtures/gerar_pbix.py`.

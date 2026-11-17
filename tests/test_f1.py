@@ -154,7 +154,7 @@ class TestErrosLegiveis(Projeto):
     def test_formato_nao_suportado(self):
         with self.assertRaises(ErroDeLeitura) as ctx:
             ingerir(self.p, self.arquivo("r.pbix", b"PK"))
-        self.assertIn("F6", " ".join(ctx.exception.detalhes))
+        self.assertIn("/bi-html:pbix", " ".join(ctx.exception.detalhes))
 
     def test_nao_sobrescreve_original_diferente(self):
         ingerir(self.p, self.arquivo("x.csv", b"a;b\n1;2\n"))

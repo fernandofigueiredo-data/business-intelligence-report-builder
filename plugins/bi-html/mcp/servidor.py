@@ -27,6 +27,10 @@ perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõ
 - `gerar_achados`, `reproduzir_conclusao`, `verificar_documento` e `renderizar_documento`:
   fatos calculados para o documento de decisão, reprodução da conclusão da análise,
   conferência de cada número do texto e o HTML do documento.
+- `converter_pbix`: Fluxo 2, via (a): um .pbix em modo de importação vira tabela, modelo de
+  métricas, specs por página e páginas renderizadas, com o teste de equivalência das medidas
+  traduzidas contra o Power BI e o relatório de fidelidade por visual. A leitura do .pbix roda
+  num processo à parte (o pbix-mcp exige mcp<2).
 
 Roda com `uv run --script`, que instala as dependências declaradas acima.
 """
@@ -51,6 +55,7 @@ from bi_html.conclusao import reproduzir  # noqa: E402
 from bi_html.documento import renderizar_documento as _renderizar_documento  # noqa: E402
 from bi_html.verificador import verificar as _verificar_documento  # noqa: E402
 from bi_html.spec import validar_arquivo  # noqa: E402
+from bi_html.conversao import converter as _converter_pbix  # noqa: E402
 
 mcp = MCPServer("bi-dados")
 
@@ -267,6 +272,22 @@ def renderizar_documento() -> dict:
     de método gerado sem o modelo de linguagem. Recusa se a verificação dos números não passar."""
     try:
         return {"ok": True, **_renderizar_documento(projeto())}
+    except ErroDeLeitura as e:
+        return _erro(e)
+
+
+@mcp.tool()
+def converter_pbix(caminho: str, testar_equivalencia: bool = True, sobrescrever: bool = False) -> dict:
+    """Converte um .pbix em modo de importação (caminho absoluto ou relativo à pasta do projeto).
+    Extrai as tabelas (contagem de linhas conferida), classifica cada medida DAX (traduzida, texto ou
+    não traduzida, com o motivo), grava saidas/bi/pbix/plano.parquet e modelo/metricas.yaml, escreve
+    uma spec por página em dashboard/paginas/ (a primeira vira dashboard/spec.json), importa o tema,
+    testa cada medida traduzida contra o motor DAX do pbix-mcp numa amostra de contextos e renderiza as
+    páginas em saidas/bi/paginas/. O relatório de fidelidade fica em saidas/bi/pbix/fidelidade.md.
+    DirectQuery e conexão dinâmica são recusados com a explicação e a via (b). Leva de segundos a
+    alguns minutos, conforme o tamanho do modelo."""
+    try:
+        return {"ok": True, **_converter_pbix(projeto(), caminho, testar_equivalencia, sobrescrever)}
     except ErroDeLeitura as e:
         return _erro(e)
 

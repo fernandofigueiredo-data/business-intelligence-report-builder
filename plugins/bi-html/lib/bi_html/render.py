@@ -510,20 +510,31 @@ def bloqueio_de_publicacao(projeto: Path) -> list[str]:
             if rel.get("dados_pessoais"):
                 cols = ", ".join(d["coluna"] for d in rel["dados_pessoais"])
                 motivos.append(f"a tabela {nome} tem dados pessoais ({cols})")
+    pbix = ler_manifesto(projeto).get("pbix") or {}
+    if pbix.get("dados_pessoais"):
+        cols = ", ".join(d["coluna"] for d in pbix["dados_pessoais"])
+        motivos.append(f"o .pbix convertido tem dados pessoais ({cols})")
     return motivos
 
 
-def renderizar(projeto: Path) -> dict:
+def renderizar(projeto: Path, arquivo_spec: Path | None = None, destino: Path | None = None) -> dict:
+    """Renderiza dashboard/spec.json em saidas/bi/dashboard.html (e a versão para Artifact).
+    Com `arquivo_spec` e `destino` (sem extensão, relativo ao projeto), renderiza outra spec,
+    como cada página de um .pbix convertido."""
+    from .dashboard import ARQUIVO_SPEC
+
     projeto = Path(projeto)
-    montado = montar(projeto)
+    montado = montar(projeto, Path(arquivo_spec or ARQUIVO_SPEC))
     frag = fragmento(montado)
-    pasta = projeto / SAIDA
+    base = Path(destino) if destino else SAIDA / "dashboard"
+    pasta = projeto / base.parent
     pasta.mkdir(parents=True, exist_ok=True)
-    (pasta / "dashboard.artifact.html").write_text(frag, encoding="utf-8")
+    artifact, html_ = base.with_name(base.name + ".artifact.html"), base.with_name(base.name + ".html")
+    (projeto / artifact).write_text(frag, encoding="utf-8")
     completo = documento(frag)
-    (pasta / "dashboard.html").write_text(completo, encoding="utf-8")
+    (projeto / html_).write_text(completo, encoding="utf-8")
     tamanho = len(completo.encode("utf-8"))
-    return {"html": str(SAIDA / "dashboard.html"), "artifact": str(SAIDA / "dashboard.artifact.html"),
+    return {"html": str(html_), "artifact": str(artifact),
             "titulo": montado["spec"]["titulo"], "bytes": tamanho, "dentro_da_meta": tamanho <= META_BYTES,
             "blocos": len(montado["blocos"]), "avisos": montado["avisos"],
             "publicacao_bloqueada": bloqueio_de_publicacao(projeto)}

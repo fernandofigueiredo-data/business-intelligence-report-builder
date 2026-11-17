@@ -65,5 +65,7 @@ decisão (e `/bi-html:dashboard` para renderizar ou publicar o painel).
 
 **concluido** — O ciclo está completo. Mostre o `proximo_passo` como veio.
 
-**pbix** — Diga que essa etapa está em construção (fases F6 e F7 do
-`PLANO_DE_CONSTRUCAO.md`).
+**pbix** — Há um .pbix na pasta e nenhuma planilha. Indique `/bi-html:pbix`
+com o arquivo listado em `pbix`: a conversão vale para relatórios em modo de
+importação e gera o dashboard, o teste de equivalência e o relatório de
+fidelidade.

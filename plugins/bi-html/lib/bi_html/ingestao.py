@@ -327,7 +327,7 @@ def ingerir(projeto: Path, caminho: str | Path, nome: str | None = None, aba: st
         raise ErroDeLeitura(f"arquivo não encontrado: {caminho}")
     if origem.suffix.lower() not in EXTENSOES:
         raise ErroDeLeitura(f"formato {origem.suffix or 'sem extensão'} não suportado",
-                            ["use CSV, TXT, TSV ou XLSX; para .pbix, o fluxo do Power BI chega nas fases F6 e F7"])
+                            ["use CSV, TXT, TSV ou XLSX; para .pbix, use /bi-html:pbix (conversão de relatório em modo de importação)"])
 
     if origem.suffix.lower() in (".xlsx", ".xlsm"):
         cabecalho, corpo, leitura = _ler_excel(origem, aba)
