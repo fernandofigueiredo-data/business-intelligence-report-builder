@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fernandofigueiredo-data/bi-html/schemas/dashboard-spec.schema.json",
+  "title": "Spec de dashboard do bi-html",
+  "description": "O que o Claude escreve para descrever um dashboard. Não há campo para valores: todo número vem da camada de métricas, referenciado por id. Textos não aceitam algarismos; um valor no texto entra como marcador {id_da_metrica}.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["versao_spec", "titulo", "pergunta_negocio", "estilo", "layout", "periodo", "blocos"],
+  "properties": {
+    "versao_spec": { "const": "0.1" },
+    "titulo": { "$ref": "#/$defs/texto_curto" },
+    "subtitulo": { "$ref": "#/$defs/texto_curto" },
+    "pergunta_negocio": { "$ref": "#/$defs/texto_longo" },
+    "publico": { "$ref": "#/$defs/texto_curto" },
+    "origem": {
+      "description": "De onde vêm os dados. Com análise prévia, o dashboard herda o contexto.md; sem ela, mostra o aviso 'sem análise prévia'.",
+      "enum": ["analise", "planilha_direta", "pbix"]
+    },
+    "estilo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fonte", "tokens"],
+      "properties": {
+        "fonte": {
+          "description": "enviado = design system do usuário; inferido = proposto pelo domínio dos dados; padrao = estilo base do plugin.",
+          "enum": ["enviado", "inferido", "padrao"]
+        },
+        "tokens": {
+          "description": "Caminho do tokens.json, relativo à pasta do projeto.",
+          "type": "string",
+          "pattern": "^[A-Za-z_./-]+\\.json$"
+        },
+        "dominio": { "enum": ["marketing", "vendas", "financeiro", "operacoes", "rh", "outro"] }
+      }
+    },
+    "layout": {
+      "description": "Arrumação da grade. Não mexe em cor nem em número.",
+      "enum": ["duas_colunas", "faixas", "tres_colunas", "denso", "assimetrico", "mapa_em_destaque"]
+    },
+    "periodo": { "$ref": "#/$defs/periodo" },
+    "filtros_globais": {
+      "description": "Dimensões que viram filtros no topo do dashboard.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/id" },
+      "uniqueItems": true,
+      "maxItems": 4
+    },
+    "blocos": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": { "$ref": "#/$defs/bloco" }
+    },
+    "notas": { "$ref": "#/$defs/texto_longo" }
+  },
+  "$defs": {
+    "id": {
+      "description": "Identificador de métrica, dimensão ou bloco: minúsculas e sublinhado, sem algarismos.",
+      "type": "string",
+      "pattern": "^[a-z][a-z_]{0,47}$"
+    },
+    "texto_curto": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[^0-9]*$"
+    },
+    "texto_longo": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600,
+      "pattern": "^[^0-9]*$"
+    },
+    "periodo": {
+      "description": "Janela relativa, resolvida pela camada de métricas a partir das datas dos dados.",
+      "enum": ["tudo", "ultimos_trinta_dias", "ultimo_mes", "ultimo_trimestre", "ano_corrente", "ultimo_ano_completo"]
+    },
+    "filtro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimensao", "operador", "valores"],
+      "properties": {
+        "dimensao": { "$ref": "#/$defs/id" },
+        "operador": { "enum": ["em", "fora_de"] },
+        "valores": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": { "$ref": "#/$defs/texto_curto" }
+        }
+      }
+    },
+    "bloco": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "tipo", "titulo", "metricas"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "tipo": {
+          "enum": [
+            "numero_destaque",
+            "faixa_kpis",
+            "linha_tempo",
+            "barras_ranking",
+            "barras_agrupadas",
+            "area_empilhada",
+            "rosca",
+            "tabela",
+            "cascata",
+            "funil",
+            "mapa_uf",
+            "mapa_calor"
+          ]
+        },
+        "titulo": { "$ref": "#/$defs/texto_curto" },
+        "subtitulo": { "$ref": "#/$defs/texto_curto" },
+        "metricas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/id" },
+          "uniqueItems": true
+        },
+        "dimensoes": {
+          "type": "array",
+          "maxItems": 2,
+          "items": { "$ref": "#/$defs/id" },
+          "uniqueItems": true
+        },
+        "comparacao": { "enum": ["nenhuma", "periodo_anterior", "mesmo_periodo_ano_anterior", "meta"] },
+        "ordenacao": { "enum": ["maior_primeiro", "menor_primeiro", "cronologica", "alfabetica"] },
+        "limite_itens": {
+          "description": "Quantos itens mostrar em rankings e tabelas. É configuração de exibição, não dado.",
+          "enum": ["poucos", "medio", "todos"]
+        },
+        "largura": { "enum": ["um_terco", "metade", "dois_tercos", "inteira"] },
+        "filtros": {
+          "type": "array",
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/filtro" }
+        },
+        "achado": {
+          "description": "Frase que diz o que o bloco mostra. Valores entram como {id_da_metrica}.",
+          "$ref": "#/$defs/texto_longo"
+        }
+      }
+    }
+  }
+}

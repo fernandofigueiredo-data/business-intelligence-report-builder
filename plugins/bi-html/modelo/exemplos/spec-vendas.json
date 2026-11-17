@@ -1,0 +1,111 @@
+{
+  "versao_spec": "0.1",
+  "titulo": "Onde está o faturamento",
+  "subtitulo": "Pedidos da rede de lojas fictícia, por região, canal e categoria",
+  "pergunta_negocio": "Quais regiões e canais concentram o faturamento e onde o ticket médio é maior?",
+  "publico": "Diretoria comercial",
+  "origem": "analise",
+  "estilo": {
+    "fonte": "inferido",
+    "tokens": "design/tokens.json",
+    "dominio": "vendas"
+  },
+  "layout": "duas_colunas",
+  "periodo": "ultimo_ano_completo",
+  "filtros_globais": [
+    "regiao",
+    "canal"
+  ],
+  "blocos": [
+    {
+      "id": "faturamento",
+      "tipo": "numero_destaque",
+      "titulo": "Faturamento no período",
+      "metricas": [
+        "receita_total"
+      ],
+      "comparacao": "periodo_anterior",
+      "largura": "dois_tercos",
+      "achado": "O faturamento somou {receita_total} no período."
+    },
+    {
+      "id": "kpis",
+      "tipo": "faixa_kpis",
+      "titulo": "Indicadores de apoio",
+      "metricas": [
+        "pedidos",
+        "ticket_medio",
+        "desconto_medio"
+      ],
+      "largura": "um_terco"
+    },
+    {
+      "id": "evolucao",
+      "tipo": "linha_tempo",
+      "titulo": "Faturamento por dia",
+      "subtitulo": "Comparado por dia, porque os meses têm tamanhos diferentes",
+      "metricas": [
+        "receita_por_dia"
+      ],
+      "dimensoes": [
+        "mes"
+      ],
+      "ordenacao": "cronologica",
+      "largura": "inteira"
+    },
+    {
+      "id": "regioes",
+      "tipo": "barras_ranking",
+      "titulo": "Faturamento por região",
+      "metricas": [
+        "receita_total",
+        "participacao_receita"
+      ],
+      "dimensoes": [
+        "regiao"
+      ],
+      "ordenacao": "maior_primeiro",
+      "limite_itens": "todos",
+      "largura": "metade",
+      "achado": "A região líder responde por {participacao_receita} do faturamento.",
+      "filtros": [
+        {
+          "dimensao": "regiao",
+          "operador": "fora_de",
+          "valores": [
+            "Não informada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "categorias",
+      "tipo": "rosca",
+      "titulo": "Mix de categorias",
+      "metricas": [
+        "receita_total"
+      ],
+      "dimensoes": [
+        "categoria"
+      ],
+      "largura": "metade"
+    },
+    {
+      "id": "lojas",
+      "tipo": "tabela",
+      "titulo": "Lojas por faturamento",
+      "metricas": [
+        "receita_total",
+        "pedidos",
+        "ticket_medio"
+      ],
+      "dimensoes": [
+        "loja"
+      ],
+      "ordenacao": "maior_primeiro",
+      "limite_itens": "medio",
+      "largura": "inteira"
+    }
+  ],
+  "notas": "Dados fictícios gerados para o portfólio."
+}

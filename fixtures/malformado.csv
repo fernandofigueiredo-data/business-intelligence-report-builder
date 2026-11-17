@@ -1,0 +1,6 @@
+data;loja;receita;observacao
+01/03/2025;Loja Paulista;1234,50;ok
+02/03/2025;Loja Batel;987,10
+03/03/2025;Loja Pituba;450,00;linha com coluna a mais;extra
+04/03/2025;Loja Savassi;12x,00;valor com letra
+05/03/2025;Loja Aldeota;300,00;acentuação em latin-1

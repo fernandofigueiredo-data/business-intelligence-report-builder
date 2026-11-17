@@ -1,0 +1,14 @@
+{
+  "name": "bi-html",
+  "description": "Do dado ao BI dentro do Claude Code: dashboard HTML e documento de decisão sobre uma camada de métricas determinística",
+  "owner": {
+    "name": "Fernando Figueiredo"
+  },
+  "plugins": [
+    {
+      "name": "bi-html",
+      "source": "./plugins/bi-html",
+      "description": "Dashboard HTML e documento de decisão a partir da análise (plugin analise-dados), de uma planilha ou de um .pbix, com números vindos só da camada de métricas"
+    }
+  ]
+}

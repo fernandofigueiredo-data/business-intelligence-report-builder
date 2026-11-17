@@ -1,0 +1,625 @@
+competencia,conta,grupo,centro_custo,cenario,valor
+2024-01,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-01,Receita bruta,Receita,Comercial,Realizado,2301979.36
+2024-01,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-01,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-64429.36
+2024-01,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-01,Impostos sobre vendas,Deduções,Comercial,Realizado,-232861.02
+2024-01,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-01,Custo das mercadorias vendidas,Custos,Operações,Realizado,-835160.89
+2024-01,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-01,Frete de entrega,Custos,Operações,Realizado,-99464.34
+2024-01,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-01,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-308291.63
+2024-01,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-01,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-114353.83
+2024-01,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-01,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-153090.05
+2024-01,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-01,Tecnologia,Despesas operacionais,Administrativo,Realizado,-40846.75
+2024-01,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-01,Comissões de venda,Despesas operacionais,Comercial,Realizado,-66888.04
+2024-01,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-01,Depreciação,Depreciação e amortização,Administrativo,Realizado,-34795.93
+2024-01,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-01,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,8283.43
+2024-01,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-01,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-23534.61
+2024-02,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-02,Receita bruta,Receita,Comercial,Realizado,1919257.39
+2024-02,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-02,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-68276.72
+2024-02,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-02,Impostos sobre vendas,Deduções,Comercial,Realizado,-228891.61
+2024-02,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-02,Custo das mercadorias vendidas,Custos,Operações,Realizado,-888707.79
+2024-02,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-02,Frete de entrega,Custos,Operações,Realizado,-100236.11
+2024-02,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-02,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-288210.06
+2024-02,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-02,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-120172.15
+2024-02,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-02,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-134898.97
+2024-02,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-02,Tecnologia,Despesas operacionais,Administrativo,Realizado,-43193.17
+2024-02,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-02,Comissões de venda,Despesas operacionais,Comercial,Realizado,-63347.22
+2024-02,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-02,Depreciação,Depreciação e amortização,Administrativo,Realizado,-41561.86
+2024-02,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-02,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,8963.62
+2024-02,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-02,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-24664.17
+2024-03,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-03,Receita bruta,Receita,Comercial,Realizado,1986285.07
+2024-03,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-03,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-69628.06
+2024-03,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-03,Impostos sobre vendas,Deduções,Comercial,Realizado,-236165.95
+2024-03,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-03,Custo das mercadorias vendidas,Custos,Operações,Realizado,-890074.37
+2024-03,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-03,Frete de entrega,Custos,Operações,Realizado,-85701.74
+2024-03,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-03,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-332841.18
+2024-03,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-03,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-124463.03
+2024-03,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-03,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-134814.79
+2024-03,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-03,Tecnologia,Despesas operacionais,Administrativo,Realizado,-41133.36
+2024-03,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-03,Comissões de venda,Despesas operacionais,Comercial,Realizado,-68330.36
+2024-03,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-03,Depreciação,Depreciação e amortização,Administrativo,Realizado,-36348.94
+2024-03,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-03,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,9112.26
+2024-03,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-03,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-27617.66
+2024-04,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-04,Receita bruta,Receita,Comercial,Realizado,1961811.79
+2024-04,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-04,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-69163.68
+2024-04,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-04,Impostos sobre vendas,Deduções,Comercial,Realizado,-207273.22
+2024-04,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-04,Custo das mercadorias vendidas,Custos,Operações,Realizado,-920324.79
+2024-04,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-04,Frete de entrega,Custos,Operações,Realizado,-93848.88
+2024-04,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-04,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-339912.15
+2024-04,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-04,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-118424.39
+2024-04,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-04,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-146189.16
+2024-04,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-04,Tecnologia,Despesas operacionais,Administrativo,Realizado,-42759.82
+2024-04,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-04,Comissões de venda,Despesas operacionais,Comercial,Realizado,-65024.05
+2024-04,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-04,Depreciação,Depreciação e amortização,Administrativo,Realizado,-38001.21
+2024-04,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-04,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,9802.12
+2024-04,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-04,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-24058.99
+2024-05,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-05,Receita bruta,Receita,Comercial,Realizado,1936086.79
+2024-05,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-05,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-63526.41
+2024-05,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-05,Impostos sobre vendas,Deduções,Comercial,Realizado,-228005.68
+2024-05,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-05,Custo das mercadorias vendidas,Custos,Operações,Realizado,-798576.06
+2024-05,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-05,Frete de entrega,Custos,Operações,Realizado,-97787.83
+2024-05,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-05,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-319774.86
+2024-05,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-05,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-127078.23
+2024-05,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-05,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-127277.02
+2024-05,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-05,Tecnologia,Despesas operacionais,Administrativo,Realizado,-43374.79
+2024-05,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-05,Comissões de venda,Despesas operacionais,Comercial,Realizado,-62238.23
+2024-05,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-05,Depreciação,Depreciação e amortização,Administrativo,Realizado,-37336.62
+2024-05,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-05,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,9268.50
+2024-05,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-05,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-23429.62
+2024-06,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-06,Receita bruta,Receita,Comercial,Realizado,2127585.15
+2024-06,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-06,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-64306.74
+2024-06,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-06,Impostos sobre vendas,Deduções,Comercial,Realizado,-209157.32
+2024-06,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-06,Custo das mercadorias vendidas,Custos,Operações,Realizado,-828449.70
+2024-06,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-06,Frete de entrega,Custos,Operações,Realizado,-98722.82
+2024-06,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-06,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-310327.56
+2024-06,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-06,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-108615.76
+2024-06,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-06,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-142637.40
+2024-06,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-06,Tecnologia,Despesas operacionais,Administrativo,Realizado,-47684.56
+2024-06,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-06,Comissões de venda,Despesas operacionais,Comercial,Realizado,-59740.10
+2024-06,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-06,Depreciação,Depreciação e amortização,Administrativo,Realizado,-41726.38
+2024-06,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-06,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,9727.51
+2024-06,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-06,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-25072.70
+2024-07,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-07,Receita bruta,Receita,Comercial,Realizado,2235587.29
+2024-07,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-07,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-67189.82
+2024-07,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-07,Impostos sobre vendas,Deduções,Comercial,Realizado,-247604.05
+2024-07,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-07,Custo das mercadorias vendidas,Custos,Operações,Realizado,-908486.42
+2024-07,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-07,Frete de entrega,Custos,Operações,Realizado,-99469.22
+2024-07,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-07,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-330792.78
+2024-07,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-07,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-117914.30
+2024-07,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-07,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-137932.53
+2024-07,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-07,Tecnologia,Despesas operacionais,Administrativo,Realizado,-47480.07
+2024-07,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-07,Comissões de venda,Despesas operacionais,Comercial,Realizado,-58286.35
+2024-07,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-07,Depreciação,Depreciação e amortização,Administrativo,Realizado,-35314.01
+2024-07,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-07,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,8533.36
+2024-07,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-07,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-24511.21
+2024-08,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-08,Receita bruta,Receita,Comercial,Realizado,2207594.79
+2024-08,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-08,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-68868.35
+2024-08,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-08,Impostos sobre vendas,Deduções,Comercial,Realizado,-223102.22
+2024-08,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-08,Custo das mercadorias vendidas,Custos,Operações,Realizado,-930928.89
+2024-08,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-08,Frete de entrega,Custos,Operações,Realizado,-100136.17
+2024-08,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-08,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-317021.67
+2024-08,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-08,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-124348.94
+2024-08,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-08,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-144264.53
+2024-08,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-08,Tecnologia,Despesas operacionais,Administrativo,Realizado,-41653.80
+2024-08,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-08,Comissões de venda,Despesas operacionais,Comercial,Realizado,-59795.13
+2024-08,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-08,Depreciação,Depreciação e amortização,Administrativo,Realizado,-41148.80
+2024-08,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-08,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,8582.52
+2024-08,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-08,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-27427.73
+2024-09,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-09,Receita bruta,Receita,Comercial,Realizado,2023816.75
+2024-09,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-09,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-75967.93
+2024-09,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-09,Impostos sobre vendas,Deduções,Comercial,Realizado,-236917.55
+2024-09,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-09,Custo das mercadorias vendidas,Custos,Operações,Realizado,-957532.70
+2024-09,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-09,Frete de entrega,Custos,Operações,Realizado,-92545.19
+2024-09,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-09,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-323132.15
+2024-09,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-09,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-120117.00
+2024-09,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-09,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-151270.85
+2024-09,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-09,Tecnologia,Despesas operacionais,Administrativo,Realizado,-49221.02
+2024-09,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-09,Comissões de venda,Despesas operacionais,Comercial,Realizado,-61824.67
+2024-09,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-09,Depreciação,Depreciação e amortização,Administrativo,Realizado,-37606.62
+2024-09,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-09,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,9769.69
+2024-09,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-09,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-26446.85
+2024-10,Receita bruta,Receita,Comercial,Orçado,2100000.00
+2024-10,Receita bruta,Receita,Comercial,Realizado,2107545.32
+2024-10,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-70000.00
+2024-10,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-72219.37
+2024-10,Impostos sobre vendas,Deduções,Comercial,Orçado,-230000.00
+2024-10,Impostos sobre vendas,Deduções,Comercial,Realizado,-214304.91
+2024-10,Custo das mercadorias vendidas,Custos,Operações,Orçado,-880000.00
+2024-10,Custo das mercadorias vendidas,Custos,Operações,Realizado,-929513.76
+2024-10,Frete de entrega,Custos,Operações,Orçado,-95000.00
+2024-10,Frete de entrega,Custos,Operações,Realizado,-103882.10
+2024-10,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-10,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-301279.53
+2024-10,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-10,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-110783.85
+2024-10,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-140000.00
+2024-10,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-142351.88
+2024-10,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-10,Tecnologia,Despesas operacionais,Administrativo,Realizado,-43029.36
+2024-10,Comissões de venda,Despesas operacionais,Comercial,Orçado,-63000.00
+2024-10,Comissões de venda,Despesas operacionais,Comercial,Realizado,-64642.80
+2024-10,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-10,Depreciação,Depreciação e amortização,Administrativo,Realizado,-38250.09
+2024-10,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,9000.00
+2024-10,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,9372.34
+2024-10,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-26000.00
+2024-10,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-26134.07
+2024-11,Receita bruta,Receita,Comercial,Orçado,2835000.00
+2024-11,Receita bruta,Receita,Comercial,Realizado,2605905.62
+2024-11,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-94500.00
+2024-11,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-98691.27
+2024-11,Impostos sobre vendas,Deduções,Comercial,Orçado,-310500.00
+2024-11,Impostos sobre vendas,Deduções,Comercial,Realizado,-281511.10
+2024-11,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1188000.00
+2024-11,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1246853.29
+2024-11,Frete de entrega,Custos,Operações,Orçado,-128250.00
+2024-11,Frete de entrega,Custos,Operações,Realizado,-122928.42
+2024-11,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-11,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-336588.52
+2024-11,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-11,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-120924.37
+2024-11,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-189000.00
+2024-11,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-173731.25
+2024-11,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-11,Tecnologia,Despesas operacionais,Administrativo,Realizado,-42163.84
+2024-11,Comissões de venda,Despesas operacionais,Comercial,Orçado,-85050.00
+2024-11,Comissões de venda,Despesas operacionais,Comercial,Realizado,-89350.43
+2024-11,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-11,Depreciação,Depreciação e amortização,Administrativo,Realizado,-34479.42
+2024-11,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,12150.00
+2024-11,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,11945.75
+2024-11,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-35100.00
+2024-11,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-36156.03
+2024-12,Receita bruta,Receita,Comercial,Orçado,3360000.00
+2024-12,Receita bruta,Receita,Comercial,Realizado,3638924.48
+2024-12,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-112000.00
+2024-12,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-114637.18
+2024-12,Impostos sobre vendas,Deduções,Comercial,Orçado,-368000.00
+2024-12,Impostos sobre vendas,Deduções,Comercial,Realizado,-347034.62
+2024-12,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1408000.00
+2024-12,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1504692.37
+2024-12,Frete de entrega,Custos,Operações,Orçado,-152000.00
+2024-12,Frete de entrega,Custos,Operações,Realizado,-164696.90
+2024-12,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-310000.00
+2024-12,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-279037.74
+2024-12,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-120000.00
+2024-12,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-122370.72
+2024-12,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-224000.00
+2024-12,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-213704.20
+2024-12,Tecnologia,Despesas operacionais,Administrativo,Orçado,-45000.00
+2024-12,Tecnologia,Despesas operacionais,Administrativo,Realizado,-49380.07
+2024-12,Comissões de venda,Despesas operacionais,Comercial,Orçado,-100800.00
+2024-12,Comissões de venda,Despesas operacionais,Comercial,Realizado,-101729.34
+2024-12,Depreciação,Depreciação e amortização,Administrativo,Orçado,-38000.00
+2024-12,Depreciação,Depreciação e amortização,Administrativo,Realizado,-36729.88
+2024-12,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,14400.00
+2024-12,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,14513.09
+2024-12,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-41600.00
+2024-12,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-40557.18
+2025-01,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-01,Receita bruta,Receita,Comercial,Realizado,2602210.46
+2025-01,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-01,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-84501.60
+2025-01,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-01,Impostos sobre vendas,Deduções,Comercial,Realizado,-288270.62
+2025-01,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-01,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1052829.09
+2025-01,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-01,Frete de entrega,Custos,Operações,Realizado,-115636.51
+2025-01,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-01,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-316307.29
+2025-01,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-01,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-136083.80
+2025-01,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-01,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-158040.32
+2025-01,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-01,Tecnologia,Despesas operacionais,Administrativo,Realizado,-51019.01
+2025-01,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-01,Comissões de venda,Despesas operacionais,Comercial,Realizado,-69944.32
+2025-01,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-01,Depreciação,Depreciação e amortização,Administrativo,Realizado,-39876.32
+2025-01,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-01,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,11207.43
+2025-01,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-01,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-32426.87
+2025-02,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-02,Receita bruta,Receita,Comercial,Realizado,2692407.70
+2025-02,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-02,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-90280.22
+2025-02,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-02,Impostos sobre vendas,Deduções,Comercial,Realizado,-298390.70
+2025-02,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-02,Custo das mercadorias vendidas,Custos,Operações,Realizado,-989294.06
+2025-02,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-02,Frete de entrega,Custos,Operações,Realizado,-117260.12
+2025-02,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-02,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-320036.86
+2025-02,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-02,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-137666.45
+2025-02,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-02,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-184956.40
+2025-02,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-02,Tecnologia,Despesas operacionais,Administrativo,Realizado,-50902.57
+2025-02,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-02,Comissões de venda,Despesas operacionais,Comercial,Realizado,-80662.68
+2025-02,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-02,Depreciação,Depreciação e amortização,Administrativo,Realizado,-43576.46
+2025-02,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-02,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,10926.80
+2025-02,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-02,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-28471.54
+2025-03,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-03,Receita bruta,Receita,Comercial,Realizado,2500277.80
+2025-03,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-03,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-85703.57
+2025-03,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-03,Impostos sobre vendas,Deduções,Comercial,Realizado,-279281.46
+2025-03,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-03,Custo das mercadorias vendidas,Custos,Operações,Realizado,-975150.01
+2025-03,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-03,Frete de entrega,Custos,Operações,Realizado,-123766.58
+2025-03,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-03,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-357701.09
+2025-03,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-03,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-134271.16
+2025-03,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-03,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-157813.04
+2025-03,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-03,Tecnologia,Despesas operacionais,Administrativo,Realizado,-48128.26
+2025-03,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-03,Comissões de venda,Despesas operacionais,Comercial,Realizado,-72303.65
+2025-03,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-03,Depreciação,Depreciação e amortização,Administrativo,Realizado,-37859.80
+2025-03,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-03,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,11504.03
+2025-03,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-03,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-30841.90
+2025-04,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-04,Receita bruta,Receita,Comercial,Realizado,2359270.40
+2025-04,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-04,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-76477.43
+2025-04,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-04,Impostos sobre vendas,Deduções,Comercial,Realizado,-268291.07
+2025-04,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-04,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1000398.45
+2025-04,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-04,Frete de entrega,Custos,Operações,Realizado,-120496.34
+2025-04,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-04,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-306503.43
+2025-04,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-04,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-135209.08
+2025-04,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-04,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-166794.73
+2025-04,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-04,Tecnologia,Despesas operacionais,Administrativo,Realizado,-49121.74
+2025-04,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-04,Comissões de venda,Despesas operacionais,Comercial,Realizado,-72301.38
+2025-04,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-04,Depreciação,Depreciação e amortização,Administrativo,Realizado,-40666.48
+2025-04,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-04,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,11612.05
+2025-04,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-04,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-32082.70
+2025-05,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-05,Receita bruta,Receita,Comercial,Realizado,2469029.54
+2025-05,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-05,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-89896.10
+2025-05,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-05,Impostos sobre vendas,Deduções,Comercial,Realizado,-257589.97
+2025-05,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-05,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1098367.45
+2025-05,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-05,Frete de entrega,Custos,Operações,Realizado,-108321.73
+2025-05,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-05,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-359202.42
+2025-05,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-05,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-122137.84
+2025-05,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-05,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-162724.17
+2025-05,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-05,Tecnologia,Despesas operacionais,Administrativo,Realizado,-43967.15
+2025-05,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-05,Comissões de venda,Despesas operacionais,Comercial,Realizado,-74202.45
+2025-05,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-05,Depreciação,Depreciação e amortização,Administrativo,Realizado,-43489.68
+2025-05,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-05,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,10385.92
+2025-05,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-05,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-29164.35
+2025-06,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-06,Receita bruta,Receita,Comercial,Realizado,2451447.83
+2025-06,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-06,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-90629.00
+2025-06,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-06,Impostos sobre vendas,Deduções,Comercial,Realizado,-298790.64
+2025-06,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-06,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1131075.72
+2025-06,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-06,Frete de entrega,Custos,Operações,Realizado,-114820.20
+2025-06,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-06,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-313988.67
+2025-06,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-06,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-135647.15
+2025-06,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-06,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-174776.97
+2025-06,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-06,Tecnologia,Despesas operacionais,Administrativo,Realizado,-48622.48
+2025-06,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-06,Comissões de venda,Despesas operacionais,Comercial,Realizado,-80583.95
+2025-06,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-06,Depreciação,Depreciação e amortização,Administrativo,Realizado,-37116.26
+2025-06,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-06,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,11279.36
+2025-06,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-06,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-32803.06
+2025-07,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-07,Receita bruta,Receita,Comercial,Realizado,2400751.19
+2025-07,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-07,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-83894.05
+2025-07,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-07,Impostos sobre vendas,Deduções,Comercial,Realizado,-250432.58
+2025-07,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-07,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1109215.75
+2025-07,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-07,Frete de entrega,Custos,Operações,Realizado,-105442.38
+2025-07,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-07,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-311788.51
+2025-07,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-07,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-141723.71
+2025-07,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-07,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-160892.76
+2025-07,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-07,Tecnologia,Despesas operacionais,Administrativo,Realizado,-47671.77
+2025-07,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-07,Comissões de venda,Despesas operacionais,Comercial,Realizado,-81242.52
+2025-07,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-07,Depreciação,Depreciação e amortização,Administrativo,Realizado,-40670.02
+2025-07,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-07,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,10491.24
+2025-07,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-07,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-29042.66
+2025-08,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-08,Receita bruta,Receita,Comercial,Realizado,2441772.37
+2025-08,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-08,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-84732.14
+2025-08,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-08,Impostos sobre vendas,Deduções,Comercial,Realizado,-299400.83
+2025-08,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-08,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1033054.91
+2025-08,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-08,Frete de entrega,Custos,Operações,Realizado,-112830.48
+2025-08,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-08,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-327516.41
+2025-08,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-08,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-122943.00
+2025-08,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-08,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-174219.32
+2025-08,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-08,Tecnologia,Despesas operacionais,Administrativo,Realizado,-45625.06
+2025-08,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-08,Comissões de venda,Despesas operacionais,Comercial,Realizado,-82078.46
+2025-08,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-08,Depreciação,Depreciação e amortização,Administrativo,Realizado,-44350.91
+2025-08,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-08,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,10258.78
+2025-08,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-08,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-31527.33
+2025-09,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-09,Receita bruta,Receita,Comercial,Realizado,2712084.20
+2025-09,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-09,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-90961.73
+2025-09,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-09,Impostos sobre vendas,Deduções,Comercial,Realizado,-294122.46
+2025-09,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-09,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1030997.12
+2025-09,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-09,Frete de entrega,Custos,Operações,Realizado,-126065.60
+2025-09,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-09,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-342038.88
+2025-09,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-09,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-134256.04
+2025-09,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-09,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-183426.77
+2025-09,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-09,Tecnologia,Despesas operacionais,Administrativo,Realizado,-51907.93
+2025-09,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-09,Comissões de venda,Despesas operacionais,Comercial,Realizado,-69998.37
+2025-09,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-09,Depreciação,Depreciação e amortização,Administrativo,Realizado,-37125.69
+2025-09,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-09,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,10868.67
+2025-09,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-09,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-30464.23
+2025-10,Receita bruta,Receita,Comercial,Orçado,2540160.00
+2025-10,Receita bruta,Receita,Comercial,Realizado,2591110.55
+2025-10,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-84672.00
+2025-10,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-79852.57
+2025-10,Impostos sobre vendas,Deduções,Comercial,Orçado,-278208.00
+2025-10,Impostos sobre vendas,Deduções,Comercial,Realizado,-271584.14
+2025-10,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1064448.00
+2025-10,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1096833.14
+2025-10,Frete de entrega,Custos,Operações,Orçado,-114912.00
+2025-10,Frete de entrega,Custos,Operações,Realizado,-126028.09
+2025-10,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-10,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-347515.55
+2025-10,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-10,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-121182.11
+2025-10,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-169344.00
+2025-10,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-177952.44
+2025-10,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-10,Tecnologia,Despesas operacionais,Administrativo,Realizado,-44388.98
+2025-10,Comissões de venda,Despesas operacionais,Comercial,Orçado,-76204.80
+2025-10,Comissões de venda,Despesas operacionais,Comercial,Realizado,-74083.11
+2025-10,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-10,Depreciação,Depreciação e amortização,Administrativo,Realizado,-43008.00
+2025-10,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,10886.40
+2025-10,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,10214.55
+2025-10,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-31449.60
+2025-10,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-31020.52
+2025-11,Receita bruta,Receita,Comercial,Orçado,3429216.00
+2025-11,Receita bruta,Receita,Comercial,Realizado,3413738.70
+2025-11,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-114307.20
+2025-11,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-111274.90
+2025-11,Impostos sobre vendas,Deduções,Comercial,Orçado,-375580.80
+2025-11,Impostos sobre vendas,Deduções,Comercial,Realizado,-342546.07
+2025-11,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1437004.80
+2025-11,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1297265.36
+2025-11,Frete de entrega,Custos,Operações,Orçado,-155131.20
+2025-11,Frete de entrega,Custos,Operações,Realizado,-153604.44
+2025-11,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-11,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-322664.41
+2025-11,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-11,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-131861.12
+2025-11,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-228614.40
+2025-11,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-219215.68
+2025-11,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-11,Tecnologia,Despesas operacionais,Administrativo,Realizado,-46193.98
+2025-11,Comissões de venda,Despesas operacionais,Comercial,Orçado,-102876.48
+2025-11,Comissões de venda,Despesas operacionais,Comercial,Realizado,-107676.51
+2025-11,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-11,Depreciação,Depreciação e amortização,Administrativo,Realizado,-37747.84
+2025-11,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,14696.64
+2025-11,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,15063.20
+2025-11,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-42456.96
+2025-11,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-43798.82
+2025-12,Receita bruta,Receita,Comercial,Orçado,4064256.00
+2025-12,Receita bruta,Receita,Comercial,Realizado,4033273.89
+2025-12,Devoluções e cancelamentos,Deduções,Comercial,Orçado,-135475.20
+2025-12,Devoluções e cancelamentos,Deduções,Comercial,Realizado,-146123.54
+2025-12,Impostos sobre vendas,Deduções,Comercial,Orçado,-445132.80
+2025-12,Impostos sobre vendas,Deduções,Comercial,Realizado,-456968.55
+2025-12,Custo das mercadorias vendidas,Custos,Operações,Orçado,-1703116.80
+2025-12,Custo das mercadorias vendidas,Custos,Operações,Realizado,-1729303.41
+2025-12,Frete de entrega,Custos,Operações,Orçado,-183859.20
+2025-12,Frete de entrega,Custos,Operações,Realizado,-195837.44
+2025-12,Salários e encargos,Despesas operacionais,Administrativo,Orçado,-334800.00
+2025-12,Salários e encargos,Despesas operacionais,Administrativo,Realizado,-304132.63
+2025-12,Aluguel e condomínio,Despesas operacionais,Administrativo,Orçado,-129600.00
+2025-12,Aluguel e condomínio,Despesas operacionais,Administrativo,Realizado,-134864.31
+2025-12,Marketing e mídia,Despesas operacionais,Comercial,Orçado,-270950.40
+2025-12,Marketing e mídia,Despesas operacionais,Comercial,Realizado,-267709.83
+2025-12,Tecnologia,Despesas operacionais,Administrativo,Orçado,-48600.00
+2025-12,Tecnologia,Despesas operacionais,Administrativo,Realizado,-44215.53
+2025-12,Comissões de venda,Despesas operacionais,Comercial,Orçado,-121927.68
+2025-12,Comissões de venda,Despesas operacionais,Comercial,Realizado,-129882.15
+2025-12,Depreciação,Depreciação e amortização,Administrativo,Orçado,-41040.00
+2025-12,Depreciação,Depreciação e amortização,Administrativo,Realizado,-36995.76
+2025-12,Receitas financeiras,Resultado financeiro,Administrativo,Orçado,17418.24
+2025-12,Receitas financeiras,Resultado financeiro,Administrativo,Realizado,18663.28
+2025-12,Despesas financeiras,Resultado financeiro,Administrativo,Orçado,-50319.36
+2025-12,Despesas financeiras,Resultado financeiro,Administrativo,Realizado,-52586.65

@@ -1,0 +1,24 @@
+# Regras do bi-html
+
+> Valem em toda sessão em que o plugin é usado. A regra 1 é a razão de existir
+> do plugin; as outras protegem ela.
+
+1. **Nenhum número sai do modelo de linguagem.** Todo valor que aparece num
+   dashboard, num documento de decisão ou numa resposta sobre os dados vem de
+   uma ferramenta do servidor `bi-dados` (hoje: `validar_spec` e
+   `estado_do_ciclo`; nas próximas fases: perfil, métricas e achados). Se a
+   ferramenta não existe ainda, diga isso ao usuário em vez de calcular.
+2. **A spec descreve, não informa.** Ao escrever uma spec de dashboard, ligue
+   cada bloco a métricas por id. Textos não levam algarismos: um valor no
+   texto entra como marcador `{id_da_metrica}`, e a métrica precisa estar no
+   próprio bloco. Valide sempre com `validar_spec` antes de seguir.
+3. **A análise vem antes.** O caminho padrão é Planilha → `/analise` do plugin
+   `analise-dados` → dashboard → documento de decisão. O atalho sem análise
+   existe, mas o dashboard sai com o aviso "sem análise prévia".
+4. **A pasta do projeto é a do `analise-dados`.** `dados/` guarda os originais
+   e não é editada; derivados vão para `saidas/`; `contexto.md` é a memória do
+   projeto e é lido antes de qualquer pergunta ao usuário.
+5. **Dados pessoais não são publicados.** Arquivo com CPF, e-mail ou telefone
+   fica privado até as colunas serem removidas ou agregadas.
+6. **Português do Brasil** em tudo que o usuário lê: `R$ 1.234,56`, `12,3%`,
+   `31/12/2025`, comparações explícitas ("vs. mês anterior").

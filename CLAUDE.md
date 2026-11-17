@@ -1,0 +1,20 @@
+# Repositório do plugin bi-html
+
+Marketplace do Claude Code com o plugin `plugins/bi-html/`, os dados fictícios
+em `fixtures/` e o plano em `PLANO_DE_CONSTRUCAO.md` (fases, critérios de
+aceite e decisões).
+
+- Regra central: nenhum número sai do modelo; tudo vem do servidor MCP
+  `bi-dados` (`plugins/bi-html/mcp/servidor.py`). As regras para quem usa o
+  plugin estão em `plugins/bi-html/REGRAS.md`.
+- A etapa de análise é o plugin `analise-dados`; o contrato entre os dois está
+  em `plugins/bi-html/CONTRATO.md`.
+- Lógica em `plugins/bi-html/lib/bi_html/` (Python 3.12). Servidor e scripts
+  importam dela; não duplique regra em dois lugares.
+- Caminhos do plugin em comandos e skills: `${CLAUDE_PLUGIN_ROOT}`.
+- Textos para o usuário, nomes e comentários em português do Brasil.
+- Antes de concluir uma mudança:
+  `uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" -m unittest discover -s tests -v`
+  e `claude plugin validate --strict plugins/bi-html`.
+- Os dados de `fixtures/` são gerados por `fixtures/gerar.py`; não edite os
+  arquivos à mão.

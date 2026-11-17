@@ -1,0 +1,11 @@
+{
+  "name": "bi-html",
+  "displayName": "BI em HTML",
+  "version": "0.1.0",
+  "description": "Ciclo Planilha → Análise → Dashboard → BI: dashboard HTML e documento de decisão em que nenhum número sai do modelo de linguagem",
+  "author": {
+    "name": "Fernando Figueiredo"
+  },
+  "license": "MIT",
+  "keywords": ["bi", "dashboard", "html", "power-bi", "metricas", "analise-de-dados"]
+}
