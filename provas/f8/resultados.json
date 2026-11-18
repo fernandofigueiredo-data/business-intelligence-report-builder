@@ -1,0 +1,110 @@
+{
+  "executado_em": "2026-11-17T20:00:16-03:00",
+  "publicado": false,
+  "etapas": [
+    {
+      "etapa": "ingestao",
+      "nome": "Ingestão do CSV (atalho sem análise prévia)",
+      "ok": true,
+      "linhas": 340702,
+      "colunas": 22,
+      "tempo_s": 8.57
+    },
+    {
+      "etapa": "perfil",
+      "nome": "Perfil e dados pessoais",
+      "ok": true,
+      "alertas": 0,
+      "bloqueios": 0,
+      "dados_pessoais": 0,
+      "tempo_s": 0.23
+    },
+    {
+      "etapa": "modelo",
+      "nome": "Modelo de métricas revisado",
+      "ok": true,
+      "metricas": 3,
+      "dimensoes": 6,
+      "tempo_s": 0.04
+    },
+    {
+      "etapa": "design",
+      "nome": "Design enviado (tema do Power BI do projeto)",
+      "ok": true,
+      "aa": true,
+      "ajustes_de_contraste": 2,
+      "tempo_s": 0.0
+    },
+    {
+      "etapa": "dashboard",
+      "nome": "Dashboard",
+      "ok": true,
+      "blocos": 6,
+      "dentro_da_meta": true,
+      "avisos": 1,
+      "publicacao_bloqueada": 0,
+      "tempo_s": 0.09
+    },
+    {
+      "etapa": "achados",
+      "nome": "Achados",
+      "ok": true,
+      "achados": 14,
+      "tempo_s": 0.31
+    },
+    {
+      "etapa": "documento",
+      "nome": "Documento de decisão verificado",
+      "ok": true,
+      "verificacao": "25/25 números rastreados",
+      "palavras": 615,
+      "tempo_s": 0.01
+    },
+    {
+      "etapa": "offline",
+      "nome": "Cópia para envio (sem publicar)",
+      "ok": true,
+      "bytes": 1245187,
+      "tempo_s": 0.1
+    },
+    {
+      "etapa": "assistente",
+      "nome": "Página do assistente (sem publicar)",
+      "ok": true,
+      "perguntas": 23,
+      "publicacao_bloqueada": 0,
+      "tempo_s": 0.09
+    },
+    {
+      "etapa": "conversao",
+      "nome": "Conversão do .pbix do projeto",
+      "ok": true,
+      "tabelas_iguais": true,
+      "medidas": {
+        "nao_traduzida": 29,
+        "texto": 9,
+        "traduzida": 17
+      },
+      "traduzidas_que_batem": 17,
+      "traduzidas_testadas": 17,
+      "paginas_com_spec": 4,
+      "avisos": 0,
+      "tempo_s": 6.8
+    },
+    {
+      "etapa": "comparativo",
+      "nome": "Comparação com o original (sem link)",
+      "ok": true,
+      "via": null,
+      "visuais_com_dado": 50,
+      "tempo_s": 0.0
+    },
+    {
+      "etapa": "ciclo",
+      "nome": "Estado do ciclo",
+      "ok": true,
+      "estado_do_ciclo": "concluido",
+      "tempo_s": 0.01
+    }
+  ]
+}

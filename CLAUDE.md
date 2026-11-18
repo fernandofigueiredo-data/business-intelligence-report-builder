@@ -30,3 +30,7 @@ aceite e decisões).
 - `docs/` (vitrine) é gerado por `vitrine/construir.py`; não edite à mão.
   `provas/f10/` é gerado por `provas/f10/registrar.py` a partir do registro da
   bateria gravado no Artifact do assistente.
+- `casos/` guarda cópias de casos reais e fica fora do git: nunca altere a pasta
+  de origem de um caso, copie para cá. `provas/f8/` (só estados e contagens) é
+  gerado por `provas/f8/executar.py`; as issues do caso real estão em
+  `provas/f8/ISSUES.md`.

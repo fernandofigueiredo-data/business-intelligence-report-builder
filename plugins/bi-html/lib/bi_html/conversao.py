@@ -1012,7 +1012,7 @@ def converter(projeto: Path, caminho: str | Path, testar: bool = True, sobrescre
     from .dashboard import checar_spec
     from .render import renderizar
 
-    projeto = Path(projeto)
+    projeto = Path(projeto).resolve()  # caminho relativo quebraria a importação do tema (achado da F8)
     caminho = Path(caminho).expanduser()
     if not caminho.is_absolute():
         caminho = projeto / caminho
@@ -1208,6 +1208,8 @@ def converter(projeto: Path, caminho: str | Path, testar: bool = True, sobrescre
         "visuais": relatorio_final["resumo_visuais"], "paginas": [p["spec"] for p in paginas if p.get("spec")],
         "dashboard": "saidas/bi/dashboard.html" if principal and tema.get("importado") else None,
         "relatorio": RELATORIO.as_posix(), "fidelidade": FIDELIDADE.as_posix(), "tema": tema,
+        "avisos": ([f"o tema não foi importado ({tema.get('motivo')}); nenhuma página foi renderizada"]
+                   if not tema.get("importado") else []),
         "publicacao_bloqueada": [f"a coluna {d['coluna']} parece ter dado pessoal ({d['tipo']})"
                                  for d in relatorio_final["dados_pessoais"]],
     }

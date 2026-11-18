@@ -4,7 +4,7 @@
 
 **Legenda epistêmica.** **[F]** fato verificado nesta sessão em documentação, página ou ambiente consultado (número da fonte no fim). **[I]** inferência minha a partir de fatos. **[H]** hipótese a validar. **[NV]** afirmação técnica não verificada nesta sessão.
 
-**Estado das provas de conceito.** A F6 rodou em 17/11/2026 com três .pbix seus, todos em modo de importação; a coluna de importação da matriz 5.1 está **testada** [F21], e as colunas DirectQuery e conexão dinâmica continuam com base documental, à espera de um arquivo em cada modo. A F7 converteu os três arquivos [F22]; a F7b montou a comparação com o original e registrou o teste do iframe, e falta só a publicação do relatório fictício no Power BI [F23]. A F9 (vitrine em `docs/`), a F10 (assistente, com a bateria de perguntas à espera do primeiro clique) e a F11 (HTML autocontido) estão implementadas [F24][F25][F26]; a F8 espera a indicação do projeto real. O servidor MCP `pbix-mcp` já está instalado neste ambiente [F].
+**Estado das provas de conceito.** A F6 rodou em 17/11/2026 com três .pbix seus, todos em modo de importação; a coluna de importação da matriz 5.1 está **testada** [F21], e as colunas DirectQuery e conexão dinâmica continuam com base documental, à espera de um arquivo em cada modo. A F7 converteu os três arquivos [F22]; a F7b montou a comparação com o original e registrou o teste do iframe, e falta só a publicação do relatório fictício no Power BI [F23]. A F9 (vitrine em `docs/`), a F10 (assistente, com a bateria de perguntas à espera do primeiro clique) e a F11 (HTML autocontido) estão implementadas [F24][F25][F26]. A F8 rodou o fluxo completo no projeto de eleições do autor, sem publicar e sem alterar a pasta de origem; os onze problemas encontrados estão em `provas/f8/ISSUES.md`, o principal deles a coluna no grão errado, que vira soma inflada sem alerta [F27]. O servidor MCP `pbix-mcp` já está instalado neste ambiente [F].
 
 ---
 
@@ -187,6 +187,7 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 | O Artifact bloqueia o iframe do Power BI (confirmado na F7b [F23]) ou bibliotecas fora da lista permitida | Certa / médio | Comparação numa página estática (`saidas/bi/comparativo/`), hospedada fora do claude.ai; vitrine na F9 |
 | Limite de 16 MB por página [F18] | Baixa / médio | Embutir só o cubo agregado |
 | Dados reais publicados por engano | Baixa / alto | Bloqueio de publicação com dados pessoais; casos reais ficam privados |
+| Coluna no grão errado (valor da zona repetido por candidato) vira soma inflada sem alerta | Alta / alto | Achado na F8 [F27]: perfil que detecta colunas constantes dentro de um grão maior, soma uma vez por chave no modelo e fonte com várias tabelas |
 | Mudanças no formato de plugins do Claude Code | Média / médio | Lógica de dados no MCP, independente das skills |
 | Acoplamento entre os dois plugins: mudança no `analise-dados` quebra o contrato | Média / médio | `CONTRATO.md` versionado; teste de contrato no CI dos dois repositórios; o `bi-html` declara a versão mínima do `analise-dados` |
 | Sobreposição entre o `/painel` do `analise-dados` e o dashboard de BI confunde o uso | Média / baixo | Papéis distintos e documentados (painel de conclusões vs. BI exploratório); na F9, avaliar se o `/painel` passa a usar o renderizador novo |
@@ -199,7 +200,7 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 |---|---|---|
 | 1 | A sua conta Power BI é Free, Pro ou PPU? O tenant é pessoal ou de uma empresa? Você consegue habilitar Publicar na Web (ou já está habilitado)? | Qual caminho da via (b) a F7b usa. **Respondida em 17/11:** Free; Publicar na Web não habilitado (ou desconhecido). A F7b usa Publicar na Web e fica à espera da publicação. |
 | 2 | Os .pbix que você vai enviar podem aparecer no portfólio público, ou só servem para teste? | Se a F7 publica a conversão desses arquivos ou de um .pbix fictício. **Respondida em 17/11:** só o fictício (`fixtures/vendas.pbix`) aparece em público; os três reais servem para teste. |
-| 3 | Qual é o projeto em andamento para a F8, e ele tem dados pessoais? | Escopo e cuidados do caso real |
+| 3 | Qual é o projeto em andamento para a F8, e ele tem dados pessoais? | Escopo e cuidados do caso real. **Respondida em 17/11:** o projeto de eleições presidenciais; o conjunto usado não tem dados pessoais (os arquivos brutos do TSE com dados de candidatos ficaram de fora). |
 | 4 | Basta rodar no Claude Code (app desktop), ou você também quer usar pelo chat do claude.ai na web? | O claude.ai web não executa MCP local [NV]; a alternativa seria uma versão só com skills |
 | 5 | Que nome o plugin terá (sugestão: `bi-html`) e qual será o prefixo dos comandos? | F0 |
 | 6 | O novo plugin pode entrar no marketplace do `analise-dados` (mesmo repositório) ou você prefere um repositório separado? | Onde ficam o CI e o teste de contrato |
@@ -237,3 +238,4 @@ Com papéis de RLS no .pbix, o sistema importa as regras como rascunho e avisa q
 24. Vitrine da F9 neste repositório, em 17/11/2026: `docs/`, gerada por `vitrine/construir.py` a partir dos exemplos fictícios e do .pbix fictício convertido.
 25. Assistente da F10 neste repositório, em 17/11/2026: `plugins/bi-html/lib/bi_html/assistente.py`, Artifact privado com o exemplo de vendas e `provas/f10/` (bateria pendente do primeiro clique).
 26. Exportação da F11 neste repositório, em 17/11/2026: `plugins/bi-html/lib/bi_html/exportacao.py`; arquivo aberto num navegador local com uma única requisição, a do próprio arquivo.
+27. Caso real da F8, em 17/11/2026: cópia do projeto de eleições presidenciais do autor em `casos/` (fora do git), fluxo completo sem publicação; estados e contagens em `provas/f8/RESULTADO.md` e problemas em `provas/f8/ISSUES.md`.
