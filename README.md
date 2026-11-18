@@ -1,5 +1,8 @@
 # Business Intelligence Report Builder
 
+[![testes](https://github.com/fernandofigueiredo-data/business-intelligence-report-builder/actions/workflows/testes.yml/badge.svg)](https://github.com/fernandofigueiredo-data/business-intelligence-report-builder/actions/workflows/testes.yml)
+[![licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue.svg)](LICENSE)
+
 **Dashboards e documentos de decisão em HTML em que nenhum número sai do modelo de linguagem.**
 O Claude desenha a página e escreve o texto; cada valor vem de uma camada de métricas
 determinística, e um verificador recusa o que não tiver origem rastreada.
@@ -35,7 +38,7 @@ o calculou, e o documento só é gerado quando 100% dos números têm origem.
 | Caso real privado (eleições presidenciais, 340.702 linhas), fluxo completo sem publicar | Documento com **25 de 25** números rastreados e **11 problemas** do próprio plugin documentados | [`provas/f8/ISSUES.md`](provas/f8/ISSUES.md) |
 
 Todos os resultados acima são gerados por scripts (`provas/*/executar.py` e `registrar.py`) e
-conferidos pelos 202 testes automatizados.
+conferidos pelos 202 testes automatizados, que rodam no GitHub Actions a cada push.
 
 ## Como funciona
 
@@ -77,10 +80,15 @@ ciclo completo), o documento de decisão e a comparação com o Power BI.
 
 - **Coluna no grão errado ainda passa sem alerta.** No caso real, colunas da zona eleitoral repetidas
   em cada linha de candidato foram somadas e inflaram o total. É o problema mais grave encontrado e
-  está descrito, com a proposta de correção, em [`provas/f8/ISSUES.md`](provas/f8/ISSUES.md).
-- **Uma tabela por modelo.** O fluxo a partir de planilha ainda não junta fato e dimensões.
+  está descrito, com a proposta de correção, na [issue #1](https://github.com/fernandofigueiredo-data/business-intelligence-report-builder/issues/1).
+- **Uma tabela por modelo.** O fluxo a partir de planilha ainda não junta fato e dimensões
+  ([issue #2](https://github.com/fernandofigueiredo-data/business-intelligence-report-builder/issues/2)).
 - **`.pbix` só em modo de importação.** DirectQuery e conexão dinâmica são recusados com o motivo.
 - **Datas e anos no texto do assistente** não passam pelo verificador de valores.
+
+Os 11 problemas que o caso real revelou estão abertos como
+[issues com o rótulo `caso-real-f8`](https://github.com/fernandofigueiredo-data/business-intelligence-report-builder/issues?q=label%3Acaso-real-f8),
+por prioridade.
 
 ## Instalar e rodar
 
