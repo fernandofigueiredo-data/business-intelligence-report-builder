@@ -158,5 +158,30 @@ class TestRegistroDaProva(Vendas):
         self.assertIn("divergem em 1 pergunta", md)
 
 
+class TestBateriaRegistrada(unittest.TestCase):
+    """O resultado da bateria rodada no Artifact publicado (provas/f10/resultados.json)."""
+
+    @classmethod
+    def setUpClass(cls):
+        arq = RAIZ / "provas" / "f10" / "resultados.json"
+        if not arq.is_file():
+            raise unittest.SkipTest("a bateria ainda não foi registrada")
+        cls.R = json.loads(arq.read_text(encoding="utf-8"))
+
+    def test_criterio_de_aceite(self):
+        self.assertEqual(self.R["total"], 30)
+        self.assertGreaterEqual(self.R["acertos_python"], 27)
+        self.assertEqual(self.R["com_numero_fora"], 0)
+        self.assertTrue(self.R["correcoes_iguais"])
+        self.assertTrue(self.R["criterio"]["atende"])
+        self.assertTrue(all(i["consultas"] is not None for i in self.R["itens"]))
+
+    def test_md_em_dia(self):
+        spec = importlib.util.spec_from_file_location("prova_f10_md", RAIZ / "provas" / "f10" / "registrar.py")
+        prova = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(prova)
+        self.assertEqual((RAIZ / "provas" / "f10" / "RESULTADO.md").read_text(encoding="utf-8"), prova.gerar_md(self.R))
+
+
 if __name__ == "__main__":
     unittest.main()

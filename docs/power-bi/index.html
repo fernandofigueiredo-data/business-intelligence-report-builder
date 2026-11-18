@@ -61,16 +61,8 @@ td.motivo { color: var(--muted-foreground); min-width: 24ch; }
 <main class="telas">
   <div class="tela">
     <h2>No Power BI</h2>
-    <div class="quadro"><div class="vazio">
-  <p class="vazio-titulo">O original entra aqui quando o relatório estiver publicado</p>
-  <ol>
-    <li>Envie o .pbix ao serviço do Power BI (Meu workspace &gt; Carregar).</li>
-    <li>Abra o relatório e use Arquivo &gt; Inserir relatório &gt; Publicar na Web. O administrador do tenant precisa ter habilitado essa opção.</li>
-    <li>Copie o link (app.powerbi.com/view?r=…) e rode <code>/bi-html:comparar &lt;link&gt;</code>.</li>
-  </ol>
-  <p class="nota">Com conta Free, “Publicar na Web” é o único caminho. O link fica público: use dados fictícios ou públicos.</p>
-</div></div>
-    <p class="nota">Ainda sem link: a página mostra o passo a passo.</p>
+    <div class="quadro"><iframe title="Relatório original no Power BI" src="https://app.powerbi.com/view?r=eyJrIjoiYTQ4Y2E5ODctZDMwOC00MWFlLWJlZGItMDZhZTM2YWRlZTU5IiwidCI6IjI2MGZmOWM5LTM4OGYtNDdiYi04NjlhLTc3YTk1N2JmNzA4MiJ9" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <p class="nota">Publicado com “Publicar na Web”: qualquer pessoa com o link vê os dados.</p>
   </div>
   <div class="tela">
     <h2>No bi-html</h2>

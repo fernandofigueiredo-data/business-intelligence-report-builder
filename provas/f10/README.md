@@ -23,21 +23,25 @@ na conta de quem pergunta.
     Node, que essa correção dá exatamente o mesmo resultado que a correção em
     Python.
 
-## Estado
+## Resultado
 
-A página está publicada como Artifact privado, com o exemplo de vendas
-fictício. A bateria **ainda não rodou**. Ela gasta o uso de Claude de quem
-clica, e o botão "Testar o assistente" só aparece para quem edita a página.
-Depois do clique:
+A bateria rodou em 18/11/2026, na conta do autor, no Artifact privado com o exemplo de vendas fictício:
 
-1. ler a coleção `avaliacoes` do Artifact com a ferramenta ArtifactData
-   (`list`, com `out_dir`);
+- **30 de 30 corretas**, incluindo as 3 perguntas sem resposta no dashboard, que o assistente recusou sem escrever número;
+- **nenhuma resposta com número fora** do que o assistente consultou;
+- **as duas correções concordam**: a refeita em Python dá o mesmo resultado que a da página em todas as perguntas.
+
+Detalhes, pergunta a pergunta, em [`RESULTADO.md`](RESULTADO.md).
+
+**Limite que ficou à vista:** o assistente escreveu datas e anos (o período do dashboard) em várias respostas. O verificador não confere ano nem data, só números de valor. Aqui eles vieram do período que a página informa no prompt e estão certos, mas não passaram pela conferência.
+
+## Como rodar de novo
+
+Depois de clicar em "Testar o assistente" no Artifact:
+
+1. ler a coleção `avaliacoes` com a ferramenta ArtifactData (`list`, com `out_dir`);
 2. rodar o registro:
 
 ```bash
 uv run --no-project --python 3.12 --with duckdb --with pyyaml --with jsonschema python provas/f10/registrar.py CAMINHO/avaliacoes/<id>.json
 ```
-
-Isso grava `resultados.json` e `RESULTADO.md` com a correção refeita em Python
-e o critério da fase: pelo menos 90% de acertos e nenhuma resposta com número
-fora do que o assistente consultou.

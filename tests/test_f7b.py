@@ -135,6 +135,17 @@ class TestTesteDoIframe(unittest.TestCase):
     def test_md_em_dia(self):
         self.assertEqual(self.md, self.prova.gerar_md(self.R))
 
+    def test_relatorio_publicado_ao_lado_do_convertido(self):
+        """Critério de aceite: relatório de exemplo visível em página pública, pelo caminho da licença."""
+        p = self.R["publicado"]
+        self.assertIsNotNone(p, "o relatório fictício ainda não foi publicado")
+        self.assertEqual((p["licenca"], p["via"]), ("free", "publicar_na_web"))
+        self.assertTrue(p["incorporavel"])
+        self.assertEqual(validar_link(p["link"], "free")["via"], "publicar_na_web")
+        vitrine = (RAIZ / "docs" / "power-bi" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(f'src="{p["link"]}"', vitrine)
+        self.assertIn('src="convertido.html"', vitrine)
+
     def test_regra_de_bloqueio(self):
         b = self.prova.bloqueio
         self.assertIsNone(b({}))

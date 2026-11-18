@@ -1,0 +1,481 @@
+{
+  "quando": "2026-11-18T00:57:34.893Z",
+  "dashboard": "Faturamento da rede",
+  "modelo": "default",
+  "total": 30,
+  "acertos_python": 30,
+  "acertos_pagina": 30,
+  "com_numero_fora": 0,
+  "correcoes_iguais": true,
+  "criterio": {
+    "minimo_de_acertos": 0.9,
+    "atende": true
+  },
+  "itens": [
+    {
+      "id": "P01",
+      "pergunta": "Qual é o valor de faturamento no período todo, sem filtros?",
+      "tipo": "numero",
+      "resposta": "O faturamento no período todo (01/01/2025 a 31/12/2025), sem filtros, é de R$ 4.076.230,52.",
+      "consultas": [
+        {
+          "bloco": "faturamento",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P02",
+      "pergunta": "Qual loja tem o maior valor de faturamento?",
+      "tipo": "categoria",
+      "resposta": "A Loja Paulista tem o maior faturamento, com R$ 405.405,32 em 2025.",
+      "consultas": [
+        {
+          "bloco": "lojas",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P03",
+      "pergunta": "Qual é o valor de faturamento para loja Loja Campinas?",
+      "tipo": "numero",
+      "resposta": "O faturamento da Loja Campinas em 2025 (01/01 a 31/12) foi de R$ 204.054,73.",
+      "consultas": [
+        {
+          "bloco": "lojas",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P04",
+      "pergunta": "Considerando só canal de venda igual a App, qual é o valor de faturamento?",
+      "tipo": "numero",
+      "resposta": "Considerando só o canal de venda App, o faturamento no período foi de R$ 609.748,29.",
+      "consultas": [
+        {
+          "bloco": "faturamento",
+          "filtros": {
+            "canal": "App"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P05",
+      "pergunta": "Qual é o valor de pedidos no período todo, sem filtros?",
+      "tipo": "numero",
+      "resposta": "No período todo (01/01/2025 a 31/12/2025) e sem filtros, o dashboard mostra 16.254 pedidos.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P06",
+      "pergunta": "Qual categoria tem o maior valor de faturamento?",
+      "tipo": "categoria",
+      "resposta": "A categoria com o maior faturamento é Vestuário, com R$ 1.762.224,68 no período de 01/01/2025 a 31/12/2025.",
+      "consultas": [
+        {
+          "bloco": "categorias",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P07",
+      "pergunta": "Qual é o valor de faturamento para categoria Acessórios?",
+      "tipo": "numero",
+      "resposta": "O faturamento da categoria Acessórios em 2025 (01/01 a 31/12) é R$ 514.053,82.",
+      "consultas": [
+        {
+          "bloco": "categorias",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P08",
+      "pergunta": "Considerando só canal de venda igual a Loja física, qual é o valor de faturamento?",
+      "tipo": "numero",
+      "resposta": "Considerando só o canal de venda Loja física, o faturamento em 2025 foi de R$ 2.255.467,59.",
+      "consultas": [
+        {
+          "bloco": "faturamento",
+          "filtros": {
+            "canal": "Loja física"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P09",
+      "pergunta": "Qual é o valor de ticket médio no período todo, sem filtros?",
+      "tipo": "numero",
+      "resposta": "O ticket médio no período todo, sem filtros, é R$ 250,78.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P10",
+      "pergunta": "Qual uf tem o maior valor de faturamento?",
+      "tipo": "categoria",
+      "resposta": "A UF com o maior faturamento em 2025 é SP, com R$ 1.094.922,80.",
+      "consultas": [
+        {
+          "bloco": "estados",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P11",
+      "pergunta": "Qual é o valor de faturamento para uf MG?",
+      "tipo": "numero",
+      "resposta": "O faturamento de MG em 2025 foi de R$ 319.283,81.",
+      "consultas": [
+        {
+          "bloco": "estados",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P12",
+      "pergunta": "Considerando só região igual a Centro-Oeste, qual é o valor de faturamento?",
+      "tipo": "numero",
+      "resposta": "O faturamento da região Centro-Oeste em 2025 (01/01/2025 a 31/12/2025) é de R$ 453.009,20.",
+      "consultas": [
+        {
+          "bloco": "faturamento",
+          "filtros": {
+            "regiao": "Centro-Oeste"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P13",
+      "pergunta": "Qual é o valor de desconto médio no período todo, sem filtros?",
+      "tipo": "numero",
+      "resposta": "O desconto médio no período todo, sem filtros, é de 4,52%.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P14",
+      "pergunta": "Qual região tem o maior valor de faturamento?",
+      "tipo": "categoria",
+      "resposta": "A região Sudeste tem o maior faturamento do período, com R$ 1.890.544,57. Isso corresponde a 46,4% do faturamento total.",
+      "consultas": [
+        {
+          "bloco": "regioes",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P15",
+      "pergunta": "Qual é o valor de faturamento para região Nordeste?",
+      "tipo": "numero",
+      "resposta": "O faturamento da região Nordeste em 2025 foi de R$ 701.453,87.",
+      "consultas": [
+        {
+          "bloco": "regioes",
+          "filtros": {}
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P16",
+      "pergunta": "Considerando só região igual a Nordeste, qual é o valor de faturamento?",
+      "tipo": "numero",
+      "resposta": "O faturamento da região Nordeste em 2025 foi de R$ 701.453,87.",
+      "consultas": [
+        {
+          "bloco": "faturamento",
+          "filtros": {
+            "regiao": "Nordeste"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P17",
+      "pergunta": "Considerando só canal de venda igual a App, qual é o valor de pedidos?",
+      "tipo": "numero",
+      "resposta": "Considerando só o canal App, o dashboard mostra 2.414 pedidos no período.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {
+            "canal": "App"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P18",
+      "pergunta": "Considerando só canal de venda igual a Loja física, qual é o valor de pedidos?",
+      "tipo": "numero",
+      "resposta": "Considerando só o canal de venda Loja física, o valor de pedidos é 9.019.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {
+            "canal": "Loja física"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P19",
+      "pergunta": "Considerando só região igual a Centro-Oeste, qual é o valor de pedidos?",
+      "tipo": "numero",
+      "resposta": "Na região Centro-Oeste, o valor de pedidos é 1.822.",
+      "consultas": [
+        {
+          "bloco": "regioes",
+          "filtros": {
+            "regiao": "Centro-Oeste"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P20",
+      "pergunta": "Considerando só região igual a Nordeste, qual é o valor de pedidos?",
+      "tipo": "numero",
+      "resposta": "Considerando só a região Nordeste, o valor de pedidos é 2.742.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {
+            "regiao": "Nordeste"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P21",
+      "pergunta": "Considerando só canal de venda igual a App, qual é o valor de ticket médio?",
+      "tipo": "numero",
+      "resposta": "Considerando só o canal de venda App, o ticket médio é R$ 252,59.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {
+            "canal": "App"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P22",
+      "pergunta": "Considerando só canal de venda igual a Loja física, qual é o valor de ticket médio?",
+      "tipo": "numero",
+      "resposta": "Considerando apenas o canal de venda Loja física, o ticket médio é R$ 250,08.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {
+            "canal": "Loja física"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P23",
+      "pergunta": "Considerando só região igual a Centro-Oeste, qual é o valor de ticket médio?",
+      "tipo": "numero",
+      "resposta": "O ticket médio da região Centro-Oeste é R$ 248,63.",
+      "consultas": [
+        {
+          "bloco": "regioes",
+          "filtros": {
+            "regiao": "Centro-Oeste"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P24",
+      "pergunta": "Considerando só região igual a Nordeste, qual é o valor de ticket médio?",
+      "tipo": "numero",
+      "resposta": "O ticket médio da região Nordeste é R$ 255,82.",
+      "consultas": [
+        {
+          "bloco": "regioes",
+          "filtros": {
+            "regiao": "Nordeste"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P25",
+      "pergunta": "Considerando só canal de venda igual a App, qual é o valor de desconto médio?",
+      "tipo": "numero",
+      "resposta": "Considerando só o canal App, o desconto médio é de 4,51%.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {
+            "canal": "App"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P26",
+      "pergunta": "Considerando só canal de venda igual a Loja física, qual é o valor de desconto médio?",
+      "tipo": "numero",
+      "resposta": "Considerando só o canal Loja física, o desconto médio é de 4,55%.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {
+            "canal": "Loja física"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P27",
+      "pergunta": "Considerando só região igual a Centro-Oeste, qual é o valor de desconto médio?",
+      "tipo": "numero",
+      "resposta": "Considerando só a região Centro-Oeste, o desconto médio é de 4,45%.",
+      "consultas": [
+        {
+          "bloco": "apoio",
+          "filtros": {
+            "regiao": "Centro-Oeste"
+          }
+        }
+      ],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P28",
+      "pergunta": "Qual foi o lucro líquido no período?",
+      "tipo": "indisponivel",
+      "resposta": "Não está no dashboard. Ele traz faturamento, pedidos, ticket médio e desconto médio, mas não tem lucro líquido.",
+      "consultas": [],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P29",
+      "pergunta": "Quantos clientes novos o negócio conquistou?",
+      "tipo": "indisponivel",
+      "resposta": "Não está no dashboard. Ele não tem nenhuma métrica de clientes novos. Os blocos trazem apenas faturamento, pedidos, ticket médio, desconto médio e a distribuição por loja, categoria, estado, dia da semana e região.",
+      "consultas": [],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    },
+    {
+      "id": "P30",
+      "pergunta": "Qual é a meta de faturamento para o próximo ano?",
+      "tipo": "indisponivel",
+      "resposta": "Não está no dashboard. Ele traz apenas os dados de faturamento de 01/01/2025 a 31/12/2025 e não tem nenhuma informação sobre metas ou projeções para o próximo ano.",
+      "consultas": [],
+      "correta_na_pagina": true,
+      "correta_em_python": true,
+      "numeros_fora": []
+    }
+  ]
+}

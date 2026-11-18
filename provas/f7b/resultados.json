@@ -1,5 +1,13 @@
 {
-  "executado_em": "2026-11-17T17:01:36-03:00",
+  "executado_em": "2026-11-18T09:03:45-03:00",
+  "publicado": {
+    "link": "https://app.powerbi.com/view?r=eyJrIjoiYTQ4Y2E5ODctZDMwOC00MWFlLWJlZGItMDZhZTM2YWRlZTU5IiwidCI6IjI2MGZmOWM5LTM4OGYtNDdiYi04NjlhLTc3YTk1N2JmNzA4MiJ9",
+    "licenca": "free",
+    "via": "publicar_na_web",
+    "incorporavel": true,
+    "verificado_no_navegador": "A página de comparação da vitrine (docs/power-bi/), servida em localhost com o link publicado: o relatório do Power BI carregou inteiro no quadro (cartões de faturamento, pedidos e ticket médio, gráficos e o filtro de região), com os mesmos valores que o lado convertido mostra, e o console não registrou erro",
+    "data": "2026-11-18"
+  },
   "casos": [
     {
       "via": "publicar_na_web",
@@ -30,6 +38,16 @@
       "frame_ancestors": "frame-ancestors https://teams.powerbi.com 'self' https://res-sdf.cdn.office.net https://res.cdn.office.net https://mesh.public.onecdn.static.microsoft https://m365.cloud.microsoft https://copilot.cloud.microsoft https://outlook.cloud.microsoft https://teams.cloud.microsoft https://teams.microsoft.com https://gov.teams.microsoft.us https://dod.teams.microsoft.us https://teams.microsoftonline.cn https://teams.sovcloud.fr https://outlook.office.com https://outlook-sdf.office.com https://outlook.office365.com https://outlook-sdf.office365.com https://www.office.com https://scuprodprv.www.office.com https://www.microsoft365.com https://local.loop.microsoft.com https://dev.loop.microsoft.com https://df.loop.microsoft.com https://loop.microsoft.com https://pages.cloud.microsoft https://pages.cloud.dev.microsoft",
       "incorporavel": false,
       "bloqueio": "X-Frame-Options: deny"
+    },
+    {
+      "via": "relatorio_publicado",
+      "url": "https://app.powerbi.com/view?r=eyJrIjoiYTQ4Y2E5ODctZDMwOC00MWFlLWJlZGItMDZhZTM2YWRlZTU5IiwidCI6IjI2MGZmOWM5LTM4OGYtNDdiYi04NjlhLTc3YTk1N2JmNzA4MiJ9",
+      "descricao": "relatório fictício publicado com Publicar na Web (vendas.pbix, conta Free)",
+      "status_http": 200,
+      "x_frame_options": null,
+      "frame_ancestors": null,
+      "incorporavel": true,
+      "bloqueio": null
     }
   ],
   "artifact": {

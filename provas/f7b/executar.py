@@ -2,12 +2,14 @@
 """
 executar.py — teste do iframe da F7b: o Power BI deixa a página do relatório ser incorporada?
 
-    python3 provas/f7b/executar.py
+    python3 provas/f7b/executar.py [--link https://app.powerbi.com/view?r=...]
 
 Pede ao serviço do Power BI três endereços com identificadores fictícios (nenhum dado do usuário
 vai na requisição) e registra os cabeçalhos que decidem se um navegador aceita a página num
 iframe: X-Frame-Options e o frame-ancestors da Content-Security-Policy. Grava resultados.json e
-RESULTADO.md. Sem rede, só regenera RESULTADO.md (opção --so-md).
+RESULTADO.md. Sem rede, só regenera RESULTADO.md (opção --so-md). Com --link, testa também o
+relatório fictício publicado com Publicar na Web (fixtures/vendas.pbix, conta Free) e registra o
+critério de aceite da F7b: o original visível ao lado do convertido.
 
 O lado do Artifact do claude.ai não depende de rede: o contrato de página dos Artifacts recusa
 incorporar outros sites, para qualquer leitor (registrado em RESULTADO.md como fato documental).
@@ -48,9 +50,18 @@ def bloqueio(cabecalhos: dict) -> str | None:
     return None
 
 
-def testar() -> dict:
+PUBLICADO = ("A página de comparação da vitrine (docs/power-bi/), servida em localhost com o link publicado: o "
+             "relatório do Power BI carregou inteiro no quadro (cartões de faturamento, pedidos e ticket médio, gráficos "
+             "e o filtro de região), com os mesmos valores que o lado convertido mostra, e o console não registrou erro")
+
+
+def testar(link: str | None = None) -> dict:
     casos = []
-    for via, url, descricao in ENDERECOS:
+    enderecos = list(ENDERECOS)
+    if link:
+        enderecos.append(("relatorio_publicado", link,
+                          "relatório fictício publicado com Publicar na Web (vendas.pbix, conta Free)"))
+    for via, url, descricao in enderecos:
         req = urllib.request.Request(url, headers={"User-Agent": "bi-html-teste-de-incorporacao"})
         try:
             with urllib.request.urlopen(req, timeout=30) as r:
@@ -63,8 +74,13 @@ def testar() -> dict:
                       "frame_ancestors": next((p.strip() for p in (cab.get("content-security-policy") or "").split(";")
                                                if p.strip().lower().startswith("frame-ancestors")), None),
                       "incorporavel": motivo is None, "bloqueio": motivo})
+    publicado = None
+    if link:
+        caso = next(c for c in casos if c["via"] == "relatorio_publicado")
+        publicado = {"link": link, "licenca": "free", "via": "publicar_na_web", "incorporavel": caso["incorporavel"],
+                     "verificado_no_navegador": PUBLICADO, "data": datetime.now().strftime("%Y-%m-%d")}
     return {"executado_em": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),
-            "casos": casos, "artifact": {"incorporavel": False, "fonte": "contrato de página da ferramenta Artifact",
+            "publicado": publicado, "casos": casos, "artifact": {"incorporavel": False, "fonte": "contrato de página da ferramenta Artifact",
                                          "texto": ARTIFACT},
             "navegador": {"verificado": "A página comparativo/index.html servida em localhost, com o link de Publicar na "
                                         "Web (token fictício): o leitor do Power BI carregou no quadro, com o rodapé e os "
@@ -75,14 +91,23 @@ def testar() -> dict:
 def gerar_md(r: dict) -> str:
     L = ["# F7b — teste do iframe do Power BI", "",
          "Gerado por `provas/f7b/executar.py` a partir de `resultados.json`; não edite à mão.", "",
-         f"**Execução:** {r['executado_em']}. Identificadores fictícios: nenhum dado do usuário vai na requisição.", "",
+         f"**Execução:** {r['executado_em']}. Os três primeiros endereços usam identificadores fictícios"
+         + ("; o último é o link público do relatório fictício publicado." if r.get("publicado") else ".")
+         + " Nenhum dado do usuário vai nas requisições.", "",
          "## Cabeçalhos do serviço do Power BI", "",
          "| Endereço | Para quê | HTTP | X-Frame-Options | frame-ancestors | Pode ir num iframe |", "|---|---|---|---|---|---|"]
     for c in r["casos"]:
         fa = (c["frame_ancestors"] or "—")[:70] + ("…" if c["frame_ancestors"] and len(c["frame_ancestors"]) > 70 else "")
         L.append(f"| `{c['url'].split('?')[0].replace('https://', '')}` | {c['descricao']} | {c['status_http']} | "
                  f"{c['x_frame_options'] or '—'} | {fa} | {'sim' if c['incorporavel'] else 'não'} |")
-    L += ["", "## No navegador", "", r["navegador"]["verificado"] + f" ({r['navegador']['data']}).", "",
+    L += ["", "## No navegador", "", r["navegador"]["verificado"] + f" ({r['navegador']['data']}).", ""]
+    if r.get("publicado"):
+        p = r["publicado"]
+        L += ["## O relatório publicado (critério de aceite da F7b)", "",
+              f"Caminho escolhido pela licença ({p['licenca']}): Publicar na Web. Link: <{p['link']}>.", "",
+              p["verificado_no_navegador"] + f" ({p['data']}). A página de comparação mora na vitrine estática "
+              "(`docs/power-bi/`), não no Artifact.", ""]
+    L += [
           "## No Artifact do claude.ai", "", r["artifact"]["texto"] + " Por isso a página de comparação não é "
           "publicada como Artifact: ela é uma pasta estática (`saidas/bi/comparativo/`) para hospedar em qualquer "
           "lugar, e o dashboard convertido continua publicável como Artifact.", ""]
@@ -93,7 +118,8 @@ def main() -> None:
     if "--so-md" in sys.argv:
         r = json.loads(RESULTADOS.read_text(encoding="utf-8"))
     else:
-        r = testar()
+        link = sys.argv[sys.argv.index("--link") + 1] if "--link" in sys.argv else None
+        r = testar(link)
         RESULTADOS.write_text(json.dumps(r, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     RESULTADO_MD.write_text(gerar_md(r), encoding="utf-8")
     for c in r["casos"]:

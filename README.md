@@ -7,7 +7,7 @@ o bi-html parte dela e gera um dashboard HTML e um documento de decisão em que
 **nenhum número sai do modelo de linguagem**: o Claude desenha e escreve, e os
 valores vêm de um servidor MCP com uma camada de métricas determinística.
 
-**Estado:** fases F0 (fundações), F0b (contrato com o analise-dados), F1 (ingestão e perfil), F2 (camada de métricas), F3 (design), F4 (dashboard e publicação), F5 (documento de decisão), F6 (prova de conceito com .pbix reais), F7 (conversão de .pbix em importação) F7b (original do Power BI ao lado do convertido; falta publicar o relatório fictício no Power BI), F9 (vitrine), F10 (assistente no dashboard; a bateria de perguntas de controle espera o primeiro clique) e F11 (HTML autocontido). A F8 (caso real privado) rodou o fluxo completo no projeto de eleições do autor, sem publicar; os problemas encontrados estão em `provas/f8/ISSUES.md`. O plano completo, com fases e critérios de
+**Estado:** fases F0 (fundações), F0b (contrato com o analise-dados), F1 (ingestão e perfil), F2 (camada de métricas), F3 (design), F4 (dashboard e publicação), F5 (documento de decisão), F6 (prova de conceito com .pbix reais), F7 (conversão de .pbix em importação) F7b (o relatório fictício publicado no Power BI ao lado do convertido, na vitrine), F9 (vitrine), F10 (assistente no dashboard: 30 de 30 perguntas de controle corretas) e F11 (HTML autocontido). A F8 (caso real privado) rodou o fluxo completo no projeto de eleições do autor, sem publicar; os problemas encontrados estão em `provas/f8/ISSUES.md`. O plano completo, com fases e critérios de
 aceite, está em [`PLANO_DE_CONSTRUCAO.md`](PLANO_DE_CONSTRUCAO.md).
 
 ## O que já existe
