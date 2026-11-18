@@ -1,0 +1,29 @@
+name: testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Testes (Python 3.12)
+        run: >
+          uv run --no-project --python 3.12
+          --with jsonschema --with "mcp>=2.3,<3" --with duckdb --with openpyxl --with pyyaml
+          -m unittest discover -s tests -v
+
+      - name: Validação do plugin
+        run: npx -y @anthropic-ai/claude-code plugin validate --strict plugins/bi-html
