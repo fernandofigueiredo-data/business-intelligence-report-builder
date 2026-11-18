@@ -35,6 +35,7 @@ o calculou, e o documento só é gerado quando 100% dos números têm origem.
 | Assistente de perguntas no dashboard publicado, contra 30 perguntas de resposta conhecida (3 sem resposta no dashboard) | **30 de 30** corretas; **0** respostas com número fora do que consultou | [`provas/f10/RESULTADO.md`](provas/f10/RESULTADO.md) |
 | Conversão de três `.pbix` reais: medidas DAX traduzidas, testadas contra o motor do Power BI | Todas as traduzidas bateram (**13 de 13** e **17 de 17**); linhas das tabelas idênticas | [`provas/f7/RESULTADO.md`](provas/f7/RESULTADO.md) |
 | Conversão do `.pbix` fictício, publicado no Power BI e posto ao lado do convertido | **10 de 11** medidas batem; a que não bateu aparece marcada "(não validada)" | [`provas/f7b/`](provas/f7b/RESULTADO.md) |
+| Evals com `claude plugin eval`: o mesmo pedido em sessões reais do Claude, com e sem o plugin | Faturamento total exato: **2 de 2** com o plugin, **0 de 2** sem; dashboard pelo comando: **3 de 3** contra **0 de 3**. Nas recusas (lucro sem custo, publicação com CPF) o Claude sem o plugin quase empata | [`plugins/bi-html/evals/`](plugins/bi-html/evals/README.md) |
 | Caso real privado (eleições presidenciais, 340.702 linhas), fluxo completo sem publicar | Documento com **25 de 25** números rastreados e **11 problemas** do próprio plugin documentados | [`provas/f8/ISSUES.md`](provas/f8/ISSUES.md) |
 
 Todos os resultados acima são gerados por scripts (`provas/*/executar.py` e `registrar.py`) e

@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: sem-metrica
+tags: [recusa]
+context:
+  scaffold_script: preparar.sh
