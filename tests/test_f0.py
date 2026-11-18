@@ -3,7 +3,7 @@ Testes da fase F0: schema da spec, detecção do ciclo, dados fictícios e o ser
 
     uv run --no-project --python 3.12 --with jsonschema --with "mcp>=2.3,<3" --with duckdb --with openpyxl --with pyyaml -m unittest discover -s tests -v
 """
-import csv, json, os, subprocess, sys, tempfile, unittest
+import csv, json, os, re, subprocess, sys, tempfile, unittest
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -144,6 +144,21 @@ class TestServidorMCP(unittest.TestCase):
                                      "verificar_documento", "renderizar_documento", "converter_pbix", "montar_comparativo", "exportar_offline", "renderizar_assistente"})
             texto = respostas[3]["result"]["content"][0]["text"]
             self.assertEqual(json.loads(texto)["etapa"], "planilha")
+            self.verificar_instrucoes(respostas[1]["result"].get("instructions") or "", nomes)
+
+    def verificar_instrucoes(self, texto, ferramentas):
+        """As instruções chegam no initialize, cabem sem corte e só citam o que existe."""
+        from bi_html.instrucoes import LIMITE, instrucoes
+        self.assertEqual(texto, instrucoes(PLUGIN))
+        self.assertLessEqual(len(texto), LIMITE)
+        self.assertIn(str(PLUGIN / "REGRAS.md"), texto)
+        self.assertTrue((PLUGIN / "REGRAS.md").is_file())
+        citadas = set(re.findall(r"`([a-z_]+)`", texto)) - {"formatado"}  # campo da resposta, não ferramenta
+        self.assertTrue(citadas, "as instruções devem citar ferramentas pelo nome")
+        self.assertLessEqual(citadas, ferramentas, "ferramenta citada nas instruções não existe no servidor")
+        for comando in re.findall(r"/bi-html:([a-z-]+)", texto):
+            self.assertTrue((PLUGIN / "commands" / f"{comando}.md").is_file(), comando)
+        self.assertNotRegex(texto.replace(str(PLUGIN), ""), r"\d", "as instruções não devem carregar valores")
 
 
 if __name__ == "__main__":

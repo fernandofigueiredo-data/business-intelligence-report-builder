@@ -5,11 +5,8 @@
 
 1. **Nenhum número sai do modelo de linguagem.** Todo valor que aparece num
    dashboard, num documento de decisão ou numa resposta sobre os dados vem de
-   uma ferramenta do servidor `bi-dados` (hoje: `validar_spec`,
-   `estado_do_ciclo`, `checar_contrato`, `ingerir`, `ingerir_texto`, `perfilar`,
-   `propor_modelo`, `validar_modelo`, `consultar`, `exportar_cubo`, `propor_estilos`,
-   `aplicar_estilo`, `importar_design`, `renderizar_dashboard`, `gerar_achados`,
-   `reproduzir_conclusao`, `verificar_documento` e `renderizar_documento`). Ao mostrar um número, use o texto de `formatado` que a ferramenta devolve.
+   uma ferramenta do servidor `bi-dados` (para uma pergunta de valor, `consultar`;
+   a lista completa está na descrição de cada ferramenta). Ao mostrar um número, use o texto de `formatado` que a ferramenta devolve.
    Números já escritos na conclusão revisada da análise podem ser repetidos como
    estão, nunca recalculados de cabeça. Se a
    ferramenta não existe ainda, diga isso ao usuário em vez de calcular.

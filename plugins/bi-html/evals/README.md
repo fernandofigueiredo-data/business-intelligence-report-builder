@@ -51,6 +51,24 @@ O que os números dizem, e o que não dizem:
   na leitura. *O Δ de +0,33 veio de uma regex que punia citar 134.700 mesmo como o valor errado; ela
   foi retirada depois da rodada.
 
+### Depois das instruções do servidor
+
+Para o achado das recusas, o servidor `bi-dados` passou a mandar instruções ao Claude
+(`lib/bi_html/instrucoes.py`): quando usar cada ferramenta num pedido em texto livre. Rodada só
+de `dados-pessoais`, com o plugin (`--ablation none`):
+
+| Versão | `perfilar` chamado | CPF repetido na resposta | Recusa a publicar |
+|---|---|---|---|
+| sem instruções (rodada acima) | 0 de 3 | 0 de 3 | 3 de 3 |
+| primeira versão das instruções | 1 de 3 | 2 de 3 | 1 de 3 |
+| versão atual ("antes de ler o arquivo ou responder"; "nunca repita esses valores") | **2 de 3** | **0 de 3** | **3 de 3** |
+
+Na execução que pulou o perfil, e nas duas que falharam com a primeira versão, o Claude respondeu
+em dois turnos. A transcrição de uma execução que deu certo mostra o servidor ainda `pending` no
+início da sessão (ele sobe pelo `uv`), com as ferramentas carregadas depois por busca. A hipótese é
+que, nas respostas curtas, o Claude leu o arquivo e respondeu antes de usar o servidor. Três
+execuções por versão é pouco para separar efeito de ruído.
+
 ## Rodar
 
 Precisa do `claude` logado (`claude auth login`) e do `uv`. Na raiz do repositório:

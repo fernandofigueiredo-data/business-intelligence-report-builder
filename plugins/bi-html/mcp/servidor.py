@@ -5,8 +5,9 @@
 """
 servidor.py — servidor MCP `bi-dados` do plugin bi-html.
 
-É o único caminho para números no sistema: nas próximas fases, ingestão,
-perfil, métricas e achados entram aqui como ferramentas tipadas. Hoje ele expõe:
+É o único caminho para números no sistema. As instruções que ele manda ao
+Claude (`bi_html.instrucoes`) dizem quando usar as ferramentas em pedidos em
+texto livre, fora dos comandos /bi-html. Ele expõe:
 
 - `saude`: versão do plugin e pasta do projeto vista pelo servidor;
 - `validar_spec`: confere uma spec de dashboard contra o schema e as regras;
@@ -65,8 +66,9 @@ from bi_html.conversao import converter as _converter_pbix  # noqa: E402
 from bi_html.incorporacao import montar_comparativo as _montar_comparativo  # noqa: E402
 from bi_html.exportacao import exportar as _exportar_offline  # noqa: E402
 from bi_html.assistente import renderizar_assistente as _renderizar_assistente  # noqa: E402
+from bi_html.instrucoes import instrucoes  # noqa: E402
 
-mcp = MCPServer("bi-dados")
+mcp = MCPServer("bi-dados", instructions=instrucoes(PLUGIN))
 
 
 def projeto() -> Path:
